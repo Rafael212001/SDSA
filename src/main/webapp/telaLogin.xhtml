@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resource/css/main.css" />
+</h:head>
+<h:body>
+	<div class="cont">
+		<div class="box center" id="borda">
+			<div class="panel">
+				<h:graphicImage class="imagens center" library="img" value="resource/img/senai.png"/>
+				<p/>
+				<p:tab id="personal" title="Personal">
+					<div>
+						<p />
+						<p />
+						<h:form>
+							<h:messages/>
+							<div class="center">
+								<h:panelGrid columns="2" cellpadding="10" cellspacing="1">
+								Usuário:
+								<h:inputText id="usuario" required="true"  value="" />
+								Senha:
+								<h:inputSecret id="senha" required="true"  value="{}" />
+								</h:panelGrid>
+							</div>		
+							<div class="margin20 center">
+								<h:commandButton class="button left" value="Recuperar Senha" />
+								<h:commandButton class="button right2" value="Login"  />
+							</div>
+						</h:form>
+					</div>
+				</p:tab>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
