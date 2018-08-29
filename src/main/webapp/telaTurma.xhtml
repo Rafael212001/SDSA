@@ -8,35 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="resource/css/main.css" />
 </h:head>
 <h:body>
-	<div class="cont">
-		<div class="box" id="borda">
-			<div class="panel">
-				<h:graphicImage class="imagens" library="img" value="resource/img/senai.png"/>
-				<p/>
-				<p:tab id="personal" title="Personal">
-					<div>
-						<p />
-						<p />
-						<h:form>
-							<h:messages/>
-							
-							<div>
-								Usuário:
-								<h:inputText id="usuario" required="true" requiredMessage="Campo usuário obrigatório" value="" />
-								<h:message for="usuario"/><br/>
-								Senha:
-								<h:inputSecret id="senha" required="true" requiredMessage="Campo senha obrigatório" value="{}" />
-								<h:message for="senha"/>
-							</div>
-							<div>
-								<h:commandButton class="button left" value="Recuperar Senha" />
-								<h:commandButton class="button right" value="Login"  />
-							</div>
-						</h:form>
-					</div>
-				</p:tab>
-			</div>
-		</div>
-	</div>
+	<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
+	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+    	<h:outputText value="This is a Modal Dialog." />
+	</p:dialog>
 </h:body>
 </html>
