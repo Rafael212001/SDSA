@@ -5,14 +5,33 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="resource/css/cssCoordenador.css" />
+	<link rel="stylesheet" type="text/css"	href="resource/css/cssCoordenador.css" />
 </h:head>
 <h:body>
 	<div class="bSuperior">
 		<h:graphicImage class="imagens" library="img" value="resource/img/senai.png" />
-		<h:commandButton class="button btEfeito b" value="Sair" />
-		<h:commandButton class="button btEfeito b f" value="Criar" />
-		<h:commandButton class="button btEfeito f" value="Distribuir" />
+		<div class="navbar">
+			<div class="subnav">
+				<h:commandButton class="subnavbtn" value="Criar"><i class="fa fa-caret-down"></i></h:commandButton>
+				<div class="subnav-content">
+				<TABLE>
+					<td>
+						<tr><a href="#company">Salas</a></tr>
+						<tr><a href="#team">Turmas</a></tr> 
+						<a href="#careers">Cursos</a>
+						<a href="#careers">Professor/Instrutor</a>
+						<a href="#careers">Coordenador</a>
+					</td>
+				</TABLE>
+				</div>
+			</div>
+			<div class="subnav">
+				<h:commandButton class="subnavbtn" value="Distribuição"/>
+			</div>
+			<div class="subnav">
+				<h:commandButton class="subnavbtn btSair" value="Sair" />
+			</div>
+		</div>
 	</div>
 </h:body>
 </html>
