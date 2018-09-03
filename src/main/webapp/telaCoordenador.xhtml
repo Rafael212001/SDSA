@@ -5,33 +5,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css"	href="resource/css/cssCoordenador.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resource/css/cssCoordenador.css" />
 </h:head>
 <h:body>
-	<div class="bSuperior">
-		<h:graphicImage class="imagens" library="img" value="resource/img/senai.png" />
-		<div class="navbar">
-			<div class="subnav">
-				<h:commandButton class="subnavbtn" value="Criar"><i class="fa fa-caret-down"></i></h:commandButton>
-				<div class="subnav-content">
-				<TABLE>
-					<td>
-						<tr><a href="#company">Salas</a></tr>
-						<tr><a href="#team">Turmas</a></tr> 
-						<a href="#careers">Cursos</a>
-						<a href="#careers">Professor/Instrutor</a>
-						<a href="#careers">Coordenador</a>
-					</td>
-				</TABLE>
-				</div>
+	<ul>
+		<li><h:graphicImage class="imagens" library="img" value="resource/img/senai.png" /></li>
+		<li class="dropdown">
+			<a class="dropbtn">Criar</a>
+			<div class="dropdown-content">
+				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
+				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
+				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
 			</div>
-			<div class="subnav">
-				<h:commandButton class="subnavbtn" value="Distribuição"/>
-			</div>
-			<div class="subnav">
-				<h:commandButton class="subnavbtn btSair" value="Sair" />
-			</div>
-		</div>
-	</div>
+		</li>
+		<li><a id="btDist">Distribuição</a></li>
+		<li id="btSair"><a>Sair</a></li>
+	</ul>
+	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+    	<ui:include src="criaCurso.xhtml"/>
+	</p:dialog> 
 </h:body>
 </html>
