@@ -3,12 +3,40 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css"
-		href="resource/css/cssCoordenador.css" />
-</h:head>
-<h:body>
-	<h:commandButton value="indio"></h:commandButton>
-</h:body>
+	<h:head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCoordenador.css" />
+	</h:head>
+	<h:body>
+
+
+		<h:form>
+			<h3 style="margin-top: 0"></h3>
+			<p:dataTable var="car" value="#{dtScrollView.cars1}"
+				scrollable="true" scrollHeight="150">
+				<p:column headerText="Nome">
+					<h:outputText value="#{car.id}" />
+				</p:column>
+				<p:column headerText="Quantidades de Semestres">
+					<h:outputText value="#{car.year}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+            Nome:
+<h:inputText required="true" value="" /> <br/>
+	Quantidade de Semestres:
+<h:inputText required="true" value="" />
+
+
+		<center>
+			<h:commandButton value="Voltar"></h:commandButton>
+
+			<h:commandButton value="Slvar"></h:commandButton>
+		</center>
+
+
+	</h:body>
 </ui:composition>
