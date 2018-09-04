@@ -14,16 +14,30 @@
 		<li class="dropdown">
 			<a class="dropbtn">Criar</a>
 			<div class="dropdown-content">
-				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
-				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
-				<p:commandLink value="Modal" type="button" onclick="PF('dlg2').show();" />
+				<p:commandLink value="Cursos" type="button" onclick="PF('dlg1').show();" />
+				<p:commandLink value="Turmas" type="button" onclick="PF('dlg2').show();" />
+				<p:commandLink value="Salas" type="button" onclick="PF('dlg3').show();" />
+				<p:commandLink value="Professor/Instrutor" type="button" onclick="PF('dlg4').show();" />
+				<p:commandLink value="Coordenador" type="button" onclick="PF('dlg5').show();" />
 			</div>
 		</li>
 		<li><a id="btDist">Distribuição</a></li>
 		<li id="btSair"><a>Sair</a></li>
 	</ul>
-	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" height="50%">
     	<ui:include src="criaCurso.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Turmas" widgetVar="dlg2" modal="true" height="50%">
+    	<ui:include src="criaTurma.xhtml"/>
+	</p:dialog> 
+	<p:dialog header="Salas" widgetVar="dlg3" modal="true" height="50%">
+    	<ui:include src="criaSalas.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true" height="50%">
+    	<ui:include src="criaProfessor.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true" height="50%">
+    	<ui:include src="criaCoordenador.xhtml"/>
 	</p:dialog> 
 </h:body>
 </html>
