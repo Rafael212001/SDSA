@@ -13,7 +13,7 @@
 
 		<h:form>
 			<h3 style="margin-top: 0"></h3>
-			<p:dataTable var="car" value="#{dtScrollView.cars1}"
+			<p:dataTable var="turma" value="#{dtScrollView.turma1}"
 				scrollable="true" scrollHeight="150">
 				<p:column headerText="Nome">
 					<h:outputText value="#{car.id}" />
@@ -24,19 +24,17 @@
 
 			</p:dataTable>
 		</h:form>
+		<div class="center">
+			<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+               Nome:
+              <h:inputText value="" />
+	           Quantidade de Semestres:
+              <h:inputText value="" />
 
-            Nome:
-<h:inputText required="true" value="" /> <br/>
-	Quantidade de Semestres:
-<h:inputText required="true" value="" />
-
-
-		<center>
-			<h:commandButton value="Voltar"></h:commandButton>
-
-			<h:commandButton value="Slvar"></h:commandButton>
-		</center>
-
+				<h:commandButton value="Voltar"></h:commandButton>
+				<h:commandButton value="Slvar"></h:commandButton>
+			</h:panelGrid>
+		</div>
 
 	</h:body>
 </ui:composition>
