@@ -3,26 +3,41 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css"
-		href="resource/css/cssCoordenador.css" />
-</h:head>
-<h:body>
-	
-	<h:form>          
-  <h2 style="margin-top:0">Criação cursos</h2>
-  <div style="height: 50%; width: 50%">
-    <p:dataTable var="car"  scrollable="true" >
-        <p:column headerText="Nome" >
-            <h:outputText value="" />
-        </p:column>
-        <p:column headerText="Periodo">
-            <h:outputText value="" />
-        </p:column>
-    </p:dataTable>
-    </div>
-    </h:form>
-	
-</h:body>
+	<h:head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCriar.css" />
+	</h:head>
+	<h:body>
+
+		<h:form>
+			<h2 style="margin-top: 0">Criação cursos</h2>
+
+			<p:dataTable var="car" scrollable="true" scrollHeight="150">
+				<p:column headerText="Nome">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="Periodo">
+					<h:outputText value="" />
+				</p:column>
+			</p:dataTable>
+			<div class="center">
+				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+				Nome:
+				<h:inputText id="nome" required="true"
+						requiredMessage="Campo usuário obrigatório" value="" />
+					<br /> Periodo:
+				<h:inputText id="periodo" required="true"
+						requiredMessage="Campo usuário obrigatório" value="" />
+						
+				<h:commandButton value="Salvar" ></h:commandButton>
+				<h:commandButton value="Cancelar" ></h:commandButton>
+				</h:panelGrid>
+
+				
+			</div>
+
+		</h:form>
+
+	</h:body>
 </ui:composition>

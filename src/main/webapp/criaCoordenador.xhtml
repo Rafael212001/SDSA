@@ -3,12 +3,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css"
-		href="resource/css/cssCoordenador.css" />
-</h:head>
-<h:body>
-	<h:commandButton value="indio"></h:commandButton>
-</h:body>
+	<h:head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCoordenador.css" />
+	</h:head>
+	<h:body>
+		<h:form>
+			<h2 style="margin-top: 0">Cadastro de coordenadores</h2>
+			<p:dataTable var="car" scrollable="true" scrollHeight="150">
+				<p:column headerText="Nome">
+					<h:outputText value="" />
+				</p:column>
+			</p:dataTable>
+
+			<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+				Nome:
+				<h:inputText id="nome" required="true"
+					requiredMessage="Campo usuário obrigatório" value="" />
+				<br /> Usuario:
+				<h:inputText id="usuario" required="true"
+					requiredMessage="Campo usuário obrigatório" value="" />
+
+				<br /> Senha:
+				<h:inputText id="senha" required="true"
+					requiredMessage="Campo usuário obrigatório" value="" />
+
+				<h:commandButton value="Salvar"></h:commandButton>
+				<h:commandButton value="Cancelar"></h:commandButton>
+			</h:panelGrid>
+
+		</h:form>
+	</h:body>
+
 </ui:composition>
