@@ -1,3 +1,58 @@
 .ui-datatable{
 	width: 500px;
 }
+
+.ui-widget-header{
+	color: white !important;
+	text-shadow: none !important;
+	background: #1C1C1C !important;
+	border: 0px !important;
+}
+
+.ui-widget-content{
+	border-radius: 5px !important;
+	border: 0px !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	color: white !important;
+	text-shadow: none !important;
+	background: #DA251C !important;
+	border-top: 0px !important;
+	border-right: 5px white !important;
+	border-bottom: 0px !important;
+}
+
+.center{
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.button{
+	background-color: #DA251C;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.margin{
+	margin-top: 20px;
+}
+
+.left{
+	display: block;
+	margin-right: 122px;
+}
+
+.right{
+	display: block;
+	margin-left: 122px;
+}

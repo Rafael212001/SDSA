@@ -1,5 +1,5 @@
-   CREATE DATABASE SDSA;
-   USE SDSA;
+CREATE DATABASE SDSA;
+USE SDSA;
 
 CREATE TABLE Cursos(
 	id             int primary key not null,
@@ -76,6 +76,3 @@ CREATE TABLE Carga_horaria_restante(
     foreign key (id_disciplina) references Disciplinas (id),
     foreign key (id_turma) references Turmas (id)
 );
-
-
-

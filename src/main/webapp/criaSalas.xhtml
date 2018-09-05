@@ -3,28 +3,35 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css"
-		href="resource/css/cssCriar.css" />
-</h:head>
-<h:body>
-	<h:form>
-    <p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
-        <p:column headerText="Número">
-            <h:outputText value="#{car.id}" />
-        </p:column>
-        <p:column headerText="Qnt. Pessoas">
-            <h:outputText value="#{car.year}" />
-        </p:column>
-        <p:column headerText="Descrição">
-            <h:outputText value="#{car.brand}" />
-        </p:column>
-    </p:dataTable>
-    Nome:
-    <h:inputText value=""/>
-    
-    </h:form>
-    
-</h:body>
+	<h:head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
+				<p:column headerText="Número">
+					<h:outputText value="#{car.id}" />
+				</p:column>
+				<p:column headerText="Qnt. Pessoas">
+					<h:outputText value="#{car.year}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{car.brand}" />
+				</p:column>
+			</p:dataTable>
+			<div class="center">
+				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+    				Número:
+    				<h:inputText value="" />
+   					Tipo da sala:
+    				<h:inputText value="" />
+				</h:panelGrid>
+			</div>
+			<div class="margin center">
+				<h:commandButton class="button left" value="Cancelar" />
+				<h:commandButton class="button right" value="Salvar" />
+			</div>
+		</h:form>
+	</h:body>
 </ui:composition>
