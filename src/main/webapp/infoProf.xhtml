@@ -11,27 +11,53 @@
 	</h:head>
 	<h:body>
 	
-	<h:form>
+
+		<h:form>
 			<h2 style="margin-top: 0">Informações do professor:</h2>
-			
+
 			<div class="center">
 				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-				Nome:
-				<h:inputText id="nome" required="true"
-						requiredMessage="Campo usuário obrigatório" value="" />
-					<br /> Periodo:
-				<h:inputText id="periodo" required="true"
-						requiredMessage="Campo usuário obrigatório" value="" />
-						
-				<h:commandButton value="Salvar" ></h:commandButton>
-				<h:commandButton value="Cancelar" ></h:commandButton>
-				</h:panelGrid>
+		
+					<h:outputLabel>Professor: </h:outputLabel>
+					<br />
+
+					<p:dataTable var="car" >
+						<p:column headerText="Cursos">
+							<h:outputText value="Sem cursos" />
+						</p:column>
+
+					</p:dataTable>
+
+					<br />
+
+					<p:dataTable var="car" >
+						<p:column headerText="Turmas">
+							<h:outputText value="Sem turmas" />
+						</p:column>
+
+					</p:dataTable>
+
+					<br />
+
+					<p:dataTable var="car" value="">
+						<p:column headerText="Histórico de aulas">
+							<h:outputText value="Sem aulas" />
+						</p:column>
+
+					</p:dataTable>
+					<br />
 
 				
+						<h:commandButton value="Sair"></h:commandButton>
+				
+
+				</h:panelGrid>
+
+
 			</div>
-			
-			
-			</h:form>
+
+
+		</h:form>
 
 	</h:body>
 </ui:composition>
