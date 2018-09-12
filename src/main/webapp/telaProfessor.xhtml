@@ -9,19 +9,32 @@
 </h:head>
 <h:body>
 	<div class="cont">
+	<ul>
+		<div class="prof center">
+			<h:panelGrid columns="2">
+				<p:outputLabel for="console" value="Professores:" />
+        			<p:selectOneMenu filter="true" id="console" value="#{selectOneMenuView.console}">
+            			<f:selectItem itemLabel="Selecione" itemValue="" />
+        			</p:selectOneMenu>
+        	</h:panelGrid>
+		</div>
+	
 		<div class="box center">
+			<h:form class="form">
+				<p:tabView>
+					<p:tab title="Manha">
 			<TABLE>
 				<tr>
-					<th><h:outputLabel value="." /></th>
+					<th class="rtl"><h:outputLabel value="." /></th>
 					<th><h:outputLabel value="Segunda" /></th>
 					<th><h:outputLabel value="Terça" /></th>
 					<th><h:outputLabel value="Quarta" /></th>
 					<th><h:outputLabel value="Quinta" /></th>
 					<th><h:outputLabel value="Sexta" /></th>
-					<th><h:outputLabel value="Sábado" /></th>
+					<th class="rtr"><h:outputLabel value="Sábado" /></th>
 				</tr>
 				<tr>
-					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="07h30 até 08h15" /></td>
 					<td><h:outputLabel value="." /></td>
 					<td><h:outputLabel value="." /></td>
 					<td><h:outputLabel value="." /></td>
@@ -29,8 +42,176 @@
 					<td><h:outputLabel value="." /></td>
 					<td><h:outputLabel value="." /></td>
 				</tr>
+				<tr>
+					<td><h:outputLabel value="08h15 até 09h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h00 até 09h15" /></td>
+					<td class="in"><h:outputLabel value="Intervalo" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h15 até 10h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="10h00 até 10h45" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td class="rbl"><h:outputLabel value="10h45 até 11h30" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td class="rbr"><h:outputLabel value="." /></td>
+				</tr>
 			</TABLE>
+					</p:tab>
+					<p:tab title="Tarde">
+			<TABLE>
+				<tr>
+					<th class="rtl"><h:outputLabel value="." /></th>
+					<th><h:outputLabel value="Segunda" /></th>
+					<th><h:outputLabel value="Terça" /></th>
+					<th><h:outputLabel value="Quarta" /></th>
+					<th><h:outputLabel value="Quinta" /></th>
+					<th><h:outputLabel value="Sexta" /></th>
+					<th class="rtr"><h:outputLabel value="Sábado" /></th>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="07h30 até 08h15" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="08h15 até 09h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h00 até 09h15" /></td>
+					<td class="in"><h:outputLabel value="Intervalo" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h15 até 10h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="10h00 até 10h45" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td class="rbl"><h:outputLabel value="10h45 até 11h30" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td class="rbr"><h:outputLabel value="." /></td>
+				</tr>
+			</TABLE>
+					</p:tab>
+					<p:tab title="Noite">
+			<TABLE>
+				<tr>
+					<th class="rtl"><h:outputLabel value="." /></th>
+					<th><h:outputLabel value="Segunda" /></th>
+					<th><h:outputLabel value="Terça" /></th>
+					<th><h:outputLabel value="Quarta" /></th>
+					<th><h:outputLabel value="Quinta" /></th>
+					<th><h:outputLabel value="Sexta" /></th>
+					<th class="rtr"><h:outputLabel value="Sábado" /></th>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="07h30 até 08h15" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="08h15 até 09h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h00 até 09h15" /></td>
+					<td class="in"><h:outputLabel value="Intervalo" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="09h15 até 10h00" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="10h00 até 10h45" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+				</tr>
+				<tr>
+					<td class="rbl"><h:outputLabel value="10h45 até 11h30" /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td><h:outputLabel value="." /></td>
+					<td class="rbr"><h:outputLabel value="." /></td>
+				</tr>
+			</TABLE>
+					</p:tab>
+				</p:tabView>
+			</h:form>
 		</div>
+	</ul>
 	</div>
 </h:body>
 </html>
