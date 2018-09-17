@@ -12,6 +12,20 @@ public class Professor {
 	private int foto;
 	private int id_disciplina;
 	
+	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora,Integer restante, String tipo,
+			Integer login, String senha, Integer foto, Integer id_disciplina) {
+		this.id = id;
+		this.nome = nome;
+		this.disciplina_le = disciplina_le;
+		this.carga_hora = carga_hora;
+		this.restante = restante;
+		this.tipo = tipo;
+		this.login = login;
+		this.senha = senha;
+		this.foto = foto;
+		this.id_disciplina = id_disciplina;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
