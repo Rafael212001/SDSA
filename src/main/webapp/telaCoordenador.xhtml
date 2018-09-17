@@ -25,9 +25,13 @@
 				<p:commandLink value="Coordenador" type="button"
 					onclick="PF('dlg5').show();" />
 			</div></li>
-		<li><a id="btDist">Distribuição</a></li>
-		<li id="btSair"><a>Sair</a></li>
+		<li><a id="btDist" >Distribuição</a></li>
+		<li id="btSair" ><a>Sair</a></li>
 	</ul>
+	<div>
+		<ui:include src="distribuicao.xhtml"></ui:include>
+	</div>
+	
 	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" height="50%">
 		<ui:include src="criaCurso.xhtml" />
 	</p:dialog>

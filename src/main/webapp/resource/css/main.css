@@ -77,28 +77,3 @@ body{
 	border-radius: 20px;
 	border-color: FF0000;
 }
-tr{
-	width: 100%;
-}
-td{
-	width: 350px;
-	height: 200px;
-	background-color: #FFFFFF;
-	color: #000000;
-	align-items: center;
-}
-table{
-	margin-bottom: 60px;
-}
-.caminho{
-	width: 100%;
-	height: 15px;
-	
-}
-.unirTable{
-	width: 80%;
-	padding:10px;
-	margin: 0 auto;
-	background-color: #D8D8D8;
-	border: 2px solid black;
-}
