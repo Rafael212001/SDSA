@@ -5,19 +5,39 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="resource/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="resource/css/cssDistribuicao.css" />
 	<style>
 </style>
 </h:head>
 <h:body>
-	<p:tabView>
-		<p:tab title="Manhã">
-			<div class="unirTable">
+	<h:form id="form">
+	
+		<div class="aulasFormadas">
+			<p:fieldset id="availableCarsField" legend="AvailableCars">
+        		<p:dataGrid id="availableCars" var="car" value="" columns="3">
+            		<p:panel id="pnl" header="Bubis" style="text-align:center">
+                		<h:panelGrid columns="1" style="width:100%">
+                    		<h1>Bubina</h1>
+                		</h:panelGrid>
+            		</p:panel>
+            	<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
+        		</p:dataGrid>
+   			</p:fieldset>
+    	</div>
+    	
+		<p:tabView id="tab">
+			<p:tab title="Manhã">
 
 				<h3>Segundo andar</h3>
 				<table>
 					<tr>
-						<td>Sala 1</td>
+						<td>
+							<p:fieldset id="selectedCars" legend="Selected Cars" style="margin-top:20px">
+        						<p:outputPanel id="dropArea">
+        							<h:outputText value="!!!Drop here!!!" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
 						<td>Sala 2</td>
 						<td>Sala 3</td>
 						<td>Sala 4</td>
@@ -50,96 +70,8 @@
 						<td>Sala 35</td>
 					</tr>
 				</table>
-
-			</div>
-		</p:tab>
-
-		<p:tab title="Tarde">
-			<div class="unirTable">
-
-				<h3>Segundo andar</h3>
-				<table>
-					<tr>
-						<td>Sala 1</td>
-						<td>Sala 2</td>
-						<td>Sala 3</td>
-						<td>Sala 4</td>
-						<td>Sala 5</td>
-						<td>Sala 6</td>
-						<td>Sala 7</td>
-					</tr>
-
-				</table>
-
-				<table>
-					<tr>
-						<td>Sala 14</td>
-						<td>Sala 13</td>
-						<td>Sala 12</td>
-						<td>Sala 11</td>
-						<td>Sala 10</td>
-						<td>Sala 9</td>
-						<td>Sala 8</td>
-					</tr>
-
-				</table>
-
-				<h3>Primeiro andar</h3>
-				<table>
-					<tr>
-						<td>Sala 15</td>
-						<td>Sala 16</td>
-						<td>Sala 18</td>
-						<td>Sala 35</td>
-					</tr>
-				</table>
-
-			</div>
-		</p:tab>
-		
-		<p:tab title="Noite">
-	<div class="unirTable">
-
-	<h3> Segundo andar </h3>
-		<table>
-			<tr>
-				<td>Sala 1</td>
-				<td>Sala 2</td>
-				<td>Sala 3</td>
-				<td>Sala 4</td>
-				<td>Sala 5</td>
-				<td>Sala 6</td>
-				<td>Sala 7</td>
-			</tr>
-
-		</table>
-
-		<table>
-			<tr>
-				<td>Sala 14</td>
-				<td>Sala 13</td>
-				<td>Sala 12</td>
-				<td>Sala 11</td>
-				<td>Sala 10</td>
-				<td>Sala 9</td>
-				<td>Sala 8</td>
-			</tr>
-
-		</table>
-
-	<h3> Primeiro andar </h3>
-		<table>
-			<tr>
-				<td>Sala 15</td>
-				<td>Sala 16</td>
-				<td>Sala 18</td>
-				<td>Sala 35</td>
-			</tr>
-		</table>
-			
-	</div>
-</p:tab>
-
+		</p:tab>		
 	</p:tabView>
+	</h:form>
 </h:body>
 </html>
