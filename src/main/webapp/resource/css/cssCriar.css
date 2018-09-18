@@ -1,5 +1,5 @@
 .ui-datatable{
-	width: 500px;
+	border-style: none !important;
 }
 
 .ui-widget-header{

@@ -15,13 +15,13 @@ public salaDAO() {
 	con = ConnectionDB.getConnection();
 }
 
-public boolean inserir(Salas s) {
+/*public boolean inserir(Salas s) {
 	String sql =  "INSERT INTO salas(numero)"
 			+ "VALUES (?)";
 	try {
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1,s.getNumero());
-		if(ps.executeQuery())
+//		if(ps.executeQuery())
 		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -29,5 +29,5 @@ public boolean inserir(Salas s) {
 	}
 	}
 
-	
+*/	
 }
