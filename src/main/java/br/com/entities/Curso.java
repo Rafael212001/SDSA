@@ -5,6 +5,12 @@ public class Curso {
 	private Integer id;
 	private String nome;
 	private int qtd_semestre;
+	
+	public Curso(Integer id,String nome,int qtd_semestre) {
+		this.id = id;
+		this.nome = nome;
+		this.qtd_semestre = qtd_semestre;
+	}
 
 	public Integer getId() {
 		return id;
