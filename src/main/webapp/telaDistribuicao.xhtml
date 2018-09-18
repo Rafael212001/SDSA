@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resource/css/cssDistribuicao.css" />
+	<style>
+</style>
+</h:head>
+<h:body>
+	<h:form id="form">
+	
+		<div class="aulasFormadas">
+			<p:fieldset id="availableCarsField" >
+        		<p:dataGrid id="availableCars" var="car" value="" columns="3">
+            		<p:panel id="pnl" header="Bubis" style="text-align:center">
+                		<h:panelGrid columns="1" style="width:100%">
+                    		<h1>Bubina</h1>
+                		</h:panelGrid>
+            		</p:panel>
+            	<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
+        		</p:dataGrid>
+   			</p:fieldset>
+    	</div>
+    	
+		<p:tabView id="tab">
+			<p:tab title="Manhã">
+
+				<h3>Segundo andar</h3>
+				<table>
+					<tr>
+						<td>
+							<p:fieldset id="s1">
+        						<p:outputPanel id="dropArea1">
+        							<h:outputText value="Sala 1" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s2">
+        						<p:outputPanel id="dropArea2">
+        							<h:outputText value="Sala 2" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s3" >
+        						<p:outputPanel id="dropArea3">
+        							<h:outputText value="Sala 3" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s4" >
+        						<p:outputPanel id="dropArea4">
+        							<h:outputText value="Sala 4" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s5" >
+        						<p:outputPanel id="dropArea5">
+        							<h:outputText value="Sala 5" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s6" >
+        						<p:outputPanel id="dropArea6">
+        							<h:outputText value="Sala 6" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s7" >
+        						<p:outputPanel id="dropArea7">
+        							<h:outputText value="Sala 7" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p:fieldset id="s8" >
+        						<p:outputPanel id="dropArea8">
+        							<h:outputText value="Sala 8" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s9" >
+        						<p:outputPanel id="dropArea9">
+        							<h:outputText value="Sala 9" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s10" >
+        						<p:outputPanel id="dropArea10">
+        							<h:outputText value="Sala 10" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s11" >
+        						<p:outputPanel id="dropArea11">
+        							<h:outputText value="Sala 11" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s12" >
+        						<p:outputPanel id="dropArea12">
+        							<h:outputText value="Sala 12" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s13" >
+        						<p:outputPanel id="dropArea13">
+        							<h:outputText value="Sala 13" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s14" >
+        						<p:outputPanel id="dropArea14">
+        							<h:outputText value="Sala 14" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+					</tr>
+
+				</table>
+
+				<h3>Primeiro andar</h3>
+				<table>
+					<tr>
+						<td>
+							<p:fieldset id="s15" >
+        						<p:outputPanel id="dropArea15">
+        							<h:outputText value="Sala 15" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s16" >
+        						<p:outputPanel id="dropArea16">
+        							<h:outputText value="Sala 16" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s18" >
+        						<p:outputPanel id="dropArea18">
+        							<h:outputText value="Sala 18" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+						<td>
+							<p:fieldset id="s35" >
+        						<p:outputPanel id="dropArea35">
+        							<h:outputText value="Sala 35" rendered="#{empty dndCarsView.droppedCars}"/>
+								</p:outputPanel>
+							</p:fieldset>
+						</td>
+					</tr>
+				</table>
+		</p:tab>		
+	</p:tabView>
+	</h:form>
+</h:body>
+</html>

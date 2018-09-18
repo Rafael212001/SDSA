@@ -25,37 +25,26 @@
 				<p:commandLink value="Coordenador" type="button"
 					onclick="PF('dlg5').show();" />
 			</div></li>
-		<li><a id="btDist" >Distribuição</a></li>
+		<li><a id="btDist" href="distribuicao.xhtml" >Distribuição</a></li>
 		<li id="btSair" ><a>Sair</a></li>
 	</ul>
-	<div>
-		<ui:include src="distribuicao.xhtml"></ui:include>
-	</div>
 	
 	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" height="50%">
-		<ui:include src="criaCurso.xhtml" />
+		<ui:include src="criar/criaCurso.xhtml" />
 	</p:dialog>
 	<p:dialog header="Turmas" widgetVar="dlg2" modal="true" height="50%">
-		<ui:include src="criaTurma.xhtml" />
+		<ui:include src="criar/criaTurma.xhtml" />
 	</p:dialog>
 	<p:dialog header="Salas" widgetVar="dlg3" modal="true" height="50%">
-		<ui:include src="criaSalas.xhtml" />
+		<ui:include src="criar/criaSalas.xhtml" />
 	</p:dialog>
 	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true"
 		height="50%">
-		<ui:include src="criaProfessor.xhtml" />
+		<ui:include src="criar/criaProfessor.xhtml" />
 	</p:dialog>
 	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true"
 		height="50%">
-		<ui:include src="criaCoordenador.xhtml" />
-	</p:dialog>
-	<p:dialog header="Info_professor" widgetVar="dlg5" modal="true"
-		height="50%">
-		<ui:include src="infoProf.xhtml" />
-		<p:dialog header="editar_prof" widgetVar="dlg5" modal="true"
-			height="50%">
-			<ui:include src="editarProf.xhtml" />
-		</p:dialog>
+		<ui:include src="criar/criaCoordenador.xhtml" />
 	</p:dialog>
 </h:body>
 </html>
