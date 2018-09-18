@@ -42,7 +42,7 @@ public class coordenadorDAO {
 
 	public List<Coordenador> listarTodos() {
 		List<Coordenador> list = new ArrayList<Coordenador>();
-		String sql = "SELECT * FROM cliente ";
+		String sql = "SELECT * FROM coordenador ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE FROM coordenador " + "WHERE id = ? ";
+		String sql = "DELETE * FROM coordenador " + "WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

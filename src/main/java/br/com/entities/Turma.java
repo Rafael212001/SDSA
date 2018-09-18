@@ -9,6 +9,17 @@ public class Turma {
 	private int periodo;
 	private int semestre;
 	private int id_curso;
+	
+	public Turma(Integer id, String nome, Integer qtd_alunos, Integer divisao, Integer periodo, Integer semestre, Integer id_curso) {
+		this.id = id;
+		this.nome = nome;
+		this.qtd_alunos = qtd_alunos;
+		this.divisao = divisao;
+		this.periodo = periodo;
+		this.semestre = semestre;
+		this.id_curso = id_curso;
+		
+	}
 
 	public Integer getId() {
 		return id;
