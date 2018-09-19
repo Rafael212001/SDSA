@@ -8,19 +8,20 @@
 	<link rel="stylesheet" type="text/css" href="resource/css/cssProfessor.css" />
 </h:head>
 <h:body>
+	<h:form>
 	<div class="cont">
 	<ul>
 		<div class="prof center">
 			<h:panelGrid columns="2">
 				<p:outputLabel for="console" value="Professores:" />
-        			<p:selectOneMenu filter="true" id="console" value="#{selectOneMenuView.console}">
+        			 <p:selectOneMenu filter="true" id="console" >
             			<f:selectItem itemLabel="Selecione" itemValue="" />
         			</p:selectOneMenu>
         	</h:panelGrid>
 		</div>
 	
 		<div class="box center">
-			<h:form class="form">
+			<div class="form">
 				<p:tabView>
 					<p:tab title="Manha">
 			<TABLE>
@@ -209,11 +210,12 @@
 			</TABLE>
 					</p:tab>
 				</p:tabView>
-			</h:form>
+			</div>
 		</div>
-		<h:commandButton class="button center" value="Login" href="distribuicao.xhtml"/>
+		<h:commandButton class="button center" value="Login" action="telaLogin?faces-redirect=true"/>
 	</ul>
 	
 	</div>
+	</h:form>
 </h:body>
 </html>

@@ -22,13 +22,13 @@
 							<div class="center">
 								<h:panelGrid columns="2" cellpadding="10" cellspacing="1">
 								Usuário:
-								<h:inputText id="usuario" required="true"  value="" />
+								<h:inputText id="usuario"/>
 								Senha:
-								<h:inputSecret id="senha" required="true"  value="{}" />
+								<h:inputSecret id="senha"/>
 								</h:panelGrid>
 							</div>		
 							<div class="margin20 center">
-								<h:commandButton class="button left" value="Recuperar Senha" />
+								<h:commandButton class="button left" value="Recuperar Senha" action="recuperarSenha?faces-redirect=true"/>
 								<h:commandButton class="button right2" value="Login"  />
 							</div>
 						</h:form>
