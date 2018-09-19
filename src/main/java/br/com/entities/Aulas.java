@@ -8,6 +8,17 @@ public class Aulas {
 	private Integer id_disciplina;
 	private Integer id_colaborador;
 	private Integer id_coordenador;
+	private Integer id_sala;
+	
+	public Aulas(Integer id, Integer id_cursos, Integer id_turmas, Integer id_disciplina, Integer id_colaborador, Integer id_coordenador , Integer id_sala ) {
+		this.id = id;
+		this.id_cursos = id_cursos;
+		this.id_turmas = id_turmas;
+		this.id_disciplina = id_disciplina;
+		this.id_colaborador = id_colaborador;
+		this.id_coordenador = id_coordenador;
+		this.id_sala = id_sala;
+	}
 
 	public Integer getId() {
 		return id;
@@ -56,5 +67,16 @@ public class Aulas {
 	public void setId_coordenador(Integer id_coordenador) {
 		this.id_coordenador = id_coordenador;
 	}
+
+	public Integer getId_sala() {
+		return id_sala;
+	}
+
+	public void setId_sala(Integer id_sala) {
+		this.id_sala = id_sala;
+	}
+	
+	
+	
 
 }

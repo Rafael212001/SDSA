@@ -14,7 +14,6 @@ CREATE TABLE Turmas(
     divisao        int,
     periodo        int,
     semestre       int,
-    periodo		   varchar(1),
     id_curso       int,
     foreign key (id_curso) references Cursos (id)
 );
@@ -48,6 +47,11 @@ CREATE TABLE Coordenadores(
     senha          varchar(20)
 ); 
 
+CREATE TABLE Salas(
+	id             int primary key not null,
+    numero         int
+); 
+
 CREATE TABLE Aulas(
 	id             int primary key not null,
     id_cursos      int,
@@ -64,10 +68,7 @@ CREATE TABLE Aulas(
     foreign key (id_sala) 		 references Salas (id)
 ); 
 
-CREATE TABLE Salas(
-	id             int primary key not null,
-    numero         int
-); 
+
 
 CREATE TABLE Carga_horaria_restante(
 	id             int primary key not null,

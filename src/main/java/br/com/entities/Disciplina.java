@@ -6,6 +6,13 @@ public class Disciplina {
 	private String nome;
 	private int carga_hora;
 	private int id_turma;
+	
+	public Disciplina(Integer id, String nome, Integer carga_hora, Integer id_turma) {
+		this.id = id;
+		this.nome = nome;
+		this.carga_hora = carga_hora;
+		this.id_turma = id_turma;
+	}
 
 	public Integer getId() {
 		return id;
