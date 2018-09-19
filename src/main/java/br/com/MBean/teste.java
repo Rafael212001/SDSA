@@ -1,4 +1,4 @@
-package controllers;
+package br.com.MBean;
 
 public class teste {
 

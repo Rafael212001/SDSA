@@ -13,7 +13,7 @@
 	<h:form id="form">
 	
 		<div class="aulasFormadas">
-			<p:fieldset id="availableCarsField" >
+			<p:fieldset id="availableCarsField">
         		<p:dataGrid id="availableCars" var="car" value="" columns="3">
             		<p:panel id="pnl" header="Bubis" style="text-align:center">
                 		<h:panelGrid columns="1" style="width:100%">
@@ -27,7 +27,7 @@
     	
 		<p:tabView id="tab">
 			<p:tab title="Manhã">
-
+			<p:scrollPanel >
 				<h3>Segundo andar</h3>
 				<table>
 					<tr>
@@ -59,6 +59,10 @@
 								</p:outputPanel>
 							</p:fieldset>
 						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
 						<td>
 							<p:fieldset id="s5" >
         						<p:outputPanel id="dropArea5">
@@ -80,8 +84,6 @@
 								</p:outputPanel>
 							</p:fieldset>
 						</td>
-					</tr>
-					<tr>
 						<td>
 							<p:fieldset id="s8" >
         						<p:outputPanel id="dropArea8">
@@ -89,6 +91,10 @@
 								</p:outputPanel>
 							</p:fieldset>
 						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
 						<td>
 							<p:fieldset id="s9" >
         						<p:outputPanel id="dropArea9">
@@ -117,6 +123,10 @@
 								</p:outputPanel>
 							</p:fieldset>
 						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
 						<td>
 							<p:fieldset id="s13" >
         						<p:outputPanel id="dropArea13">
@@ -132,7 +142,6 @@
 							</p:fieldset>
 						</td>
 					</tr>
-
 				</table>
 
 				<h3>Primeiro andar</h3>
@@ -168,7 +177,8 @@
 						</td>
 					</tr>
 				</table>
-		</p:tab>		
+			</p:scrollPanel>
+		</p:tab>
 	</p:tabView>
 	</h:form>
 </h:body>
