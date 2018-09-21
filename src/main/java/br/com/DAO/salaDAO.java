@@ -44,10 +44,10 @@ public class salaDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
-				Salas s = new Salas(rs.getInt("salas"), rs.getInt("numeros"), rs.getInt("id"));
-				list.add(s);
-			}
+//			while (rs.next()) {
+//				Salas s = new Salas(rs.getInt("salas"), rs.getInt("numeros"), rs.getInt("id"));
+//				list.add(s);
+//			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

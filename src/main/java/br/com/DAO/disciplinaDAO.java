@@ -13,10 +13,10 @@ public class disciplinaDAO {
 		con = ConnectionDB.getConnection();
 	}
 	
-	public boolean inserir(Disciplina d) {
-		String sql = "INSERT INTO disciplina(?,?)";
-		
-	}
+//	public boolean inserir(Disciplina d) {
+//		String sql = "INSERT INTO disciplina(?,?)";
+//		
+//	}
 	
 
 }

@@ -10,26 +10,28 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable var="coo" scrollable="true" scrollHeight="150" action="#{coordenadorMB.mostrar}">
-				<p:column headerText="Nome">
-					<h:outputText value="#{coordenadorMB.nome}" />
+			<p:dataTable var="coo" scrollable="true" scrollHeight="150" value="#{coordenadorMB.coo}">
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{coo.nome}
 				</p:column>
-				<p:column headerText="NIF">
-					<h:outputText value="#{coordenadorMB.nif}" />
+				<p:column >
+					<f:facet name="header">NIF</f:facet>
+					#{coo.login}
 				</p:column>
 			</p:dataTable>
 			<div class="center">
 				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" />
+					<h:inputText id="nome" value="#{coordenadorMB.nome}"/>
 					NIF:
-					<h:inputText id="NIF" />
+					<h:inputText id="NIF" value="#{coordenadorMB.nif}"/>
 					Senha:
-					<h:inputText id="senha" />
+					<h:inputText id="senha"  value="#{coordenadorMB.senha}"/>
 				</h:panelGrid>
 			</div>
 			<div class="margin center">
-				<h:commandButton class="button left" value="Salvar" />
+				<h:commandButton class="button left" value="Salvar" action="#{coordenadorMB.CriarCoordenador()}"/>
 				<h:commandButton class="button right" value="Cancelar" href="#"/>
 			</div>
 		</h:form>

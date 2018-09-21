@@ -1,5 +1,6 @@
 package br.com.MBean;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,18 +16,17 @@ public class CoordenadorMB {
 	public String nome;
 	public Integer nif;
 	public String senha;
-	public Coordenador c;
+	List<Coordenador> coo;
+	coordenadorDAO cDAO;
+	Coordenador c;
 	
 	
-	public void mostrar(){
-		coordenadorDAO cDAO = new coordenadorDAO();
-		
-		cDAO.listarTodos();
-		
-		
-		
-		nome = c.getNome();
-		nif = c.getLogin();
+	public CoordenadorMB() throws ParseException{
+		cDAO = new coordenadorDAO();
+		coo = cDAO.listarTodos();
+	}
+	
+	public void CriarCoordenador() {
 		
 	}
 	
@@ -54,11 +54,11 @@ public class CoordenadorMB {
 		this.senha = senha;
 	}
 
-	public Coordenador getC() {
-		return c;
+	public List<Coordenador> getCoo() {
+		return coo;
 	}
 
-	public void setC(Coordenador c) {
-		this.c = c;
-	}	
+	public void setCoo(List<Coordenador> coo) {
+		this.coo = coo;
+	}
 }
