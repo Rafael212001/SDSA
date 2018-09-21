@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnectionDB {
 	
 	private static Connection con;
-	private static String dns = "jdbc:mysql://localhost:3306/banco_de_dados.sql";
+	private static String dns = "jdbc:mysql://localhost:3306/sdsa";
 	private static String user = "root";
 	private static String pass = "";
 	

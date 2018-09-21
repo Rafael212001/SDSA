@@ -20,7 +20,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean inserir(Coordenador c) {
-		String sql = "INSERT INTO coordenador (nome,login,senha)" + "VALUES(?,?,?)";
+		String sql = "INSERT INTO Coordenadores (nome,login,senha)" + "VALUES(?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -42,7 +42,7 @@ public class coordenadorDAO {
 
 	public List<Coordenador> listarTodos() {
 		List<Coordenador> list = new ArrayList<Coordenador>();
-		String sql = "SELECT * FROM coordenador ";
+		String sql = "SELECT * FROM Coordenadores ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean editar(Coordenador c) {
-		String sql = "UPDATE coordenador SET " + " nome = ?," + " login = ?," + " senha = ? ";
+		String sql = "UPDATE Coordenadores SET " + " nome = ?," + " login = ?," + " senha = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM coordenador " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Coordenadores " + "WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -10,27 +10,27 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable var="car" scrollable="true" scrollHeight="150">
+			<p:dataTable var="coo" scrollable="true" scrollHeight="150" action="#{coordenadorMB.mostrar}">
 				<p:column headerText="Nome">
-					<h:outputText value="" />
+					<h:outputText value="#{coordenadorMB.nome}" />
 				</p:column>
-				<p:column headerText="Usuario">
-					<h:outputText value="" />
+				<p:column headerText="NIF">
+					<h:outputText value="#{coordenadorMB.nif}" />
 				</p:column>
 			</p:dataTable>
 			<div class="center">
 				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" value="" />
-					Usuario:
-					<h:inputText id="usuario" value="" />
+					<h:inputText id="nome" />
+					NIF:
+					<h:inputText id="NIF" />
 					Senha:
-					<h:inputText id="senha" value="" />
+					<h:inputText id="senha" />
 				</h:panelGrid>
 			</div>
 			<div class="margin center">
-				<h:commandButton class="button left" value="Cancelar" />
-				<h:commandButton class="button right" value="Salvar" />
+				<h:commandButton class="button left" value="Salvar" />
+				<h:commandButton class="button right" value="Cancelar" href="#"/>
 			</div>
 		</h:form>
 	</h:body>

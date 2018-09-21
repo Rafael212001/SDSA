@@ -38,7 +38,4 @@ public class Coordenador {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-
 }
