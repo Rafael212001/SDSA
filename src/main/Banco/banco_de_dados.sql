@@ -2,13 +2,13 @@ CREATE DATABASE SDSA;
 USE SDSA;
 
 CREATE TABLE Cursos(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
     qtd_semestre   int
 );
 
 CREATE TABLE Turmas(
-    id             int primary key not null,
+    id             int primary key not null AUTO_INCREMENT,
     nome           varchar(10),
     qtd_alunos     int,
     divisao        int,
@@ -19,7 +19,7 @@ CREATE TABLE Turmas(
 );
 
 CREATE TABLE Disciplinas(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
     carga_hora     int,
     id_turma       int,
@@ -27,33 +27,31 @@ CREATE TABLE Disciplinas(
 ); 
 
 CREATE TABLE Colaboradores(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
     disciplina_le  varchar(100),
     carga_hora     int,
     restante       int,
     tipo           varchar(100),
-    login          int,
-    senha          varchar(20),
     foto           int,
     id_disciplina  int,
 	foreign key (id_disciplina) references Disciplinas (id)
 );
 
 CREATE TABLE Coordenadores(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
     login          int,
     senha          varchar(20)
 ); 
 
 CREATE TABLE Salas(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     numero         int
 ); 
 
 CREATE TABLE Aulas(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     id_cursos      int,
     id_turmas      int,
     id_disciplina int,
@@ -71,10 +69,13 @@ CREATE TABLE Aulas(
 
 
 CREATE TABLE Carga_horaria_restante(
-	id             int primary key not null,
+	id             int primary key not null AUTO_INCREMENT,
     tempo          int,
     id_disciplina  int,
     id_turma       int,
     foreign key (id_disciplina) references Disciplinas (id),
     foreign key (id_turma) references Turmas (id)
 );
+
+INSERT INTO Coordenadores (nome,login,senha)
+		VALUES ("Tarciso", 28011999, "123");

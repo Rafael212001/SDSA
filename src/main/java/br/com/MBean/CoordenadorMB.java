@@ -1,10 +1,10 @@
 package br.com.MBean;
 
-import java.text.ParseException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 
 import br.com.DAO.coordenadorDAO;
 import br.com.entities.Coordenador;
@@ -14,22 +14,37 @@ import br.com.entities.Coordenador;
 public class CoordenadorMB {
 	
 	public String nome;
-	public Integer nif;
+	public int login;
 	public String senha;
 	List<Coordenador> coo;
-	coordenadorDAO cDAO;
-	Coordenador c;
 	
-	
-	public CoordenadorMB() throws ParseException{
-		cDAO = new coordenadorDAO();
+	public CoordenadorMB() {
+		coordenadorDAO cDAO = new coordenadorDAO();
 		coo = cDAO.listarTodos();
 	}
 	
 	public void CriarCoordenador() {
+		Coordenador c = new Coordenador();
+		c.setNome(nome);
+		c.setLogin(Integer.valueOf(login));
+		c.setSenha(senha);
+		
+		coordenadorDAO cDAO = new coordenadorDAO();
+		if(cDAO.inserir(c)) {
+			System.out.println("deu porra");
+			listarC();
+		}else {
+			System.out.println("du não ;-;");
+			listarC();
+		}
 		
 	}
 	
+	private void listarC() {
+		coordenadorDAO cDAO = new coordenadorDAO();
+		coo = cDAO.listarTodos();
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -38,12 +53,12 @@ public class CoordenadorMB {
 		this.nome = nome;
 	}
 
-	public Integer getNif() {
-		return nif;
+	public int getLogin() {
+		return login;
 	}
 
-	public void setNif(Integer nif) {
-		this.nif = nif;
+	public void setLogin(int login) {
+		this.login = login;
 	}
 
 	public String getSenha() {

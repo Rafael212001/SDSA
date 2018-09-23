@@ -20,7 +20,8 @@ public class coordenadorDAO {
 	}
 
 	public boolean inserir(Coordenador c) {
-		String sql = "INSERT INTO Coordenadores (nome,login,senha)" + "VALUES(?,?,?)";
+		String sql = "INSERT INTO Coordenadores (nome,login,senha)" 
+				   + "VALUES(?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -28,7 +29,7 @@ public class coordenadorDAO {
 			ps.setInt(2, c.getLogin());
 			ps.setString(3, c.getSenha());
 
-			if (ps.executeUpdate() > 0) {
+			if (ps.executeUpdate() == 1) {
 				return true;
 			}
 		} catch (SQLException e) {
@@ -49,8 +50,12 @@ public class coordenadorDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Coordenador c = new Coordenador(rs.getInt("id"), rs.getString("nome"), rs.getInt("login"),
-						rs.getString("senha"));
+				Coordenador c = new Coordenador();
+				
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setLogin(rs.getInt("login"));
+				c.setSenha(rs.getString("senha"));
 
 				list.add(c);
 			}
@@ -96,6 +101,36 @@ public class coordenadorDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public Coordenador buscaCoordenador(int nif){
+		
+		String sql = "SELECT * FROM Coordenadores WHERE login = ?";
+		Connection con = ConnectionDB.getConnection();
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, nif);
+
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				Coordenador c = new Coordenador();
+
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setLogin(rs.getInt("login"));
+				c.setSenha(rs.getString("senha"));
+				
+				return c;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

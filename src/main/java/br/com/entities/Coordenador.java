@@ -7,13 +7,6 @@ public class Coordenador {
 	private int login; 
 	private String senha;
 	
-	public Coordenador(Integer id, String nome, Integer login,  String senha) {
-		this.id = id;
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-	}
-	
 	public Integer getId() {
 		return id;
 	}
