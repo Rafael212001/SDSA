@@ -9,30 +9,34 @@
 			href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
-		<h:form>
-			<p:dataTable var="coo" scrollable="true" scrollHeight="150" value="#{coordenadorMB.coo}">
+		<h:form id="form">
+			<p:dataTable id="dataT" var="coo" scrollable="true"
+				scrollHeight="150" value="#{coordenadorMB.coo}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{coo.nome}
 				</p:column>
-				<p:column >
+				<p:column>
 					<f:facet name="header">NIF</f:facet>
 					#{coo.login}
 				</p:column>
 			</p:dataTable>
-			<div class="center">
-				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+			<p:panel id="div">
+				<div class="center" >
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" value="#{coordenadorMB.nome}"/>
+					<h:inputText id="nome" value="#{coordenadorMB.coor.nome}" />
 					NIF:
-					<h:inputText id="nif" value="#{coordenadorMB.login}"/>
+					<h:inputText id="nif" value="#{coordenadorMB.coor.login}" />
 					Senha:
-					<h:inputText id="senha"  value="#{coordenadorMB.senha}"/>
-				</h:panelGrid>
-			</div>
+					<h:inputText id="senha" value="#{coordenadorMB.coor.senha}" />
+					</h:panelGrid>
+				</div>
+			</p:panel>
 			<div class="margin center">
-				<h:commandButton class="button left" value="Salvar" action="#{coordenadorMB.CriarCoordenador()}"/>
-				<h:commandButton class="button right" value="Cancelar" href="#"/>
+				<p:commandButton ajax="true" update=":form:dataT :form:div" event="onclick"
+					value="Salvar" actionListener="#{coordenadorMB.criarCoordenador}" />
+				<p:commandButton value="Cancelar" href="#" />
 			</div>
 		</h:form>
 	</h:body>

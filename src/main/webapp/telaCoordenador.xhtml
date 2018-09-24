@@ -11,7 +11,9 @@
 <h:body>
 	<ul>
 		<li><h:graphicImage class="imagens" library="img"
-				value="resource/img/senai.png" /></li>
+				value="resource/img/senai.png" />
+				
+				</li>
 		<li class="dropdown"><a class="dropbtn">Criar</a>
 			<div class="dropdown-content">
 				<p:commandLink value="Cursos" type="button"
@@ -24,11 +26,13 @@
 					onclick="PF('dlg4').show();" />
 				<p:commandLink value="Coordenador" type="button"
 					onclick="PF('dlg5').show();" />
-			</div></li>
-		<li><a id="btDist" href="distribuicao.xhtml" >Distribuição</a></li>
-		<li id="btSair" ><a>Sair</a></li>
+			</div>
+			
+			</li>
+		<li><a id="btDist" href="distribuicao.xhtml">Distribuição</a></li>
+		<li id="btSair"><a>Sair</a></li>
 	</ul>
-	
+
 	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" height="50%">
 		<ui:include src="criar/criaCurso.xhtml" />
 	</p:dialog>
@@ -38,11 +42,13 @@
 	<p:dialog header="Salas" widgetVar="dlg3" modal="true" height="50%">
 		<ui:include src="criar/criaSalas.xhtml" />
 	</p:dialog>
-	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true" height="50%">
+	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true"
+		height="50%">
 		<ui:include src="criar/criaProfessor.xhtml" />
 	</p:dialog>
-	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true" height="50%">
-		<ui:include src="criar/criaCoordenador.xhtml"/>
+	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true"
+		height="50%">
+		<ui:include src="criar/criaCoordenador.xhtml" />
 	</p:dialog>
 </h:body>
 </html>

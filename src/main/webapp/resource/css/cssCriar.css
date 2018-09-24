@@ -23,14 +23,15 @@
 	border-bottom: 0px !important;
 }
 
-.center{
+.center, #center{
 	margin: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
+,
 
-.button{
+#button{
 	background-color: #DA251C;
     border: none;
     border-radius: 8px;

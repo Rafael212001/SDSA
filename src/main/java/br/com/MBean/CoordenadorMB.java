@@ -3,70 +3,50 @@ package br.com.MBean;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.event.ActionEvent;
 
 import br.com.DAO.coordenadorDAO;
 import br.com.entities.Coordenador;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class CoordenadorMB {
-	
-	public String nome;
-	public int login;
-	public String senha;
+	Coordenador coor;
 	List<Coordenador> coo;
-	
+	coordenadorDAO cDAO;
+
 	public CoordenadorMB() {
-		coordenadorDAO cDAO = new coordenadorDAO();
+		coor = new Coordenador();
+		cDAO = new coordenadorDAO();
 		coo = cDAO.listarTodos();
+		System.out.println("bAISI");
 	}
-	
-	public void CriarCoordenador() {
-		Coordenador c = new Coordenador();
-		c.setNome(nome);
-		c.setLogin(Integer.valueOf(login));
-		c.setSenha(senha);
-		
-		coordenadorDAO cDAO = new coordenadorDAO();
-		if(cDAO.inserir(c)) {
+
+	public void criarCoordenador(ActionEvent event) {
+
+		if (cDAO.inserir(coor)) {
 			System.out.println("deu porra");
+			coor = new Coordenador();
 			listarC();
-		}else {
+		} else {
 			System.out.println("du não ;-;");
 			listarC();
 		}
-		
+
 	}
-	
+
 	private void listarC() {
-		coordenadorDAO cDAO = new coordenadorDAO();
 		coo = cDAO.listarTodos();
 	}
 
-	public String getNome() {
-		return nome;
+	public Coordenador getCoor() {
+		return coor;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getLogin() {
-		return login;
-	}
-
-	public void setLogin(int login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setCoor(Coordenador coor) {
+		this.coor = coor;
 	}
 
 	public List<Coordenador> getCoo() {
@@ -76,4 +56,5 @@ public class CoordenadorMB {
 	public void setCoo(List<Coordenador> coo) {
 		this.coo = coo;
 	}
+	
 }
