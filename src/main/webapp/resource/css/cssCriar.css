@@ -23,13 +23,16 @@
 	border-bottom: 0px !important;
 }
 
-.center, #center{
+#td{
+	justify-content: center !important;
+}
+
+.center{
 	margin: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
-,
 
 #button{
 	background-color: #DA251C;

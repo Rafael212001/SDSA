@@ -12,13 +12,21 @@
 		<h:form id="form">
 			<p:dataTable id="dataT" var="coo" scrollable="true"
 				scrollHeight="150" value="#{coordenadorMB.coo}">
-				<p:column>
+				<p:column >
 					<f:facet name="header">Nome</f:facet>
 					#{coo.nome}
 				</p:column>
-				<p:column>
+				<p:column >
 					<f:facet name="header">NIF</f:facet>
 					#{coo.login}
+				</p:column>
+				<p:column >
+					<f:facet name="header">Senha</f:facet>
+					#{coo.senha}
+				</p:column>
+				<p:column >
+					<p:commandButton icon="ui-icon-pencil"/>
+					<p:commandButton icon="ui-icon-trash"/>
 				</p:column>
 			</p:dataTable>
 			<p:panel id="div">
@@ -34,9 +42,9 @@
 				</div>
 			</p:panel>
 			<div class="margin center">
-				<p:commandButton ajax="true" update=":form:dataT :form:div" event="onclick"
+				<p:commandButton styleClass="button left" ajax="true" update=":form:dataT :form:div" event="onclick"
 					value="Salvar" actionListener="#{coordenadorMB.criarCoordenador}" />
-				<p:commandButton value="Cancelar" href="#" />
+				<p:commandButton styleClass="button right" value="Cancelar" href="#" />
 			</div>
 		</h:form>
 	</h:body>
