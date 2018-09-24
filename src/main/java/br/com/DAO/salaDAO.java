@@ -20,7 +20,7 @@ public class salaDAO {
 	}
 
 	public boolean inserir(Salas s) {
-		String sql = "INSERT INTO salas(numero)" + "VALUES (?)";
+		String sql = "INSERT INTO Salas(numero)" + "VALUES (?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getNumero());
@@ -38,16 +38,16 @@ public class salaDAO {
 
 	public List<Salas> listarTodos() {
 		List<Salas> list = new ArrayList<Salas>();
-		String sql = "SELECT * FROM salas";
+		String sql = "SELECT * FROM Salas";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
-//			while (rs.next()) {
-//				Salas s = new Salas(rs.getInt("salas"), rs.getInt("numeros"), rs.getInt("id"));
-//				list.add(s);
-//			}
+			while (rs.next()) {
+				Salas s = new Salas( rs.getInt("id"), rs.getInt("numeros"));
+				list.add(s);
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,6 +55,23 @@ public class salaDAO {
 		}
 		return list;
 
+	}
+	
+	public boolean excluir(Integer id) {
+		String sql = "DELETE * FROM Salas " + "WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

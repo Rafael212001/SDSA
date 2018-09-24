@@ -42,7 +42,7 @@ public class carga_horaria_restanteDAO {
 
 	public List<Carga_horaria_restante> listarTodos() {
 		List<Carga_horaria_restante> list = new ArrayList<Carga_horaria_restante>();
-		String sql = "SELECT * FROM carga_horaria_restante";
+		String sql = "SELECT * FROM Carga_horaria_restante";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class carga_horaria_restanteDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM carga_horaria_restante " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Carga_horaria_restante " + "WHERE id = ? ";
 		
 
 		try {

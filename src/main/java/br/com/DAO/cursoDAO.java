@@ -21,7 +21,7 @@ public class cursoDAO {
 
 	public boolean inserir(Curso c) {
 
-		String sql = "INSERT INTO curso(nome,qtd_semestre)" + "VALUES (?,?)";
+		String sql = "INSERT INTO Cursos(nome,qtd_semestre)" + "VALUES (?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class cursoDAO {
 
 	public List<Curso> listarTodos() {
 		List<Curso> list = new ArrayList<Curso>();
-		String sql = "SELECT * FROM curso";
+		String sql = "SELECT * FROM Cursos";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class cursoDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM  curso" + "WHERE id = ?";
+		String sql = "DELETE * FROM  Cursos" + "WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -18,7 +18,7 @@ public class professorDAO {
 	}
 	
 	public boolean inserir (Professor p) {
-		String sql = "INSERT INTO professor (nome, disciplina_le, carga_hora, restante, tipo, login, senha, foto)"
+		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, login, senha, foto)"
 				+ "VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
@@ -46,7 +46,7 @@ public class professorDAO {
 	
 	public List<Professor> listarTodos(){
 		List<Professor> list = new ArrayList<Professor>();
-		String sql = "SELECT * FROM professor ";
+		String sql = "SELECT * FROM Colaboradores ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class professorDAO {
 	}
 	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM professor " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Colaboradores " + "WHERE id = ? ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
