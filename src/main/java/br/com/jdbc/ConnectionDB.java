@@ -14,16 +14,21 @@ public class ConnectionDB {
 	private static String pass = "";
 	
 	public static Connection getConnection(){
-		if(con == null){
-			try {
-				DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-				con = DriverManager.getConnection(dns,user,pass);
-				System.out.println("DB conectado com sucesso!");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Erro ao conectar no DB");
-				e.printStackTrace();
+		try {
+			if(con == null || con.isClosed()){
+				try {
+					DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+					con = DriverManager.getConnection(dns,user,pass);
+					System.out.println("DB conectado com sucesso!");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Erro ao conectar no DB");
+					e.printStackTrace();
+				}
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return con;
 	}
