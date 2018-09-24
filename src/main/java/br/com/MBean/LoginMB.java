@@ -10,7 +10,7 @@ import br.com.entities.Coordenador;
 @ViewScoped
 public class LoginMB {
 	
-	public int login;
+	public String login;
 	public String senha;
 	
 	public String logar() {
@@ -24,12 +24,10 @@ public class LoginMB {
 		return null;
 	}
 	
-	
-	
-	public int getLogin() {
+	public String getLogin() {
 		return login;
 	}
-	public void setLogin(int login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 	public String getSenha() {

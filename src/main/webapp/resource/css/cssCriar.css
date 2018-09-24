@@ -23,8 +23,8 @@
 	border-bottom: 0px !important;
 }
 
-#td{
-	justify-content: center !important;
+.campo{
+	background-color: white !important;
 }
 
 .center{

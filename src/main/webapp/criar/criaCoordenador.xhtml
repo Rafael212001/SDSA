@@ -21,30 +21,29 @@
 					#{coo.login}
 				</p:column>
 				<p:column >
-					<f:facet name="header">Senha</f:facet>
-					#{coo.senha}
-				</p:column>
-				<p:column >
 					<p:commandButton icon="ui-icon-pencil"/>
-					<p:commandButton icon="ui-icon-trash"/>
+					<p:commandButton icon="ui-icon-trash" actionListener="#{coordenadorMB.excluirCoordenador}"/>
 				</p:column>
 			</p:dataTable>
 			<p:panel id="div">
 				<div class="center" >
-					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+					<h:panelGrid id="grid" columns="3" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" value="#{coordenadorMB.coor.nome}" />
+					<h:inputText id="nome" styleClass="campo" required="true" value="#{coordenadorMB.coor.nome}" />
+					<p:message for="nome" display="icon"/>
 					NIF:
-					<h:inputText id="nif" value="#{coordenadorMB.coor.login}" />
+					<h:inputText id="nif" required="true" value="#{coordenadorMB.coor.login}" />
+					<p:message for="nif" display="icon"/>
 					Senha:
-					<h:inputText id="senha" value="#{coordenadorMB.coor.senha}" />
+					<h:inputText id="senha" required="true" value="#{coordenadorMB.coor.senha}" />
+					<p:message  for="senha" display="icon"/>
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
 				<p:commandButton styleClass="button left" ajax="true" update=":form:dataT :form:div" event="onclick"
 					value="Salvar" actionListener="#{coordenadorMB.criarCoordenador}" />
-				<p:commandButton styleClass="button right" value="Cancelar" href="#" />
+				<p:commandButton styleClass="button right" ajax="false" value="Cancelar"/>
 			</div>
 		</h:form>
 	</h:body>

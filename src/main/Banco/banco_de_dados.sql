@@ -41,7 +41,7 @@ CREATE TABLE Colaboradores(
 CREATE TABLE Coordenadores(
 	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
-    login          int,
+    login          varchar(11),
     senha          varchar(20)
 ); 
 

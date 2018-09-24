@@ -4,7 +4,7 @@ public class Coordenador {
 	
 	private Integer id; 
 	private String nome;
-	private int login; 
+	private String login; 
 	private String senha;
 	
 	public Integer getId() {
@@ -19,10 +19,10 @@ public class Coordenador {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getLogin() {
+	public String getLogin() {
 		return login;
 	}
-	public void setLogin(int login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 	public String getSenha() {

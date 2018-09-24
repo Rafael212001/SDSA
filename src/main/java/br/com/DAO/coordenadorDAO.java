@@ -26,7 +26,7 @@ public class coordenadorDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, c.getNome());
-			ps.setInt(2, c.getLogin());
+			ps.setString(2, c.getLogin());
 			ps.setString(3, c.getSenha());
 
 			if (ps.executeUpdate() == 1) {
@@ -54,7 +54,7 @@ public class coordenadorDAO {
 				
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
-				c.setLogin(rs.getInt("login"));
+				c.setLogin(rs.getString("login"));
 				c.setSenha(rs.getString("senha"));
 
 				list.add(c);
@@ -72,7 +72,7 @@ public class coordenadorDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, c.getNome());
-			ps.setInt(2, c.getLogin());
+			ps.setString(2, c.getLogin());
 			ps.setString(3, c.getSenha());
 
 			if (ps.executeUpdate() > 0) {
@@ -87,7 +87,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Coordenadores " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Coordenadores WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class coordenadorDAO {
 		return false;
 	}
 	
-	public Coordenador buscaCoordenador(int nif){
+	public Coordenador buscaCoordenador(String nif){
 		
 		String sql = "SELECT * FROM Coordenadores WHERE login = ?";
 		Connection con = ConnectionDB.getConnection();
@@ -111,7 +111,7 @@ public class coordenadorDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, nif);
+			ps.setString(1, nif);
 
 			ResultSet rs = ps.executeQuery();
 			
@@ -120,7 +120,7 @@ public class coordenadorDAO {
 
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
-				c.setLogin(rs.getInt("login"));
+				c.setLogin(rs.getString("login"));
 				c.setSenha(rs.getString("senha"));
 				
 				return c;
