@@ -2,6 +2,11 @@
 	border-style: none !important;
 }
 
+.table{
+	width: auto !important;
+}
+
+
 .ui-widget-header{
 	color: white !important;
 	text-shadow: none !important;

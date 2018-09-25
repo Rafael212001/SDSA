@@ -17,6 +17,7 @@ public class CoordenadorMB {
 	Coordenador coor;
 	List<Coordenador> coo;
 	coordenadorDAO cDAO;
+	Coordenador selc;
 
 	public CoordenadorMB() {
 		coor = new Coordenador();
@@ -74,5 +75,22 @@ public class CoordenadorMB {
 	public void setCoo(List<Coordenador> coo) {
 		this.coo = coo;
 	}
+
+	public coordenadorDAO getcDAO() {
+		return cDAO;
+	}
+
+	public void setcDAO(coordenadorDAO cDAO) {
+		this.cDAO = cDAO;
+	}
+
+	public Coordenador getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Coordenador selc) {
+		this.selc = selc;
+	}
+	
 	
 }

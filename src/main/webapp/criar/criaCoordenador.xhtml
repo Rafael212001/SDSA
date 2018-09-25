@@ -10,8 +10,8 @@
 	</h:head>
 	<h:body>
 		<h:form id="form">
-			<p:dataTable id="dataT" var="coo" scrollable="true"
-				scrollHeight="150" value="#{coordenadorMB.coo}">
+			<p:dataTable id="dataT" var="coo" scrollable="true" selectionMode="single" selection="#{coordenadorMB.selc}"
+				scrollHeight="150" value="#{coordenadorMB.coo}" rowKey="#{coo.id}"	 >
 				<p:column >
 					<f:facet name="header">Nome</f:facet>
 					#{coo.nome}

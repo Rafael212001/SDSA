@@ -18,7 +18,7 @@ public class professorDAO {
 	}
 	
 	public boolean inserir (Professor p) {
-		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, login, senha, foto)"
+		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, foto)"
 				+ "VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
@@ -28,8 +28,6 @@ public class professorDAO {
 			ps.setInt(3, p.getCarga_hora());
 			ps.setInt(4, p.getRestante());
 			ps.setString(5, p.getTipo());
-			ps.setInt(6, p.getLogin());
-			ps.setString(7, p.getSenha());
 			ps.setInt(8, p.getFoto());
 			
 			if (ps.executeUpdate() > 0) {
@@ -53,8 +51,15 @@ public class professorDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Professor p = new Professor(rs.getInt("id"), rs.getString("nome"), rs.getString("disciplina_le"), rs.getInt("carga_hora"), 
-						rs.getInt("restante"), rs.getString("tipo"), rs.getInt("login"), rs.getString("senha"), rs.getInt("foto"), rs.getInt("id_disciplina"));
+				Professor p = new Professor();
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				rs.getString("disciplina_le"),
+				rs.getInt("carga_hora"), 
+				rs.getInt("restante"),
+				rs.getString("tipo"),
+				rs.getInt("foto"),
+				rs.getInt("id_disciplina"));
 				
 				list.add(p);
 			}

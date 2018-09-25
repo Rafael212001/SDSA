@@ -9,15 +9,22 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable var="turma" value="#{dtScrollView.turma1}"	scrollable="true" scrollHeight="150">
-				<p:column headerText="Nome">
-					<h:outputText value="#{nome.id}" />
+			<p:dataTable var="turma" value="#{professorMB.prof}" scrollable="true" scrollHeight="150">
+				<p:column >
+					<f:facet name="header">Nome</f:facet>
+					#{prof.nome}
 				</p:column>
-				<p:column headerText="Materia">
-					<h:outputText value="#{materia.id}" />
+				<p:column >
+					<f:facet name="header">Disciplina</f:facet>
+					#{prof.disciplina_le}
 				</p:column>
-				<p:column headerText="Carga horaria">
-					<h:outputText value="#{carga.id}" />
+				<p:column >
+					<f:facet name="header">Carga Hora</f:facet>
+					#{prof.carga_hora}
+				</p:column>
+				<p:column >
+					<f:facet name="header">Restante</f:facet>
+					#{prof.restante}
 				</p:column>
 			</p:dataTable>
 			<div class="center">
