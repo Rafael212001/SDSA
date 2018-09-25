@@ -10,23 +10,29 @@ import br.com.entities.Curso;
 @RequestScoped
 public class CursoMB {
 	Curso cur;
-	cursoDAO cDAO;
-	List<Curso> cuu;
-
+	List<Curso> curL;
+	cursoDAO csDAO;
+	
 	public CursoMB() {
 		cur = new Curso();
-		cDAO = new cursoDAO();
-		cuu = cDAO.listarTodos();
+		csDAO = new cursoDAO();
+		curL = csDAO.listarTodos();
 	}
 	
 	public void criarCurso() {
-		
+		if(csDAO.inserir(cur)) {
+			System.out.println("deu porra");
+			cur = new Curso();
+			listarCS();
+		}else {
+			System.out.println("não deu ;-;");
+			listarCS();
+		}
 	}
 	
-	
-	
-	
-	
+	private void listarCS() {
+		curL = csDAO.listarTodos();
+	}
 
 	public Curso getCur() {
 		return cur;
@@ -36,20 +42,20 @@ public class CursoMB {
 		this.cur = cur;
 	}
 
-	public cursoDAO getcDAO() {
-		return cDAO;
+	public List<Curso> getCurL() {
+		return curL;
 	}
 
-	public void setcDAO(cursoDAO cDAO) {
-		this.cDAO = cDAO;
+	public void setCurL(List<Curso> curL) {
+		this.curL = curL;
 	}
 
-	public List<Curso> getCuu() {
-		return cuu;
+	public cursoDAO getCsDAO() {
+		return csDAO;
 	}
 
-	public void setCuu(List<Curso> cuu) {
-		this.cuu = cuu;
+	public void setCsDAO(cursoDAO csDAO) {
+		this.csDAO = csDAO;
 	}
 	
 	

@@ -32,7 +32,7 @@ CREATE TABLE Colaboradores(
     disciplina_le  varchar(100),
     carga_hora     int,
     restante       int,
-    tipo           varchar(100),
+    tipo           int,
     foto           int,
     id_disciplina  int,
 	foreign key (id_disciplina) references Disciplinas (id)

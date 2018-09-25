@@ -33,7 +33,7 @@ public class CoordenadorMB {
 			coor = new Coordenador();
 			listarC();
 		} else {
-			System.out.println("du não ;-;");
+			System.out.println("deu não ;-;");
 			listarC();
 		}
 	}

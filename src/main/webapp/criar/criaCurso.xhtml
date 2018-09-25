@@ -8,28 +8,33 @@
 		<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
-		<h:form>
-			<p:dataTable var="car" scrollable="true" scrollHeight="150">
+		<h:form id="formCs">
+			<p:dataTable id="dataT" var="curL" scrollable="true" scrollHeight="150" value="#{cursoMB.curL}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
-					#{coo.nome}
+					#{curL.nome}
 				</p:column>
 				<p:column headerText="Periodo">
-					<f:facet name="header">Nome</f:facet>
-					#{coo.nome}
+					<f:facet name="header">Quantidade de semestres</f:facet>
+					#{curL.qtd_semestre}
 				</p:column>
 			</p:dataTable>
+			<p:panel id="div">
 			<div class="center">
-				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+				<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome"  />
-				 Período:
-				<h:inputText id="periodo"  />
+				<h:inputText id="nome" styleClass="campo" required="true" value="#{cursoMB.cur.nome}" />
+				<p:message for="nome" display="icon"/>
+				Quantidade de semestres:
+				<h:inputText id="qsem" styleClass="campo" required="true" value="#{cursoMB.cur.qtd_semestre}" />
+				<p:message for="qsem" display="icon"/>
 			</h:panelGrid>
 			</div>
+			</p:panel>
 			<div class="margin center">
-				<h:commandButton class="button left" value="Salvar"/>
-				<h:commandButton class="button right" value="Cancelar" href="#"/>
+				<p:commandButton styleClass="button left" ajax="true" update=":formCs:dataT :formCs:div" event="onclick"
+					value="Salvar" actionListener="#{cursoMB.criarCurso}" />
+				<p:commandButton styleClass="button right" ajax="false" value="Cancelar"/>
 			</div>
 		</h:form>
 	</h:body>

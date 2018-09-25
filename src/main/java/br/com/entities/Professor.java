@@ -6,7 +6,7 @@ public class Professor {
 	private String disciplina_le;
 	private int carga_hora;
 	private int restante;
-	private String tipo;
+	private int tipo;
 	private int foto;
 	private int id_disciplina;
 	
@@ -41,10 +41,10 @@ public class Professor {
 	public void setRestante(int restante) {
 		this.restante = restante;
 	}
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 	public int getFoto() {

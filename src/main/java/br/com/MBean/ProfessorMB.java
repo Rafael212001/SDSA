@@ -11,14 +11,52 @@ import br.com.entities.Professor;
 @ManagedBean
 @RequestScoped
 public class ProfessorMB {
-	List<Professor> prof;
-	professorDAO pDAO = new professorDAO();
+	Professor prof;
+	List<Professor> profL;
+	professorDAO pDAO;
+	
+	public ProfessorMB() {
+		prof = new Professor();
+		pDAO = new professorDAO();
+		profL = pDAO.listarTodos();
+	}
+	
+	public void criarProfessor() {
+		if(pDAO.inserir(prof)) {
+			System.out.println("deu porra");
+			prof = new Professor();
+			listarP();
+		}else {
+			System.out.println("não deu ;-;");
+			listarP();
+		}
+	}
+	
+	private void listarP() {
+		profL = pDAO.listarTodos();
+	}
 
-	public List<Professor> getProf() {
+	public Professor getProf() {
 		return prof;
 	}
 
-	public void setProf(List<Professor> prof) {
+	public void setProf(Professor prof) {
 		this.prof = prof;
+	}
+
+	public List<Professor> getProfL() {
+		return profL;
+	}
+
+	public void setProfL(List<Professor> profL) {
+		this.profL = profL;
+	}
+
+	public professorDAO getpDAO() {
+		return pDAO;
+	}
+
+	public void setpDAO(professorDAO pDAO) {
+		this.pDAO = pDAO;
 	}
 }

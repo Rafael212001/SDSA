@@ -50,7 +50,10 @@ public class cursoDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Curso c = new Curso(rs.getInt("id"), rs.getString("nome"), rs.getInt("qtd_semestre"));
+				Curso c = new Curso();
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setQtd_semestre(rs.getInt("qtd_semestre"));
 				list.add(c);
 			}
 

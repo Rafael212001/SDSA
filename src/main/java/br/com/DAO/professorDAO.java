@@ -27,8 +27,8 @@ public class professorDAO {
 			ps.setString(2, p.getDisciplina_le());
 			ps.setInt(3, p.getCarga_hora());
 			ps.setInt(4, p.getRestante());
-			ps.setString(5, p.getTipo());
-			ps.setInt(8, p.getFoto());
+			ps.setInt(5, p.getTipo());
+			ps.setInt(6, p.getFoto());
 			
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -54,12 +54,12 @@ public class professorDAO {
 				Professor p = new Professor();
 				p.setId(rs.getInt("id"));
 				p.setNome(rs.getString("nome"));
-				rs.getString("disciplina_le"),
-				rs.getInt("carga_hora"), 
-				rs.getInt("restante"),
-				rs.getString("tipo"),
-				rs.getInt("foto"),
-				rs.getInt("id_disciplina"));
+				p.setDisciplina_le(rs.getString("disciplina_le"));
+				p.setCarga_hora(rs.getInt("carga_hora")); 
+				p.setRestante(rs.getInt("restante"));
+				p.setTipo(rs.getInt("tipo"));
+				p.setFoto(rs.getInt("foto"));
+				p.setId_disciplina(rs.getInt("id_disciplina"));
 				
 				list.add(p);
 			}
