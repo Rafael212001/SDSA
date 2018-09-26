@@ -24,10 +24,13 @@
 					onclick="PF('dlg2').show();" />
 				<p:commandLink value="Salas" type="button"
 					onclick="PF('dlg3').show();" />
+				<p:commandLink value="Disciplina" type="button"
+					onclick="PF('dlg6').show();" />
 				<p:commandLink value="Professor/Instrutor" type="button"
 					onclick="PF('dlg4').show();" />
 				<p:commandLink value="Coordenador" type="button"
 					onclick="PF('dlg5').show();" />
+				
 			</div>
 			
 			</li>
@@ -49,6 +52,9 @@
 	</p:dialog>
 	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true" width="75%" height="50%">
 		<ui:include src="criar/criaCoordenador.xhtml" />
+	</p:dialog>
+	<p:dialog header="Disciplina" widgetVar="dlg6" modal="true" width="75%" height="50%">
+		<ui:include src="criar/disciplina.xhtml" />
 	</p:dialog>
 </h:body>
 </html>
