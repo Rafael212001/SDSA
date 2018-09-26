@@ -23,7 +23,9 @@ CREATE TABLE Disciplinas(
     nome           varchar(100),
     carga_hora     int,
     id_turma       int,
-	foreign key (id_turma) references Turmas (id)
+	id_curso       int,
+	foreign key (id_turma) references Turmas (id),
+	foreign key (id_curso) references Cursos (id)
 ); 
 
 CREATE TABLE Colaboradores(

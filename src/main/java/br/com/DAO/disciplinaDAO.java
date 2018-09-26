@@ -46,8 +46,11 @@ public class disciplinaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Disciplina d = new Disciplina(rs.getInt("id"), rs.getString("nome"), rs.getInt("carga_hora"),
-						rs.getInt("id_turma"));
+				Disciplina d = new Disciplina();
+				d.setId(rs.getInt("id"));
+				d.setNome(rs.getString("nome"));
+				d.setCarga_hora(rs.getInt("carga_hora"));
+				d.setId_turma(rs.getInt("id_turma"));
 				list.add(d);
 			}
 		} catch (SQLException e) {

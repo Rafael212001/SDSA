@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import br.com.entities.Curso;
 import br.com.jdbc.ConnectionDB;
 
@@ -19,26 +21,27 @@ public class cursoDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Curso c) {
+	public int inserir(Curso c) {
 
-		String sql = "INSERT INTO Cursos(nome,qtd_semestre)" + "VALUES (?,?)";
+		String sql = "INSERT INTO Cursos(nome,qtd_semestre) VALUES (?,?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, c.getNome());
 			ps.setInt(2, c.getQtd_semestre());
 
 			if (ps.executeUpdate() > 0) {
-				return true;
+				ResultSet rs = ps.getGeneratedKeys();
+				if(rs.next()) {
+					int lastId = rs.getInt("id");
+					return lastId;
+				}
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		return false;
-
+		return 0;
 	}
 
 	public List<Curso> listarTodos() {
@@ -81,5 +84,5 @@ public class cursoDAO {
 		}
 		return false;
 	}
-
+	
 }

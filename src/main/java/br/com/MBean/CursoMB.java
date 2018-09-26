@@ -12,6 +12,7 @@ public class CursoMB {
 	Curso cur;
 	List<Curso> curL;
 	cursoDAO csDAO;
+	int lastId;
 	
 	public CursoMB() {
 		cur = new Curso();
@@ -20,7 +21,8 @@ public class CursoMB {
 	}
 	
 	public void criarCurso() {
-		if(csDAO.inserir(cur)) {
+		lastId = csDAO.inserir(cur);
+		if(lastId > 0) {
 			System.out.println("deu porra");
 			cur = new Curso();
 			listarCS();
@@ -57,6 +59,12 @@ public class CursoMB {
 	public void setCsDAO(cursoDAO csDAO) {
 		this.csDAO = csDAO;
 	}
-	
-	
+
+	public int getLastId() {
+		return lastId;
+	}
+
+	public void setLastId(int lastId) {
+		this.lastId = lastId;
+	}
 }
