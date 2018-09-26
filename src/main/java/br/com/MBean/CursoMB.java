@@ -3,6 +3,8 @@ package br.com.MBean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
 import br.com.DAO.cursoDAO;
 import br.com.entities.Curso;
 
@@ -24,6 +26,7 @@ public class CursoMB {
 		lastId = csDAO.inserir(cur);
 		if(lastId > 0) {
 			System.out.println("deu porra");
+			
 			cur = new Curso();
 			listarCS();
 		}else {
