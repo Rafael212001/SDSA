@@ -33,7 +33,7 @@ public class cursoDAO {
 			if (ps.executeUpdate() > 0) {
 				ResultSet rs = ps.getGeneratedKeys();
 				if(rs.next()) {
-					int lastId = rs.getInt("id");
+					int lastId = rs.getInt(1);
 					return lastId;
 				}
 			}
