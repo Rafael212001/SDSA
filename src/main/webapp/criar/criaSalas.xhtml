@@ -5,32 +5,38 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
-		<h:form>
-			<p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
-				<p:column headerText="Número">
-					<h:outputText value="#{car.id}" />
+		<h:form id="forms">
+			<p:dataTable id="dataT" var="salL" scrollable="true"
+				scrollHeight="150" value="#{salasMBean.salL}" >
+				<p:column >
+					<f:facet name="header">Número</f:facet>
+					#{salL.numero}
 				</p:column>
-				<p:column headerText="Qnt. Pessoas">
-					<h:outputText value="#{car.year}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{car.brand}" />
+				<p:column >
+					<f:facet name="header">Descrição</f:facet>
+					#{salL.descricao}
 				</p:column>
 			</p:dataTable>
-			<div class="center">
-				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-    				Número:
-    				<h:inputText />
-   					Tipo da sala:
-    				<h:inputText />
-				</h:panelGrid>
-			</div>
+			<p:panel id="div">
+				<div class="center" >
+					<h:panelGrid id="grid" columns="3" cellpadding="2" cellspacing="1">
+					Número:
+					<h:inputText id="numero" styleClass="campo" required="true" value="#{salasMBean.sal.numero}" />
+					<p:message for="numero" display="icon"/>
+					Descrição:
+					<h:inputText id="descricao" required="true" value="#{salasMBean.sal.descricao}" />
+					<p:message for="descricao" display="icon"/>
+					</h:panelGrid>
+				</div>
+			</p:panel>
 			<div class="margin center">
-				<h:commandButton class="button left" value="Salvar" />
-				<h:commandButton class="button right" value="Cancelar" href="#"/>
+				<p:commandButton styleClass="button left" ajax="true" update=":forms:dataT :forms:div" event="onclick"
+					value="Salvar" actionListener="#{salasMBean.criarSala}" />
+				<p:commandButton styleClass="button right" ajax="false" value="Cancelar"/>
 			</div>
 		</h:form>
 	</h:body>

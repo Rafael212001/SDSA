@@ -5,31 +5,59 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
-		<h:form>
-			<p:dataTable var="turma" value="#{dtScrollView.turma1}"
+		<h:form id="formt">
+			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
 				scrollable="true" scrollHeight="150">
-				<p:column headerText="Nome">
-					<h:outputText value="#{car.id}" />
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{profL.nome}
 				</p:column>
-				<p:column headerText="Quantidades de Semestres">
-					<h:outputText value="#{car.year}" />
+				<p:column>
+					<f:facet name="header">Disciplina</f:facet>
+					#{profL.disciplina_le}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Carga Horária</f:facet>
+					#{profL.carga_hora}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Restante</f:facet>
+					#{profL.restante}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Tipo</f:facet>
+					#{profL.tipo}
 				</p:column>
 			</p:dataTable>
-			<div class="center">
-				<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
+			<p:panel id="div">
+				<div class="center">
+					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
                		Nome:
-              		<h:inputText />
-	           		Quantidade de Semestres:
-              		<h:inputText />
-            	</h:panelGrid>
-        	</div>
-			<div class="margin center">
-				<h:commandButton class="button left" value="Salvar"/>
-				<h:commandButton class="button right" value="Cancelar" href="#"/>
-			</div>
+					<h:inputText id="nome" styleClass="campo" required="true" value="#{professorMB.prof.nome}" />
+					<p:message for="nome" display="icon"/>
+	          		Disciplina:
+					<h:inputText id="disciplina" styleClass="campo" required="true" value="#{professorMB.prof.disciplina_le}" />
+					<p:message for="disciplina" display="icon"/>
+					Carga Horária:
+					<h:inputText id="carga" styleClass="campo" required="true" value="#{professorMB.prof.carga_hora}" />
+					<p:message for="carga" display="icon"/>
+					Tipo:
+					<h:inputText id="tipo" styleClass="campo" required="true" value="#{professorMB.prof.tipo}" />
+					<p:message for="tipo" display="icon"/>
+					</h:panelGrid>
+				</div>
+				<div class="margin center">
+					<p:commandButton styleClass="button left" ajax="true"
+						update=":formt:dataT :formt:div" event="onclick" value="Salvar"
+						actionListener="#{professorMB.criarProfessor}" />
+					<p:commandButton styleClass="button right" ajax="false"
+						value="Cancelar" />
+				</div>
+			</p:panel>
 		</h:form>
 	</h:body>
 </ui:composition>

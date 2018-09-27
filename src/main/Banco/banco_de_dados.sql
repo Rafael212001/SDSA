@@ -49,6 +49,7 @@ CREATE TABLE Coordenadores(
 
 CREATE TABLE Salas(
 	id             int primary key not null AUTO_INCREMENT,
+	descricao      varchar(100),
     numero         int
 ); 
 

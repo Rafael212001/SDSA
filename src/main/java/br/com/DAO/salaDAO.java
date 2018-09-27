@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entities.Curso;
 import br.com.entities.Salas;
 import br.com.jdbc.ConnectionDB;
 
@@ -20,10 +19,11 @@ public class salaDAO {
 	}
 
 	public boolean inserir(Salas s) {
-		String sql = "INSERT INTO Salas(numero)" + "VALUES (?)";
+		String sql = "INSERT INTO Salas(descricao, numero) VALUES (?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getNumero());
+			ps.setString(2, s.getDescricao());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -45,7 +45,10 @@ public class salaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Salas s = new Salas( rs.getInt("id"), rs.getInt("numeros"));
+				Salas s = new Salas(); 
+				s.setId(rs.getInt("id"));
+				s.setDescricao(rs.getString("descricao"));
+				s.setNumero(rs.getInt("numeros"));
 				list.add(s);
 			}
 
@@ -58,7 +61,7 @@ public class salaDAO {
 	}
 	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Salas " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Salas WHERE id = ? ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

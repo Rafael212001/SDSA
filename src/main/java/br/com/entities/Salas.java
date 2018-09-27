@@ -3,14 +3,8 @@ package br.com.entities;
 public class Salas {
 
 	private Integer id;
+	private String descricao;
 	private int numero;
-
-	
-	public Salas(Integer id,Integer numero) {
-		this.id = id;
-		this.numero = numero;
-	
-	}
 
 	public Integer getId() {
 		return id;
@@ -18,6 +12,14 @@ public class Salas {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public int getNumero() {
