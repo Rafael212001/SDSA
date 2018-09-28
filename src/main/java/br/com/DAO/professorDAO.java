@@ -19,7 +19,7 @@ public class professorDAO {
 	
 	public boolean inserir (Professor p) {
 		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, foto)"
-				+ "VALUES (?,?,?,?,?,?,?,?)";
+				+ "VALUES (?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -11,7 +11,6 @@ import br.com.entities.Salas;
 import br.com.jdbc.ConnectionDB;
 
 public class salaDAO {
-
 	Connection con;
 
 	public salaDAO() {
@@ -19,7 +18,7 @@ public class salaDAO {
 	}
 
 	public boolean inserir(Salas s) {
-		String sql = "INSERT INTO Salas(descricao, numero) VALUES (?,?)";
+		String sql = "INSERT INTO Salas (descricao, numero) VALUES (?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getNumero());
