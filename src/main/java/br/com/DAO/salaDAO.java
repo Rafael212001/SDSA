@@ -22,10 +22,10 @@ public class salaDAO {
 		String sql = "INSERT INTO Salas(descricao, numero) VALUES (?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, s.getNumero());
-			ps.setString(2, s.getDescricao());
-
-			if (ps.executeUpdate() > 0) {
+			ps.setString(1, s.getDescricao());
+			ps.setInt(2, s.getNumero());
+			
+			if (ps.executeUpdate() == 1) {
 				return true;
 			}
 
@@ -48,7 +48,7 @@ public class salaDAO {
 				Salas s = new Salas(); 
 				s.setId(rs.getInt("id"));
 				s.setDescricao(rs.getString("descricao"));
-				s.setNumero(rs.getInt("numeros"));
+				s.setNumero(rs.getInt("numero"));
 				list.add(s);
 			}
 
@@ -57,7 +57,6 @@ public class salaDAO {
 
 		}
 		return list;
-
 	}
 	
 	public boolean excluir(Integer id) {

@@ -30,7 +30,7 @@ public class cursoDAO {
 			ps.setString(1, c.getNome());
 			ps.setInt(2, c.getQtd_semestre());
 
-			if (ps.executeUpdate() > 0) {
+			if (ps.executeUpdate() == 1) {
 				ResultSet rs = ps.getGeneratedKeys();
 				if(rs.next()) {
 					int lastId = rs.getInt(1);

@@ -19,7 +19,7 @@ public class turmaDAO {
 	}
 
 	public boolean inserir(Turma t) {
-		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre )" + "VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre ) VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class turmaDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Turmas " + "WHERE id = ? ";
+		String sql = "DELETE * FROM Turmas WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

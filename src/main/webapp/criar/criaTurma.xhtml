@@ -10,50 +10,53 @@
 	</h:head>
 	<h:body>
 		<h:form id="formt">
-			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
+			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				scrollable="true" scrollHeight="150">
 				<p:column>
-					<f:facet name="header">Nome</f:facet>
-					#{profL.nome}
+					<f:facet name="header">Nome da Turma</f:facet>
+					#{turL.nome}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Disciplina</f:facet>
-					#{profL.disciplina_le}
+					<f:facet name="header">Quantidade de Alunos</f:facet>
+					#{turL.qtd_alunos}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Carga Horária</f:facet>
-					#{profL.carga_hora}
+					<f:facet name="header">Divisão</f:facet>
+					#{turL.divisao}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Restante</f:facet>
-					#{profL.restante}
+					<f:facet name="header">Período</f:facet>
+					#{turL.periodo}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Tipo</f:facet>
-					#{profL.tipo}
+					<f:facet name="header">Semestre</f:facet>
+					#{turL.semestre}
 				</p:column>
 			</p:dataTable>
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
-               		Nome:
-					<h:inputText id="nome" styleClass="campo" required="true" value="#{professorMB.prof.nome}" />
+               		Nome da Turma:
+					<h:inputText id="nome" styleClass="campo" required="true" value="#{turmaMB.tur.nome}" />
 					<p:message for="nome" display="icon"/>
-	          		Disciplina:
-					<h:inputText id="disciplina" styleClass="campo" required="true" value="#{professorMB.prof.disciplina_le}" />
-					<p:message for="disciplina" display="icon"/>
-					Carga Horária:
-					<h:inputText id="carga" styleClass="campo" required="true" value="#{professorMB.prof.carga_hora}" />
-					<p:message for="carga" display="icon"/>
-					Tipo:
-					<h:inputText id="tipo" styleClass="campo" required="true" value="#{professorMB.prof.tipo}" />
-					<p:message for="tipo" display="icon"/>
+	          		Quantidade de Alunos:
+					<h:inputText id="qtd" styleClass="campo" required="true" value="#{turmaMB.tur.qtd_alunos}" />
+					<p:message for="qtd" display="icon"/>
+					Divisão:
+					<h:inputText id="divisao" styleClass="campo" required="true" value="#{turmaMB.tur.divisao}" />
+					<p:message for="divisao" display="icon"/>
+					Período:
+					<h:inputText id="periodo" styleClass="campo" required="true" value="#{turmaMB.tur.periodo}" />
+					<p:message for="periodo" display="icon"/>
+					Semestre:
+					<h:inputText id="semestre" styleClass="campo" required="true" value="#{turmaMB.tur.semestre}" />
+					<p:message for="semestre" display="icon"/>
 					</h:panelGrid>
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formt:dataT :formt:div" event="onclick" value="Salvar"
-						actionListener="#{professorMB.criarProfessor}" />
+						actionListener="#{turmaMB.criarTurma}" />
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Cancelar" />
 				</div>

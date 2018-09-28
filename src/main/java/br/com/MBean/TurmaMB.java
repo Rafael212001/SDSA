@@ -20,7 +20,7 @@ public class TurmaMB {
 		tDAO = new turmaDAO();
 	}
 	
-	public void criarProfessor() {
+	public void criarTurma() {
 		if(tDAO.inserir(tur)) {
 			System.out.println("deu porra");
 			tur = new Turma();
@@ -34,4 +34,30 @@ public class TurmaMB {
 	private void listarT() {
 		turL = tDAO.listarTodos();
 	}
+
+	public Turma getTur() {
+		return tur;
+	}
+
+	public void setTur(Turma tur) {
+		this.tur = tur;
+	}
+
+	public List<Turma> getTurL() {
+		return turL;
+	}
+
+	public void setTurL(List<Turma> turL) {
+		this.turL = turL;
+	}
+
+	public turmaDAO gettDAO() {
+		return tDAO;
+	}
+
+	public void settDAO(turmaDAO tDAO) {
+		this.tDAO = tDAO;
+	}
+	
+	
 }
