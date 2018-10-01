@@ -18,7 +18,8 @@ public class salaDAO {
 	}
 
 	public boolean inserir(Salas s) {
-		String sql = "INSERT INTO Salas (descricao, numero) VALUES (?,?)";
+		String sql = "INSERT INTO Salas"
+				+ " (descricao, numero) VALUES (?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, s.getDescricao());
