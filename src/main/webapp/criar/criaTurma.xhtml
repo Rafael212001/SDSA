@@ -29,6 +29,10 @@
 					#{turL.periodo}
 				</p:column>
 				<p:column>
+					<f:facet name="header">Curso</f:facet>
+					#{turL.semestre}
+				</p:column>
+				<p:column>
 					<f:facet name="header">Semestre</f:facet>
 					#{turL.semestre}
 				</p:column>
@@ -36,21 +40,36 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
-               		Nome da Turma:
-					<h:inputText id="nome" styleClass="campo" required="true" value="#{turmaMB.tur.nome}" />
-					<p:message for="nome" display="icon"/>
-	          		Quantidade de Alunos:
-					<h:inputText id="qtd" styleClass="campo" required="true" value="#{turmaMB.tur.qtd_alunos}" />
-					<p:message for="qtd" display="icon"/>
-					Divisão:
-					<h:inputText id="divisao" styleClass="campo" required="true" value="#{turmaMB.tur.divisao}" />
-					<p:message for="divisao" display="icon"/>
-					Período:
-					<h:inputText id="periodo" styleClass="campo" required="true" value="#{turmaMB.tur.periodo}" />
-					<p:message for="periodo" display="icon"/>
+					Curso:
+					<p:selectOneMenu id="curso">
+							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
+							<f:selectItems value="#{turmaMB.curL}" var="curL"
+								itemLabel="#{curL.nome}" itemValue="#{curL.id}" />
+							<p:ajax listener="#{turmaMB}" event="change" update="semestre"/>
+						</p:selectOneMenu>
+						<p:message for="curso" display="icon" />
 					Semestre:
-					<h:inputText id="semestre" styleClass="campo" required="true" value="#{turmaMB.tur.semestre}" />
-					<p:message for="semestre" display="icon"/>
+					<p:selectOneMenu id="semestre" effect="fold" editable="true">
+							<f:selectItem itemLabel="Selecione Turma" itemValue="" />
+							<f:selectItem itemLabel="Selecione Turma" itemValue="" />
+						</p:selectOneMenu>
+						<p:message for="semestre" display="icon" />
+               		Nome da Turma:
+					<h:inputText id="nome" styleClass="campo" required="true"
+							value="#{turmaMB.tur.nome}" />
+						<p:message for="nome" display="icon" />
+	          		Quantidade de Alunos:
+					<h:inputText id="qtd" styleClass="campo" required="true"
+							value="#{turmaMB.tur.qtd_alunos}" />
+						<p:message for="qtd" display="icon" />
+					Divisão:
+					<h:inputText id="divisao" styleClass="campo" required="true"
+							value="#{turmaMB.tur.divisao}" />
+						<p:message for="divisao" display="icon" />
+					Período:
+					<h:inputText id="periodo" styleClass="campo" required="true"
+							value="#{turmaMB.tur.periodo}" />
+						<p:message for="periodo" display="icon" />
 					</h:panelGrid>
 				</div>
 				<div class="margin center">

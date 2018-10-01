@@ -18,13 +18,14 @@ public class disciplinaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Disciplina d) {
-		String sql = "INSERT INTO Disciplinas(?,?)";
+	public boolean inserir(Disciplina d, int l) {
+		String sql = "INSERT INTO Disciplinas(?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, d.getNome());
 			ps.setInt(2, d.getCarga_hora());
+			ps.setInt(3, l);
 
 			if (ps.executeUpdate() > 0) {
 				return true;

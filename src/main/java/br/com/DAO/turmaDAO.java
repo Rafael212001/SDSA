@@ -64,6 +64,35 @@ public class turmaDAO {
 		}
 		return list;
 	}
+	
+	public int listarId(int i) {
+		List<Turma> list = new ArrayList<Turma>();
+		String sql = "SELECT semestre FROM Turmas WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+			
+			ResultSet rs = ps.executeQuery();
+				
+				
+			
+				Turma t = new Turma();
+				t.setId(rs.getInt("id"));
+				t.setNome(rs.getString("nome"));
+				t.setQtd_alunos(rs.getInt("qtd_alunos"));
+				t.setDivisao(rs.getInt("divisao"));
+				t.setPeriodo(rs.getInt("periodo"));
+				t.setSemestre(rs.getInt("semestre"));
+				t.setId_curso(rs.getInt("id_curso"));
+				list.add(t);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public boolean excluir(Integer id) {
 		String sql = "DELETE * FROM Turmas WHERE id = ? ";
