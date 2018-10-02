@@ -41,17 +41,18 @@
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 					Curso:
-					<p:selectOneMenu id="curso">
-							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
+					<p:selectOneMenu id="curso" value="#{turmaMB.cur.id}">
+							<f:selectItem itemLabel="Selecione Curso" itemValue="0" />
 							<f:selectItems value="#{turmaMB.curL}" var="curL"
 								itemLabel="#{curL.nome}" itemValue="#{curL.id}" />
-							<p:ajax listener="#{turmaMB}" event="change" update="semestre"/>
+							<p:ajax listener="#{turmaMB.listarSemestre}" event="change" update="semestre"/>
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
 					Semestre:
-					<p:selectOneMenu id="semestre" effect="fold" editable="true">
-							<f:selectItem itemLabel="Selecione Turma" itemValue="" />
-							<f:selectItem itemLabel="Selecione Turma" itemValue="" />
+					<p:selectOneMenu id="semestre" value="#{turmaMB.semestre}">
+							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
+								itemLabel="#{semestre}º Semestre" itemValue="#{semestre}"/>
 						</p:selectOneMenu>
 						<p:message for="semestre" display="icon" />
                		Nome da Turma:
@@ -63,12 +64,19 @@
 							value="#{turmaMB.tur.qtd_alunos}" />
 						<p:message for="qtd" display="icon" />
 					Divisão:
-					<h:inputText id="divisao" styleClass="campo" required="true"
-							value="#{turmaMB.tur.divisao}" />
+					<p:selectOneMenu id="divisao" value="#{turmaMB.tur.divisao}">
+							<f:selectItem itemLabel="Selecione Divisão" itemValue="" />
+							<f:selectItem itemLabel="Sim" itemValue="1" />
+							<f:selectItem itemLabel="Não" itemValue="2" />				
+						</p:selectOneMenu>
 						<p:message for="divisao" display="icon" />
 					Período:
-					<h:inputText id="periodo" styleClass="campo" required="true"
-							value="#{turmaMB.tur.periodo}" />
+					<p:selectOneMenu id="periodo" value="#{turmaMB.tur.periodo}">
+							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+							<f:selectItem itemLabel="Manha" itemValue="1" />
+							<f:selectItem itemLabel="Tarde" itemValue="2" />
+							<f:selectItem itemLabel="Noite" itemValue="3" />				
+						</p:selectOneMenu>
 						<p:message for="periodo" display="icon" />
 					</h:panelGrid>
 				</div>

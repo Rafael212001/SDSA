@@ -18,8 +18,8 @@ public class turmaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Turma t) {
-		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre ) VALUES (?,?,?,?,?)";
+	public boolean inserir(Turma t, int id, Integer sms) {
+		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre, id_curso) VALUES (?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -27,7 +27,8 @@ public class turmaDAO {
 			ps.setInt(2, t.getQtd_alunos());
 			ps.setInt(3, t.getDivisao());
 			ps.setInt(4, t.getPeriodo());
-			ps.setInt(5, t.getSemestre());
+			ps.setInt(5, sms);
+			ps.setInt(6, id);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -64,34 +65,24 @@ public class turmaDAO {
 		}
 		return list;
 	}
-	
+
 	public int listarId(int i) {
-		List<Turma> list = new ArrayList<Turma>();
-		String sql = "SELECT semestre FROM Turmas WHERE id = ?";
+		int f = 0;
+		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, i);
-			
+
 			ResultSet rs = ps.executeQuery();
-				
-				
-			
-				Turma t = new Turma();
-				t.setId(rs.getInt("id"));
-				t.setNome(rs.getString("nome"));
-				t.setQtd_alunos(rs.getInt("qtd_alunos"));
-				t.setDivisao(rs.getInt("divisao"));
-				t.setPeriodo(rs.getInt("periodo"));
-				t.setSemestre(rs.getInt("semestre"));
-				t.setId_curso(rs.getInt("id_curso"));
-				list.add(t);
-			
+			if (rs.next()) {
+				f = rs.getInt("qtd_semestre");
+			}
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return f;
 	}
 
 	public boolean excluir(Integer id) {
@@ -106,5 +97,4 @@ public class turmaDAO {
 		}
 		return false;
 	}
-
 }
