@@ -1,39 +1,61 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-	</head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
-	<body>
+<head>
 
+<title>Insert title here</title>
+</head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
+<body>
+
+	<TABLE>
 		<h:form>
-    <p:growl id="msgs" showDetail="true" />
- 
-    <p:panel header="Select a Location" style="margin-bottom:10px;">
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="country" value="Country: " />
-            <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-                <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
-                <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.countries}" />
-            </p:selectOneMenu>
- 
-            <p:outputLabel for="city" value="City: " />
-            <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.cities}" />
-            </p:selectOneMenu>
-        </h:panelGrid>
- 
-        <p:separator />
- 
-        <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
-    </p:panel>
-</h:form>
-	</body>
-	</html>
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:panel header="Montagem de Aulas" style="margin-bottom:20px;">
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="country" value="Turma" />
+					<p:selectOneMenu id="country" value="#{dropdownView.country}"
+						style="width:150px">
+						<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+						<f:selectItem itemLabel="Selecionar Turma" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{dropdownView.countries}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="city" value="Disciplina " />
+					<p:selectOneMenu id="city" value="#{dropdownView.city}"
+						style="width:150px">
+						<f:selectItem itemLabel="Selecionar Disciplina" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{dropdownView.cities}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="country" value="Professor" />
+					<p:selectOneMenu id="prof" value="#{dropdownView.country}"
+						style="width:150px">
+						<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+						<f:selectItem itemLabel="Selecionar Professor" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{dropdownView.countries}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+
+				<p:separator />
+
+
+
+
+				<p:commandButton value="Salvar" update="msgs"
+					actionListener="#{dropdownView.displayLocation}"
+					icon="ui-icon-check" />
+			</p:panel>
+
+
+		</h:form>
+	</TABLE>
+</body>
+</html>
