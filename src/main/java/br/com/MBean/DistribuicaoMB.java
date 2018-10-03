@@ -1,6 +1,7 @@
 package br.com.MBean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.DragDropEvent;
 
+import br.com.DAO.aulasDAO;
 import br.com.entities.Aulas;
 
 @ManagedBean
@@ -22,6 +24,8 @@ public class DistribuicaoMB implements Serializable {
 	private List<Aulas> drop;
 	private Aulas selecionadas;
 	
+	
+	
 	public void onAulasDropSala1(DragDropEvent dde) {
 		Aulas aulas = ((Aulas) dde.getData());
 		
@@ -29,6 +33,10 @@ public class DistribuicaoMB implements Serializable {
 		aulass.remove(aulas);
 	}
 	
+	public void init() {
+		//aulass = ;
+		drop = new ArrayList<Aulas>();
+	}
 	
 	
 	public List<Aulas> getAulas() {

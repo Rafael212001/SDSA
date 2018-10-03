@@ -47,11 +47,6 @@ CREATE TABLE Coordenadores(
     senha          varchar(20)
 ); 
 
-CREATE TABLE Salas(
-	id             int primary key not null AUTO_INCREMENT,
-	descricao      varchar(100),
-    numero         int
-); 
 
 CREATE TABLE Salas(
 	numero         int primary key not null,
@@ -90,7 +85,7 @@ CREATE TABLE Aulas(
     foreign key (id_disciplina)  references Disciplinas (id),
     foreign key (id_colaborador) references Colaboradores (id),
     foreign key (id_coordenador) references Coordenadores (id),
-    foreign key (id_sala) 		 references Salas (id)
+    foreign key (id_sala) 		 references Salas (numero)
 ); 
 
 

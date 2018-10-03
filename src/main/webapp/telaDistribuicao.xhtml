@@ -36,8 +36,7 @@
 							<td><p:fieldset id="s1">
 									<p:outputPanel id="dropS1">
 										<h:outputText value="Sala 1" />
-										<h:panelGrid columns="1" style="width:100%">
-											
+										<h:panelGrid columns="2" cellpadding="3" style="width:100%">
 										</h:panelGrid>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s1" tolerance="touch"
@@ -46,6 +45,7 @@
 									<p:ajax listener="#{dndCarsView.onCarDrop}"
 										update="dropS1 form:availableCars" />
 								</p:droppable></td>
+
 							<td><p:fieldset id="s2">
 									<p:outputPanel id="dropArea2">
 										<h:outputText styleClass="x" value="Sala 2"
