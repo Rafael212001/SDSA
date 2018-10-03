@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.cursoDAO;
 import br.com.DAO.turmaDAO;
@@ -12,13 +13,13 @@ import br.com.entities.Curso;
 import br.com.entities.Turma;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class TurmaMB {
 	Turma tur;
-	Curso cur;
+	Curso tcur;
 	List<Turma> turL;
-	List<Curso> curL;
-	cursoDAO cDAO;
+	List<Curso> curS;
+	cursoDAO tcDAO;
 	turmaDAO tDAO;
 	Integer semestre;
 	List<Integer> semestres;
@@ -26,17 +27,17 @@ public class TurmaMB {
 	
 	public TurmaMB() {
 		tur = new Turma();
-		cur = new Curso();
+		tcur = new Curso();
 		tDAO = new turmaDAO();
-		cDAO = new cursoDAO();
-		curL = cDAO.listarTodos();
+		tcDAO = new cursoDAO();
+		curS = tcDAO.listarTodos();
 		listarT();
 	}
 	
 	public void criarTurma() {
-		if(tDAO.inserir(tur, idCurso, semestre)) {
+		if(tDAO.inserir(tur)) {
 			System.out.println("deu porra");
-			tur = new Turma();
+			zerar();
 			listarT();
 		}else {
 			System.out.println("não deu ;-;");
@@ -45,13 +46,22 @@ public class TurmaMB {
 	}
 	
 	public void listarSemestre() {
-		idCurso = cur.getId();
+		idCurso = tur.getId_curso();
 		int i = tDAO.listarId(idCurso);
 		
 		semestres = new ArrayList<Integer>();
 		for(int f = 1; f <= i; f++) {
 			semestres.add(f);
 		}
+	}
+	
+	private void zerar() {
+		tcur = new Curso();
+		tDAO = new turmaDAO();
+		tcDAO = new cursoDAO();
+		tur = new Turma();
+		semestres = new ArrayList<Integer>();
+		idCurso = 0;
 	}
 	
 	private void listarT() {
@@ -82,28 +92,28 @@ public class TurmaMB {
 		this.tDAO = tDAO;
 	}
 
-	public List<Curso> getCurL() {
-		return curL;
+	public List<Curso> getCurS() {
+		return curS;
 	}
 
-	public void setCurL(List<Curso> curL) {
-		this.curL = curL;
+	public void setCurS(List<Curso> curS) {
+		this.curS = curS;
 	}
 
-	public cursoDAO getcDAO() {
-		return cDAO;
+	public Curso getTcur() {
+		return tcur;
 	}
 
-	public void setcDAO(cursoDAO cDAO) {
-		this.cDAO = cDAO;
+	public void setTcur(Curso tcur) {
+		this.tcur = tcur;
 	}
 
-	public Curso getCur() {
-		return cur;
+	public cursoDAO getTcDAO() {
+		return tcDAO;
 	}
 
-	public void setCur(Curso cur) {
-		this.cur = cur;
+	public void setTcDAO(cursoDAO tcDAO) {
+		this.tcDAO = tcDAO;
 	}
 
 	public Integer getSemestre() {

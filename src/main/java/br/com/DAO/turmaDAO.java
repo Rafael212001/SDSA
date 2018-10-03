@@ -18,7 +18,7 @@ public class turmaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Turma t, int id, Integer sms) {
+	public boolean inserir(Turma t) {
 		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre, id_curso) VALUES (?,?,?,?,?,?)";
 
 		try {
@@ -27,8 +27,8 @@ public class turmaDAO {
 			ps.setInt(2, t.getQtd_alunos());
 			ps.setInt(3, t.getDivisao());
 			ps.setInt(4, t.getPeriodo());
-			ps.setInt(5, sms);
-			ps.setInt(6, id);
+			ps.setInt(5, t.getSemestre());
+			ps.setInt(6, t.getId_curso());
 
 			if (ps.executeUpdate() > 0) {
 				return true;

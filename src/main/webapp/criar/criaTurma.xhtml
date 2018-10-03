@@ -9,7 +9,8 @@
 			href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
-		<h:form id="formt">
+		<p:growl autoUpdate="true" showDetail="true"></p:growl>
+		<h:form id="formt" >
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				scrollable="true" scrollHeight="150">
 				<p:column>
@@ -30,7 +31,7 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">Curso</f:facet>
-					#{turL.semestre}
+					#{turL.id_curso}
 				</p:column>
 				<p:column>
 					<f:facet name="header">Semestre</f:facet>
@@ -41,20 +42,20 @@
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 					Curso:
-					<p:selectOneMenu id="curso" value="#{turmaMB.cur.id}">
-							<f:selectItem itemLabel="Selecione Curso" itemValue="0" />
-							<f:selectItems value="#{turmaMB.curL}" var="curL"
-								itemLabel="#{curL.nome}" itemValue="#{curL.id}" />
+					<p:selectOneMenu id="curso" value="#{turmaMB.tur.id_curso}">
+							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
+							<f:selectItems value="#{turmaMB.curS}" var="curS"
+								itemLabel="#{curS.nome}" itemValue="#{curS.id}" />
 							<p:ajax listener="#{turmaMB.listarSemestre}" event="change" update="semestre"/>
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
 					Semestre:
-					<p:selectOneMenu id="semestre" value="#{turmaMB.semestre}">
+					<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
-								itemLabel="#{semestre}º Semestre" itemValue="#{semestre}"/>
+								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
 						</p:selectOneMenu>
-						<p:message for="semestre" display="icon" />
+ 						<p:message for="semestre" display="icon"  />
                		Nome da Turma:
 					<h:inputText id="nome" styleClass="campo" required="true"
 							value="#{turmaMB.tur.nome}" />
@@ -72,7 +73,7 @@
 						<p:message for="divisao" display="icon" />
 					Período:
 					<p:selectOneMenu id="periodo" value="#{turmaMB.tur.periodo}">
-							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+							<f:selectItem itemLabel="Selecione Período" itemValue="" />
 							<f:selectItem itemLabel="Manha" itemValue="1" />
 							<f:selectItem itemLabel="Tarde" itemValue="2" />
 							<f:selectItem itemLabel="Noite" itemValue="3" />				
@@ -81,9 +82,8 @@
 					</h:panelGrid>
 				</div>
 				<div class="margin center">
-					<p:commandButton styleClass="button left" ajax="true"
-						update=":formt:dataT :formt:div" event="onclick" value="Salvar"
-						actionListener="#{turmaMB.criarTurma}" />
+					<p:commandButton styleClass="button left" actionListener="#{turmaMB.criarTurma}" ajax="true"
+						update=":formt:dataT :formt:div" event="onclick" value="Salvar" />
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Cancelar" />
 				</div>
