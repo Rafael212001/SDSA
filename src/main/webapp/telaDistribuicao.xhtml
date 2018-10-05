@@ -14,11 +14,15 @@
 	<h:form id="form">
 
 		<div class="aulasFormadas">
-			<p:fieldset id="availableCarsField">
-				<p:dataGrid id="availableCars" var="car" value="" columns="3">
-					<p:panel id="pnl" header="Bubis" style="text-align:center">
+			<p:fieldset id="aulas_alocarField">
+				<p:dataGrid id="aulas_alocar" var="aula" value="#{distribuicaoMB.aulas}" columns="3">
+					<p:panel id="pnl" header="#{aula.curso.nome}" style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
-							<h1>Bubina</h1>
+							<h3>Aulas</h3>
+							<h3>Turma: #{aula.turma}</h3>
+							<h3>Disciplina: #{aula.disciplina}</h3>
+							<h3>Professor: #{aula.colaborador}</h3>
+						
 						</h:panelGrid>
 					</p:panel>
 					<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"
@@ -41,9 +45,9 @@
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s1" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
-									datasource="availableCars" onDrop="handleDrop">
+									datasource="aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{dndCarsView.onCarDrop}"
-										update="dropS1 form:availableCars" />
+										update="dropS1 form:aulas_alocar" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s2">
@@ -174,9 +178,9 @@
 	</h:form>
 	<script type="text/javascript">
 		function handleDrop(event, ui) {
-			var droppedCar = ui.draggable;
+			var drop = ui.draggable;
 
-			droppedCar.fadeOut('fast');
+			drop.fadeOut('fast');
 		}
 	</script>
 </h:body>

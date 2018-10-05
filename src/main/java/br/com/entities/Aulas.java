@@ -3,16 +3,20 @@ package br.com.entities;
 public class Aulas {
 
 	private Integer id;
-	private Integer id_cursos;
+	private Curso curso;
 	private Integer id_turmas;
 	private Integer id_disciplina;
 	private Integer id_colaborador;
 	private Integer id_coordenador;
 	private Integer id_sala;
 	
-	public Aulas(Integer id, Integer id_cursos, Integer id_turmas, Integer id_disciplina, Integer id_colaborador, Integer id_coordenador , Integer id_sala ) {
+	
+
+	public Aulas(Integer id, Curso curso, Integer id_turmas, Integer id_disciplina, Integer id_colaborador,
+			Integer id_coordenador, Integer id_sala) {
+		super();
 		this.id = id;
-		this.id_cursos = id_cursos;
+		this.curso = curso;
 		this.id_turmas = id_turmas;
 		this.id_disciplina = id_disciplina;
 		this.id_colaborador = id_colaborador;
@@ -28,12 +32,13 @@ public class Aulas {
 		this.id = id;
 	}
 
-	public Integer getId_cursos() {
-		return id_cursos;
+
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setId_cursos(Integer id_cursos) {
-		this.id_cursos = id_cursos;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	public Integer getId_turmas() {

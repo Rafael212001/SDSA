@@ -20,17 +20,22 @@ public class DistribuicaoMB implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private List<Aulas> aulass;
 	private List<Aulas> drop;
 	private Aulas selecionadas;
+	private aulasDAO aDao;
 	
+	List<Aulas> aulas;
 	
+	public DistribuicaoMB() {
+		aDao = new aulasDAO();
+		aulas = aDao.listarTodos();
+	}
 	
 	public void onAulasDropSala1(DragDropEvent dde) {
-		Aulas aulas = ((Aulas) dde.getData());
+		Aulas aula = ((Aulas) dde.getData());
 		
-		drop.add(aulas);
-		aulass.remove(aulas);
+		drop.add(aula);
+		aulas.remove(aula);
 	}
 	
 	public void init() {
@@ -39,14 +44,6 @@ public class DistribuicaoMB implements Serializable {
 	}
 	
 	
-	public List<Aulas> getAulas() {
-		return aulass;
-	}
-
-	public void setAulas(List<Aulas> aulas) {
-		this.aulass = aulas;
-	}
-
 	public List<Aulas> getDrop() {
 		return drop;
 	}
@@ -62,6 +59,31 @@ public class DistribuicaoMB implements Serializable {
 	public void setSelecionadas(Aulas selecionadas) {
 		this.selecionadas = selecionadas;
 	}
+
+
+	public aulasDAO getaDao() {
+		return aDao;
+	}
+
+	public void setaDao(aulasDAO aDao) {
+		this.aDao = aDao;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public List<Aulas> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(List<Aulas> aulas) {
+		this.aulas = aulas;
+	}
+	
+	
+	
+	
 	
 	
 	

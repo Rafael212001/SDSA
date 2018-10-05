@@ -4,8 +4,19 @@ public class Curso {
 
 	private Integer id;
 	private String nome;
-	private int qtd_semestre;
+	private Integer qtd_semestre;
 	
+	public Curso() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Curso(Integer id, String nome, Integer qtd_semestre) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.qtd_semestre = qtd_semestre;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -22,11 +33,11 @@ public class Curso {
 		this.nome = nome;
 	}
 
-	public int getQtd_semestre() {
+	public Integer getQtd_semestre() {
 		return qtd_semestre;
 	}
 
-	public void setQtd_semestre(int qtd_semestre) {
+	public void setQtd_semestre(Integer qtd_semestre) {
 		this.qtd_semestre = qtd_semestre;
 	}
 
