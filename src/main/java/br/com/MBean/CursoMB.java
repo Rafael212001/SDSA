@@ -6,6 +6,7 @@ import javax.faces.bean.RequestScoped;
 
 import br.com.DAO.cursoDAO;
 import br.com.entities.Curso;
+import br.com.entities.Disciplina;
 
 @ManagedBean
 @RequestScoped
@@ -13,6 +14,7 @@ public class CursoMB {
 	Curso cur;
 	List<Curso> curL;
 	cursoDAO csDAO;
+	Disciplina d;
 	int lastId;
 	
 	public CursoMB() {
@@ -24,6 +26,7 @@ public class CursoMB {
 	public void criarCurso() {
 		lastId = csDAO.inserir(cur);
 		if(lastId > 0) {
+			d.setId_curso(lastId);
 			System.out.println("deu porra");
 			cur = new Curso();
 			listarCS();

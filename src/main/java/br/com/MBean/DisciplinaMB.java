@@ -1,5 +1,6 @@
 package br.com.MBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,7 @@ public class DisciplinaMB {
 	List<Disciplina> discL;
 	disciplinaDAO dDAO;
 	int lastId;
-	CursoMB c;
+	List<Integer> semestres;
 	
 	public DisciplinaMB() {
 		disc = new Disciplina();
@@ -24,16 +25,23 @@ public class DisciplinaMB {
 	}
 	
 	public void criarDisciplina() {
-		
-		lastId = c.getLastId();
-		
-		if(dDAO.inserir(disc, lastId)) {
+		if(dDAO.inserir(disc)) {
 			System.out.println("deu porra");
 			disc = new Disciplina();
 			listarD();
 		}else {
 			System.out.println("não deu ;-;");
 			listarD();
+		}
+	}
+	
+	public void listarSemestreC() {
+		lastId = disc.getId_curso();
+		int i = dDAO.listarId(lastId);
+		
+		semestres = new ArrayList<Integer>();
+		for(int f = 1; f <= i; f++) {
+			semestres.add(f);
 		}
 	}
 	
@@ -72,13 +80,4 @@ public class DisciplinaMB {
 	public void setLastId(int lastId) {
 		this.lastId = lastId;
 	}
-
-	public CursoMB getC() {
-		return c;
-	}
-
-	public void setC(CursoMB c) {
-		this.c = c;
-	}
-	
 }

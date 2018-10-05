@@ -39,9 +39,12 @@
 				<h:inputText id="chora" styleClass="campo" required="true" value="#{disciplinaMB.disc.carga_hora}" />
 				<p:message for="chora" display="icon" />
 				Quantidade de semestres:
-						<p:selectOneMenu id="semestre" effect="fold" editable="true">
-							<f:selectItems value="" />
+						<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
+							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
+								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
 						</p:selectOneMenu>
+ 						<p:message for="semestre" display="icon"  />
 					</h:panelGrid>
 				</div>
 			</p:panel>

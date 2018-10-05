@@ -18,14 +18,14 @@ public class disciplinaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Disciplina d, int l) {
+	public boolean inserir(Disciplina d) {
 		String sql = "INSERT INTO Disciplinas(?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, d.getNome());
 			ps.setInt(2, d.getCarga_hora());
-			ps.setInt(3, l);
+			ps.setInt(3, d.getId_curso());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -59,6 +59,25 @@ public class disciplinaDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public int listarId(int i) {
+		int f = 0;
+		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				f = rs.getInt("qtd_semestre");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return f;
 	}
 
 	public boolean excluir(Integer id) {
