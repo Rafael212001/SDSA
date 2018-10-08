@@ -10,7 +10,11 @@ import java.util.List;
 
 
 import br.com.entities.Aulas;
+import br.com.entities.Coordenador;
 import br.com.entities.Curso;
+import br.com.entities.Disciplina;
+import br.com.entities.Professor;
+import br.com.entities.Turma;
 import br.com.jdbc.ConnectionDB;
 
 
@@ -36,8 +40,12 @@ public class aulasDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null), rs.getInt("id_turmas"), rs.getInt("id_disciplina"), rs.getInt("id_colaborador"), 
-						rs.getInt("id_coordenador"), rs.getInt("id_sala"));
+				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null), 
+						new Turma(null, rs.getString("turma"),null, null, null, null, null ), 
+						new Disciplina(null, rs.getString("disciplina"), null, null, null),
+						new Professor(null, rs.getString("professor"), null, null, null, null ,null, null), 
+						new Coordenador( null, rs.getString("coordenador"), null, null), 
+						rs.getInt("id_sala"));
 				list.add(a);
 			}
 			

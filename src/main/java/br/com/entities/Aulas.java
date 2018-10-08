@@ -4,23 +4,23 @@ public class Aulas {
 
 	private Integer id;
 	private Curso curso;
-	private Integer id_turmas;
-	private Integer id_disciplina;
-	private Integer id_colaborador;
-	private Integer id_coordenador;
+	private Turma turma;
+	private Disciplina disciplina;
+	private Professor professor;
+	private Coordenador coordenador;
 	private Integer id_sala;
 	
 	
 
-	public Aulas(Integer id, Curso curso, Integer id_turmas, Integer id_disciplina, Integer id_colaborador,
-			Integer id_coordenador, Integer id_sala) {
+	public Aulas(Integer id, Curso curso, Turma turma,  Disciplina disciplina, Professor professor,
+			Coordenador coordenador, Integer id_sala) {
 		super();
 		this.id = id;
 		this.curso = curso;
-		this.id_turmas = id_turmas;
-		this.id_disciplina = id_disciplina;
-		this.id_colaborador = id_colaborador;
-		this.id_coordenador = id_coordenador;
+		this.turma = turma;
+		this.disciplina = disciplina;
+		this.professor = professor;
+		this.coordenador = coordenador;
 		this.id_sala = id_sala;
 	}
 
@@ -41,36 +41,39 @@ public class Aulas {
 		this.curso = curso;
 	}
 
-	public Integer getId_turmas() {
-		return id_turmas;
+	public Turma getTurma() {
+		return turma;
 	}
 
-	public void setId_turmas(Integer id_turmas) {
-		this.id_turmas = id_turmas;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
-	public Integer getId_disciplina() {
-		return id_disciplina;
+	public Disciplina getDisciplina() {
+		return disciplina;
 	}
 
-	public void setId_disciplina(Integer id_disciplina) {
-		this.id_disciplina = id_disciplina;
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
 
-	public Integer getId_colaborador() {
-		return id_colaborador;
+
+	public Professor getProfessor() {
+		return professor;
 	}
 
-	public void setId_colaborador(Integer id_colaborador) {
-		this.id_colaborador = id_colaborador;
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}
 
-	public Integer getId_coordenador() {
-		return id_coordenador;
+	
+
+	public Coordenador getCoordenador() {
+		return coordenador;
 	}
 
-	public void setId_coordenador(Integer id_coordenador) {
-		this.id_coordenador = id_coordenador;
+	public void setCoordenador(Coordenador coordenador) {
+		this.coordenador = coordenador;
 	}
 
 	public Integer getId_sala() {

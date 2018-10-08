@@ -4,7 +4,22 @@ public class Salas {
 
 	private Integer id;
 	private String descricao;
-	private int numero;
+	private Integer numero;
+	
+	public Salas() {
+		
+	} 
+	
+	
+
+	public Salas(Integer id, String descricao, Integer numero) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.numero = numero;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -22,11 +37,11 @@ public class Salas {
 		this.descricao = descricao;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 

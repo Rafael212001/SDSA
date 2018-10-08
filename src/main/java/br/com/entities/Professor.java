@@ -1,20 +1,40 @@
 package br.com.entities;
 
 public class Professor {
-	private int id;
+	private Integer id;
 	private String nome;
 	private String disciplina_le;
-	private int carga_hora;
-	private int restante;
-	private int tipo;
-	private int foto;
-	private int id_disciplina;
+	private Integer carga_hora;
+	private Integer restante;
+	private Integer tipo;
+	private Integer foto;
+	private Integer id_disciplina;
+	
+	public Professor() {
+		
+	}
 	
 	
-	public int getId() {
+	
+	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora, Integer restante, Integer tipo,
+			Integer foto, Integer id_disciplina) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.disciplina_le = disciplina_le;
+		this.carga_hora = carga_hora;
+		this.restante = restante;
+		this.tipo = tipo;
+		this.foto = foto;
+		this.id_disciplina = id_disciplina;
+	}
+
+
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -29,34 +49,34 @@ public class Professor {
 	public void setDisciplina_le(String disciplina_le) {
 		this.disciplina_le = disciplina_le;
 	}
-	public int getCarga_hora() {
+	public Integer getCarga_hora() {
 		return carga_hora;
 	}
-	public void setCarga_hora(int carga_hora) {
+	public void setCarga_hora(Integer carga_hora) {
 		this.carga_hora = carga_hora;
 	}
-	public int getRestante() {
+	public Integer getRestante() {
 		return restante;
 	}
-	public void setRestante(int restante) {
+	public void setRestante(Integer restante) {
 		this.restante = restante;
 	}
-	public int getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
-	public void setTipo(int tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
-	public int getFoto() {
+	public Integer getFoto() {
 		return foto;
 	}
-	public void setFoto(int foto) {
+	public void setFoto(Integer foto) {
 		this.foto = foto;
 	}
-	public int getId_disciplina() {
+	public Integer getId_disciplina() {
 		return id_disciplina;
 	}
-	public void setId_disciplina(int id_disciplina) {
+	public void setId_disciplina(Integer id_disciplina) {
 		this.id_disciplina = id_disciplina;
 	}
 	
