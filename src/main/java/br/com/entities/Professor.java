@@ -11,10 +11,8 @@ public class Professor {
 	private Integer id_disciplina;
 	
 	public Professor() {
-		
+		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora, Integer restante, Integer tipo,
 			Integer foto, Integer id_disciplina) {
@@ -29,56 +27,68 @@ public class Professor {
 		this.id_disciplina = id_disciplina;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDisciplina_le() {
 		return disciplina_le;
 	}
+
 	public void setDisciplina_le(String disciplina_le) {
 		this.disciplina_le = disciplina_le;
 	}
+
 	public Integer getCarga_hora() {
 		return carga_hora;
 	}
+
 	public void setCarga_hora(Integer carga_hora) {
 		this.carga_hora = carga_hora;
 	}
+
 	public Integer getRestante() {
 		return restante;
 	}
+
 	public void setRestante(Integer restante) {
 		this.restante = restante;
 	}
+
 	public Integer getTipo() {
 		return tipo;
 	}
+
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
+
 	public Integer getFoto() {
 		return foto;
 	}
+
 	public void setFoto(Integer foto) {
 		this.foto = foto;
 	}
+
 	public Integer getId_disciplina() {
 		return id_disciplina;
 	}
+
 	public void setId_disciplina(Integer id_disciplina) {
 		this.id_disciplina = id_disciplina;
 	}
-	
-	
+
 }

@@ -18,7 +18,7 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">Semestre Pert.</f:facet>
-					
+					#{discL.semestre}
 				</p:column>
 				<p:column>
 					<f:facet name="header">Carga Horária</f:facet>
@@ -39,9 +39,9 @@
 				<h:inputText id="chora" styleClass="campo" required="true" value="#{disciplinaMB.disc.carga_hora}" />
 				<p:message for="chora" display="icon" />
 				Quantidade de semestres:
-						<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
+						<p:selectOneMenu id="semestre" value="#{disciplinaMB.disc.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
-							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
+							<f:selectItems value="#{disciplinaMB.semestres}" var="semestre"
 								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
 						</p:selectOneMenu>
  						<p:message for="semestre" display="icon"  />

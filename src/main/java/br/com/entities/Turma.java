@@ -11,12 +11,11 @@ public class Turma {
 	private Integer id_curso;
 	
 	public Turma() {
-		
+		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	public Turma(Integer id, String nome, Integer qtd_alunos, Integer divisao, Integer periodo, Integer semestre, Integer id_curso) {
+	public Turma(Integer id, String nome, Integer qtd_alunos, Integer divisao, Integer periodo, Integer semestre,
+			Integer id_curso) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -27,91 +26,60 @@ public class Turma {
 		this.id_curso = id_curso;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
 	public String getNome() {
 		return nome;
 	}
-
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
-
 	public Integer getQtd_alunos() {
 		return qtd_alunos;
 	}
-
-
 
 	public void setQtd_alunos(Integer qtd_alunos) {
 		this.qtd_alunos = qtd_alunos;
 	}
 
-
-
 	public Integer getDivisao() {
 		return divisao;
 	}
-
-
 
 	public void setDivisao(Integer divisao) {
 		this.divisao = divisao;
 	}
 
-
-
 	public Integer getPeriodo() {
 		return periodo;
 	}
-
-
 
 	public void setPeriodo(Integer periodo) {
 		this.periodo = periodo;
 	}
 
-
-
 	public Integer getSemestre() {
 		return semestre;
 	}
-
-
 
 	public void setSemestre(Integer semestre) {
 		this.semestre = semestre;
 	}
 
-
-
 	public Integer getId_curso() {
 		return id_curso;
 	}
 
-
-
 	public void setId_curso(Integer id_curso) {
 		this.id_curso = id_curso;
 	}
-
-
-
 
 }

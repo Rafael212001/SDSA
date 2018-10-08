@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -12,7 +13,7 @@ import br.com.DAO.coordenadorDAO;
 import br.com.entities.Coordenador;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class CoordenadorMB {
 	Coordenador coor;
 	List<Coordenador> coo;

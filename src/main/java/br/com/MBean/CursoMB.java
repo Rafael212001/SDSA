@@ -3,13 +3,14 @@ package br.com.MBean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.cursoDAO;
 import br.com.entities.Curso;
 import br.com.entities.Disciplina;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class CursoMB {
 	Curso cur;
 	List<Curso> curL;

@@ -54,25 +54,6 @@ CREATE TABLE Salas(
 	descricao      varchar(100)
 ); 
 
-INSERT INTO SALAS VALUES (1, "SALA 01");
-INSERT INTO SALAS VALUES (2, "SALA 02");
-INSERT INTO SALAS VALUES (3, "SALA 03");
-INSERT INTO SALAS VALUES (4, "SALA 04");
-INSERT INTO SALAS VALUES (5, "SALA 05");
-INSERT INTO SALAS VALUES (6, "SALA 06");
-INSERT INTO SALAS VALUES (7, "SALA 07");
-INSERT INTO SALAS VALUES (8, "SALA 08");
-INSERT INTO SALAS VALUES (9, "SALA 09");
-INSERT INTO SALAS VALUES (10, "SALA 10");
-INSERT INTO SALAS VALUES (11, "SALA 11");
-INSERT INTO SALAS VALUES (12, "SALA 12");
-INSERT INTO SALAS VALUES (13, "SALA 13");
-INSERT INTO SALAS VALUES (14, "SALA 14");
-INSERT INTO SALAS VALUES (15, "SALA 15");
-INSERT INTO SALAS VALUES (16, "SALA 16");
-INSERT INTO SALAS VALUES (18, "SALA 18");
-INSERT INTO SALAS VALUES (35, "SALA 35");
-
 CREATE TABLE Aulas(
 	id             int primary key not null AUTO_INCREMENT,
     id_cursos      int,
@@ -100,5 +81,43 @@ CREATE TABLE Carga_horaria_restante(
     foreign key (id_turma) references Turmas (id)
 );
 
+INSERT INTO Cursos(nome, qtd_semestre)
+		VALUES	("Técnico em informática", 4),
+				("Redes", 2),
+				("Almoxarifado", 2),
+				("Curso com 3", 3),
+				("Curso com 1", 1),
+				("Curso com 5", 5),
+				("Curso com 20", 20);
+
+INSERT INTO Turmas(nome, qtd_alunos, divisao, periodo, semestre, id_curso)
+		VALUES	("1TI", 32, 1, 1, 1, 1),
+				("2TI", 32, 1, 1, 2, 1),
+				("1Rede", 16, 2, 3, 1, 2);
+				
+INSERT INTO Disciplinas(nome, carga_hora, semestre, id_turma, id_curso)
+		VALUES	("C++", 75, 1, 1, 1),
+				("Português", 60, 2, 2, 1);
+				
+
 INSERT INTO Coordenadores (nome,login,senha)
-		VALUES ("Tarciso", 28011999, "123");
+		VALUES	("Tarciso", 28011999, "123");
+		
+INSERT INTO SALAS VALUES (1, "SALA 01");
+INSERT INTO SALAS VALUES (2, "SALA 02");
+INSERT INTO SALAS VALUES (3, "SALA 03");
+INSERT INTO SALAS VALUES (4, "SALA 04");
+INSERT INTO SALAS VALUES (5, "SALA 05");
+INSERT INTO SALAS VALUES (6, "SALA 06");
+INSERT INTO SALAS VALUES (7, "SALA 07");
+INSERT INTO SALAS VALUES (8, "SALA 08");
+INSERT INTO SALAS VALUES (9, "SALA 09");
+INSERT INTO SALAS VALUES (10, "SALA 10");
+INSERT INTO SALAS VALUES (11, "SALA 11");
+INSERT INTO SALAS VALUES (12, "SALA 12");
+INSERT INTO SALAS VALUES (13, "SALA 13");
+INSERT INTO SALAS VALUES (14, "SALA 14");
+INSERT INTO SALAS VALUES (15, "SALA 15");
+INSERT INTO SALAS VALUES (16, "SALA 16");
+INSERT INTO SALAS VALUES (18, "SALA 18");
+INSERT INTO SALAS VALUES (35, "SALA 35");

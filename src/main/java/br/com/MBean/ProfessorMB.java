@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.professorDAO;
 import br.com.entities.Professor;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ProfessorMB {
 	Professor prof;
 	List<Professor> profL;

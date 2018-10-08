@@ -7,19 +7,15 @@ public class Salas {
 	private Integer numero;
 	
 	public Salas() {
-		
-	} 
+		// TODO Auto-generated constructor stub
+	}
 	
-	
-
 	public Salas(Integer id, String descricao, Integer numero) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.numero = numero;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -28,7 +24,7 @@ public class Salas {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}

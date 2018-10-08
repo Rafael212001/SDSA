@@ -7,12 +7,17 @@ public class Carga_horaria_restante {
 	private Integer id_disciplina;
 	private Integer id_turma;
 	
-	public Carga_horaria_restante(Integer id, int tempo, Integer id_disciplina,Integer id_turma  ) {
+	public Carga_horaria_restante() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Carga_horaria_restante(Integer id, int tempo, Integer id_disciplina, Integer id_turma) {
+		super();
 		this.id = id;
 		this.tempo = tempo;
 		this.id_disciplina = id_disciplina;
 		this.id_turma = id_turma;
-		
+
 	}
 
 	public Integer getId() {

@@ -10,9 +10,11 @@ public class Aulas {
 	private Coordenador coordenador;
 	private Integer id_sala;
 	
+	public Aulas() {
+		// TODO Auto-generated constructor stub
+	}
 	
-
-	public Aulas(Integer id, Curso curso, Turma turma,  Disciplina disciplina, Professor professor,
+	public Aulas(Integer id, Curso curso, Turma turma, Disciplina disciplina, Professor professor,
 			Coordenador coordenador, Integer id_sala) {
 		super();
 		this.id = id;
@@ -31,7 +33,6 @@ public class Aulas {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Curso getCurso() {
 		return curso;
@@ -57,7 +58,6 @@ public class Aulas {
 		this.disciplina = disciplina;
 	}
 
-
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -65,8 +65,6 @@ public class Aulas {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-
-	
 
 	public Coordenador getCoordenador() {
 		return coordenador;
@@ -83,8 +81,5 @@ public class Aulas {
 	public void setId_sala(Integer id_sala) {
 		this.id_sala = id_sala;
 	}
-	
-	
-	
 
 }
