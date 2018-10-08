@@ -16,9 +16,12 @@ public class CursoMB {
 	List<Curso> curL;
 	cursoDAO csDAO;
 	Disciplina d;
+	DisciplinaMB dMB;
 	int lastId;
 	
 	public CursoMB() {
+		dMB = new DisciplinaMB();
+		d = new Disciplina();
 		cur = new Curso();
 		csDAO = new cursoDAO();
 		curL = csDAO.listarTodos();
@@ -26,11 +29,11 @@ public class CursoMB {
 	
 	public void criarCurso() {
 		lastId = csDAO.inserir(cur);
-		if(lastId > 0) {
-			d.setId_curso(lastId);
+		if(lastId > 0) {			
 			System.out.println("deu porra");
 			cur = new Curso();
 			listarCS();
+			dMB.Id = lastId;
 		}else {
 			System.out.println("não deu ;-;");
 			listarCS();
@@ -72,4 +75,21 @@ public class CursoMB {
 	public void setLastId(int lastId) {
 		this.lastId = lastId;
 	}
+
+	public Disciplina getD() {
+		return d;
+	}
+
+	public void setD(Disciplina d) {
+		this.d = d;
+	}
+
+	public DisciplinaMB getdMB() {
+		return dMB;
+	}
+
+	public void setdMB(DisciplinaMB dMB) {
+		this.dMB = dMB;
+	}
+	
 }

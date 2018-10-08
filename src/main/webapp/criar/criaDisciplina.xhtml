@@ -10,6 +10,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formD">
+		<p:ajax listener="#{disciplinaMB.listarSemestreC}" event="change" update="semestre"/>
 			<p:dataTable id="dataT" var="discL" scrollable="true"
 				scrollHeight="150" value="#{disciplinaMB.discL}">
 				<p:column>

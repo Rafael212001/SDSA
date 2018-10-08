@@ -46,7 +46,6 @@ public class salaDAO {
 
 			while (rs.next()) {
 				Salas s = new Salas(); 
-				s.setId(rs.getInt("id"));
 				s.setDescricao(rs.getString("descricao"));
 				s.setNumero(rs.getInt("numero"));
 				list.add(s);

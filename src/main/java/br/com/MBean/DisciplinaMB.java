@@ -16,13 +16,13 @@ public class DisciplinaMB {
 	Disciplina disc;
 	List<Disciplina> discL;
 	disciplinaDAO dDAO;
-	int lastId;
+	int Id;
 	List<Integer> semestres;
 
 	public DisciplinaMB() {
 		disc = new Disciplina();
 		dDAO = new disciplinaDAO();
-		listarD();
+		listarSemestreC();
 	}
 
 	public void criarDisciplina() {
@@ -37,9 +37,7 @@ public class DisciplinaMB {
 	}
 
 	public void listarSemestreC() {
-		lastId = disc.getId_curso();
-		int i = dDAO.listarId(lastId);
-
+		int i = dDAO.listarId(Id);
 		semestres = new ArrayList<Integer>();
 		for (int f = 1; f <= i; f++) {
 			semestres.add(f);
@@ -47,8 +45,8 @@ public class DisciplinaMB {
 	}
 
 	private void listarD() {
-		
-		discL = dDAO.listarTodos(lastId);
+
+		discL = dDAO.listarTodos(Id);
 	}
 
 	public Disciplina getDisc() {
@@ -75,12 +73,12 @@ public class DisciplinaMB {
 		this.dDAO = dDAO;
 	}
 
-	public int getLastId() {
-		return lastId;
+	public int getId() {
+		return Id;
 	}
 
-	public void setLastId(int lastId) {
-		this.lastId = lastId;
+	public void setId(int id) {
+		Id = id;
 	}
 
 	public List<Integer> getSemestres() {

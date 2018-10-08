@@ -2,7 +2,6 @@ package br.com.entities;
 
 public class Salas {
 
-	private Integer id;
 	private String descricao;
 	private Integer numero;
 	
@@ -10,19 +9,10 @@ public class Salas {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Salas(Integer id, String descricao, Integer numero) {
+	public Salas(String descricao, Integer numero) {
 		super();
-		this.id = id;
 		this.descricao = descricao;
 		this.numero = numero;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getDescricao() {
