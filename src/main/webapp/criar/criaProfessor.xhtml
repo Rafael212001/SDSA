@@ -37,17 +37,35 @@
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
                		Nome:
-					<h:inputText id="nome" styleClass="campo" required="true" value="#{professorMB.prof.nome}" />
-					<p:message for="nome" display="icon"/>
-	          		Disciplina:
-					<h:inputText id="disciplina" styleClass="campo" required="true" value="#{professorMB.prof.disciplina_le}" />
-					<p:message for="disciplina" display="icon"/>
+					<h:inputText id="nome" styleClass="campo" required="true"
+							value="#{professorMB.prof.nome}" />
+						<p:message for="nome" display="icon" />
+					Curso:
+					<p:selectOneMenu id="curso" value="#{professorMB.idC}">
+							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
+							<f:selectItems value="#{turmaMB.curS}" var="curS"
+								itemLabel="#{curS.nome}" itemValue="#{curS.id}" />
+							<p:ajax listener="#{professorMB.listDisc}" event="change"
+								update="disciplina" />
+						</p:selectOneMenu>
+						<p:message for="curso" display="icon" />
+					Disciplina::
+					<p:selectOneMenu id="disciplina" value="#{professorMB.prof.disciplina_le}">
+							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+							<f:selectItems value="#{professorMB.d}" var="d"
+								itemLabel="#{d.nome} Semestre" itemValue="#{d.id}" />
+						</p:selectOneMenu>
+						<p:message for="disciplina" display="icon" />
 					Carga Horária:
-					<h:inputText id="carga" styleClass="campo" required="true" value="#{professorMB.prof.carga_hora}" />
-					<p:message for="carga" display="icon"/>
+					<h:inputText id="carga" styleClass="campo" required="true"
+							value="#{professorMB.prof.carga_hora}" />
+						<p:message for="carga" display="icon" />
 					Tipo:
-					<h:inputText id="tipo" styleClass="campo" required="true" value="#{professorMB.prof.tipo}" />
-					<p:message for="tipo" display="icon"/>
+						<p:selectOneRadio id="tipo" value="#{professorMB.prof.tipo}">
+							<f:selectItem itemLabel="Professor" itemValue="1" />
+							<f:selectItem itemLabel="Instrutor" itemValue="2" />
+						</p:selectOneRadio>
+						<p:message for="tipo" display="icon" /> 
 					</h:panelGrid>
 				</div>
 				<div class="margin center">

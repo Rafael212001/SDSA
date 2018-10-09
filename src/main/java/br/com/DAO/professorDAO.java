@@ -7,20 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entities.Disciplina;
 import br.com.entities.Professor;
 import br.com.jdbc.ConnectionDB;
 
 public class professorDAO {
 	Connection con;
-	
+
 	public professorDAO() {
 		con = ConnectionDB.getConnection();
 	}
-	
-	public boolean inserir (Professor p) {
+
+	public boolean inserir(Professor p) {
 		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, foto)"
 				+ "VALUES (?,?,?,?,?,?)";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
@@ -29,55 +30,76 @@ public class professorDAO {
 			ps.setInt(4, p.getRestante());
 			ps.setInt(5, p.getTipo());
 			ps.setInt(6, p.getFoto());
-			
+
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-		} 
+
+		}
 		return false;
 	}
-	
-	public List<Professor> listarTodos(){
+
+	public List<Professor> listarTodos() {
 		List<Professor> list = new ArrayList<Professor>();
 		String sql = "SELECT * FROM Colaboradores ";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				Professor p = new Professor();
 				p.setId(rs.getInt("id"));
 				p.setNome(rs.getString("nome"));
 				p.setDisciplina_le(rs.getString("disciplina_le"));
-				p.setCarga_hora(rs.getInt("carga_hora")); 
+				p.setCarga_hora(rs.getInt("carga_hora"));
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
 				p.setFoto(rs.getInt("foto"));
 				p.setId_disciplina(rs.getInt("id_disciplina"));
-				
+
 				list.add(p);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
-	
+
+	public List<Disciplina> listarId(int i) {
+		List<Disciplina> list = new ArrayList<Disciplina>();
+		String sql = "SELECT * FROM Disciplinas WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Disciplina d = new Disciplina();
+				d.setId(rs.getInt("id"));
+				d.setNome(rs.getString("nome"));
+				list.add(d);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Colaboradores " + "WHERE id = ? ";
-		
+		String sql = "DELETE * FROM Colaboradores WHERE id = ? ";
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
-			
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -88,7 +110,5 @@ public class professorDAO {
 		}
 		return false;
 	}
-	
-	
 
 }

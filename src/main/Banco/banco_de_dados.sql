@@ -41,6 +41,14 @@ CREATE TABLE Colaboradores(
 	foreign key (id_disciplina) references Disciplinas (id)
 );
 
+CREATE TABLE CD(
+	id             int primary key not null AUTO_INCREMENT,]
+	id_colaborador int,
+	id_disciplina  int,
+	foreign key (id_colaborador) references Colaboradores(id),
+	foreign key (id_disciplina)	 references Disciplinas(id)
+);
+
 CREATE TABLE Coordenadores(
 	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),

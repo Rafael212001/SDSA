@@ -10,7 +10,7 @@
 	</h:head>
 	<h:body>
 		<p:growl autoUpdate="true" showDetail="true"></p:growl>
-		<h:form id="formt" >
+		<h:form id="formt">
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				scrollable="true" scrollHeight="150">
 				<p:column>
@@ -46,16 +46,17 @@
 							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
 							<f:selectItems value="#{turmaMB.curS}" var="curS"
 								itemLabel="#{curS.nome}" itemValue="#{curS.id}" />
-							<p:ajax listener="#{turmaMB.listarSemestre}" event="change" update="semestre"/>
+							<p:ajax listener="#{turmaMB.listarSemestre}" event="change"
+								update="semestre" />
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
 					Semestre:
 					<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
-								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
+								itemLabel="#{semestre} Semestre" itemValue="#{semestre}" />
 						</p:selectOneMenu>
- 						<p:message for="semestre" display="icon"  />
+						<p:message for="semestre" display="icon" />
                		Nome da Turma:
 					<h:inputText id="nome" styleClass="campo" required="true"
 							value="#{turmaMB.tur.nome}" />
@@ -65,24 +66,25 @@
 							value="#{turmaMB.tur.qtd_alunos}" />
 						<p:message for="qtd" display="icon" />
 					Divisão:
-					<p:selectOneMenu id="divisao" value="#{turmaMB.tur.divisao}">
-							<f:selectItem itemLabel="Selecione Divisão" itemValue="" />
+							<p:selectOneRadio id="divisao" layout="responsive" columns="3" value="#{turmaMB.tur.divisao}">
 							<f:selectItem itemLabel="Sim" itemValue="1" />
-							<f:selectItem itemLabel="Não" itemValue="2" />				
-						</p:selectOneMenu>
+							<f:selectItem itemLabel="Não" itemValue="2" />
+						</p:selectOneRadio>
 						<p:message for="divisao" display="icon" />
 					Período:
-					<p:selectOneMenu id="periodo" value="#{turmaMB.tur.periodo}">
-							<f:selectItem itemLabel="Selecione Período" itemValue="" />
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<p:selectOneRadio id="periodo" layout="grid" columns="3" value="#{turmaMB.tur.periodo}">
 							<f:selectItem itemLabel="Manha" itemValue="1" />
 							<f:selectItem itemLabel="Tarde" itemValue="2" />
-							<f:selectItem itemLabel="Noite" itemValue="3" />				
-						</p:selectOneMenu>
+							<f:selectItem itemLabel="Noite" itemValue="3" />
+						</p:selectOneRadio>
 						<p:message for="periodo" display="icon" />
+					</h:panelGrid>
 					</h:panelGrid>
 				</div>
 				<div class="margin center">
-					<p:commandButton styleClass="button left" actionListener="#{turmaMB.criarTurma}" ajax="true"
+					<p:commandButton styleClass="button left"
+						actionListener="#{turmaMB.criarTurma}" ajax="true"
 						update=":formt:dataT :formt:div" event="onclick" value="Salvar" />
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Cancelar" />
