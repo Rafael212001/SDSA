@@ -31,7 +31,8 @@ public class CursoMB {
 			System.out.println("deu porra");
 			cur = new Curso();
 			listarCS();
-			dMB.listarSemestreC(lastId);
+			dMB.setID(lastId);
+			dMB.listarSemestreC();
 		}else {
 			System.out.println("não deu ;-;");
 			listarCS();

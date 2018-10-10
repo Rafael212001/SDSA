@@ -34,18 +34,20 @@
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome" styleClass="campo" required="true" value="#{disciplinaMB.disc.nome}" />
+				<h:inputText id="nome" styleClass="campo" required="false" value="#{disciplinaMB.disc.nome}" />
 				<p:message for="nome" display="icon" />
 				Carga Horária:
-				<h:inputText id="chora" styleClass="campo" required="true" value="#{disciplinaMB.disc.carga_hora}" />
+				<h:inputText id="chora" styleClass="campo" required="false" value="#{disciplinaMB.disc.carga_hora}" />
 				<p:message for="chora" display="icon" />
 				Quantidade de semestres:
-						<p:selectOneMenu id="semestre" value="#{disciplinaMB.disc.semestre}">
+						<p:selectOneMenu id="semestreD" required="false" value="#{disciplinaMB.disc.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{disciplinaMB.semestres}" var="semestre"
 								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
+							<p:autoUpdate />
 						</p:selectOneMenu>
- 						<p:message for="semestre" display="icon"  />
+						<p:commandButton value="atualizar" update="semestreD" actionListener="#{disciplinaMB.listarSemestreC}"/>
+ 						<p:message for="semestreD" display="icon"  />
 					</h:panelGrid>
 				</div>
 			</p:panel>

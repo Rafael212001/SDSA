@@ -6,6 +6,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.context.RequestContext;
 
 import br.com.DAO.disciplinaDAO;
 import br.com.entities.Disciplina;
@@ -16,7 +19,7 @@ public class DisciplinaMB {
 	Disciplina disc = new Disciplina();
 	List<Disciplina> discL;
 	disciplinaDAO dDAO = new disciplinaDAO();
-	List<Integer> semestres;
+	private List<Integer> semestres;
 	int ID;
 
 	public DisciplinaMB() {
@@ -34,13 +37,13 @@ public class DisciplinaMB {
 		}
 	}
 
-	public void listarSemestreC(int id) {
-		ID = id;
-		int i = dDAO.listarId(id);
+	public void listarSemestreC() {
+		int i = dDAO.listarId(ID);
 		semestres = new ArrayList<Integer>();
 		for (int f = 1; f <= i; f++) {
 			semestres.add(f);
 		}
+		
 	}
 
 	private void listarD() {
@@ -66,7 +69,7 @@ public class DisciplinaMB {
 	public disciplinaDAO getdDAO() {
 		return dDAO;
 	}
-
+ 
 	public void setdDAO(disciplinaDAO dDAO) {
 		this.dDAO = dDAO;
 	}
