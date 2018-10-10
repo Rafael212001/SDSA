@@ -42,7 +42,7 @@ CREATE TABLE Colaboradores(
 );
 
 CREATE TABLE CD(
-	id             int primary key not null AUTO_INCREMENT,]
+	id             int primary key not null AUTO_INCREMENT,
 	id_colaborador int,
 	id_disciplina  int,
 	foreign key (id_colaborador) references Colaboradores(id),
