@@ -49,7 +49,7 @@
 								update="disciplina" />
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
-					Disciplina::
+					Disciplina:
 					<p:selectOneMenu id="disciplina" value="#{professorMB.prof.disciplina_le}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{professorMB.d}" var="d"
@@ -71,7 +71,7 @@
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formp:dataT :formp:div" event="onclick" value="Salvar"
-						actionListener="#{professorMB.criarProfessor}" />
+						actionListener="#{professorMB.criarProfessor}" onclick=""/>
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Cancelar" />
 				</div>

@@ -2,6 +2,7 @@ package br.com.MBean;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
@@ -12,18 +13,15 @@ import br.com.entities.Disciplina;
 @ManagedBean
 @ViewScoped
 public class CursoMB {
-	Curso cur;
+	Curso cur = new Curso();
 	List<Curso> curL;
-	cursoDAO csDAO;
-	Disciplina d;
-	DisciplinaMB dMB;
+	cursoDAO csDAO = new cursoDAO();
+	Disciplina d = new Disciplina();
+	@ManagedProperty(value = "#{disciplinaMB}")
+		DisciplinaMB dMB;
 	int lastId;
 	
 	public CursoMB() {
-		dMB = new DisciplinaMB();
-		d = new Disciplina();
-		cur = new Curso();
-		csDAO = new cursoDAO();
 		curL = csDAO.listarTodos();
 	}
 	
@@ -33,7 +31,7 @@ public class CursoMB {
 			System.out.println("deu porra");
 			cur = new Curso();
 			listarCS();
-			dMB.Id = lastId;
+			dMB.listarSemestreC(lastId);
 		}else {
 			System.out.println("não deu ;-;");
 			listarCS();

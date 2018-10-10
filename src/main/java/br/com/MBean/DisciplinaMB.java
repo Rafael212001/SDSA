@@ -13,16 +13,14 @@ import br.com.entities.Disciplina;
 @ManagedBean
 @ViewScoped
 public class DisciplinaMB {
-	Disciplina disc;
+	Disciplina disc = new Disciplina();
 	List<Disciplina> discL;
-	disciplinaDAO dDAO;
-	int Id;
+	disciplinaDAO dDAO = new disciplinaDAO();
 	List<Integer> semestres;
+	int ID;
 
 	public DisciplinaMB() {
-		disc = new Disciplina();
-		dDAO = new disciplinaDAO();
-		listarSemestreC();
+
 	}
 
 	public void criarDisciplina() {
@@ -36,8 +34,9 @@ public class DisciplinaMB {
 		}
 	}
 
-	public void listarSemestreC() {
-		int i = dDAO.listarId(Id);
+	public void listarSemestreC(int id) {
+		ID = id;
+		int i = dDAO.listarId(id);
 		semestres = new ArrayList<Integer>();
 		for (int f = 1; f <= i; f++) {
 			semestres.add(f);
@@ -45,8 +44,7 @@ public class DisciplinaMB {
 	}
 
 	private void listarD() {
-
-		discL = dDAO.listarTodos(Id);
+		discL = dDAO.listarTodos(ID);
 	}
 
 	public Disciplina getDisc() {
@@ -73,12 +71,12 @@ public class DisciplinaMB {
 		this.dDAO = dDAO;
 	}
 
-	public int getId() {
-		return Id;
+	public int getID() {
+		return ID;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setID(int iD) {
+		ID = iD;
 	}
 
 	public List<Integer> getSemestres() {
