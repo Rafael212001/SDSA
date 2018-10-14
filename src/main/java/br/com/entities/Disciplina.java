@@ -6,21 +6,19 @@ public class Disciplina {
 	private String nome;
 	private Integer carga_hora;
 	private Integer semestre;
-	private Integer id_turma;
 	private Integer id_curso;
 	
 	public Disciplina() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Disciplina(Integer id, String nome, Integer carga_hora, Integer semestre, Integer id_turma,
+	public Disciplina(Integer id, String nome, Integer carga_hora, Integer semestre,
 			Integer id_curso) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.carga_hora = carga_hora;
 		this.semestre = semestre;
-		this.id_turma = id_turma;
 		this.id_curso = id_curso;
 	}
 
@@ -54,14 +52,6 @@ public class Disciplina {
 
 	public void setSemestre(Integer semestre) {
 		this.semestre = semestre;
-	}
-
-	public Integer getId_turma() {
-		return id_turma;
-	}
-
-	public void setId_turma(Integer id_turma) {
-		this.id_turma = id_turma;
 	}
 
 	public Integer getId_curso() {

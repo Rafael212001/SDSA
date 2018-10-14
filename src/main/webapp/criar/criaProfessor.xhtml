@@ -50,11 +50,11 @@
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
 					Disciplina:
-					<p:selectOneMenu id="disciplina" value="#{professorMB.prof.disciplina_le}">
+					<p:selectManyMenu id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{professorMB.d}" var="d"
 								itemLabel="#{d.nome} Semestre" itemValue="#{d.id}" />
-						</p:selectOneMenu>
+						</p:selectManyMenu>
 						<p:message for="disciplina" display="icon" />
 					Carga Horária:
 					<h:inputText id="carga" styleClass="campo" required="true"

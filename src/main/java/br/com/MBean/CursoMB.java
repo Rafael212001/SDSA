@@ -18,7 +18,7 @@ public class CursoMB {
 	cursoDAO csDAO = new cursoDAO();
 	Disciplina d = new Disciplina();
 	@ManagedProperty(value = "#{disciplinaMB}")
-		DisciplinaMB dMB;
+	DisciplinaMB dMB;
 	int lastId;
 	
 	public CursoMB() {

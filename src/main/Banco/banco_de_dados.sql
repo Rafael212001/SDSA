@@ -23,9 +23,7 @@ CREATE TABLE Disciplinas(
     nome           varchar(100),
     carga_hora     int,
 	semestre       int,
-    id_turma       int,
 	id_curso       int,
-	foreign key (id_turma) references Turmas (id),
 	foreign key (id_curso) references Cursos (id)
 );
 
@@ -103,9 +101,9 @@ INSERT INTO Turmas(nome, qtd_alunos, divisao, periodo, semestre, id_curso)
 				("2TI", 32, 1, 1, 2, 1),
 				("1Rede", 16, 2, 3, 1, 2);
 				
-INSERT INTO Disciplinas(nome, carga_hora, semestre, id_turma, id_curso)
-		VALUES	("C++", 75, 1, 1, 1),
-				("Português", 60, 2, 2, 1);
+INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso)
+		VALUES	("C++", 75, 1, 1),
+				("Português", 60, 2, 1);
 				
 
 INSERT INTO Coordenadores (nome,login,senha)

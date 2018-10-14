@@ -19,15 +19,14 @@ public class disciplinaDAO {
 	}
 
 	public boolean inserir(Disciplina d) {
-		String sql = "INSERT INTO Disciplinas(?,?,?,?,?)";
+		String sql = "INSERT INTO Disciplinas ( ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, d.getNome());
 			ps.setInt(2, d.getCarga_hora());
 			ps.setInt(3, d.getSemestre());
-			ps.setInt(4, d.getId_turma());
-			ps.setInt(5, d.getId_curso());
+			ps.setInt(4, d.getId_curso());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -55,7 +54,6 @@ public class disciplinaDAO {
 				d.setNome(rs.getString("nome"));
 				d.setCarga_hora(rs.getInt("carga_hora"));
 				d.setSemestre(rs.getInt("semestre"));
-				d.setId_turma(rs.getInt("id_turma"));
 				d.setId_curso(rs.getInt("id_curso"));
 				list.add(d);
 			}

@@ -27,6 +27,7 @@ public class DisciplinaMB {
 	}
 
 	public void criarDisciplina() {
+		disc.setId_curso(ID);
 		if (dDAO.inserir(disc)) {
 			System.out.println("deu porra");
 			disc = new Disciplina();
