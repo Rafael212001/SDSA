@@ -13,6 +13,7 @@ import org.primefaces.event.DragDropEvent;
 
 import br.com.DAO.aulasDAO;
 import br.com.entities.Aulas;
+import br.com.entities.Curso;
 
 @ManagedBean
 @ViewScoped
@@ -20,7 +21,7 @@ public class DistribuicaoMB implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private List<Aulas> drop;
+	private List<Aulas> dropSala1;
 	private Aulas selecionadas;
 	private aulasDAO aDao;
 	
@@ -28,29 +29,25 @@ public class DistribuicaoMB implements Serializable {
 	
 	public DistribuicaoMB() {
 		aDao = new aulasDAO();
-		aulas = aDao.listarTodos();
+		aulas = aDao.listarTodasSemSala();
+		dropSala1 = new ArrayList<Aulas>();
 	}
 	
 	public void onAulasDropSala1(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 		
-		drop.add(aula);
+		//chamar daoAula para atualizar a sala que foi inserida
+		
+		dropSala1.add(aula);
 		aulas.remove(aula);
 	}
 	
+	
 	public void init() {
 		//aulass = ;
-		drop = new ArrayList<Aulas>();
+		
 	}
 	
-	
-	public List<Aulas> getDrop() {
-		return drop;
-	}
-
-	public void setDrop(List<Aulas> drop) {
-		this.drop = drop;
-	}
 
 	public Aulas getSelecionadas() {
 		return selecionadas;
@@ -79,6 +76,14 @@ public class DistribuicaoMB implements Serializable {
 
 	public void setAulas(List<Aulas> aulas) {
 		this.aulas = aulas;
+	}
+
+	public List<Aulas> getDropSala1() {
+		return dropSala1;
+	}
+
+	public void setDropSala1(List<Aulas> dropSala1) {
+		this.dropSala1 = dropSala1;
 	}
 	
 	

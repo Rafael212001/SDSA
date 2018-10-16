@@ -25,27 +25,29 @@ public class aulasDAO {
 		con = ConnectionDB.getConnection();
 	}
 	
-	public List<Aulas> listarTodos(){
+	public List<Aulas> listarTodasSemSala(){
 		List<Aulas> list = new ArrayList<Aulas>();
-		String sql = " SELECT c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador" + 
-				"FROM aulas " + 
-				"INNER JOIN cursos c ON (a.id_cursos = c.id)" + 
-				"INNER JOIN turmas t ON (a.id_turmas = t.id)" + 
-				"INNER JOIN disciplinas d ON (a.id_disciplina = d.id)" + 
-				"INNER JOIN colaboradores co ON (a.id_colaborador = co.id)" + 
-				"INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) ";
+		String sql = " SELECT a.id as id, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador" + 
+				" FROM aulas a " + 
+				" INNER JOIN cursos c ON (a.id_cursos = c.id)" + 
+				" INNER JOIN turmas t ON (a.id_turmas = t.id)" + 
+				" INNER JOIN disciplinas d ON (a.id_disciplina = d.id)" + 
+				" INNER JOIN colaboradores co ON (a.id_colaborador = co.id)" + 
+				" INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) "
+				+ " WHERE a.id_sala is NULL ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			System.out.println(ps.toString());
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null), 
 						new Turma(null, rs.getString("turma"),null, null, null, null, null ), 
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
-						new Professor(null, rs.getString("professor"), null, null, null, null ,null, null), 
+						new Professor(null, rs.getString("colaborador"), null, null, null, null ,null, null), 
 						new Coordenador( null, rs.getString("coordenador"), null, null), 
-						rs.getInt("id_sala"));
+						null);
 				list.add(a);
 			}
 			
