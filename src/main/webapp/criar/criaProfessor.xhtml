@@ -17,10 +17,6 @@
 					#{profL.nome}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Disciplina</f:facet>
-					#{profL.disciplina_le}
-				</p:column>
-				<p:column>
 					<f:facet name="header">Carga Horária</f:facet>
 					#{profL.carga_hora}
 				</p:column>
@@ -40,22 +36,6 @@
 					<h:inputText id="nome" styleClass="campo" required="true"
 							value="#{professorMB.prof.nome}" />
 						<p:message for="nome" display="icon" />
-					Curso:
-					<p:selectOneMenu id="curso" value="#{professorMB.idC}">
-							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
-							<f:selectItems value="#{turmaMB.curS}" var="curS"
-								itemLabel="#{curS.nome}" itemValue="#{curS.id}" />
-							<p:ajax listener="#{professorMB.listDisc}" event="change"
-								update="disciplina" />
-						</p:selectOneMenu>
-						<p:message for="curso" display="icon" />
-					Disciplina:
-					<p:selectManyMenu style="width:250px !important;" showCheckbox="true" 
-					id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
-							<f:selectItems value="#{professorMB.d}" var="d"
-								itemLabel="#{d.nome}" itemValue="#{d.id}" />
-						</p:selectManyMenu>
-						<p:message for="disciplina" display="icon" />
 					Carga Horária:
 					<h:inputText id="carga" styleClass="campo" required="true"
 							value="#{professorMB.prof.carga_hora}" />

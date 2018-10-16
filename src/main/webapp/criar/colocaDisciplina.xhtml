@@ -24,7 +24,13 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
-						
+					Disciplina:
+					<p:selectManyMenu style="width:250px !important;" showCheckbox="true" 
+					id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
+							<f:selectItems value="#{professorMB.d}" var="d"
+								itemLabel="#{d.nome}" itemValue="#{d.id}" />
+						</p:selectManyMenu>
+						<p:message for="disciplina" display="icon" />
 					</h:panelGrid>
 				</div>
 			</p:panel>

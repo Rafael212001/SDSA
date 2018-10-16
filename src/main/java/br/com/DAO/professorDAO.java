@@ -19,13 +19,12 @@ public class professorDAO {
 	}
 
 	public boolean inserir(Professor p) {
-		String sql = "INSERT INTO Colaboradores (nome, disciplina_le, carga_hora, restante, tipo, foto)"
-				+ "VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO Colaboradores (nome, carga_hora, restante, tipo, foto)"
+				+ "VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
-			ps.setString(2, p.getDisciplina_le());
 			ps.setInt(3, p.getCarga_hora());
 			ps.setInt(4, p.getRestante());
 			ps.setInt(5, p.getTipo());
@@ -55,7 +54,6 @@ public class professorDAO {
 				Professor p = new Professor();
 				p.setId(rs.getInt("id"));
 				p.setNome(rs.getString("nome"));
-				p.setDisciplina_le(rs.getString("disciplina_le"));
 				p.setCarga_hora(rs.getInt("carga_hora"));
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
