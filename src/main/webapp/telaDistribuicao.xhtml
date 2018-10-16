@@ -13,17 +13,17 @@
 </h:head>
 <h:body>
 	<h:form id="form">
-
 		<div class="aulasFormadas">
 			<p:fieldset id="aulas_alocarField">
-				<p:dataGrid id="aulas_alocar" var="aula" value="#{distribuicaoMB.aulas}" columns="3">
-					<p:panel id="pnl" header="#{aula.curso.nome}" style="text-align:center">
+				<p:dataGrid id="aulas_alocar" var="aula"
+					value="#{distribuicaoMB.aulas}" columns="3">
+					<p:panel id="pnl" header="Curso: #{aula.curso.nome}"
+						style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
-							<h3>Aulas</h3>
-							<h3>Turma: #{aula.turma}</h3>
-							<h3>Disciplina: #{aula.disciplina}</h3>
-							<h3>Professor: #{aula.colaborador}</h3>
-						
+							<h3>Turma: #{aula.turma.nome}</h3>
+							<h3>Disciplina: #{aula.disciplina.nome}</h3>
+							<h3>Professor: #{aula.professor.nome}</h3>
+
 						</h:panelGrid>
 					</p:panel>
 					<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"
@@ -31,26 +31,36 @@
 				</p:dataGrid>
 			</p:fieldset>
 		</div>
-
 		<p:tabView id="tab">
 			<p:tab title="Manhã">
 				<p:scrollPanel>
 					<h3>Segundo andar</h3>
 					<table>
 						<tr>
-							<td><p:fieldset id="s1">
+							<td>
+								<p:fieldset id="s1">
 									<p:outputPanel id="dropS1">
 										<h:outputText value="Sala 1" />
-										<h:panelGrid columns="2" cellpadding="3" style="width:100%">
-										</h:panelGrid>
+										<p:dataGrid id="aulasS1" var="aulaS1" rendered="#{not empty distribuicaoMB.dropSala1}"
+											value="#{distribuicaoMB.dropSala1}" columns="3">
+											<p:panel id="pnl" header="Curso: #{aulaS1.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS1.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS1.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS1.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset> <p:droppable for="s1" tolerance="touch"
-									activeStyleClass="ui-state-highlight"
-									datasource="aulas_alocar" onDrop="handleDrop">
-									<p:ajax listener="#{dndCarsView.onCarDrop}"
-										update="dropS1 form:aulas_alocar" />
-								</p:droppable></td>
-
+								</p:fieldset> 
+								<p:droppable for="s1" tolerance="touch"
+									activeStyleClass="ui-state-highlight" datasource=":form:aulas_alocar"
+									onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala1}"
+										update=":form" />
+								</p:droppable>
+							</td>
 							<td><p:fieldset id="s2">
 									<p:outputPanel id="dropArea2">
 										<h:outputText styleClass="x" value="Sala 2"
@@ -173,6 +183,7 @@
 								</p:fieldset></td>
 						</tr>
 					</table>
+							
 				</p:scrollPanel>
 			</p:tab>
 		</p:tabView>
@@ -180,7 +191,7 @@
 	<script type="text/javascript">
 		function handleDrop(event, ui) {
 			var drop = ui.draggable;
-
+			
 			drop.fadeOut('fast');
 		}
 	</script>
