@@ -19,7 +19,7 @@ public class disciplinaDAO {
 	}
 
 	public boolean inserir(Disciplina d) {
-		String sql = "INSERT INTO Disciplinas ( ?, ?, ?, ?)";
+		String sql = "INSERT INTO Disciplinas (nome, carga_hora, semestre, id_curso) VALUES (?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -42,11 +42,11 @@ public class disciplinaDAO {
 		List<Disciplina> list = new ArrayList<Disciplina>();
 		String sql = "SELECT * FROM Disciplinas WHERE id_curso = ?";
 
-		PreparedStatement ps;
+		
 		try {
-			ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
+			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				Disciplina d = new Disciplina();

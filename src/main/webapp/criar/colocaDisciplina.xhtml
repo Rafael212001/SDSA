@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCriar.css" />
+	</h:head>
+	<h:body>
+		<h:form id="formpd">
+			<p:dataTable id="dataT" var="discL" scrollable="true"
+				scrollHeight="150" value="#{disciplinaMB.discL}">
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{discL.nome}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Semestre Pert.</f:facet>
+					#{discL.semestre}
+				</p:column>
+			</p:dataTable>
+			<p:panel id="div">
+				<div class="center">
+					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+						
+					</h:panelGrid>
+				</div>
+			</p:panel>
+			<div class="margin center">
+					<p:commandButton styleClass="button left" ajax="true"
+						update=":formpd:dataT :formpd:div" event="onclick" value="Salvar"
+						actionListener="#{professorMB.criarProfessor}"/>
+					<p:commandButton styleClass="button right" ajax="false"
+						value="Cancelar" />
+				</div>
+		</h:form>
+	</h:body>
+</ui:composition>

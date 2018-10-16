@@ -74,7 +74,7 @@ public class professorDAO {
 
 	public List<Disciplina> listarId(int i) {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas WHERE id = ?";
+		String sql = "SELECT * FROM Disciplinas WHERE id_curso = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

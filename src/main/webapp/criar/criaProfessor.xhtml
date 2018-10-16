@@ -50,10 +50,10 @@
 						</p:selectOneMenu>
 						<p:message for="curso" display="icon" />
 					Disciplina:
-					<p:selectManyMenu id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
-							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
+					<p:selectManyMenu style="width:250px !important;" showCheckbox="true" 
+					id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
 							<f:selectItems value="#{professorMB.d}" var="d"
-								itemLabel="#{d.nome} Semestre" itemValue="#{d.id}" />
+								itemLabel="#{d.nome}" itemValue="#{d.id}" />
 						</p:selectManyMenu>
 						<p:message for="disciplina" display="icon" />
 					Carga Horária:
@@ -70,8 +70,8 @@
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
-						update=":formp:dataT :formp:div" event="onclick" value="Salvar"
-						actionListener="#{professorMB.criarProfessor}" onclick=""/>
+						update=":formp:dataT :formp:div" event="onclick" value="Avançar"
+						actionListener="#{professorMB.criarProfessor}" onsuccess="PF('dlg7').show();"/>
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Cancelar" />
 				</div>
