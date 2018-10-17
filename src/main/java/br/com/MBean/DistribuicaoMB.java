@@ -126,6 +126,8 @@ public class DistribuicaoMB implements Serializable {
 		aulas.remove(aula);
 	}
 
+	
+	
 	public void init() {
 		// aulass = ;
 
