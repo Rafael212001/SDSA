@@ -1,7 +1,10 @@
 package br.com.MBean;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -61,7 +64,15 @@ public class ProfessorMB {
 	}
 	
 	private void copia(String fileName, InputStream in) {
-		// TODO Auto-generated method stub
+		try {
+			OutputStream out = new FileOutputStream(new File(caminho + fileName));
+			in.close();
+			out.flush();
+			out.close();
+			System.out.println("");
+		}catch (IOException e) {
+			
+		}
 		
 	}
 
