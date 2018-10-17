@@ -1,5 +1,4 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-870
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
@@ -37,13 +36,13 @@
 					<h3>Segundo andar</h3>
 					<table>
 						<tr>
-							<td>
-								<p:fieldset id="s1">
+							<td><p:fieldset id="s1">
 									<p:outputPanel id="dropS1">
 										<h:outputText value="Sala 1" />
-										<p:dataGrid id="aulasS1" var="aulaS1" rendered="#{not empty distribuicaoMB.dropSala1}"
+										<p:dataGrid id="aulasS1" var="aulaS1"
+											rendered="#{not empty distribuicaoMB.dropSala1}"
 											value="#{distribuicaoMB.dropSala1}" columns="3">
-											<p:panel id="pnl" header="Curso: #{aulaS1.curso.nome}"
+											<p:panel id="pnl1" header="Curso: #{aulaS1.curso.nome}"
 												style="text-align:center">
 												<h:panelGrid columns="1" style="width:100%">
 													<h3>Turma: #{aulaS1.turma.nome}</h3>
@@ -53,60 +52,189 @@
 											</p:panel>
 										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset> 
-								<p:droppable for="s1" tolerance="touch"
-									activeStyleClass="ui-state-highlight" datasource=":form:aulas_alocar"
-									onDrop="handleDrop">
+								</p:fieldset> <p:droppable for="s1" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala1}"
 										update=":form" />
-								</p:droppable>
-							</td>
+								</p:droppable></td>
+								
+								
 							<td><p:fieldset id="s2">
-									<p:outputPanel id="dropArea2">
-										<h:outputText styleClass="x" value="Sala 2"
-											rendered="#{empty dndCarsView.droppedCars}" />
+									<p:outputPanel id="dropS2">
+										<h:outputText value="Sala 2" />
+										<p:dataGrid id="aulasS2" var="aulaS2"
+											rendered="#{not empty distribuicaoMB.dropSala2}"
+											value="#{distribuicaoMB.dropSala2}" columns="3">
+											<p:panel id="pnl2" header="Curso: #{aulaS2.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS2.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS2.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS2.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s2" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala2}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
+							
 							<td><p:fieldset id="s3">
-									<p:outputPanel id="dropArea3">
-										<h:outputText styleClass="x" value="Sala 3"
-											rendered="#{empty dndCarsView.droppedCars}" />
+									<p:outputPanel id="dropS3">
+										<h:outputText value="Sala 3" />
+										<p:dataGrid id="aulasS3" var="aulaS3"
+											rendered="#{not empty distribuicaoMB.dropSala3}"
+											value="#{distribuicaoMB.dropSala3}" columns="3">
+											<p:panel id="pnl3" header="Curso: #{aulaS3.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS3.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS3.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS3.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
-							<td><p:fieldset id="s4">
-									<p:outputPanel id="dropArea4">
-										<h:outputText styleClass="x" value="Sala 4"
-											rendered="#{empty dndCarsView.droppedCars}" />
+								</p:fieldset> <p:droppable for="s3" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala3}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
+						<td><p:fieldset id="s4">
+									<p:outputPanel id="dropS4">
+										<h:outputText value="Sala 4" />
+										<p:dataGrid id="aulasS4" var="aulaS4"
+											rendered="#{not empty distribuicaoMB.dropSala4}"
+											value="#{distribuicaoMB.dropSala4}" columns="3">
+											<p:panel id="pnl4" header="Curso: #{aulaS4.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS4.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS4.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS4.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s4" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala4}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
 						</tr>
 					</table>
 					<table>
 						<tr>
-							<td><p:fieldset id="s5">
-									<p:outputPanel id="dropArea5">
-										<h:outputText styleClass="x" value="Sala 5"
-											rendered="#{empty dndCarsView.droppedCars}" />
+						
+						
+								<td><p:fieldset id="s5">
+									<p:outputPanel id="dropS5">
+										<h:outputText value="Sala 5" />
+										<p:dataGrid id="aulasS5" var="aulaS5"
+											rendered="#{not empty distribuicaoMB.dropSala5}"
+											value="#{distribuicaoMB.dropSala5}" columns="3">
+											<p:panel id="pnl5" header="Curso: #{aulaS5.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS5.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS5.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS5.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s5" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala5}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
 							<td><p:fieldset id="s6">
-									<p:outputPanel id="dropArea6">
-										<h:outputText styleClass="x" value="Sala 6"
-											rendered="#{empty dndCarsView.droppedCars}" />
+									<p:outputPanel id="dropS6">
+										<h:outputText value="Sala 6" />
+										<p:dataGrid id="aulasS6" var="aulaS6"
+											rendered="#{not empty distribuicaoMB.dropSala6}"
+											value="#{distribuicaoMB.dropSala6}" columns="3">
+											<p:panel id="pnl6" header="Curso: #{aulaS6.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS6.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS6.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS6.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s6" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala6}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
 							<td><p:fieldset id="s7">
-									<p:outputPanel id="dropArea7">
-										<h:outputText styleClass="x" value="Sala 7"
-											rendered="#{empty dndCarsView.droppedCars}" />
+									<p:outputPanel id="dropS7">
+										<h:outputText value="Sala 7" />
+										<p:dataGrid id="aulasS7" var="aulaS7"
+											rendered="#{not empty distribuicaoMB.dropSala7}"
+											value="#{distribuicaoMB.dropSala7}" columns="3">
+											<p:panel id="pnl7" header="Curso: #{aulaS7.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS7.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS7.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS7.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s7" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala7}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
 							<td><p:fieldset id="s8">
-									<p:outputPanel id="dropArea8">
-										<h:outputText styleClass="x" value="Sala 8"
-											rendered="#{empty dndCarsView.droppedCars}" />
+									<p:outputPanel id="dropS8">
+										<h:outputText value="Sala 8" />
+										<p:dataGrid id="aulasS5" var="aulaS8"
+											rendered="#{not empty distribuicaoMB.dropSala8}"
+											value="#{distribuicaoMB.dropSala8}" columns="3">
+											<p:panel id="pnl8" header="Curso: #{aulaS8.curso.nome}"
+												style="text-align:center">
+												<h:panelGrid columns="1" style="width:100%">
+													<h3>Turma: #{aulaS8.turma.nome}</h3>
+													<h3>Disciplina: #{aulaS8.disciplina.nome}</h3>
+													<h3>Professor: #{aulaS8.professor.nome}</h3>
+												</h:panelGrid>
+											</p:panel>
+										</p:dataGrid>
 									</p:outputPanel>
-								</p:fieldset></td>
+								</p:fieldset> <p:droppable for="s8" tolerance="touch"
+									activeStyleClass="ui-state-highlight"
+									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax listener="#{distribuicaoMB.onAulasDropSala8}"
+										update=":form" />
+								</p:droppable></td>
+								
+								
 						</tr>
 					</table>
 					<table>
@@ -183,7 +311,7 @@
 								</p:fieldset></td>
 						</tr>
 					</table>
-							
+
 				</p:scrollPanel>
 			</p:tab>
 		</p:tabView>
@@ -191,7 +319,7 @@
 	<script type="text/javascript">
 		function handleDrop(event, ui) {
 			var drop = ui.draggable;
-			
+
 			drop.fadeOut('fast');
 		}
 	</script>
