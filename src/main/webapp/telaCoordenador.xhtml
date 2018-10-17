@@ -6,16 +6,15 @@
 <h:head>
 	<meta charset="UTF-8" />
 	<ui:define name="style">
-		<h:outputStylesheet library="css" name="cssCoordenador.css"/>
+		<h:outputStylesheet library="css" name="cssCoordenador.css" />
 	</ui:define>
-	<link rel="stylesheet" type="text/css" href="resource/css/cssCoordenador.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resource/css/cssCoordenador.css" />
 </h:head>
 <h:body>
 	<ul class="menu">
 		<li><h:graphicImage class="imagens" library="img"
-				value="resource/img/senai.png" />
-				
-				</li>
+				value="resource/img/senai.png" /></li>
 		<li class="dropdown"><a class="dropbtn">Criar</a>
 			<div class="dropdown-content">
 				<p:commandLink value="Cursos" type="button"
@@ -28,56 +27,72 @@
 					onclick="PF('dlg4').show();" />
 				<p:commandLink value="Coordenador" type="button"
 					onclick="PF('dlg5').show();" />
-				
-			</div>
-			
-			</li>
+
+			</div></li>
 		<li><a id="btDist" href="distribuicao.xhtml">Distribuição</a></li>
 		<li id="btSair"><a>Sair</a></li>
 	</ul>
 
-	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" width="75%" height="50%">
+	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" width="75%"
+		height="50%">
 		<ui:include src="criar/criaCurso.xhtml" />
 	</p:dialog>
-	<p:dialog header="Turmas" widgetVar="dlg2" modal="true" width="75%" height="50%">
+	<p:dialog header="Turmas" widgetVar="dlg2" modal="true" width="75%"
+		height="50%">
 		<ui:include src="criar/criaTurma.xhtml" />
 	</p:dialog>
-	<p:dialog header="Salas" widgetVar="dlg3" modal="true" width="75%" height="50%">
+	<p:dialog header="Salas" widgetVar="dlg3" modal="true" width="75%"
+		height="50%">
 		<ui:include src="criar/criaSalas.xhtml" />
 	</p:dialog>
-	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true" width="75%" height="50%">
+	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true"
+		width="75%" height="50%">
 		<ui:include src="criar/criaProfessor.xhtml" />
 	</p:dialog>
-	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true" width="75%" height="50%">
+	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true"
+		width="75%" height="50%">
 		<ui:include src="criar/criaCoordenador.xhtml" />
 	</p:dialog>
-	<p:dialog header="Disciplina" widgetVar="dlg6" modal="true" width="75%" height="50%">
+	<p:dialog header="Disciplina" widgetVar="dlg6" modal="true" width="75%"
+		height="50%">
 		<ui:include src="criar/criaDisciplina.xhtml" />
 	</p:dialog>
-	<p:dialog header="Disciplina" widgetVar="dlg7" modal="true" width="75%" height="50%">
+	<p:dialog header="Disciplina" widgetVar="dlg7" modal="true" width="75%"
+		height="50%">
 		<ui:include src="criar/colocaDisciplina.xhtml" />
 	</p:dialog>
-	
-	<h3>Basic</h3>
-<p:panelGrid columns="2">
-    <f:facet name="header">
-        <h:graphicImage class="imagens" value="resource/img/tibu.jpg" />
-    </f:facet>
- 
-    <h:outputText value="Name:" />
-    <h:outputText value="Kobe Bryant" />
- 
-    <h:outputText value="Team:" />
-    <h:outputText value="Los Angeles Lakers" />
- 
-    <h:outputText value="Position:" />
-    <h:outputText value="Shooting Guard" />
- 
-    <h:outputText value="Number:" />
-    <h:outputText value="24" />
-</p:panelGrid>
- 	
-	
-	
+	<center>
+		<h3>Professores</h3>
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<h:graphicImage class="imagens" value="resource/img/tibu.jpg" />
+			</f:facet>
+
+			<h:outputText value="Name:" />
+			<h:outputText value="Tiburcio" />
+
+
+			<h:outputText value="Disciplina:" />
+			<h:outputText value="Hardware" />
+
+			<h:outputText value="Curso:" />
+			<h:outputText value="Informatica" />
+		</p:panelGrid>
+
+		<h:form>
+			<p:growl id="growl" life="2000" />
+
+
+			<p:commandButton value="Salvar" id="salvar"
+				actionListener="#{buttonView.buttonAction}" update="growl"
+				icon="ui-icon-disk" />
+
+			<p:commandButton value="Editar" id="editar"
+				actionListener="#{buttonView.buttonAction}" update="growl"
+				icon="ui-icon-pencil" />
+
+
+		</h:form>
+	</center>
 </h:body>
 </html>
