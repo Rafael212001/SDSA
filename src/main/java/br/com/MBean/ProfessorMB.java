@@ -1,12 +1,19 @@
 package br.com.MBean;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
 
 import br.com.DAO.professorDAO;
+import br.com.entities.CD;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;
 
@@ -18,6 +25,8 @@ public class ProfessorMB {
 	List<Professor> profL;
 	professorDAO pDAO;
 	List<Disciplina> d;
+	List<CD> cd;
+	private String caminho = "resource/css/";
 
 	public ProfessorMB() {
 		prof = new Professor();
@@ -38,7 +47,22 @@ public class ProfessorMB {
 
 	public void listDisc() {
 		d = pDAO.listarId(idC);
-
+	}
+	
+	public void upload(FileUploadEvent event) {
+		FacesMessage msg = new FacesMessage("A imagem ", event.getFile().getFileName() + " foi enviado.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+		try {
+			copia(event.getFile().getFileName(), event.getFile().getInputstream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void copia(String fileName, InputStream in) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public List<Disciplina> getD() {

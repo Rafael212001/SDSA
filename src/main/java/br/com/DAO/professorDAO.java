@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entities.CD;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;
 import br.com.jdbc.ConnectionDB;
@@ -41,6 +42,25 @@ public class professorDAO {
 		}
 		return false;
 	}
+	
+	public boolean inserirCD(CD cd) {
+		String sql = "INSERT INTO CD (id_colaborador, id_disciplina)"
+				+ "VALUES (?,?)";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cd.getId_colaborador());
+			ps.setInt(2, cd.getId_disciplina());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 
 	public List<Professor> listarTodos() {
 		List<Professor> list = new ArrayList<Professor>();
@@ -58,7 +78,6 @@ public class professorDAO {
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
 				p.setFoto(rs.getInt("foto"));
-				p.setId_disciplina(rs.getInt("id_disciplina"));
 
 				list.add(p);
 			}
@@ -87,6 +106,26 @@ public class professorDAO {
 			}
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<CD> listarCd(int i){
+		List<CD> list = new ArrayList<CD>();
+		String sql = "SELECT * FROM CD WHERE id_colaborador = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				CD cd = new CD();
+				cd.setId_colaborador(rs.getInt("id_colaborador"));
+				cd.setId_disciplina(rs.getInt("id_disciplina"));
+				list.add(cd);
+			}
+		}catch (SQLException e ){
 			e.printStackTrace();
 		}
 		return list;

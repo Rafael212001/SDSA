@@ -13,11 +13,11 @@
 			<p:dataTable id="dataT" var="discL" scrollable="true"
 				scrollHeight="150" value="#{disciplinaMB.discL}">
 				<p:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header">Colaborador</f:facet>
 					#{discL.nome}
 				</p:column>
 				<p:column>
-					<f:facet name="header">Semestre Pert.</f:facet>
+					<f:facet name="header">Disciplina</f:facet>
 					#{discL.semestre}
 				</p:column>
 			</p:dataTable>
@@ -25,11 +25,11 @@
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 					Disciplina:
-					<p:selectManyMenu style="width:250px !important;" showCheckbox="true" 
-					id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
-							<f:selectItems value="#{professorMB.d}" var="d"
+					<p:selectOneMenu id="disciplina" value="#{professorMB.prof.disciplina_le}" filter="true">
+						<f:selectItem itemLabel="Selecione Disciplina" itemValue=""/>
+						<f:selectItems value="#{professorMB.d}" var="d"
 								itemLabel="#{d.nome}" itemValue="#{d.id}" />
-						</p:selectManyMenu>
+						</p:selectOneMenu>
 						<p:message for="disciplina" display="icon" />
 					</h:panelGrid>
 				</div>
@@ -38,8 +38,7 @@
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formpd:dataT :formpd:div" event="onclick" value="Salvar"
 						actionListener="#{professorMB.criarProfessor}"/>
-					<p:commandButton styleClass="button right" ajax="false"
-						value="Cancelar" />
+					<p:commandButton styleClass="button right" ajax="false" value="Cancelar" />
 				</div>
 		</h:form>
 	</h:body>
