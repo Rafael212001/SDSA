@@ -28,6 +28,17 @@ public class DistribuicaoMB implements Serializable {
 	private List<Aulas> dropSala6;
 	private List<Aulas> dropSala7;
 	private List<Aulas> dropSala8;
+	private List<Aulas> dropSala9;
+	private List<Aulas> dropSala10;
+	private List<Aulas> dropSala11;
+	private List<Aulas> dropSala12;
+	private List<Aulas> dropSala13;
+	private List<Aulas> dropSala14;
+	private List<Aulas> dropSala15;
+	private List<Aulas> dropSala16;
+	private List<Aulas> dropSala18;
+	private List<Aulas> dropSala35;
+	
 	private Aulas selecionadas;
 	private aulasDAO aDao;
 
@@ -44,7 +55,17 @@ public class DistribuicaoMB implements Serializable {
 		dropSala6 = new ArrayList<Aulas>();
 		dropSala7 = new ArrayList<Aulas>();
 		dropSala8 = new ArrayList<Aulas>();
-
+		dropSala9 = new ArrayList<Aulas>();
+		dropSala10 = new ArrayList<Aulas>();
+		dropSala11 = new ArrayList<Aulas>();
+		dropSala12 = new ArrayList<Aulas>();
+		dropSala13 = new ArrayList<Aulas>();
+		dropSala14 = new ArrayList<Aulas>();
+		dropSala15 = new ArrayList<Aulas>();
+		dropSala16 = new ArrayList<Aulas>();
+		dropSala18 = new ArrayList<Aulas>();
+		dropSala35 = new ArrayList<Aulas>();
+		
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
@@ -126,6 +147,109 @@ public class DistribuicaoMB implements Serializable {
 		aulas.remove(aula);
 	}
 
+///////////////////////////////////////////////////////////////////////////	
+	public void onAulasDropSala9(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala9.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala10(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala10.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala11(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala11.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala12(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala12.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////	
+	public void onAulasDropSala13(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala13.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala14(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala14.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////	
+	public void onAulasDropSala15(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala15.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////	
+	public void onAulasDropSala16(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala16.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala18(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala18.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////		
+	public void onAulasDropSala35(DragDropEvent dde) {
+		Aulas aula = ((Aulas) dde.getData());
+
+//chamar daoAula para atualizar a sala que foi inserida
+
+		dropSala35.add(aula);
+		aulas.remove(aula);
+	}
+
+///////////////////////////////////////////////////////////////////////////	
+	
+	
 	
 	
 	public void init() {
@@ -224,6 +348,89 @@ public class DistribuicaoMB implements Serializable {
 	public void setDropSala8(List<Aulas> dropSala8) {
 		this.dropSala8 = dropSala8;
 	}
+
+	public List<Aulas> getDropSala9() {
+		return dropSala9;
+	}
+
+	public void setDropSala9(List<Aulas> dropSala9) {
+		this.dropSala9 = dropSala9;
+	}
+
+	public List<Aulas> getDropSala10() {
+		return dropSala10;
+	}
+
+	public void setDropSala10(List<Aulas> dropSala10) {
+		this.dropSala10 = dropSala10;
+	}
+	
+	public List<Aulas> getDropSala11() {
+		return dropSala11;
+	}
+
+	public void setDropSala11(List<Aulas> dropSala11) {
+		this.dropSala11 = dropSala11;
+	}
+
+	public List<Aulas> getDropSala12() {
+		return dropSala12;
+	}
+
+	public void setDropSala12(List<Aulas> dropSala12) {
+		this.dropSala12 = dropSala12;
+	}
+
+	public List<Aulas> getDropSala13() {
+		return dropSala13;
+	}
+
+	public void setDropSala13(List<Aulas> dropSala13) {
+		this.dropSala13 = dropSala13;
+	}
+
+	public List<Aulas> getDropSala14() {
+		return dropSala14;
+	}
+
+	public void setDropSala14(List<Aulas> dropSala14) {
+		this.dropSala14 = dropSala14;
+	}
+
+	public List<Aulas> getDropSala15() {
+		return dropSala15;
+	}
+
+	public void setDropSala15(List<Aulas> dropSala15) {
+		this.dropSala15 = dropSala15;
+	}
+
+	public List<Aulas> getDropSala16() {
+		return dropSala16;
+	}
+
+	public void setDropSala16(List<Aulas> dropSala16) {
+		this.dropSala16 = dropSala16;
+	}
+
+	public List<Aulas> getDropSala18() {
+		return dropSala18;
+	}
+
+	public void setDropSala18(List<Aulas> dropSala18) {
+		this.dropSala18 = dropSala18;
+	}
+
+	public List<Aulas> getDropSala35() {
+		return dropSala35;
+	}
+
+	public void setDropSala35(List<Aulas> dropSala35) {
+		this.dropSala35 = dropSala35;
+	}
+
+	
+	
 	
 	
 

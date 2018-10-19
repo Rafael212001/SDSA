@@ -14,6 +14,7 @@ import br.com.entities.Coordenador;
 import br.com.entities.Curso;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;
+import br.com.entities.Salas;
 import br.com.entities.Turma;
 import br.com.jdbc.ConnectionDB;
 
@@ -69,5 +70,19 @@ public class aulasDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean alocarSala(Aulas aula, Salas sala) {
+		String sql = "UPDATE aula SET sala = ?"
+				+ "WHERE id_aula = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
