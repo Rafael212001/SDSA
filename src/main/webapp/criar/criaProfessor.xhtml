@@ -46,13 +46,11 @@
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
 						<p:message for="tipo" display="icon" /> 
-					Foto:
-					<p:fileUpload fileUploadListener="#{a}" mode="advanced"
-							dragDropSupport="true" update="messages" sizeLimit="100000"
-							fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-							label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
-						<p:growl id="messages" showDetail="true" />
-					</h:panelGrid>
+					<!-- Foto:
+					<p:fileUpload fileUploadListener="#{a}" mode="simple" skinSimple="true"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+						<p:growl id="messages" showDetail="true" />-->
+					</h:panelGrid> 
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"

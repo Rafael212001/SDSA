@@ -29,7 +29,8 @@ public class ProfessorMB {
 	professorDAO pDAO;
 	List<Disciplina> d;
 	List<CD> cd;
-	private String caminho = "resource/css/";
+	int lastId;
+	private String caminho = "resource/img/";
 
 	public ProfessorMB() {
 		prof = new Professor();
@@ -38,7 +39,8 @@ public class ProfessorMB {
 	}
 
 	public void criarProfessor() {
-		if (pDAO.inserir(prof)) {
+		lastId = pDAO.inserir(prof);
+		if (lastId > 0) {
 			System.out.println("deu porra");
 			prof = new Professor();
 			listarP();
@@ -47,17 +49,14 @@ public class ProfessorMB {
 			listarP();
 		}
 	}
-
-	public void listDisc() {
-		d = pDAO.listarId(idC);
-	}
 	
-	public void upload(FileUploadEvent event) {
+	/*public void upload(FileUploadEvent event) {
 		FacesMessage msg = new FacesMessage("A imagem ", event.getFile().getFileName() + " foi enviado.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		
 		try {
 			copia(event.getFile().getFileName(), event.getFile().getInputstream());
+			prof.setFoto(event.getFile().getFileName());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -71,13 +70,41 @@ public class ProfessorMB {
 			out.close();
 			System.out.println("");
 		}catch (IOException e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
+	}*/
+	private void listarP() {
+		profL = pDAO.listarTodos();
+		d = pDAO.listarDisciplina();
 	}
-
+	
 	public List<Disciplina> getD() {
 		return d;
+	}
+
+	public List<CD> getCd() {
+		return cd;
+	}
+
+	public void setCd(List<CD> cd) {
+		this.cd = cd;
+	}
+
+	public int getLastId() {
+		return lastId;
+	}
+
+	public void setLastId(int lastId) {
+		this.lastId = lastId;
+	}
+
+	public String getCaminho() {
+		return caminho;
+	}
+
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
 	}
 
 	public void setD(List<Disciplina> d) {
@@ -90,10 +117,6 @@ public class ProfessorMB {
 
 	public void setIdC(int idC) {
 		this.idC = idC;
-	}
-
-	private void listarP() {
-		profL = pDAO.listarTodos();
 	}
 
 	public Professor getProf() {

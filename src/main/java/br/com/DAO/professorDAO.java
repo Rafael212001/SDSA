@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import br.com.entities.CD;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;
@@ -19,20 +21,22 @@ public class professorDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Professor p) {
-		String sql = "INSERT INTO Colaboradores (nome, carga_hora, restante, tipo, foto)"
-				+ "VALUES (?,?,?,?,?)";
+	public int inserir(Professor p) {
+		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo)"
+				+ "VALUES (?,?,?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, p.getNome());
-			ps.setInt(3, p.getCarga_hora());
-			ps.setInt(4, p.getRestante());
-			ps.setInt(5, p.getTipo());
-			ps.setInt(6, p.getFoto());
+			ps.setInt(2, p.getCarga_hora());
+			ps.setInt(3, p.getTipo());
 
-			if (ps.executeUpdate() > 0) {
-				return true;
+			if (ps.executeUpdate() == 1) {
+				ResultSet rs = ps.getGeneratedKeys();
+				if(rs.next()) {
+					int lastId = rs.getInt(1);
+					return lastId;
+				}
 			}
 
 		} catch (SQLException e) {
@@ -40,7 +44,7 @@ public class professorDAO {
 			e.printStackTrace();
 
 		}
-		return false;
+		return 0;
 	}
 	
 	public boolean inserirCD(CD cd) {
@@ -77,7 +81,7 @@ public class professorDAO {
 				p.setCarga_hora(rs.getInt("carga_hora"));
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
-				p.setFoto(rs.getInt("foto"));
+				p.setFoto(rs.getString("foto"));
 
 				list.add(p);
 			}
@@ -89,13 +93,12 @@ public class professorDAO {
 		return list;
 	}
 
-	public List<Disciplina> listarId(int i) {
+	public List<Disciplina> listarDisciplina() {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas WHERE id_curso = ?";
+		String sql = "SELECT * FROM Disciplinas";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, i);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

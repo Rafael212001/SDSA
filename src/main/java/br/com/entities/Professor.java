@@ -7,15 +7,15 @@ public class Professor {
 	private Integer carga_hora;
 	private Integer restante;
 	private Integer tipo;
-	private Integer foto;
+	private String foto;
 	private Integer id_disciplina;
-	
+
 	public Professor() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora, Integer restante, Integer tipo,
-			Integer foto, Integer id_disciplina) {
+			String foto, Integer id_disciplina) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -75,11 +75,11 @@ public class Professor {
 		this.tipo = tipo;
 	}
 
-	public Integer getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(Integer foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 
