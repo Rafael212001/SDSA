@@ -78,11 +78,19 @@ public class aulasDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,aula.getId());
+			ps.setInt(2, sala.getNumero());
+			
+			
+			if(ps.executeUpdate() != 0) {
+				return true;
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return false;
 		
 	}
 }

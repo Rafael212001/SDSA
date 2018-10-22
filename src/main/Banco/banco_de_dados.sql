@@ -65,6 +65,8 @@ CREATE TABLE Aulas(
     id_colaborador int,
     id_coordenador  int,
     id_sala int,
+    dia_semana  int,
+    carga      int,
 	foreign key (id_cursos)      references Cursos (id),
     foreign key (id_turmas)      references Turmas (id),
     foreign key (id_disciplina)  references Disciplinas (id),
@@ -124,3 +126,5 @@ INSERT INTO SALAS VALUES (15, "SALA 15");
 INSERT INTO SALAS VALUES (16, "SALA 16");
 INSERT INTO SALAS VALUES (18, "SALA 18");
 INSERT INTO SALAS VALUES (35, "SALA 35");
+
+INSERT INTO dia_semana VALUES(1)
