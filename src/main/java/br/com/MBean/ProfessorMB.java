@@ -24,18 +24,17 @@ import br.com.entities.Professor;
 @ViewScoped
 public class ProfessorMB {
 	int idC;
-	Professor prof;
+	Professor prof = new Professor();
 	List<Professor> profL;
-	professorDAO pDAO;
-	List<Disciplina> d;
-	List<CD> cd;
+	professorDAO pDAO = new professorDAO();
+	List<Disciplina> d = pDAO.listarDisciplina();
+	List<CD> cdl;
+	CD cd = new CD();
 	int lastId;
 	private String caminho = "resource/img/";
 
 	public ProfessorMB() {
-		prof = new Professor();
-		pDAO = new professorDAO();
-		profL = pDAO.listarTodos();
+		listarP();
 	}
 
 	public void criarProfessor() {
@@ -49,45 +48,57 @@ public class ProfessorMB {
 			listarP();
 		}
 	}
-	
-	/*public void upload(FileUploadEvent event) {
-		FacesMessage msg = new FacesMessage("A imagem ", event.getFile().getFileName() + " foi enviado.");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-		
-		try {
-			copia(event.getFile().getFileName(), event.getFile().getInputstream());
-			prof.setFoto(event.getFile().getFileName());
-		} catch (IOException e) {
-			e.printStackTrace();
+
+	public void colocarDisciplina() {
+		cd.setId_colaborador(lastId);
+		if (pDAO.inserirCD(cd)) {
+			System.out.println("deu porra");
+			cd = new CD();
+			listarP();
+		} else {
+			System.out.println("não deu ;-;");
+			listarP();
 		}
 	}
-	
-	private void copia(String fileName, InputStream in) {
-		try {
-			OutputStream out = new FileOutputStream(new File(caminho + fileName));
-			in.close();
-			out.flush();
-			out.close();
-			System.out.println("");
-		}catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-	}*/
+
+	/*
+	 * public void upload(FileUploadEvent event) { FacesMessage msg = new
+	 * FacesMessage("A imagem ", event.getFile().getFileName() + " foi enviado.");
+	 * FacesContext.getCurrentInstance().addMessage(null, msg);
+	 * 
+	 * try { copia(event.getFile().getFileName(), event.getFile().getInputstream());
+	 * prof.setFoto(event.getFile().getFileName()); } catch (IOException e) {
+	 * e.printStackTrace(); } }
+	 * 
+	 * private void copia(String fileName, InputStream in) { try { OutputStream out
+	 * = new FileOutputStream(new File(caminho + fileName)); in.close();
+	 * out.flush(); out.close(); System.out.println(""); }catch (IOException e) {
+	 * System.out.println(e.getMessage()); }
+	 * 
+	 * }
+	 */
 	private void listarP() {
 		profL = pDAO.listarTodos();
-		d = pDAO.listarDisciplina();
+		cdl = pDAO.listarCd(lastId);
 	}
-	
+
 	public List<Disciplina> getD() {
 		return d;
 	}
 
-	public List<CD> getCd() {
+	public List<CD> getCdl() {
+		return cdl;
+	}
+
+	public void setCdl(List<CD> cdl) {
+		this.cdl = cdl;
+	}
+
+	public CD getCd() {
 		return cd;
 	}
 
-	public void setCd(List<CD> cd) {
+	public void setCd(CD cd) {
 		this.cd = cd;
 	}
 
