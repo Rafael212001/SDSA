@@ -15,23 +15,20 @@ import br.com.entities.Coordenador;
 @ManagedBean
 @ViewScoped
 public class CoordenadorMB {
-	Coordenador coor;
+	Coordenador coor = new Coordenador();
+	coordenadorDAO cDAO = new coordenadorDAO();
 	List<Coordenador> coo;
-	coordenadorDAO cDAO;
 	Coordenador selc;
 
 	public CoordenadorMB() {
-		coor = new Coordenador();
-		cDAO = new coordenadorDAO();
-		coo = cDAO.listarTodos();
-		System.out.println("bAISI");
+		listarC();
 	}
 
 	public void criarCoordenador(ActionEvent event) {
 		System.out.println("ta entrando sa merda");
 		if (cDAO.inserir(coor)) {
 			System.out.println("deu porra");
-			coor = new Coordenador();
+			zerar();
 			listarC();
 		} else {
 			System.out.println("deu não ;-;");
@@ -39,6 +36,12 @@ public class CoordenadorMB {
 		}
 	}
 	
+	private void zerar() {
+		coor = new Coordenador();
+		selc = new Coordenador();
+		cDAO = new coordenadorDAO();
+	}
+
 	public void excluirCoordenador() {
 		
 		

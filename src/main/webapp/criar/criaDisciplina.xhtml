@@ -45,7 +45,7 @@
 								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
 							<p:autoUpdate />
 						</p:selectOneMenu>
-						<p:commandButton value="atualizar" update="semestreD" actionListener="#{disciplinaMB.listarSemestreC}"/>
+						<p:commandButton value="Atualizar" update="semestreD" actionListener="#{disciplinaMB.listarSemestreC}"/>
  						<p:message for="semestreD" display="icon"  />
 					</h:panelGrid>
 				</div>
@@ -55,7 +55,7 @@
 					update=":formD:dataT :formD:div" event="onclick" value="Salvar"
 					actionListener="#{disciplinaMB.criarDisciplina}" />
 				<p:commandButton styleClass="button right" ajax="false"
-					value="Cancelar" />
+					value="Fechar" />
 			</div>
 		</h:form>
 	</h:body>

@@ -22,23 +22,29 @@ public class CursoMB {
 	int lastId;
 	
 	public CursoMB() {
-		curL = csDAO.listarTodos();
+		listarCS();
 	}
 	
 	public void criarCurso() {
 		lastId = csDAO.inserir(cur);
 		if(lastId > 0) {			
 			System.out.println("deu porra");
-			cur = new Curso();
-			listarCS();
 			dMB.setID(lastId);
 			dMB.listarSemestreC();
+			zerar();
+			listarCS();
 		}else {
 			System.out.println("não deu ;-;");
 			listarCS();
 		}
 	}
 	
+	private void zerar() {
+		cur = new Curso();
+		d = new Disciplina();
+		csDAO = new cursoDAO();
+	}
+
 	private void listarCS() {
 		curL = csDAO.listarTodos();
 	}

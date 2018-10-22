@@ -14,22 +14,17 @@ import br.com.entities.Turma;
 @ManagedBean
 @ViewScoped
 public class TurmaMB {
-	Turma tur;
-	Curso tcur;
+	Turma tur = new Turma();
+	Curso tcur = new Curso();
 	List<Turma> turL;
 	List<Curso> curS;
-	cursoDAO tcDAO;
-	turmaDAO tDAO;
+	cursoDAO tcDAO = new cursoDAO();
+	turmaDAO tDAO = new turmaDAO();
 	Integer semestre;
 	List<Integer> semestres;
 	int idCurso;
 	
 	public TurmaMB() {
-		tur = new Turma();
-		tcur = new Curso();
-		tDAO = new turmaDAO();
-		tcDAO = new cursoDAO();
-		curS = tcDAO.listarTodos();
 		listarT();
 	}
 	
@@ -65,6 +60,7 @@ public class TurmaMB {
 	
 	private void listarT() {
 		turL = tDAO.listarTodos();
+		curS = tcDAO.listarTodos();
 	}
 
 	public Turma getTur() {

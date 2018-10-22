@@ -30,6 +30,7 @@
 						<f:selectItems value="#{professorMB.d}" var="d"
 								itemLabel="#{d.nome}" itemValue="#{d.id}" />
 						</p:selectOneMenu>
+						<p:commandButton value="Atualizar" update="disciplina" actionListener="#{professorMB.listarP}"/>
 						<p:message for="disciplina" display="icon" />
 					</h:panelGrid>
 				</div>
@@ -38,7 +39,7 @@
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formpd:dataT :formpd:div" event="onclick" value="Salvar"
 						actionListener="#{professorMB.colocarDisciplina}"/>
-					<p:commandButton styleClass="button right" ajax="false" value="Cancelar" />
+					<p:commandButton styleClass="button right" ajax="false" value="Fechar" />
 				</div>
 		</h:form>
 	</h:body>

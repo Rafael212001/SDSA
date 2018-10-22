@@ -89,11 +89,7 @@ CREATE TABLE Carga_horaria_restante(
 INSERT INTO Cursos(nome, qtd_semestre)
 		VALUES	("Técnico em informática", 4),
 				("Redes", 2),
-				("Almoxarifado", 2),
-				("Curso com 3", 3),
-				("Curso com 1", 1),
-				("Curso com 5", 5),
-				("Curso com 20", 20);
+				("Almoxarifado", 2);
 
 INSERT INTO Turmas(nome, qtd_alunos, divisao, periodo, semestre, id_curso)
 		VALUES	("1TI", 32, 1, 1, 1, 1),
@@ -126,5 +122,3 @@ INSERT INTO SALAS VALUES (15, "SALA 15");
 INSERT INTO SALAS VALUES (16, "SALA 16");
 INSERT INTO SALAS VALUES (18, "SALA 18");
 INSERT INTO SALAS VALUES (35, "SALA 35");
-
-INSERT INTO dia_semana VALUES(1)

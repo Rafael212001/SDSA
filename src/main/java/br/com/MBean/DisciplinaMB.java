@@ -23,19 +23,24 @@ public class DisciplinaMB {
 	int ID;
 
 	public DisciplinaMB() {
-
+		listarD();
 	}
 
 	public void criarDisciplina() {
 		disc.setId_curso(ID);
 		if (dDAO.inserir(disc)) {
 			System.out.println("deu porra");
-			disc = new Disciplina();
+			zerar();
 			listarD();
 		} else {
 			System.out.println("não deu ;-;");
 			listarD();
 		}
+	}
+
+	private void zerar() {
+		disc = new Disciplina();
+		dDAO = new disciplinaDAO();
 	}
 
 	public void listarSemestreC() {
