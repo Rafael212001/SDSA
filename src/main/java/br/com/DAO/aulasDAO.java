@@ -48,7 +48,7 @@ public class aulasDAO {
 						new Disciplina(null, rs.getString("disciplina"), null, null,null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null ,null, null), 
 						new Coordenador( null, rs.getString("coordenador"), null, null), 
-						null);
+						null,null,null);
 				list.add(a);
 			}
 			
@@ -72,14 +72,16 @@ public class aulasDAO {
 		return false;
 	}
 	
-	public boolean alocarSala(Aulas aula, Salas sala) {
-		String sql = "UPDATE aula SET sala = ?"
+	public boolean alocarSala(Aulas aula, Salas sala, Aulas dia_semana, Aulas carga) {
+		String sql = "UPDATE aula SET sala = ? AND SET dia_semana = ? AND SET carga = 75"
 				+ "WHERE id_aula = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,aula.getId());
 			ps.setInt(2, sala.getNumero());
+			ps.setInt(3, aula.getDia_semana());
+			ps.setInt(4, aula.getCarga());
 			
 			
 			if(ps.executeUpdate() != 0) {
