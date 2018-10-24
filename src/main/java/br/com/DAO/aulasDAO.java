@@ -1,5 +1,6 @@
 package br.com.DAO;
 
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,17 +73,16 @@ public class aulasDAO {
 		return false;
 	}
 	
-	public boolean alocarSala(Aulas aula, Salas sala, Aulas dia_semana, Aulas carga) {
-		String sql = "UPDATE aula SET sala = ? AND SET dia_semana = ? AND SET carga = 75"
-				+ "WHERE id_aula = ?";
+	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, Integer carga) {
+		String sql = "UPDATE aulas SET id_sala = ?, dia_semana = ?, carga = ? "
+				+ "WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,aula.getId());
-			ps.setInt(2, sala.getNumero());
-			ps.setInt(3, aula.getDia_semana());
-			ps.setInt(4, aula.getCarga());
-			
+			ps.setInt(1, numeroSala);
+			ps.setInt(2, dia_semana);
+			ps.setInt(3, carga);
+			ps.setInt(4, aula.getId());			
 			
 			if(ps.executeUpdate() != 0) {
 				return true;
