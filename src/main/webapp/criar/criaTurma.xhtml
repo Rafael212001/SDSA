@@ -7,6 +7,10 @@
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css"
 			href="resource/css/cssCriar.css" />
+
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{turmaMB.listarT}" />
+		</f:metadata>
 	</h:head>
 	<h:body>
 		<p:growl autoUpdate="true" showDetail="true"></p:growl>
@@ -66,20 +70,22 @@
 							value="#{turmaMB.tur.qtd_alunos}" />
 						<p:message for="qtd" display="icon" />
 					Divisão:
-							<p:selectOneRadio id="divisao" layout="responsive" columns="3" value="#{turmaMB.tur.divisao}">
+							<p:selectOneRadio id="divisao" layout="responsive" columns="3"
+							value="#{turmaMB.tur.divisao}">
 							<f:selectItem itemLabel="Sim" itemValue="1" />
 							<f:selectItem itemLabel="Não" itemValue="2" />
 						</p:selectOneRadio>
 						<p:message for="divisao" display="icon" />
 					Período:
 					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					<p:selectOneRadio id="periodo" layout="grid" columns="3" value="#{turmaMB.tur.periodo}">
-							<f:selectItem itemLabel="Manha" itemValue="1" />
-							<f:selectItem itemLabel="Tarde" itemValue="2" />
-							<f:selectItem itemLabel="Noite" itemValue="3" />
-						</p:selectOneRadio>
-						<p:message for="periodo" display="icon" />
-					</h:panelGrid>
+							<p:selectOneRadio id="periodo" layout="grid" columns="3"
+								value="#{turmaMB.tur.periodo}">
+								<f:selectItem itemLabel="Manha" itemValue="1" />
+								<f:selectItem itemLabel="Tarde" itemValue="2" />
+								<f:selectItem itemLabel="Noite" itemValue="3" />
+							</p:selectOneRadio>
+							<p:message for="periodo" display="icon" />
+						</h:panelGrid>
 					</h:panelGrid>
 				</div>
 				<div class="margin center">

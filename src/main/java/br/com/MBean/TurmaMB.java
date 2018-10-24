@@ -58,7 +58,7 @@ public class TurmaMB {
 		idCurso = 0;
 	}
 	
-	private void listarT() {
+	public void listarT() {
 		turL = tDAO.listarTodos();
 		curS = tcDAO.listarTodos();
 	}

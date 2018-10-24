@@ -1,19 +1,9 @@
 package br.com.MBean;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-
-import org.primefaces.event.FileUploadEvent;
 
 import br.com.DAO.professorDAO;
 import br.com.entities.CD;
@@ -60,6 +50,10 @@ public class ProfessorMB {
 			listarP();
 		}
 	}
+	
+	public void listarDisciplina() {
+		d = pDAO.listarDisciplina();
+	}
 
 	/*
 	 * public void upload(FileUploadEvent event) { FacesMessage msg = new
@@ -77,7 +71,7 @@ public class ProfessorMB {
 	 * 
 	 * }
 	 */
-	private void listarP() {
+	public void listarP() {
 		profL = pDAO.listarTodos();
 		cdl = pDAO.listarCd(lastId);
 	}
