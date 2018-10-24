@@ -11,15 +11,7 @@
 </style>
 </h:head>
 <h:body>
-<p:selectOneMenu id="console" value="" style="width:125px">
-	<f:selectItem itemLabel="dia da semana" itemValue="" />
-            <f:selectItem itemLabel="Segunda-feira" itemValue="1" />
-            <f:selectItem itemLabel="Terça-feira" itemValue="2" />
-            <f:selectItem itemLabel="Quarta-feira" itemValue="3" />
-            <f:selectItem itemLabel="Quinta-feira" itemValue="4" />
-            <f:selectItem itemLabel="Sexta-feira" itemValue="5" />
-            <f:selectItem itemLabel="Sábado" itemValue="6" />
-</p:selectOneMenu>
+
 	<h:form id="form">
 		<div class="aulasFormadas">
 			<p:fieldset id="aulas_alocarField">
@@ -42,6 +34,17 @@
 		<p:tabView id="tab">
 			<p:tab title="Manhã">
 				<p:scrollPanel>
+					<p:selectOneMenu id="diaSemana" value="#{distribuicaoMB.dia_semana}"
+						style="width:125px">
+						<f:selectItem itemLabel="dia da semana" itemValue="" />
+						<f:selectItem itemLabel="Segunda-feira" itemValue="1" />
+						<f:selectItem itemLabel="Terça-feira" itemValue="2" />
+						<f:selectItem itemLabel="Quarta-feira" itemValue="3" />
+						<f:selectItem itemLabel="Quinta-feira" itemValue="4" />
+						<f:selectItem itemLabel="Sexta-feira" itemValue="5" />
+						<f:selectItem itemLabel="Sábado" itemValue="6" />
+						<p:ajax event="change" process="diaSemana" />
+					</p:selectOneMenu>
 					<h3>Segundo andar</h3>
 					<table>
 						<tr>
@@ -67,9 +70,9 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala1}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
-							<td><p:fieldset id="s2">
+
+
+							 <td><p:fieldset id="s2">
 									<p:outputPanel id="dropS2">
 										<h:outputText value="Sala 2" />
 										<p:dataGrid id="aulasS2" var="aulaS2"
@@ -501,7 +504,7 @@
 										update=":form" />
 								</p:droppable></td>
 								
-								
+								 
 						</tr>
 					</table>
 

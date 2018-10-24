@@ -14,6 +14,7 @@ import org.primefaces.event.DragDropEvent;
 import br.com.DAO.aulasDAO;
 import br.com.entities.Aulas;
 import br.com.entities.Curso;
+import br.com.entities.Salas;
 
 @ManagedBean
 @ViewScoped
@@ -38,16 +39,19 @@ public class DistribuicaoMB implements Serializable {
 	private List<Aulas> dropSala16;
 	private List<Aulas> dropSala18;
 	private List<Aulas> dropSala35;
-	
+
 	private Aulas selecionadas;
 	private aulasDAO aDao;
+	private Salas sala;
+	public Integer dia_semana;
+	private Integer carga = 75;
 
 	List<Aulas> aulas;
 
 	public DistribuicaoMB() {
 		aDao = new aulasDAO();
 		aulas = aDao.listarTodasSemSala();
-		dropSala1 = new ArrayList<Aulas>();
+		// dropSala1 = aDao.listarAulasAlocadas(dia_semana,1);
 		dropSala2 = new ArrayList<Aulas>();
 		dropSala3 = new ArrayList<Aulas>();
 		dropSala4 = new ArrayList<Aulas>();
@@ -65,16 +69,17 @@ public class DistribuicaoMB implements Serializable {
 		dropSala16 = new ArrayList<Aulas>();
 		dropSala18 = new ArrayList<Aulas>();
 		dropSala35 = new ArrayList<Aulas>();
-		
+
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-		// chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 1, dia_semana, 75);
 
 		dropSala1.add(aula);
 		aulas.remove(aula);
+
 	}
 
 	/////////////////////////////////////////////////////////////////////////
@@ -248,10 +253,6 @@ public class DistribuicaoMB implements Serializable {
 	}
 
 ///////////////////////////////////////////////////////////////////////////	
-	
-	
-	
-	
 	public void init() {
 		// aulass = ;
 
@@ -364,7 +365,7 @@ public class DistribuicaoMB implements Serializable {
 	public void setDropSala10(List<Aulas> dropSala10) {
 		this.dropSala10 = dropSala10;
 	}
-	
+
 	public List<Aulas> getDropSala11() {
 		return dropSala11;
 	}
@@ -429,9 +430,28 @@ public class DistribuicaoMB implements Serializable {
 		this.dropSala35 = dropSala35;
 	}
 
-	
-	
-	
-	
+	public Salas getSala() {
+		return sala;
+	}
+
+	public void setSala(Salas sala) {
+		this.sala = sala;
+	}
+
+	public Integer getDia_semana() {
+		return dia_semana;
+	}
+
+	public void setDia_semana(Integer dia_semana) {
+		this.dia_semana = dia_semana;
+	}
+
+	public Integer getCarga() {
+		return carga;
+	}
+
+	public void setCarga(Integer carga) {
+		this.carga = carga;
+	}
 
 }
