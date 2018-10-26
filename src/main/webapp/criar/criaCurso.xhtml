@@ -5,11 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="resource/css/cssCriar.css" />
+		<link rel="stylesheet" type="text/css"
+			href="resource/css/cssCriar.css" />
 	</h:head>
 	<h:body>
 		<h:form id="formCs">
-			<p:dataTable id="dataT" var="curL" scrollable="true" scrollHeight="150" value="#{cursoMB.curL}">
+			<p:dataTable id="dataT" var="curL" scrollable="true" selectionMode="single" selection="#{cursoMB.selc}"
+				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{curL.nome}
@@ -20,21 +22,28 @@
 				</p:column>
 			</p:dataTable>
 			<p:panel id="div">
-			<div class="center">
-				<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+			<p:commandButton value="Editar"/>
+			<p:commandButton value="Excluir"/>
+				<div class="center">
+					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome" styleClass="campo" required="false" value="#{cursoMB.cur.nome}" />
-				<p:message for="nome" display="icon"/>
+				<h:inputText id="nome" styleClass="campo" required="false"
+							value="#{cursoMB.cur.nome}" />
+						<p:message for="nome" display="icon" />
 				Quantidade de semestres:
-				<h:inputText id="qsem" styleClass="campo" required="true" value="#{cursoMB.cur.qtd_semestre}" />
-				<p:message for="qsem" display="icon"/>
-			</h:panelGrid>
-			</div>
+				<h:inputText id="qsem" styleClass="campo" required="true"
+							value="#{cursoMB.cur.qtd_semestre}" />
+						<p:message for="qsem" display="icon" />
+					</h:panelGrid>
+				</div>
 			</p:panel>
 			<div class="margin center">
-				<p:commandButton styleClass="button left" ajax="true" update=":formCs:dataT :formCs:div" event="onclick"
-					value="Avançar" actionListener="#{cursoMB.criarCurso}" onsuccess="PF('dlg6').show();"/>
-				<p:commandButton styleClass="button right" ajax="false" value="Fechar"/>
+				<p:commandButton styleClass="button left" ajax="true"
+					update=":formCs:dataT :formCs:div" event="onclick" value="Avançar"
+					actionListener="#{cursoMB.criarCurso}"
+					onsuccess="PF('dlg6').show();" />
+				<p:commandButton styleClass="button right" ajax="false"
+					value="Fechar" />
 			</div>
 		</h:form>
 	</h:body>

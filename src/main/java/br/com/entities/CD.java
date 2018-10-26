@@ -2,6 +2,7 @@ package br.com.entities;
 
 public class CD {
 
+	private int id;
 	private Integer id_colaborador;
 	private Integer id_disciplina;
 
@@ -9,8 +10,9 @@ public class CD {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CD(Integer id_colaborador, Integer id_disciplina) {
+	public CD(int id, Integer id_colaborador, Integer id_disciplina) {
 		super();
+		this.id = id;
 		this.id_colaborador = id_colaborador;
 		this.id_disciplina = id_disciplina;
 	}
@@ -29,6 +31,14 @@ public class CD {
 
 	public void setId_disciplina(Integer id_disciplina) {
 		this.id_disciplina = id_disciplina;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

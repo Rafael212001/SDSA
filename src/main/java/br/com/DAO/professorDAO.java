@@ -124,6 +124,7 @@ public class professorDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				CD cd = new CD();
+				cd.setId(rs.getInt("id"));
 				cd.setId_colaborador(rs.getInt("id_colaborador"));
 				cd.setId_disciplina(rs.getInt("id_disciplina"));
 				list.add(cd);

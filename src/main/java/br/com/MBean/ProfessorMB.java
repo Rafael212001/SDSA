@@ -14,14 +14,16 @@ import br.com.entities.Professor;
 @ViewScoped
 public class ProfessorMB {
 	int idC;
-	Professor prof = new Professor();
-	List<Professor> profL;
-	professorDAO pDAO = new professorDAO();
-	List<Disciplina> d = pDAO.listarDisciplina();
-	List<CD> cdl;
-	CD cd = new CD();
 	int lastId;
 	private String caminho = "resource/img/";
+	professorDAO pDAO = new professorDAO();
+	Professor prof = new Professor();
+	Professor selc = new Professor();
+	CD cd = new CD();
+	CD cdSelc = new CD();
+	List<Professor> profL;
+	List<Disciplina> d = pDAO.listarDisciplina();
+	List<CD> cdl = pDAO.listarCd(lastId);
 
 	public ProfessorMB() {
 		listarP();
@@ -50,7 +52,7 @@ public class ProfessorMB {
 			listarP();
 		}
 	}
-	
+
 	public void listarDisciplina() {
 		d = pDAO.listarDisciplina();
 	}
@@ -147,4 +149,21 @@ public class ProfessorMB {
 	public void setpDAO(professorDAO pDAO) {
 		this.pDAO = pDAO;
 	}
+
+	public Professor getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Professor selc) {
+		this.selc = selc;
+	}
+
+	public CD getCdSelc() {
+		return cdSelc;
+	}
+
+	public void setCdSelc(CD cdSelc) {
+		this.cdSelc = cdSelc;
+	}
+
 }
