@@ -51,24 +51,24 @@ public class DistribuicaoMB implements Serializable {
 	public DistribuicaoMB() {
 		aDao = new aulasDAO();
 		aulas = aDao.listarTodasSemSala();
-		// dropSala1 = aDao.listarAulasAlocadas(dia_semana,1);
-		dropSala2 = new ArrayList<Aulas>();
-		dropSala3 = new ArrayList<Aulas>();
-		dropSala4 = new ArrayList<Aulas>();
-		dropSala5 = new ArrayList<Aulas>();
-		dropSala6 = new ArrayList<Aulas>();
-		dropSala7 = new ArrayList<Aulas>();
-		dropSala8 = new ArrayList<Aulas>();
-		dropSala9 = new ArrayList<Aulas>();
-		dropSala10 = new ArrayList<Aulas>();
-		dropSala11 = new ArrayList<Aulas>();
-		dropSala12 = new ArrayList<Aulas>();
-		dropSala13 = new ArrayList<Aulas>();
-		dropSala14 = new ArrayList<Aulas>();
-		dropSala15 = new ArrayList<Aulas>();
-		dropSala16 = new ArrayList<Aulas>();
-		dropSala18 = new ArrayList<Aulas>();
-		dropSala35 = new ArrayList<Aulas>();
+		dropSala1 = aDao.listarAulasAlocadas(dia_semana,1);
+		dropSala2 = aDao.listarAulasAlocadas(dia_semana,2);
+		dropSala3 = aDao.listarAulasAlocadas(dia_semana,3);
+		dropSala4 = aDao.listarAulasAlocadas(dia_semana,4);
+		dropSala5 = aDao.listarAulasAlocadas(dia_semana,5);
+		dropSala6 = aDao.listarAulasAlocadas(dia_semana,6);
+		dropSala7 = aDao.listarAulasAlocadas(dia_semana,7);
+		dropSala8 = aDao.listarAulasAlocadas(dia_semana,8);
+		dropSala9 = aDao.listarAulasAlocadas(dia_semana,9);
+		dropSala10 = aDao.listarAulasAlocadas(dia_semana,10);
+		dropSala11 = aDao.listarAulasAlocadas(dia_semana,11);
+		dropSala12 = aDao.listarAulasAlocadas(dia_semana,12);
+		dropSala13 = aDao.listarAulasAlocadas(dia_semana,13);
+		dropSala14 = aDao.listarAulasAlocadas(dia_semana,14);
+		dropSala15 = aDao.listarAulasAlocadas(dia_semana,15);
+		dropSala16 = aDao.listarAulasAlocadas(dia_semana,16);
+		dropSala18 = aDao.listarAulasAlocadas(dia_semana,18);
+		dropSala35 = aDao.listarAulasAlocadas(dia_semana,35);
 
 	}
 
@@ -76,6 +76,7 @@ public class DistribuicaoMB implements Serializable {
 		Aulas aula = ((Aulas) dde.getData());
 
 		aDao.alocarSala(aula, 1, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 1);
 
 		dropSala1.add(aula);
 		aulas.remove(aula);
@@ -86,7 +87,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala2(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-		// chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 2, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 2);
 
 		dropSala2.add(aula);
 		aulas.remove(aula);
@@ -96,7 +98,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala3(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-		// chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 3, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 3);
 
 		dropSala3.add(aula);
 		aulas.remove(aula);
@@ -106,8 +109,9 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala4(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-		// chamar daoAula para atualizar a sala que foi inserida
-
+		aDao.alocarSala(aula, 4, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 4);
+		
 		dropSala4.add(aula);
 		aulas.remove(aula);
 	}
@@ -116,8 +120,9 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala5(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-		// chamar daoAula para atualizar a sala que foi inserida
-
+		aDao.alocarSala(aula, 5, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 5);
+		
 		dropSala5.add(aula);
 		aulas.remove(aula);
 	}
@@ -126,8 +131,9 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala6(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
-
+		aDao.alocarSala(aula, 6, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 6);
+		
 		dropSala6.add(aula);
 		aulas.remove(aula);
 	}
@@ -135,8 +141,9 @@ public class DistribuicaoMB implements Serializable {
 ////////////////////////////////////////////////////////////////////////////
 	public void onAulasDropSala7(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
-
-//chamar daoAula para atualizar a sala que foi inserida
+		
+		aDao.alocarSala(aula, 7, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 7);
 
 		dropSala7.add(aula);
 		aulas.remove(aula);
@@ -146,7 +153,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala8(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 8, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 8);
 
 		dropSala8.add(aula);
 		aulas.remove(aula);
@@ -156,7 +164,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala9(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 9, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 9);
 
 		dropSala9.add(aula);
 		aulas.remove(aula);
@@ -166,7 +175,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala10(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 10, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 10);
 
 		dropSala10.add(aula);
 		aulas.remove(aula);
@@ -176,7 +186,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala11(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 11, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 11);
 
 		dropSala11.add(aula);
 		aulas.remove(aula);
@@ -186,7 +197,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala12(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 12, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 12);
 
 		dropSala12.add(aula);
 		aulas.remove(aula);
@@ -196,7 +208,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala13(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 13, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 13);
 
 		dropSala13.add(aula);
 		aulas.remove(aula);
@@ -206,7 +219,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala14(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 14, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 14);
 
 		dropSala14.add(aula);
 		aulas.remove(aula);
@@ -216,7 +230,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala15(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 15, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 15);
 
 		dropSala15.add(aula);
 		aulas.remove(aula);
@@ -226,7 +241,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala16(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 16, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 16);
 
 		dropSala16.add(aula);
 		aulas.remove(aula);
@@ -236,7 +252,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala18(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 18, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 18);
 
 		dropSala18.add(aula);
 		aulas.remove(aula);
@@ -246,7 +263,8 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala35(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
 
-//chamar daoAula para atualizar a sala que foi inserida
+		aDao.alocarSala(aula, 35, dia_semana, 75);
+		aDao.listarAulasAlocadas(dia_semana, 35);
 
 		dropSala35.add(aula);
 		aulas.remove(aula);
