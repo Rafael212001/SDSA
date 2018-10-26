@@ -10,40 +10,45 @@
 	</h:head>
 	<h:body>
 		<h:form id="form">
-			<p:dataTable id="dataT" var="coo" scrollable="true" selectionMode="single" selection="#{coordenadorMB.selc}"
-				scrollHeight="150" value="#{coordenadorMB.coo}" rowKey="#{coo.id}"	 >
-				<p:column >
+			<p:dataTable id="dataT" var="coo" scrollable="true"
+				selectionMode="single" selection="#{coordenadorMB.selc}"
+				scrollHeight="150" value="#{coordenadorMB.coo}" rowKey="#{coo.id}">
+				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{coo.nome}
 				</p:column>
-				<p:column >
+				<p:column>
 					<f:facet name="header">NIF</f:facet>
 					#{coo.login}
 				</p:column>
-				<p:column >
-					<p:commandButton icon="ui-icon-pencil"/>
-					<p:commandButton icon="ui-icon-trash" actionListener="#{coordenadorMB.excluirCoordenador}"/>
-				</p:column>
 			</p:dataTable>
+			<p:commandButton process="dataT" value="Editar" ajax="true" update=":form:div" event="oncomplete" actionListener="#{coordenadorMB.listarId}" />
+			<p:commandButton process="dataT" value="Excluir" />
 			<p:panel id="div">
-				<div class="center" >
+				<div class="center">
 					<h:panelGrid id="grid" columns="3" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" styleClass="campo" required="true" value="#{coordenadorMB.coor.nome}" />
-					<p:message for="nome" display="icon"/>
+					<h:inputText id="nome" styleClass="campo" required="true"
+							value="#{coordenadorMB.coor.nome}" />
+						<p:message for="nome" display="icon" />
 					NIF:
-					<h:inputText id="nif" required="true" value="#{coordenadorMB.coor.login}" />
-					<p:message for="nif" display="icon"/>
+					<h:inputText id="nif" required="true"
+							value="#{coordenadorMB.coor.login}" />
+						<p:message for="nif" display="icon" />
 					Senha:
-					<h:inputText id="senha" required="true" value="#{coordenadorMB.coor.senha}" />
-					<p:message  for="senha" display="icon"/>
+					<h:inputText id="senha" required="true"
+							value="#{coordenadorMB.coor.senha}" />
+							
+						<p:message for="senha" display="icon" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
-				<p:commandButton styleClass="button left" ajax="true" update=":form:dataT :form:div" event="onclick"
-					value="Salvar" actionListener="#{coordenadorMB.criarCoordenador}" />
-				<p:commandButton styleClass="button right" ajax="false" value="Fechar"/>
+				<p:commandButton styleClass="button left" ajax="true"
+					update=":form:dataT :form:div" event="onclick" value="Salvar"
+					actionListener="#{coordenadorMB.criarCoordenador}" />
+				<p:commandButton styleClass="button right" ajax="false"
+					value="Fechar" />
 			</div>
 		</h:form>
 	</h:body>

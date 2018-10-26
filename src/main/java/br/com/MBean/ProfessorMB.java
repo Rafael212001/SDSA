@@ -15,6 +15,8 @@ import br.com.entities.Professor;
 public class ProfessorMB {
 	int idC;
 	Professor prof = new Professor();
+	Professor selc = new Professor();
+	Professor tcoo;
 	List<Professor> profL;
 	professorDAO pDAO = new professorDAO();
 	List<Disciplina> d = pDAO.listarDisciplina();
@@ -50,7 +52,7 @@ public class ProfessorMB {
 			listarP();
 		}
 	}
-	
+
 	public void listarDisciplina() {
 		d = pDAO.listarDisciplina();
 	}
@@ -147,4 +149,21 @@ public class ProfessorMB {
 	public void setpDAO(professorDAO pDAO) {
 		this.pDAO = pDAO;
 	}
+
+	public Professor getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Professor selc) {
+		this.selc = selc;
+	}
+
+	public Professor getTcoo() {
+		return tcoo;
+	}
+
+	public void setTcoo(Professor tcoo) {
+		this.tcoo = tcoo;
+	}
+
 }

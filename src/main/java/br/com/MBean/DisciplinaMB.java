@@ -17,6 +17,7 @@ import br.com.entities.Disciplina;
 @ViewScoped
 public class DisciplinaMB {
 	Disciplina disc = new Disciplina();
+	Disciplina selc = new Disciplina();
 	List<Disciplina> discL;
 	disciplinaDAO dDAO = new disciplinaDAO();
 	private List<Integer> semestres;
@@ -49,7 +50,7 @@ public class DisciplinaMB {
 		for (int f = 1; f <= i; f++) {
 			semestres.add(f);
 		}
-		
+
 	}
 
 	private void listarD() {
@@ -75,7 +76,7 @@ public class DisciplinaMB {
 	public disciplinaDAO getdDAO() {
 		return dDAO;
 	}
- 
+
 	public void setdDAO(disciplinaDAO dDAO) {
 		this.dDAO = dDAO;
 	}
@@ -94,6 +95,14 @@ public class DisciplinaMB {
 
 	public void setSemestres(List<Integer> semestres) {
 		this.semestres = semestres;
+	}
+
+	public Disciplina getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Disciplina selc) {
+		this.selc = selc;
 	}
 
 }

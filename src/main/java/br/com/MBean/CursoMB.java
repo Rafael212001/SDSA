@@ -14,31 +14,32 @@ import br.com.entities.Disciplina;
 @ViewScoped
 public class CursoMB {
 	Curso cur = new Curso();
+	Curso selc = new Curso();
 	List<Curso> curL;
 	cursoDAO csDAO = new cursoDAO();
 	Disciplina d = new Disciplina();
 	@ManagedProperty(value = "#{disciplinaMB}")
 	DisciplinaMB dMB;
 	int lastId;
-	
+
 	public CursoMB() {
 		listarCS();
 	}
-	
+
 	public void criarCurso() {
 		lastId = csDAO.inserir(cur);
-		if(lastId > 0) {			
+		if (lastId > 0) {
 			System.out.println("deu porra");
 			dMB.setID(lastId);
 			dMB.listarSemestreC();
 			zerar();
 			listarCS();
-		}else {
+		} else {
 			System.out.println("não deu ;-;");
 			listarCS();
 		}
 	}
-	
+
 	private void zerar() {
 		cur = new Curso();
 		d = new Disciplina();
@@ -96,5 +97,13 @@ public class CursoMB {
 	public void setdMB(DisciplinaMB dMB) {
 		this.dMB = dMB;
 	}
-	
+
+	public Curso getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Curso selc) {
+		this.selc = selc;
+	}
+
 }

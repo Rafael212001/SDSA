@@ -16,7 +16,8 @@
 		<p:growl autoUpdate="true" showDetail="true"></p:growl>
 		<h:form id="formt">
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
-				scrollable="true" scrollHeight="150">
+				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
+				scrollHeight="150" rowKey="#{turL.id}">
 				<p:column>
 					<f:facet name="header">Nome da Turma</f:facet>
 					#{turL.nome}
@@ -42,6 +43,8 @@
 					#{turL.semestre}
 				</p:column>
 			</p:dataTable>
+			<p:commandButton value="Editar" />
+			<p:commandButton value="Excluir" />
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">

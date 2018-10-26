@@ -14,7 +14,8 @@
 	<h:body>
 		<h:form id="formp">
 			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
-				scrollable="true" scrollHeight="150">
+				selectionMode="single" selection="#{professorMB.selc}"
+				scrollable="true" scrollHeight="150" rowKey="#{profL.id}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{profL.nome}
@@ -32,6 +33,9 @@
 					#{profL.tipo}
 				</p:column>
 			</p:dataTable>
+			<p:commandButton value="Editar" />
+			<p:commandButton value="Excluir" />
+			<p:commandButton value="Colocar Disciplina" />
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
@@ -48,12 +52,12 @@
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
-						<p:message for="tipo" display="icon" /> 
-					<!-- Foto:
+						<p:message for="tipo" display="icon" />
+						<!-- Foto:
 					<p:fileUpload fileUploadListener="#{a}" mode="simple" skinSimple="true"
 							allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
 						<p:growl id="messages" showDetail="true" />-->
-					</h:panelGrid> 
+					</h:panelGrid>
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"

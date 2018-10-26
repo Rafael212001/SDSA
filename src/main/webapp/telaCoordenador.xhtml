@@ -62,45 +62,50 @@
 		<ui:include src="criar/colocaDisciplina.xhtml" />
 	</p:dialog>
 	<center>
-		<h1>Professores</h1>
-		
-		<p:dataGrid var="professor" value="#{dataGridView.cars}" columns="3" layout="grid"
-        rows="12" paginator="true" id="cars"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12,16">
- 
-		<p:panelGrid columns="2">
-			<f:facet name="header">
-				<h:graphicImage class="imagens" value="resource/img/tibu.jpg" />
-			</f:facet>
+		<h:form id="formDP">
+			<p:dataGrid var="profL" value="#{professorMB.profL}" columns="3"
+				layout="grid" rows="12" paginator="true" id="dataGrid"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-			<h:outputText value="Name:" />
-			<h:outputText value="Tiburcio" />
+				<f:facet name="header">
+					Professores
+				</f:facet>
 
+				<p:panel header="#{profL.nome}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
 
-			<h:outputText value="Disciplina:" />
-			<h:outputText value="Hardware" />
+						<h:outputText value="#{a}" />
 
-			<h:outputText value="Curso:" />
-			<h:outputText value="Informatica" />
-		</p:panelGrid>
+						<p:commandLink update=":formDP:detalheProf"
+							oncomplete="PF('profDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{profL}"
+								target="#{professorMB.tcoo}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
 
-		<h:form>
-			<p:growl id="growl" life="2000" />
+			</p:dataGrid>
+			<p:dialog header="Info Professor" widgetVar="profDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="detalheProf" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty professorMB.tcoo}"
+						columnClasses="label,value">
+						
+						<h:outputText value="Id:" />
+						<h:outputText value="#{professorMB.tcoo.id}" />
 
+						<h:outputText value="Carga Horária:" />
+						<h:outputText value="#{professorMB.tcoo.carga_hora}" />
 
-			<p:commandButton value="Salvar" id="salvar"
-				actionListener="#{buttonView.buttonAction}" update="growl"
-				icon="ui-icon-disk" />
-
-			<p:commandButton value="Editar" id="editar"
-				actionListener="#{buttonView.buttonAction}" update="growl"
-				icon="ui-icon-pencil" />
-
-
+						<h:outputText value="Tipo:" />
+						<h:outputText value="#{professorMB.tcoo.tipo}"/>
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
 		</h:form>
-		 </p:dataGrid>
-		
 	</center>
 </h:body>
 </html>

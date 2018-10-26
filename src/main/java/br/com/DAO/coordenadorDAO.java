@@ -10,7 +10,6 @@ import java.util.List;
 import br.com.entities.Coordenador;
 import br.com.jdbc.ConnectionDB;
 
-
 public class coordenadorDAO {
 
 	Connection con;
@@ -20,8 +19,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean inserir(Coordenador c) {
-		String sql = "INSERT INTO Coordenadores (nome,login,senha)" 
-				   + "VALUES(?,?,?)";
+		String sql = "INSERT INTO Coordenadores (nome,login,senha)" + "VALUES(?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -51,7 +49,7 @@ public class coordenadorDAO {
 
 			while (rs.next()) {
 				Coordenador c = new Coordenador();
-				
+
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
 				c.setLogin(rs.getString("login"));
@@ -102,34 +100,55 @@ public class coordenadorDAO {
 		}
 		return false;
 	}
-	
-	public Coordenador buscaCoordenador(String nif){
-		
+
+	public Coordenador buscaCoordenador(String nif) {
+
 		String sql = "SELECT * FROM Coordenadores WHERE login = ?";
-		Connection con = ConnectionDB.getConnection();
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			
+
 			ps.setString(1, nif);
 
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()){
+
+			if (rs.next()) {
 				Coordenador c = new Coordenador();
 
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
 				c.setLogin(rs.getString("login"));
 				c.setSenha(rs.getString("senha"));
-				
+
 				return c;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public Coordenador pegarId(int id) {
+		String sql = "SELECT * FROM Coordenadores WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			Coordenador c = new Coordenador();
+			c.setId(rs.getInt("id"));
+			c.setNome(rs.getString("nome"));
+			c.setLogin(rs.getString("login"));
+			c.setSenha(rs.getString("senha"));
+			System.out.println("deu");
+			return c;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		System.out.println("não deu");
 		return null;
 	}
 
