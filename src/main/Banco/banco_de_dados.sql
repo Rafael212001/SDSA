@@ -85,13 +85,13 @@ CREATE TABLE Carga_horaria_restante(
 );
 
 INSERT INTO Cursos(nome, qtd_semestre)
-		VALUES	("Técnico em informática", 4),
+		VALUES	("Técnico em informática", 4);
 
 INSERT INTO Turmas(nome, qtd_alunos, divisao, periodo, semestre, id_curso)
 		VALUES	("1TI", 32, 1, 1, 1, 1),
 				("2TI", 32, 1, 1, 2, 1),
 				("3TI", 32, 1, 1, 3, 1),
-				("4TI", 32, 1, 1, 4, 1),
+				("4TI", 32, 1, 1, 4, 1);
 				
 INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso)
 		VALUES	("Fundamentos de Informática", 75, 1, 1),
@@ -111,7 +111,7 @@ INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso)
 				
 INSERT INTO Colaboradores(nome, carga_hora, tipo)
 		VALUES	("Pansani", 20, 2),
-				("Anderson", 20, 2)
+				("Anderson", 20, 2),
 				("Tânia Wopereis", 20, 1),
 				("Luiz Rodolfo", 20, 2),
 				("Rafael Leme", 20, 2),
@@ -136,7 +136,7 @@ INSERT INTO CD(id_colaborador, id_disciplina)
 
 INSERT INTO Coordenadores (nome,login,senha)
 		VALUES	("Tarciso", 28011999, "123"),
-				("Paraguassu", paragua, "123");
+				("Paraguassu", "paragua", "123");
 		
 INSERT INTO SALAS VALUES (1, "SALA 01");
 INSERT INTO SALAS VALUES (2, "SALA 02");
@@ -162,4 +162,4 @@ INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coorde
 				(1, 1, 5, 2, 2, 5, 2, 75),
 				(1, 1, 4, 1, 2,16, 3, 75),
 				(1, 1, 2, 2, 2,	9, 4, 75),
-				(1, 1, 1, 1, 2,16, 5, 75),
+				(1, 1, 1, 1, 2,16, 5, 75);
