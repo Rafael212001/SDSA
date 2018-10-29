@@ -43,7 +43,7 @@ public class DistribuicaoMB implements Serializable {
 	private Aulas selecionadas;
 	private aulasDAO aDao;
 	private Salas sala;
-	public Integer dia_semana;
+	public Integer dia_semana = 3;
 	private Integer carga = 75;
 
 	List<Aulas> aulas;
@@ -81,6 +81,8 @@ public class DistribuicaoMB implements Serializable {
 		dropSala1.add(aula);
 		aulas.remove(aula);
 
+		
+		
 	}
 
 	/////////////////////////////////////////////////////////////////////////
@@ -471,5 +473,7 @@ public class DistribuicaoMB implements Serializable {
 	public void setCarga(Integer carga) {
 		this.carga = carga;
 	}
+	
+	
 
 }

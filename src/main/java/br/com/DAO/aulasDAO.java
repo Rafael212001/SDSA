@@ -41,7 +41,6 @@ public class aulasDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			System.out.println(ps.toString());
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -64,17 +63,18 @@ public class aulasDAO {
 	
 	public List <Aulas> listarAulasAlocadas(Integer dia_semana, Integer numero){
 		List<Aulas> list = new ArrayList<Aulas>();
-		String sql = " SELECT * FROM aulas a " +
+		String sql = " SELECT  a.*, c.nome as curso, t.nome as turma, d.nome as disciplina FROM aulas a " +
 		" INNER JOIN cursos c ON (a.id_cursos = c.id) " +
 		" INNER JOIN turmas t ON (a.id_turmas = t.id) " +
-		" INNER JOIN disciplinas d ON (a.id_disciplinas = d.id) " +
+		" INNER JOIN disciplinas d ON (a.id_disciplina = d.id) " +
 		" WHERE id_sala = ? AND dia_semana = ? ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, numero);
 			ps.setInt(2, dia_semana);
-			
+			System.out.println(ps.toString());
+
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -82,9 +82,9 @@ public class aulasDAO {
 						new Curso(null, rs.getString("curso"), null), 
 						new Turma(null, rs.getString("turma"),null, null, null, null, null ), 
 						new Disciplina(null, rs.getString("disciplina"), null, null,null),
-						new Professor(null, rs.getString("colaborador"), null, null, null, null ,null, null), 
-						new Coordenador( null, rs.getString("coordenador"), null, null), 
-						rs.getInt(numero),rs.getInt(dia_semana),rs.getInt("carga"));
+						null, 
+						null, 
+						rs.getInt("id_sala"),rs.getInt("dia_semana"),rs.getInt("carga"));
 				list.add(a);
 			}
 		} catch (SQLException e) {
