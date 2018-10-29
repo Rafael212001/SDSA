@@ -1,6 +1,7 @@
 package br.com.DAO;
 
 import java.security.GeneralSecurityException;
+import java.security.KeyStore.ProtectionParameter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +45,8 @@ public class aulasDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null), 
+				Aulas a = new Aulas(rs.getInt("id"), 
+						new Curso(null, rs.getString("curso"), null), 
 						new Turma(null, rs.getString("turma"),null, null, null, null, null ), 
 						new Disciplina(null, rs.getString("disciplina"), null, null,null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null ,null, null), 
@@ -53,6 +55,38 @@ public class aulasDAO {
 				list.add(a);
 			}
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List <Aulas> listarAulasAlocadas(Integer dia_semana, Integer numero){
+		List<Aulas> list = new ArrayList<Aulas>();
+		String sql = " SELECT * FROM aulas a " +
+		" INNER JOIN cursos c ON (a.id_cursos = c.id) " +
+		" INNER JOIN turmas t ON (a.id_turmas = t.id) " +
+		" INNER JOIN disciplinas d ON (a.id_disciplinas = d.id) " +
+		" WHERE id_sala = ? AND dia_semana = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, numero);
+			ps.setInt(2, dia_semana);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Aulas a = new Aulas(rs.getInt("id"), 
+						new Curso(null, rs.getString("curso"), null), 
+						new Turma(null, rs.getString("turma"),null, null, null, null, null ), 
+						new Disciplina(null, rs.getString("disciplina"), null, null,null),
+						new Professor(null, rs.getString("colaborador"), null, null, null, null ,null, null), 
+						new Coordenador( null, rs.getString("coordenador"), null, null), 
+						rs.getInt(numero),rs.getInt(dia_semana),rs.getInt("carga"));
+				list.add(a);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -11,7 +11,9 @@
 	<h:body>
 		<h:form id="formD">
 			<p:dataTable id="dataT" var="discL" scrollable="true"
-				scrollHeight="150" value="#{disciplinaMB.discL}">
+				selectionMode="single" selection="#{disciplinaMB.selc}"
+				scrollHeight="150" value="#{disciplinaMB.discL}"
+				rowKey="#{discL.id}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{discL.nome}
@@ -30,23 +32,29 @@
 				</p:column>
 			</p:dataTable>
 			<p:panel id="div">
+				<p:commandButton value="Editar" />
+				<p:commandButton value="Excluir" />
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome" styleClass="campo" required="false" value="#{disciplinaMB.disc.nome}" />
-				<p:message for="nome" display="icon" />
+				<h:inputText id="nome" styleClass="campo" required="false"
+							value="#{disciplinaMB.disc.nome}" />
+						<p:message for="nome" display="icon" />
 				Carga Horária:
-				<h:inputText id="chora" styleClass="campo" required="false" value="#{disciplinaMB.disc.carga_hora}" />
-				<p:message for="chora" display="icon" />
+				<h:inputText id="chora" styleClass="campo" required="false"
+							value="#{disciplinaMB.disc.carga_hora}" />
+						<p:message for="chora" display="icon" />
 				Quantidade de semestres:
-						<p:selectOneMenu id="semestreD" required="false" value="#{disciplinaMB.disc.semestre}">
+						<p:selectOneMenu id="semestreD" required="false"
+							value="#{disciplinaMB.disc.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{disciplinaMB.semestres}" var="semestre"
-								itemLabel="#{semestre} Semestre" itemValue="#{semestre}"/>
+								itemLabel="#{semestre} Semestre" itemValue="#{semestre}" />
 							<p:autoUpdate />
 						</p:selectOneMenu>
-						<p:commandButton value="Atualizar" update="semestreD" actionListener="#{disciplinaMB.listarSemestreC}"/>
- 						<p:message for="semestreD" display="icon"  />
+						<p:commandButton value="Atualizar" update="semestreD"
+							actionListener="#{disciplinaMB.listarSemestreC}" />
+						<p:message for="semestreD" display="icon" />
 					</h:panelGrid>
 				</div>
 			</p:panel>

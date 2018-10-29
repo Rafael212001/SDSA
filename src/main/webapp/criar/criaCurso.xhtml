@@ -10,7 +10,12 @@
 	</h:head>
 	<h:body>
 		<h:form id="formCs">
+<<<<<<< HEAD
 			<p:dataTable id="dataT" var="curL" scrollable="true" selectionMode="single" selection="#{cursoMB.selc}"
+=======
+			<p:dataTable id="dataT" var="curL" scrollable="true"
+				selectionMode="single" selection="#{cursoMB.selc}"
+>>>>>>> 7af312d741375f01c393a8e6e87256b4124d4a24
 				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}">
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
@@ -21,9 +26,15 @@
 					#{curL.qtd_semestre}
 				</p:column>
 			</p:dataTable>
+			<p:commandButton value="Editar" />
+			<p:commandButton value="Excluir" />
+			<p:commandButton value="Disciplina"/>
 			<p:panel id="div">
+<<<<<<< HEAD
 			<p:commandButton value="Editar"/>
 			<p:commandButton value="Excluir"/>
+=======
+>>>>>>> 7af312d741375f01c393a8e6e87256b4124d4a24
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
 				Nome:

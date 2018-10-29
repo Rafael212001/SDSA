@@ -19,8 +19,12 @@ public class ProfessorMB {
 	professorDAO pDAO = new professorDAO();
 	Professor prof = new Professor();
 	Professor selc = new Professor();
+<<<<<<< HEAD
 	CD cd = new CD();
 	CD cdSelc = new CD();
+=======
+	Professor tcoo;
+>>>>>>> 7af312d741375f01c393a8e6e87256b4124d4a24
 	List<Professor> profL;
 	List<Disciplina> d = pDAO.listarDisciplina();
 	List<CD> cdl = pDAO.listarCd(lastId);
@@ -158,12 +162,21 @@ public class ProfessorMB {
 		this.selc = selc;
 	}
 
+<<<<<<< HEAD
 	public CD getCdSelc() {
 		return cdSelc;
 	}
 
 	public void setCdSelc(CD cdSelc) {
 		this.cdSelc = cdSelc;
+=======
+	public Professor getTcoo() {
+		return tcoo;
+	}
+
+	public void setTcoo(Professor tcoo) {
+		this.tcoo = tcoo;
+>>>>>>> 7af312d741375f01c393a8e6e87256b4124d4a24
 	}
 
 }

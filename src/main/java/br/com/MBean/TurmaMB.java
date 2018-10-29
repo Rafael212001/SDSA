@@ -16,6 +16,7 @@ import br.com.entities.Turma;
 public class TurmaMB {
 	Turma tur = new Turma();
 	Curso tcur = new Curso();
+	Turma selc = new Turma();
 	List<Turma> turL;
 	List<Curso> curS;
 	cursoDAO tcDAO = new cursoDAO();
@@ -134,5 +135,14 @@ public class TurmaMB {
 	public void setIdCurso(int idCurso) {
 		this.idCurso = idCurso;
 	}
+
+	public Turma getSelc() {
+		return selc;
+	}
+
+	public void setSelc(Turma selc) {
+		this.selc = selc;
+	}
+	
 	
 }

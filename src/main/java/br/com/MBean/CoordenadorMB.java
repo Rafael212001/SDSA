@@ -35,34 +35,40 @@ public class CoordenadorMB {
 			listarC();
 		}
 	}
-	
+
 	private void zerar() {
 		coor = new Coordenador();
 		selc = new Coordenador();
 		cDAO = new coordenadorDAO();
 	}
 
+	public void listarId() {
+		int i = selc.getId();
+		coor = cDAO.pegarId(i);
+		if (coor != null) {
+			System.out.println("deu");
+		} else {
+			System.out.println("não deu");
+		}
+	}
+
 	public void excluirCoordenador() {
-		
-		
-//		if(cDAO.excluir(id)) {
-//			dlCoor();
-//		}else {
-//			errorCoor();
-//		}
+
 	}
 
 	private void listarC() {
 		coo = cDAO.listarTodos();
 	}
-	
+
 	public void dlCoor() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado", "Coordenador foi deletado com sucesso."));
-    }
-	
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado", "Coordenador foi deletado com sucesso."));
+	}
+
 	public void errorCoor() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO", "Coordenador não pode ser deletado."));
-    }
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO", "Coordenador não pode ser deletado."));
+	}
 
 	public Coordenador getCoor() {
 		return coor;
@@ -95,6 +101,5 @@ public class CoordenadorMB {
 	public void setSelc(Coordenador selc) {
 		this.selc = selc;
 	}
-	
-	
+
 }
