@@ -16,9 +16,9 @@ import br.com.entities.Coordenador;
 @ViewScoped
 public class CoordenadorMB {
 	Coordenador coor = new Coordenador();
+	Coordenador selc;
 	coordenadorDAO cDAO = new coordenadorDAO();
 	List<Coordenador> coo;
-	Coordenador selc;
 
 	public CoordenadorMB() {
 		listarC();
@@ -42,14 +42,8 @@ public class CoordenadorMB {
 		cDAO = new coordenadorDAO();
 	}
 
-	public void listarId() {
-		int i = selc.getId();
-		coor = cDAO.pegarId(i);
-		if (coor != null) {
-			System.out.println("deu");
-		} else {
-			System.out.println("não deu");
-		}
+	public void editar() {
+		coor = selc;
 	}
 
 	public void excluirCoordenador() {
@@ -101,5 +95,5 @@ public class CoordenadorMB {
 	public void setSelc(Coordenador selc) {
 		this.selc = selc;
 	}
-
+	
 }
