@@ -65,10 +65,11 @@ public class coordenadorDAO {
 	}
 
 	public boolean editar(Coordenador c) {
-		String sql = "UPDATE Coordenadores SET " + " nome = ?," + " login = ?," + " senha = ? ";
+		String sql = "UPDATE Coordenadores SET nome = ?, login = ?, senha = ? WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(4, c.getId());
 			ps.setString(1, c.getNome());
 			ps.setString(2, c.getLogin());
 			ps.setString(3, c.getSenha());
@@ -85,7 +86,7 @@ public class coordenadorDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Coordenadores WHERE id = ? ";
+		String sql = "DELETE FROM Coordenadores WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -102,19 +103,15 @@ public class coordenadorDAO {
 	}
 
 	public Coordenador buscaCoordenador(String nif) {
-
 		String sql = "SELECT * FROM Coordenadores WHERE login = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-
 			ps.setString(1, nif);
-
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 				Coordenador c = new Coordenador();
-
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
 				c.setLogin(rs.getString("login"));
@@ -130,25 +127,28 @@ public class coordenadorDAO {
 		return null;
 	}
 	
-	public Coordenador pegarId(int id) {
+	public Coordenador buscaCoordenador(int id) {
 		String sql = "SELECT * FROM Coordenadores WHERE id = ?";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			
-			Coordenador c = new Coordenador();
-			c.setId(rs.getInt("id"));
-			c.setNome(rs.getString("nome"));
-			c.setLogin(rs.getString("login"));
-			c.setSenha(rs.getString("senha"));
-			System.out.println("deu");
-			return c;
-		} catch (Exception e) {
-			// TODO: handle exception
+
+			if (rs.next()) {
+				Coordenador c = new Coordenador();
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setLogin(rs.getString("login"));
+				c.setSenha(rs.getString("senha"));
+
+				return c;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("não deu");
 		return null;
 	}
 

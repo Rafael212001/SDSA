@@ -11,7 +11,7 @@
 	<h:body>
 		<h:form id="form">
 			<p:dataTable id="dataT" var="coo" scrollable="true"
-				selectionMode="single" selection="#{coordenadorMB.selc}" 
+				selectionMode="single" selection="#{coordenadorMB.selc}"
 				scrollHeight="150" value="#{coordenadorMB.coo}" rowKey="#{coo.id}">
 				<p:ajax event="rowSelect" update=":form" />
 				<p:column>
@@ -26,34 +26,31 @@
 			<div id="bot">
 				<p:commandButton value="Editar" ajax="true"
 					disabled="#{coordenadorMB.selc == null}"
-					actionListener="#{coordenadorMB.editar}" 
-					update=":formCriar"/>
-				<p:commandButton process="dataT" value="Excluir" />
+					actionListener="#{coordenadorMB.editar}" update=":formCriar" />
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{coordenadorMB.selc == null}"
+					actionListener="#{coordenadorMB.excluir}" update=":form" />
 			</div>
-			</h:form>
-			<h:form id="formCriar">
+		</h:form>
+		<h:form id="formCriar">
 			<p:panel id="div">
 				<div class="center">
-					<h:panelGrid id="grid" columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid id="grid" columns="2" cellpadding="2" cellspacing="1">
 					Nome:
-					<h:inputText id="nome" styleClass="campo" required="true"
-							value="#{coordenadorMB.coor.nome}" />
-						<p:message for="nome" display="icon" />
+					<h:inputText id="nome" value="#{coordenadorMB.coor.nome}" />
+						
 					NIF:
-					<h:inputText id="nif" required="true"
-							value="#{coordenadorMB.coor.login}" />
-						<p:message for="nif" display="icon" />
+					<h:inputText id="nif" value="#{coordenadorMB.coor.login}" />
+						
 					Senha:
-					<h:inputText id="senha" required="true"
-							value="#{coordenadorMB.coor.senha}" />
-						<p:message for="senha" display="icon" />
+					<h:inputText id="senha" value="#{coordenadorMB.coor.senha}" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
 				<p:commandButton styleClass="button left" ajax="true"
-					update=":form:dataT :formCriar:div" event="onclick" value="Salvar"
-					actionListener="#{coordenadorMB.criarCoordenador}" />
+					update=":form :formCriar" event="onclick" value="Salvar"
+					actionListener="#{coordenadorMB.salvar}" />
 				<p:commandButton styleClass="button right" ajax="false"
 					value="Fechar" />
 			</div>

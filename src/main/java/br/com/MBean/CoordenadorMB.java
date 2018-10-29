@@ -24,21 +24,41 @@ public class CoordenadorMB {
 		listarC();
 	}
 
-	public void criarCoordenador(ActionEvent event) {
-		System.out.println("ta entrando sa merda");
-		if (cDAO.inserir(coor)) {
-			System.out.println("deu porra");
+	public void salvar() {
+		if (coor.getId() != null) {
+			Coordenador c = cDAO.buscaCoordenador(coor.getId());
+			if (c != null && c.getId().equals(coor.getId())) {
+				editarCoordenador();
+			}
+		} else {
+			criarCoordenador();
+		}
+	}
+
+	public void editarCoordenador() {
+		if (cDAO.editar(coor)) {
+			System.out.println("Editando Coordenador");
 			zerar();
 			listarC();
 		} else {
-			System.out.println("deu não ;-;");
+			System.out.println("Erro ao editar coordenador");
+			listarC();
+		}
+	}
+
+	public void criarCoordenador() {
+		if (cDAO.inserir(coor)) {
+			System.out.println("Criando Coordenador");
+			zerar();
+			listarC();
+		} else {
+			System.out.println("Erro ao criar coordenador");
 			listarC();
 		}
 	}
 
 	private void zerar() {
 		coor = new Coordenador();
-		selc = new Coordenador();
 		cDAO = new coordenadorDAO();
 	}
 
@@ -46,22 +66,15 @@ public class CoordenadorMB {
 		coor = selc;
 	}
 
-	public void excluirCoordenador() {
-
+	public void excluir() {
+		if(cDAO.excluir(selc.getId())) {
+			System.out.println("Coordenador " + selc.getNome() + " excluindo.");
+			listarC();
+		}
 	}
 
 	private void listarC() {
 		coo = cDAO.listarTodos();
-	}
-
-	public void dlCoor() {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado", "Coordenador foi deletado com sucesso."));
-	}
-
-	public void errorCoor() {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO", "Coordenador não pode ser deletado."));
 	}
 
 	public Coordenador getCoor() {
@@ -95,5 +108,5 @@ public class CoordenadorMB {
 	public void setSelc(Coordenador selc) {
 		this.selc = selc;
 	}
-	
+
 }
