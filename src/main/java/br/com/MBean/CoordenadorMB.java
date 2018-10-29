@@ -37,22 +37,22 @@ public class CoordenadorMB {
 
 	public void editarCoordenador() {
 		if (cDAO.editar(coor)) {
-			System.out.println("Editando Coordenador");
+			System.out.println("Coordenador alterado.");
 			zerar();
 			listarC();
 		} else {
-			System.out.println("Erro ao editar coordenador");
+			System.out.println("Erro na alteraçao do coordenador.");
 			listarC();
 		}
 	}
 
 	public void criarCoordenador() {
 		if (cDAO.inserir(coor)) {
-			System.out.println("Criando Coordenador");
+			System.out.println("Coordenador criado.");
 			zerar();
 			listarC();
 		} else {
-			System.out.println("Erro ao criar coordenador");
+			System.out.println("Erro na criaçao do coordenador.");
 			listarC();
 		}
 	}

@@ -14,10 +14,10 @@ import br.com.entities.Disciplina;
 @ViewScoped
 public class CursoMB {
 	Curso cur = new Curso();
-	Curso selc = new Curso();
+	Curso selc;
+	Disciplina d = new Disciplina();
 	List<Curso> curL;
 	cursoDAO csDAO = new cursoDAO();
-	Disciplina d = new Disciplina();
 	@ManagedProperty(value = "#{disciplinaMB}")
 	DisciplinaMB dMB;
 	int lastId;
@@ -25,25 +25,63 @@ public class CursoMB {
 	public CursoMB() {
 		listarCS();
 	}
-
+	
+	public void salvar() {
+		if(cur.getId() != null) {
+			Curso c = csDAO.buscarCurso(cur.getId());
+			if(c != null && c.getId().equals(cur.getId())) {
+				editarCurso();
+			}
+		}else {
+			criarCurso();
+		}
+	}
+	
+	public void editarCurso() {
+		if(csDAO.editar(cur)) {
+			System.out.println("Curso alterado.");
+			zerar();
+			listarCS();
+		}else {
+			System.out.println("Erro na alteraçao do curso.");
+			listarCS();
+		}
+	}
+	
 	public void criarCurso() {
 		lastId = csDAO.inserir(cur);
 		if (lastId > 0) {
-			System.out.println("deu porra");
-			dMB.setID(lastId);
-			dMB.listarSemestreC();
+			System.out.println("Curso criado.");
 			zerar();
 			listarCS();
 		} else {
-			System.out.println("não deu ;-;");
+			System.out.println("Erro na criaçao do curso.");
 			listarCS();
 		}
+	}
+	
+	public void disciplina() {
+		dMB.setID(selc.getId());
+		dMB.listarSemestreC();
 	}
 
 	private void zerar() {
 		cur = new Curso();
 		d = new Disciplina();
 		csDAO = new cursoDAO();
+		selc = null;
+	}
+	
+	public void editar() {
+		cur = selc;
+	}
+	
+	public void excluir() {
+		if(csDAO.excluir(selc.getId())){
+			System.out.println("Curso " +selc.getNome()+ " excluido.");
+			listarCS();
+			zerar();
+		}
 	}
 
 	private void listarCS() {

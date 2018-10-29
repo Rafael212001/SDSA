@@ -66,9 +66,50 @@ public class cursoDAO {
 		}
 		return list;
 	}
-
+	
+	public Curso buscarCurso(int id) {
+		String sql = "SELECT * FROM Cursos WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				Curso c = new Curso();
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setQtd_semestre(rs.getInt("qtd_semestre"));
+				
+				return c;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean editar(Curso c) {
+		String sql = "UPDATE Cursos SET nome = ?, qtd_semestre = ? WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(3, c.getId());
+			ps.setString(1, c.getNome());
+			ps.setInt(2, c.getQtd_semestre());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM  Cursos" + "WHERE id = ?";
+		String sql = "DELETE FROM Cursos WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

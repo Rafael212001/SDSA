@@ -13,6 +13,7 @@
 			<p:dataTable id="dataT" var="curL" scrollable="true"
 				selectionMode="single" selection="#{cursoMB.selc}"
 				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}">
+				<p:ajax event="rowSelect" update=":formCs" />
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{curL.nome}
@@ -22,28 +23,35 @@
 					#{curL.qtd_semestre}
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Editar" />
-			<p:commandButton value="Excluir" />
-			<p:commandButton value="Disciplina" />
+			<div id="bot">
+				<p:commandButton value="Editar" ajax="true"
+					disabled="#{cursoMB.selc == null}"
+					actionListener="#{cursoMB.editar}" update="formCsc" />
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{cursoMB.selc == null}"
+					actionListener="#{cursoMB.excluir}" update="formCs" />
+				<p:commandButton value="Disciplina" ajax="true"
+					disabled="#{cursoMB.selc == null}" event="onclick"
+					actionListener="#{cursoMB.disciplina}"
+					onsuccess="PF('dlg6').show();" />
+			</div>
+		</h:form>
+		<h:form id="formCsc">
 			<p:panel id="div">
 				<div class="center">
-					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome" styleClass="campo" required="false"
-							value="#{cursoMB.cur.nome}" />
-						<p:message for="nome" display="icon" />
+				<h:inputText id="nome" value="#{cursoMB.cur.nome}" />
+						
 				Quantidade de semestres:
-				<h:inputText id="qsem" styleClass="campo" required="true"
-							value="#{cursoMB.cur.qtd_semestre}" />
-						<p:message for="qsem" display="icon" />
+				<h:inputText id="qsem" value="#{cursoMB.cur.qtd_semestre}" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
 				<p:commandButton styleClass="button left" ajax="true"
-					update=":formCs:dataT :formCs:div" event="onclick" value="Avançar"
-					actionListener="#{cursoMB.criarCurso}"
-					onsuccess="PF('dlg6').show();" />
+					update=":formCs :formCsc" event="onclick" value="Avançar"
+					actionListener="#{cursoMB.salvar}" />
 				<p:commandButton styleClass="button right" ajax="false"
 					value="Fechar" />
 			</div>
