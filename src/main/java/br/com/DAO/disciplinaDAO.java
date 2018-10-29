@@ -78,13 +78,59 @@ public class disciplinaDAO {
 			}
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return f;
 	}
+	
+	public Disciplina buscarDisciplina(int id) {
+		String sql = "SELECT * FROM Disciplinas WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				Disciplina d = new Disciplina();
+				d.setId(rs.getInt("id"));
+				d.setNome(rs.getString("nome"));
+				d.setCarga_hora(rs.getInt("carga_hora"));
+				d.setSemestre(rs.getInt("semestre"));
+				d.setId_curso(rs.getInt("id_curso"));
+				
+				return d;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean editar(Disciplina d) {
+		String sql = "UPDATE Disciplinas SET nome = ?, carga_hora= ?, semestre = ? WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(4, d.getId());
+			ps.setString(1, d.getNome());
+			ps.setInt(2, d.getCarga_hora());
+			ps.setInt(3, d.getSemestre());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Disciplinas " + "WHERE id = ? ";
+		String sql = "DELETE FROM Disciplinas WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

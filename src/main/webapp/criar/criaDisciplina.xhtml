@@ -14,6 +14,7 @@
 				selectionMode="single" selection="#{disciplinaMB.selc}"
 				scrollHeight="150" value="#{disciplinaMB.discL}"
 				rowKey="#{discL.id}">
+				<p:ajax event="rowSelect" update="formD" />
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{discL.nome}
@@ -31,37 +32,40 @@
 					#{discL.id_curso}
 				</p:column>
 			</p:dataTable>
+			<div id="bot">
+				<p:commandButton value="Editar" ajax="true"
+					disabled="#{disciplinaMB.selc == null}"
+					actionListener="#{disciplinaMB.editar}" update=":formDc" />
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{disciplinaMB.selc == null}"
+					actionListener="#{disciplinaMB.excluir}" update=":formD" />
+			</div>
+		</h:form>
+		<h:form id="formDc">
 			<p:panel id="div">
-				<p:commandButton value="Editar" />
-				<p:commandButton value="Excluir" />
 				<div class="center">
-					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 				Nome:
-				<h:inputText id="nome" styleClass="campo" required="false"
-							value="#{disciplinaMB.disc.nome}" />
-						<p:message for="nome" display="icon" />
+				<h:inputText id="nome" value="#{disciplinaMB.disc.nome}" />
+						
 				Carga Horária:
-				<h:inputText id="chora" styleClass="campo" required="false"
-							value="#{disciplinaMB.disc.carga_hora}" />
-						<p:message for="chora" display="icon" />
-				Quantidade de semestres:
-						<p:selectOneMenu id="semestreD" required="false"
+				<h:inputText id="chora" value="#{disciplinaMB.disc.carga_hora}" />
+						
+				Semestre Pert.:
+						<p:selectOneMenu id="semestreD"
 							value="#{disciplinaMB.disc.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{disciplinaMB.semestres}" var="semestre"
-								itemLabel="#{semestre} Semestre" itemValue="#{semestre}" />
+								itemLabel="#{semestre}º Semestre" itemValue="#{semestre}" />
 							<p:autoUpdate />
 						</p:selectOneMenu>
-						<p:commandButton value="Atualizar" update="semestreD"
-							actionListener="#{disciplinaMB.listarSemestreC}" />
-						<p:message for="semestreD" display="icon" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
 				<p:commandButton styleClass="button left" ajax="true"
-					update=":formD:dataT :formD:div" event="onclick" value="Salvar"
-					actionListener="#{disciplinaMB.criarDisciplina}" />
+					update=":formD :formDc" event="onclick" value="Salvar"
+					actionListener="#{disciplinaMB.salvar}" />
 				<p:commandButton styleClass="button right" ajax="false"
 					value="Fechar" />
 			</div>

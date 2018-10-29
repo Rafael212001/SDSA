@@ -60,6 +60,7 @@ public class CoordenadorMB {
 	private void zerar() {
 		coor = new Coordenador();
 		cDAO = new coordenadorDAO();
+		selc = null;
 	}
 
 	public void editar() {

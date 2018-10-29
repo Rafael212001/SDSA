@@ -26,13 +26,13 @@
 			<div id="bot">
 				<p:commandButton value="Editar" ajax="true"
 					disabled="#{cursoMB.selc == null}"
-					actionListener="#{cursoMB.editar}" update="formCsc" />
+					actionListener="#{cursoMB.editar}" update=":formCsc" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{cursoMB.selc == null}"
-					actionListener="#{cursoMB.excluir}" update="formCs" />
+					actionListener="#{cursoMB.excluir}" update=":formCs" />
 				<p:commandButton value="Disciplina" ajax="true"
 					disabled="#{cursoMB.selc == null}" event="onclick"
-					actionListener="#{cursoMB.disciplina}"
+					actionListener="#{cursoMB.disciplina}" update=":formD"
 					onsuccess="PF('dlg6').show();" />
 			</div>
 		</h:form>

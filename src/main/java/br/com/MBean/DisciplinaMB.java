@@ -17,7 +17,7 @@ import br.com.entities.Disciplina;
 @ViewScoped
 public class DisciplinaMB {
 	Disciplina disc = new Disciplina();
-	Disciplina selc = new Disciplina();
+	Disciplina selc;
 	List<Disciplina> discL;
 	disciplinaDAO dDAO = new disciplinaDAO();
 	private List<Integer> semestres;
@@ -26,7 +26,29 @@ public class DisciplinaMB {
 	public DisciplinaMB() {
 		listarD();
 	}
-
+	
+	public void salvar() {
+		if(disc.getId() != null) {
+			Disciplina d = dDAO.buscarDisciplina(disc.getId());
+			if(d != null && d.getId().equals(disc.getId())) {
+				editarDisciplina();
+			}
+		}else {
+			criarDisciplina();
+		}
+	}
+	
+	public void editarDisciplina() {
+		if(dDAO.editar(disc)) {
+			System.out.println("Disciplina alterada.");
+			zerar();
+			listarD();
+		}else {
+			System.out.println("Erro na alteraçao da disciplina.");
+			listarD();
+		}
+	}
+	
 	public void criarDisciplina() {
 		disc.setId_curso(ID);
 		if (dDAO.inserir(disc)) {
@@ -42,6 +64,17 @@ public class DisciplinaMB {
 	private void zerar() {
 		disc = new Disciplina();
 		dDAO = new disciplinaDAO();
+		selc = null;
+	}
+	
+	public void editar() {
+		disc = selc;
+	}
+	
+	public void excluir() {
+		if(dDAO.excluir(selc.getId())) {
+			System.out.println("Disciplina " +selc.getNome()+ " excluida.");
+		}
 	}
 
 	public void listarSemestreC() {
@@ -53,7 +86,7 @@ public class DisciplinaMB {
 
 	}
 
-	private void listarD() {
+	public void listarD() {
 		discL = dDAO.listarTodos(ID);
 	}
 

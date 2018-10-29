@@ -63,6 +63,7 @@ public class CursoMB {
 	public void disciplina() {
 		dMB.setID(selc.getId());
 		dMB.listarSemestreC();
+		dMB.listarD();
 	}
 
 	private void zerar() {
