@@ -43,7 +43,7 @@ public class CursoMB {
 			zerar();
 			listarCS();
 		}else {
-			System.out.println("Erro na alteraçao do curso.");
+			System.out.println("Erro na alteração do curso.");
 			listarCS();
 		}
 	}
@@ -55,7 +55,7 @@ public class CursoMB {
 			zerar();
 			listarCS();
 		} else {
-			System.out.println("Erro na criaçao do curso.");
+			System.out.println("Erro na criação do curso.");
 			listarCS();
 		}
 	}

@@ -13,11 +13,11 @@
 		</f:metadata>
 	</h:head>
 	<h:body>
-		<p:growl autoUpdate="true" showDetail="true"></p:growl>
 		<h:form id="formt">
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
 				scrollHeight="150" rowKey="#{turL.id}">
+				<p:ajax event="rowSelect" update=":formt" />
 				<p:column>
 					<f:facet name="header">Nome da Turma</f:facet>
 					#{turL.nome}
@@ -43,11 +43,19 @@
 					#{turL.semestre}
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Editar" />
-			<p:commandButton value="Excluir" />
+			<div id="bot">
+				<p:commandButton value="Editar" ajax="true"
+					disabled="#{turmaMB.selc == null}"
+					actionListener="#{turmaMB.editar}" update=":formtc" />
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{turmaMB.selc == null}"
+					actionListener="#{turmaMB.excluir}" update=":formt" />
+			</div>
+		</h:form>
+		<h:form id="formtc">
 			<p:panel id="div">
 				<div class="center">
-					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 					Curso:
 					<p:selectOneMenu id="curso" value="#{turmaMB.tur.id_curso}">
 							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
@@ -56,29 +64,27 @@
 							<p:ajax listener="#{turmaMB.listarSemestre}" event="change"
 								update="semestre" />
 						</p:selectOneMenu>
-						<p:message for="curso" display="icon" />
+
 					Semestre:
 					<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
 								itemLabel="#{semestre} Semestre" itemValue="#{semestre}" />
 						</p:selectOneMenu>
-						<p:message for="semestre" display="icon" />
+
                		Nome da Turma:
-					<h:inputText id="nome" styleClass="campo" required="true"
-							value="#{turmaMB.tur.nome}" />
-						<p:message for="nome" display="icon" />
+					<h:inputText id="nome" value="#{turmaMB.tur.nome}" />
+
 	          		Quantidade de Alunos:
-					<h:inputText id="qtd" styleClass="campo" required="true"
-							value="#{turmaMB.tur.qtd_alunos}" />
-						<p:message for="qtd" display="icon" />
+					<h:inputText id="qtd" value="#{turmaMB.tur.qtd_alunos}" />
+						
 					Divisão:
 							<p:selectOneRadio id="divisao" layout="responsive" columns="3"
 							value="#{turmaMB.tur.divisao}">
 							<f:selectItem itemLabel="Sim" itemValue="1" />
 							<f:selectItem itemLabel="Não" itemValue="2" />
 						</p:selectOneRadio>
-						<p:message for="divisao" display="icon" />
+						
 					Período:
 					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 							<p:selectOneRadio id="periodo" layout="grid" columns="3"
@@ -87,14 +93,14 @@
 								<f:selectItem itemLabel="Tarde" itemValue="2" />
 								<f:selectItem itemLabel="Noite" itemValue="3" />
 							</p:selectOneRadio>
-							<p:message for="periodo" display="icon" />
+
 						</h:panelGrid>
 					</h:panelGrid>
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left"
-						actionListener="#{turmaMB.criarTurma}" ajax="true"
-						update=":formt:dataT :formt:div" event="onclick" value="Salvar" />
+						actionListener="#{turmaMB.salvar}" ajax="true"
+						update=":formt :formtc" event="onclick" value="Salvar" />
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Fechar" />
 				</div>

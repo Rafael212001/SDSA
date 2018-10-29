@@ -41,7 +41,7 @@ public class CoordenadorMB {
 			zerar();
 			listarC();
 		} else {
-			System.out.println("Erro na alteraçao do coordenador.");
+			System.out.println("Erro na alteração do coordenador.");
 			listarC();
 		}
 	}
@@ -52,7 +52,7 @@ public class CoordenadorMB {
 			zerar();
 			listarC();
 		} else {
-			System.out.println("Erro na criaçao do coordenador.");
+			System.out.println("Erro na criação do coordenador.");
 			listarC();
 		}
 	}

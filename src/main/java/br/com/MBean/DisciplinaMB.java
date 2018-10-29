@@ -44,7 +44,7 @@ public class DisciplinaMB {
 			zerar();
 			listarD();
 		}else {
-			System.out.println("Erro na alteraçao da disciplina.");
+			System.out.println("Erro na alteração da disciplina.");
 			listarD();
 		}
 	}
@@ -52,11 +52,11 @@ public class DisciplinaMB {
 	public void criarDisciplina() {
 		disc.setId_curso(ID);
 		if (dDAO.inserir(disc)) {
-			System.out.println("deu porra");
+			System.out.println("Disciplina criada.");
 			zerar();
 			listarD();
 		} else {
-			System.out.println("não deu ;-;");
+			System.out.println("Erro na criação da disciplina.");
 			listarD();
 		}
 	}

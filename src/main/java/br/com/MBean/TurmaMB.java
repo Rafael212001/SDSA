@@ -16,7 +16,7 @@ import br.com.entities.Turma;
 public class TurmaMB {
 	Turma tur = new Turma();
 	Curso tcur = new Curso();
-	Turma selc = new Turma();
+	Turma selc;
 	List<Turma> turL;
 	List<Curso> curS;
 	cursoDAO tcDAO = new cursoDAO();
@@ -29,13 +29,34 @@ public class TurmaMB {
 		listarT();
 	}
 	
-	public void criarTurma() {
-		if(tDAO.inserir(tur)) {
-			System.out.println("deu porra");
+	public void salvar() {
+		if(tur.getId() != null) {
+			Turma t = tDAO.buscarTurma(tur.getId());
+			if(t != null && t.getId().equals(tur.getId())) {
+				editarTurma();
+			}
+		}else {
+			criarTurma();
+		}
+	}
+	
+	public void editarTurma() {
+		if(tDAO.editar(tur)) {
+			System.out.println("Turma alterada.");
 			zerar();
 			listarT();
 		}else {
-			System.out.println("não deu ;-;");
+			System.out.println("Erro na alteração da turma.");
+		}
+	}
+	
+	public void criarTurma() {
+		if(tDAO.inserir(tur)) {
+			System.out.println("Turma criada.");
+			zerar();
+			listarT();
+		}else {
+			System.out.println("Erro na criação da turma.");
 			listarT();
 		}
 	}
@@ -55,8 +76,19 @@ public class TurmaMB {
 		tDAO = new turmaDAO();
 		tcDAO = new cursoDAO();
 		tur = new Turma();
-		semestres = new ArrayList<Integer>();
 		idCurso = 0;
+		selc = null;
+	}
+	
+	public void editar() {
+		tur = selc;
+	}
+	
+	public void excluir() {
+		if(tDAO.excluir(selc.getId())) {
+			System.out.println("Turma " +selc.getNome()+ " excluida.");
+			listarT();
+		}
 	}
 	
 	public void listarT() {
