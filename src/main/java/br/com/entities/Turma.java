@@ -9,6 +9,8 @@ public class Turma {
 	private Integer periodo;
 	private Integer semestre;
 	private Integer id_curso;
+	private Curso curso;
+	
 	
 	public Turma() {
 		// TODO Auto-generated constructor stub
@@ -80,6 +82,14 @@ public class Turma {
 
 	public void setId_curso(Integer id_curso) {
 		this.id_curso = id_curso;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 }

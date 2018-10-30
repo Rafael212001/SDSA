@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entities.Curso;
 import br.com.entities.Turma;
 import br.com.jdbc.ConnectionDB;
 
@@ -42,7 +43,7 @@ public class turmaDAO {
 
 	public List<Turma> listarTodos() {
 		List<Turma> list = new ArrayList<Turma>();
-		String sql = "SELECT * FROM Turmas";
+		String sql = "SELECT t.*, c.nome AS nomeCurso FROM Turmas t INNER JOIN Cursos c ON t.id_curso = c.id ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -57,6 +58,7 @@ public class turmaDAO {
 				t.setPeriodo(rs.getInt("periodo"));
 				t.setSemestre(rs.getInt("semestre"));
 				t.setId_curso(rs.getInt("id_curso"));
+				t.setCurso(new Curso(t.getId_curso(), rs.getString("nomeCurso"), null));
 				list.add(t);
 			}
 		} catch (SQLException e) {
@@ -125,8 +127,8 @@ public class turmaDAO {
 			ps.setInt(4, t.getPeriodo());
 			ps.setInt(5, t.getSemestre());
 			ps.setInt(6, t.getId_curso());
-		
-			if(ps.executeUpdate() > 0) {
+
+			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
