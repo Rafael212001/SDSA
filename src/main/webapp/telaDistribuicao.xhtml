@@ -43,7 +43,7 @@
 						<f:selectItem itemLabel="Quinta-feira" itemValue="4" />
 						<f:selectItem itemLabel="Sexta-feira" itemValue="5" />
 						<f:selectItem itemLabel="Sábado" itemValue="6" />
-						<p:ajax event="change" process="diaSemana" />
+						<p:ajax event="change" process="diaSemana" update="tab"  listener="#{distribuicaoMB.atualizar}"/>
 					</p:selectOneMenu>
 					<h3>Segundo andar</h3>
 					<table>
