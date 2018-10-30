@@ -8,13 +8,16 @@
 		<link rel="stylesheet" type="text/css"
 			href="resource/css/cssCriar.css" />
 		<f:metadata>
-			<f:event type="preRenderView" listener="#{professorMB.listarDisciplina}" />
+			<f:event type="preRenderView"
+				listener="#{professorMB.listarDisciplina}" />
 		</f:metadata>
 	</h:head>
 	<h:body>
-		<h:form id="formpd">
-			<p:dataTable id="dataT" var="cdl" scrollable="true" 
-				scrollHeight="150" value="#{professorMB.cdl}" > 
+		<h:form id="formcd">
+			<p:dataTable id="dataT" var="cdl" scrollable="true"
+				selectionMode="single" selection="#{professorMB.cdSelc}"
+				scrollHeight="150" value="#{professorMB.cdl}" rowKey="#{cdl.id}">
+				<p:ajax event="rowSelect" update=":formcd" />
 				<p:column>
 					<f:facet name="header">Colaborador</f:facet>
 					#{cdl.id_colaborador}
@@ -24,26 +27,33 @@
 					#{cdl.id_disciplina}
 				</p:column>
 			</p:dataTable>
+			<div id="bot">
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{professorMB.cdSelc == null}"
+					actionListener="#{professorMB.cdExcluir}" update=":formcd" />
+			</div>
+		</h:form>
+		<h:form id="formcdc">
 			<p:panel id="div">
 				<div class="center">
-					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
 					Disciplina:
-					<p:selectOneMenu id="disciplina" value="#{professorMB.cd.id_disciplina}" filter="true">
-						<f:selectItem itemLabel="Selecione Disciplina" itemValue=""/>
-						<f:selectItems value="#{professorMB.d}" var="d"
+					<p:selectOneMenu id="disciplina"
+							value="#{professorMB.cd.id_disciplina}" filter="true">
+							<f:selectItem itemLabel="Selecione Disciplina" itemValue="" />
+							<f:selectItems value="#{professorMB.d}" var="d"
 								itemLabel="#{d.nome}" itemValue="#{d.id}" />
 						</p:selectOneMenu>
-						<p:commandButton value="Atualizar" update="disciplina" actionListener="#{professorMB.listarP}"/>
-						<p:message for="disciplina" display="icon" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
 			<div class="margin center">
-					<p:commandButton styleClass="button left" ajax="true"
-						update=":formpd:dataT :formpd:div" event="onclick" value="Salvar"
-						actionListener="#{professorMB.colocarDisciplina}"/>
-					<p:commandButton styleClass="button right" ajax="false" value="Fechar" />
-				</div>
+				<p:commandButton styleClass="button left" ajax="true"
+					update=":formcd :formcdc" event="onclick" value="Salvar"
+					actionListener="#{professorMB.colocarDisciplina}" />
+				<p:commandButton styleClass="button right" ajax="true"
+					value="Voltar" oncomplete="PF('dlg7').hide();" process="@this" />
+			</div>
 		</h:form>
 	</h:body>
 </ui:composition>

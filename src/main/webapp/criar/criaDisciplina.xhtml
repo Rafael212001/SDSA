@@ -66,8 +66,8 @@
 				<p:commandButton styleClass="button left" ajax="true"
 					update=":formD :formDc" event="onclick" value="Salvar"
 					actionListener="#{disciplinaMB.salvar}" />
-				<p:commandButton styleClass="button right" ajax="false"
-					value="Fechar" />
+				<p:commandButton styleClass="button right" ajax="true"
+					value="Voltar" oncomplete="PF('dlg6').hide();" process="@this"/>
 			</div>
 		</h:form>
 	</h:body>

@@ -14,69 +14,112 @@ import br.com.entities.Professor;
 @ViewScoped
 public class ProfessorMB {
 	int idC;
-	int lastId;
 	private String caminho = "resource/img/";
 	professorDAO pDAO = new professorDAO();
 	Professor prof = new Professor();
-	Professor selc = new Professor();
+	Professor selc;
 	CD cd = new CD();
-	CD cdSelc = new CD();
+	CD cdSelc;
 	Professor tcoo;
 	List<Professor> profL;
 	List<Disciplina> d = pDAO.listarDisciplina();
-	List<CD> cdl = pDAO.listarCd(lastId);
+	List<CD> cdl;
 
 	public ProfessorMB() {
 		listarP();
 	}
+	
+	public void salvar() {
+		if(prof.getId() != null) {
+			Professor p = pDAO.buscaProfessor(prof.getId());
+			if(p != null && p.getId().equals(prof.getId())) {
+				editarProfessor();
+			}
+		}else {
+			criarProfessor();
+		}
+	}
 
-	public void criarProfessor() {
-		lastId = pDAO.inserir(prof);
-		if (lastId > 0) {
-			System.out.println("deu porra");
-			prof = new Professor();
+	public void editarProfessor() {
+		if(pDAO.editar(prof)) {
+			System.out.println("Colaborador alterado.");
 			listarP();
+			zerar();
+		}else {
+			System.out.println("Erro na alterção do colaborador.");
+			listarP();
+		}
+	}
+	
+	public void criarProfessor() {
+		if (pDAO.inserir(prof)) {
+			System.out.println("Colaborador criado.");
+			listarP();
+			zerar();
 		} else {
-			System.out.println("não deu ;-;");
+			System.out.println("Erro na criação do colaborador.");
 			listarP();
 		}
 	}
 
 	public void colocarDisciplina() {
-		cd.setId_colaborador(lastId);
+		cd.setId_colaborador(selc.getId());
 		if (pDAO.inserirCD(cd)) {
-			System.out.println("deu porra");
-			cd = new CD();
-			listarP();
+			System.out.println("Disciplina alocada.");
+			cDisciplina();
+			cdZerar();
 		} else {
-			System.out.println("não deu ;-;");
-			listarP();
+			System.out.println("Erro na alocação da disciplina.");
+			cDisciplina();
 		}
 	}
-
+	
+	public void zerar() {
+		pDAO = new professorDAO();
+		prof = new Professor();
+		cd = new CD();
+		selc = null;
+	}
+	
+	public void cdZerar() {
+		cdSelc = null;
+		cd = new CD();
+		pDAO = new professorDAO();
+		prof = new Professor();
+	}
+	
+	public void editar() {
+		prof = selc;
+	}
+	
+	public void excluir() {
+		if(pDAO.excluir(selc.getId())) {
+			System.out.println("Colaborador " +selc.getNome()+ " excluido.");
+			listarP();
+			zerar();
+		}
+	}
+	
+	public void cdExcluir() {
+		if(pDAO.cdExcluir(cdSelc.getId())) {
+			System.out.println("Disciplina " +selc.getNome()+ " removida do colaborador.");
+			cDisciplina();
+			cdZerar();
+		}
+	}
+	
+	public void cDisciplina(){
+		listarDisciplina();
+		listarP();
+		cdl = pDAO.listarCd(selc.getId());
+	}
+	
 	public void listarDisciplina() {
 		d = pDAO.listarDisciplina();
 	}
 
-	/*
-	 * public void upload(FileUploadEvent event) { FacesMessage msg = new
-	 * FacesMessage("A imagem ", event.getFile().getFileName() + " foi enviado.");
-	 * FacesContext.getCurrentInstance().addMessage(null, msg);
-	 * 
-	 * try { copia(event.getFile().getFileName(), event.getFile().getInputstream());
-	 * prof.setFoto(event.getFile().getFileName()); } catch (IOException e) {
-	 * e.printStackTrace(); } }
-	 * 
-	 * private void copia(String fileName, InputStream in) { try { OutputStream out
-	 * = new FileOutputStream(new File(caminho + fileName)); in.close();
-	 * out.flush(); out.close(); System.out.println(""); }catch (IOException e) {
-	 * System.out.println(e.getMessage()); }
-	 * 
-	 * }
-	 */
 	public void listarP() {
 		profL = pDAO.listarTodos();
-		cdl = pDAO.listarCd(lastId);
 	}
 
 	public List<Disciplina> getD() {
@@ -97,14 +140,6 @@ public class ProfessorMB {
 
 	public void setCd(CD cd) {
 		this.cd = cd;
-	}
-
-	public int getLastId() {
-		return lastId;
-	}
-
-	public void setLastId(int lastId) {
-		this.lastId = lastId;
 	}
 
 	public String getCaminho() {
