@@ -43,7 +43,7 @@ public class DistribuicaoMB implements Serializable {
 	private Aulas selecionadas;
 	private aulasDAO aDao;
 	private Salas sala;
-	public Integer dia_semana = 3;
+	public Integer dia_semana = 1;
 	private Integer carga = 75;
 
 	List<Aulas> aulas;
@@ -51,6 +51,11 @@ public class DistribuicaoMB implements Serializable {
 	public DistribuicaoMB() {
 		aDao = new aulasDAO();
 		aulas = aDao.listarTodasSemSala();
+		atualizar();
+	}
+	
+	public void atualizar() {
+		System.out.println("entrou");
 		dropSala1 = aDao.listarAulasAlocadas(dia_semana,1);
 		dropSala2 = aDao.listarAulasAlocadas(dia_semana,2);
 		dropSala3 = aDao.listarAulasAlocadas(dia_semana,3);
@@ -69,7 +74,6 @@ public class DistribuicaoMB implements Serializable {
 		dropSala16 = aDao.listarAulasAlocadas(dia_semana,16);
 		dropSala18 = aDao.listarAulasAlocadas(dia_semana,18);
 		dropSala35 = aDao.listarAulasAlocadas(dia_semana,35);
-
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
