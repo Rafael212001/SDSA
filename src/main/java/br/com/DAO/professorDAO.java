@@ -21,22 +21,18 @@ public class professorDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public int inserir(Professor p) {
+	public boolean inserir(Professor p) {
 		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo)"
 				+ "VALUES (?,?,?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
 			ps.setInt(3, p.getTipo());
 
-			if (ps.executeUpdate() == 1) {
-				ResultSet rs = ps.getGeneratedKeys();
-				if(rs.next()) {
-					int lastId = rs.getInt(1);
-					return lastId;
-				}
+			if (ps.executeUpdate() > 0) {
+				return true;
 			}
 
 		} catch (SQLException e) {
@@ -44,7 +40,7 @@ public class professorDAO {
 			e.printStackTrace();
 
 		}
-		return 0;
+		return false;
 	}
 	
 	public boolean inserirCD(CD cd) {
@@ -134,9 +130,73 @@ public class professorDAO {
 		}
 		return list;
 	}
-
+	
+	public Professor buscaProfessor(int id) {
+		String sql = "SELECT * FROM Colaboradores WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				Professor p = new Professor();
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				p.setCarga_hora(rs.getInt("carga_hora"));
+				p.setRestante(rs.getInt("restante"));
+				p.setTipo(rs.getInt("tipo"));
+				p.setFoto(rs.getString("foto"));
+				return p;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean editar(Professor p) {
+		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ? WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(6, p.getId());
+			ps.setString(1, p.getNome());
+			ps.setInt(2, p.getCarga_hora());
+			ps.setInt(3, p.getRestante());
+			ps.setInt(4, p.getTipo());
+			ps.setString(5, p.getFoto());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Colaboradores WHERE id = ? ";
+		String sql = "DELETE FROM Colaboradores WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean cdExcluir(Integer id) {
+		String sql = "DELETE FROM CD WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

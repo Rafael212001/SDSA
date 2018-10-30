@@ -16,6 +16,7 @@
 			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
 				selectionMode="single" selection="#{professorMB.selc}"
 				scrollable="true" scrollHeight="150" rowKey="#{profL.id}">
+				<p:ajax event="rowSelect" update=":formp" />
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
 					#{profL.nome}
@@ -33,9 +34,20 @@
 					#{profL.tipo}
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Editar" />
-			<p:commandButton value="Excluir" />
-			<p:commandButton value="Colocar Disciplina" />
+			<div id="bot">
+				<p:commandButton value="Editar" ajax="true"
+					disabled="#{professorMB.selc == null}"
+					actionListener="#{professorMB.editar}" update=":formpc" />
+				<p:commandButton value="Excluir" ajax="true"
+					disabled="#{professorMB.selc == null}"
+					actionListener="#{professorMB.excluir}" update=":formp" />
+				<p:commandButton value="Colocar Disciplina" ajax="true"
+					disabled="#{professorMB.selc == null}"
+					actionListener="#{professorMB.cDisciplina}"
+					onsuccess="PF('dlg7').show();" update=":formcd" />
+			</div>
+		</h:form>
+		<h:form id="formpc">
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
@@ -61,9 +73,8 @@
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
-						update=":formp:dataT :formp:div" event="onclick" value="Avançar"
-						actionListener="#{professorMB.criarProfessor}"
-						onsuccess="PF('dlg7').show();" />
+						update=":formp :formpc" event="onclick" value="Avançar"
+						actionListener="#{professorMB.salvar}"/>
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Fechar" />
 				</div>
