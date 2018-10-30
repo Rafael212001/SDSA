@@ -50,21 +50,18 @@
 		<h:form id="formpc">
 			<p:panel id="div">
 				<div class="center">
-					<h:panelGrid columns="3" cellpadding="2" cellspacing="1">
+					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
                		Nome:
-					<h:inputText id="nome" styleClass="campo" required="true"
-							value="#{professorMB.prof.nome}" />
-						<p:message for="nome" display="icon" />
+					<h:inputText id="nome" value="#{professorMB.prof.nome}" />
+
 					Carga Horária:
-					<h:inputText id="carga" styleClass="campo" required="true"
-							value="#{professorMB.prof.carga_hora}" />
-						<p:message for="carga" display="icon" />
+					<h:inputText id="carga" value="#{professorMB.prof.carga_hora}" />
+
 					Tipo:
 						<p:selectOneRadio id="tipo" value="#{professorMB.prof.tipo}">
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
-						<p:message for="tipo" display="icon" />
 						<!-- Foto:
 					<p:fileUpload fileUploadListener="#{a}" mode="simple" skinSimple="true"
 							allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
@@ -74,7 +71,7 @@
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formp :formpc" event="onclick" value="Avançar"
-						actionListener="#{professorMB.salvar}"/>
+						actionListener="#{professorMB.salvar}" />
 					<p:commandButton styleClass="button right" ajax="false"
 						value="Fechar" />
 				</div>

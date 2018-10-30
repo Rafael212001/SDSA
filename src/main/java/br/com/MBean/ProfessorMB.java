@@ -43,22 +43,22 @@ public class ProfessorMB {
 	public void editarProfessor() {
 		if(pDAO.editar(prof)) {
 			System.out.println("Colaborador alterado.");
-			cDisciplina();
+			listarP();
 			zerar();
 		}else {
 			System.out.println("Erro na alterção do colaborador.");
-			cDisciplina();
+			listarP();
 		}
 	}
 	
 	public void criarProfessor() {
 		if (pDAO.inserir(prof)) {
 			System.out.println("Colaborador criado.");
-			cDisciplina();
+			listarP();
 			zerar();
 		} else {
 			System.out.println("Erro na criação do colaborador.");
-			cDisciplina();
+			listarP();
 		}
 	}
 
@@ -95,7 +95,7 @@ public class ProfessorMB {
 	public void excluir() {
 		if(pDAO.excluir(selc.getId())) {
 			System.out.println("Colaborador " +selc.getNome()+ " excluido.");
-			cDisciplina();
+			listarP();
 			zerar();
 		}
 	}
