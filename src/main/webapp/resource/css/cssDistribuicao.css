@@ -29,6 +29,16 @@
 	padding: 10px;
 }
 
+.tb-aulas-prontas table tr, td, th{
+	font-size: 10px;
+	text-align: left !important;
+	padding: 2px !important;
+}
+.tb-aulas-prontas table{
+	width: 300px !important;
+}
+
+
 table{
 	width: 100%;
 	height: 30%;
@@ -46,4 +56,5 @@ table{
 .ui-fieldset{
 	height: 90% !important;
 	padding: 10px;
+	width: 300px;
 }

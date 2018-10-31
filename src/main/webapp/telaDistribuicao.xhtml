@@ -34,16 +34,17 @@
 		<p:tabView id="tab">
 			<p:tab title="Manhã">
 				<p:scrollPanel>
-					<p:selectOneMenu id="diaSemana" value="#{distribuicaoMB.dia_semana}" 
-						style="width:125px">
+					<p:selectOneMenu id="diaSemana"
+						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
-						<f:selectItem itemLabel="Segunda-feira" itemValue="1"  />
+						<f:selectItem itemLabel="Segunda-feira" itemValue="1" />
 						<f:selectItem itemLabel="Terça-feira" itemValue="2" />
 						<f:selectItem itemLabel="Quarta-feira" itemValue="3" />
 						<f:selectItem itemLabel="Quinta-feira" itemValue="4" />
 						<f:selectItem itemLabel="Sexta-feira" itemValue="5" />
 						<f:selectItem itemLabel="Sábado" itemValue="6" />
-						<p:ajax event="change" process="diaSemana" update="tab"  listener="#{distribuicaoMB.atualizar}"/>
+						<p:ajax event="change" process="diaSemana" update="tab"
+							listener="#{distribuicaoMB.atualizar}" />
 					</p:selectOneMenu>
 					<h3>Segundo andar</h3>
 					<table>
@@ -51,18 +52,25 @@
 							<td><p:fieldset id="s1">
 									<p:outputPanel id="dropS1">
 										<h:outputText value="Sala 1" />
-										<p:dataGrid id="aulasS1" var="aulaS1"
-											rendered="#{not empty distribuicaoMB.dropSala1}"
-											value="#{distribuicaoMB.dropSala1}" columns="3">
-											<p:panel id="pnl1" header="Curso: #{aulaS1.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS1.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS1.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS1.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS1" var="aulaS1" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala1}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala1}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS1.curso.nome}" />
+											</p:column>
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS1.turma.nome}" />
+											</p:column>
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS1.disciplina.nome}" />
+											</p:column>
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS1.professor.nome}" />
+											</p:column>
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s1" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -71,22 +79,32 @@
 										update=":form" />
 								</p:droppable></td>
 
-
-							 <td><p:fieldset id="s2">
+	                                <td><p:fieldset id="s2">
 									<p:outputPanel id="dropS2">
 										<h:outputText value="Sala 2" />
-										<p:dataGrid id="aulasS2" var="aulaS2"
-											rendered="#{not empty distribuicaoMB.dropSala2}"
-											value="#{distribuicaoMB.dropSala2}" columns="3">
-											<p:panel id="pnl2" header="Curso: #{aulaS2.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS2.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS2.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS2.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS1" var="aulaS2" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala2}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala1}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS2.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS2.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS2.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS2.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s2" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -94,9 +112,9 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala2}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
-							
+
+
+
 							<td><p:fieldset id="s3">
 									<p:outputPanel id="dropS3">
 										<h:outputText value="Sala 3" />
@@ -119,9 +137,9 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala3}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
-						<td><p:fieldset id="s4">
+
+
+							<td><p:fieldset id="s4">
 									<p:outputPanel id="dropS4">
 										<h:outputText value="Sala 4" />
 										<p:dataGrid id="aulasS4" var="aulaS4"
@@ -143,15 +161,15 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala4}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 						</tr>
 					</table>
 					<table>
 						<tr>
-						
-						
-								<td><p:fieldset id="s5">
+
+
+							<td><p:fieldset id="s5">
 									<p:outputPanel id="dropS5">
 										<h:outputText value="Sala 5" />
 										<p:dataGrid id="aulasS5" var="aulaS5"
@@ -173,8 +191,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala5}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s6">
 									<p:outputPanel id="dropS6">
 										<h:outputText value="Sala 6" />
@@ -197,8 +215,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala6}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s7">
 									<p:outputPanel id="dropS7">
 										<h:outputText value="Sala 7" />
@@ -221,8 +239,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala7}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s8">
 									<p:outputPanel id="dropS8">
 										<h:outputText value="Sala 8" />
@@ -245,14 +263,14 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala8}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 						</tr>
 					</table>
 					<table>
 						<tr>
-						
-						
+
+
 							<td><p:fieldset id="s9">
 									<p:outputPanel id="dropS9">
 										<h:outputText value="Sala 9" />
@@ -275,8 +293,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala9}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s10">
 									<p:outputPanel id="dropS10">
 										<h:outputText value="Sala 10" />
@@ -299,8 +317,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala10}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s11">
 									<p:outputPanel id="dropS11">
 										<h:outputText value="Sala 11" />
@@ -323,8 +341,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala11}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s12">
 									<p:outputPanel id="dropS12">
 										<h:outputText value="Sala 12" />
@@ -347,14 +365,14 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala12}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 						</tr>
 					</table>
 					<table>
 						<tr>
-						
-						
+
+
 							<td><p:fieldset id="s13">
 									<p:outputPanel id="dropS13">
 										<h:outputText value="Sala 13" />
@@ -377,8 +395,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala13}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s14">
 									<p:outputPanel id="dropS14">
 										<h:outputText value="Sala 14" />
@@ -407,8 +425,8 @@
 					<h3>Primeiro andar</h3>
 					<table>
 						<tr>
-						
-						
+
+
 							<td><p:fieldset id="s15">
 									<p:outputPanel id="dropS15">
 										<h:outputText value="Sala 15" />
@@ -431,8 +449,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala15}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s16">
 									<p:outputPanel id="dropS16">
 										<h:outputText value="Sala 16" />
@@ -455,8 +473,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala16}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
+
+
 							<td><p:fieldset id="s18">
 									<p:outputPanel id="dropS18">
 										<h:outputText value="Sala 18" />
@@ -479,9 +497,9 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala18}"
 										update=":form" />
 								</p:droppable></td>
-								
-								
-								<td><p:fieldset id="s35">
+
+
+							<td><p:fieldset id="s35">
 									<p:outputPanel id="dropS35">
 										<h:outputText value="Sala 35" />
 										<p:dataGrid id="aulasS35" var="aulaS35"
@@ -503,8 +521,8 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala35}"
 										update=":form" />
 								</p:droppable></td>
-								
-								 
+
+
 						</tr>
 					</table>
 
