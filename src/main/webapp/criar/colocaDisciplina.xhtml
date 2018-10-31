@@ -20,11 +20,11 @@
 				<p:ajax event="rowSelect" update=":formcd" />
 				<p:column>
 					<f:facet name="header">Colaborador</f:facet>
-					#{cdl.id_colaborador}
+					#{cdl.professor.nome}
 				</p:column>
 				<p:column>
 					<f:facet name="header">Disciplina</f:facet>
-					#{cdl.id_disciplina}
+					#{cdl.disciplina.nome}
 				</p:column>
 			</p:dataTable>
 			<div id="bot">

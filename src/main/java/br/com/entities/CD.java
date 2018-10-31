@@ -5,6 +5,8 @@ public class CD {
 	private int id;
 	private Integer id_colaborador;
 	private Integer id_disciplina;
+	private Professor professor;
+	private Disciplina disciplina;
 
 	public CD() {
 		// TODO Auto-generated constructor stub
@@ -41,4 +43,19 @@ public class CD {
 		this.id = id;
 	}
 
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
 }

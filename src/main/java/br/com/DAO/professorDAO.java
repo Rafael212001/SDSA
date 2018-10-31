@@ -112,7 +112,9 @@ public class professorDAO {
 	
 	public List<CD> listarCd(int i){
 		List<CD> list = new ArrayList<CD>();
-		String sql = "SELECT * FROM CD WHERE id_colaborador = ?";
+		String sql = "SELECT c.*, cl.nome AS nomeColaborador, d.nome AS nomeDisciplina FROM cd c "
+				   + " INNER JOIN Colaboradores cl INNER JOIN Disciplinas d "
+				   + " ON c.id_colaborador = cl.id AND c.id_disciplina = d.id WHERE c.id_colaborador = ? ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -123,6 +125,8 @@ public class professorDAO {
 				cd.setId(rs.getInt("id"));
 				cd.setId_colaborador(rs.getInt("id_colaborador"));
 				cd.setId_disciplina(rs.getInt("id_disciplina"));
+				cd.setProfessor(new Professor(cd.getId_colaborador(), rs.getString("nomeColaborador"), null, null, null, null, null, null));
+				cd.setDisciplina(new Disciplina(cd.getId_disciplina(), rs.getString("nomeDisciplina"), null, null, null));
 				list.add(cd);
 			}
 		}catch (SQLException e ){

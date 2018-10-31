@@ -55,6 +55,14 @@ public class Turma {
 	public Integer getDivisao() {
 		return divisao;
 	}
+	
+	public String getFormatDivisao() {
+		if(divisao == 1) {
+			return "Sim";
+		}else {
+			return "Não";
+		}
+	}
 
 	public void setDivisao(Integer divisao) {
 		this.divisao = divisao;
@@ -63,7 +71,17 @@ public class Turma {
 	public Integer getPeriodo() {
 		return periodo;
 	}
-
+	
+	public String getFormatPeriodo() {
+		if(periodo == 1) {
+			return "Manha";
+		}else if(periodo == 2) {
+			return "Tarde";
+		}else {
+			return "Noite";
+		}
+	}
+	
 	public void setPeriodo(Integer periodo) {
 		this.periodo = periodo;
 	}

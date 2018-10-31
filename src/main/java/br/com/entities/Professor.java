@@ -70,7 +70,15 @@ public class Professor {
 	public Integer getTipo() {
 		return tipo;
 	}
-
+	
+	public String getFormatTipo() {
+		if(tipo == 1) {
+			return "Professor";
+		}else {
+			return "Instrutor";
+		}
+	}
+	
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
