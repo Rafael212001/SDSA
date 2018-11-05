@@ -75,6 +75,12 @@ public class DistribuicaoMB implements Serializable {
 		dropSala18 = aDao.listarAulasAlocadas(dia_semana,18);
 		dropSala35 = aDao.listarAulasAlocadas(dia_semana,35);
 	}
+	
+	
+	public void excluir(Aulas a) {
+		aDao.alocarSala(a, null, null, null);
+		aulas.remove(a);
+	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());

@@ -68,7 +68,9 @@
 												<h:outputText value="#{aulaS1.professor.nome}" />
 											</p:column>
 											<p:column headerText="Excluir">
-												<p:commandButton icon="fa-trash-o" type="button" />
+												<p:commandButton icon="fa-trash-o" type="button"  value="#{dristribuicaoMB.excluir}">
+													
+												</p:commandButton>
 											</p:column>
 										</p:dataTable>
 									</p:outputPanel>
@@ -82,9 +84,9 @@
 	                                <td><p:fieldset id="s2">
 									<p:outputPanel id="dropS2">
 										<h:outputText value="Sala 2" />
-										<p:dataTable id="aulasS1" var="aulaS2" styleClass="tb-aulas-prontas"
+										<p:dataTable id="aulasS2" var="aulaS2" styleClass="tb-aulas-prontas"
 											rendered="#{not empty distribuicaoMB.dropSala2}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala1}">
+											value="#{distribuicaoMB.dropSala2}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS2.curso.nome}" />
 											</p:column>
@@ -115,21 +117,32 @@
 
 
 
-							<td><p:fieldset id="s3">
+							        <td><p:fieldset id="s3">
 									<p:outputPanel id="dropS3">
 										<h:outputText value="Sala 3" />
-										<p:dataGrid id="aulasS3" var="aulaS3"
-											rendered="#{not empty distribuicaoMB.dropSala3}"
-											value="#{distribuicaoMB.dropSala3}" columns="3">
-											<p:panel id="pnl3" header="Curso: #{aulaS3.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS3.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS3.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS3.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS3" var="aulaS3" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala3}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala3}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS3.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS3.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS3.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS3.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s3" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -142,18 +155,29 @@
 							<td><p:fieldset id="s4">
 									<p:outputPanel id="dropS4">
 										<h:outputText value="Sala 4" />
-										<p:dataGrid id="aulasS4" var="aulaS4"
-											rendered="#{not empty distribuicaoMB.dropSala4}"
-											value="#{distribuicaoMB.dropSala4}" columns="3">
-											<p:panel id="pnl4" header="Curso: #{aulaS4.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS4.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS4.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS4.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS4" var="aulaS4" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala4}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala4}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS4.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS4.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS4.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS4.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s4" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -169,21 +193,32 @@
 						<tr>
 
 
-							<td><p:fieldset id="s5">
+								<td><p:fieldset id="s5">
 									<p:outputPanel id="dropS5">
 										<h:outputText value="Sala 5" />
-										<p:dataGrid id="aulasS5" var="aulaS5"
-											rendered="#{not empty distribuicaoMB.dropSala5}"
-											value="#{distribuicaoMB.dropSala5}" columns="3">
-											<p:panel id="pnl5" header="Curso: #{aulaS5.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS5.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS5.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS5.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS5" var="aulaS5" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala5}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala5}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS5.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS5.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS5.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS5.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s5" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -193,21 +228,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s6">
+								<td><p:fieldset id="s6">
 									<p:outputPanel id="dropS6">
 										<h:outputText value="Sala 6" />
-										<p:dataGrid id="aulasS6" var="aulaS6"
-											rendered="#{not empty distribuicaoMB.dropSala6}"
-											value="#{distribuicaoMB.dropSala6}" columns="3">
-											<p:panel id="pnl6" header="Curso: #{aulaS6.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS6.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS6.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS6.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS6" var="aulaS6" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala6}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala6}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS6.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS6.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS6.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS6.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s6" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -220,18 +266,29 @@
 							<td><p:fieldset id="s7">
 									<p:outputPanel id="dropS7">
 										<h:outputText value="Sala 7" />
-										<p:dataGrid id="aulasS7" var="aulaS7"
-											rendered="#{not empty distribuicaoMB.dropSala7}"
-											value="#{distribuicaoMB.dropSala7}" columns="3">
-											<p:panel id="pnl7" header="Curso: #{aulaS7.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS7.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS7.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS7.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS7" var="aulaS7" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala7}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala7}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS7.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS7.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS7.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS7.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s7" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -241,21 +298,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s8">
+								<td><p:fieldset id="s8">
 									<p:outputPanel id="dropS8">
 										<h:outputText value="Sala 8" />
-										<p:dataGrid id="aulasS8" var="aulaS8"
-											rendered="#{not empty distribuicaoMB.dropSala8}"
-											value="#{distribuicaoMB.dropSala8}" columns="3">
-											<p:panel id="pnl8" header="Curso: #{aulaS8.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS8.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS8.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS8.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS8" var="aulaS8" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala8}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala8}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS8.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS8.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS8.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS8.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s8" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -271,21 +339,32 @@
 						<tr>
 
 
-							<td><p:fieldset id="s9">
+								<td><p:fieldset id="s9">
 									<p:outputPanel id="dropS9">
 										<h:outputText value="Sala 9" />
-										<p:dataGrid id="aulasS9" var="aulaS9"
-											rendered="#{not empty distribuicaoMB.dropSala9}"
-											value="#{distribuicaoMB.dropSala9}" columns="3">
-											<p:panel id="pnl9" header="Curso: #{aulaS9.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS9.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS9.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS9.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS9" var="aulaS9" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala9}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala9}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS9.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS9.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS9.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS9.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s9" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -295,21 +374,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s10">
+								<td><p:fieldset id="s10">
 									<p:outputPanel id="dropS10">
 										<h:outputText value="Sala 10" />
-										<p:dataGrid id="aulasS10" var="aulaS10"
-											rendered="#{not empty distribuicaoMB.dropSala10}"
-											value="#{distribuicaoMB.dropSala10}" columns="3">
-											<p:panel id="pnl10" header="Curso: #{aulaS10.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS10.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS10.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS10.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS10" var="aulaS10" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala10}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala10}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS10.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS10.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS10.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS10.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s10" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -318,22 +408,32 @@
 										update=":form" />
 								</p:droppable></td>
 
-
-							<td><p:fieldset id="s11">
+								<td><p:fieldset id="s11">
 									<p:outputPanel id="dropS11">
 										<h:outputText value="Sala 11" />
-										<p:dataGrid id="aulasS11" var="aulaS11"
-											rendered="#{not empty distribuicaoMB.dropSala11}"
-											value="#{distribuicaoMB.dropSala11}" columns="3">
-											<p:panel id="pnl11" header="Curso: #{aulaS11.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS11.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS11.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS11.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS11" var="aulaS11" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala11}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala11}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS11.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS11.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS11.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS11.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s11" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -343,21 +443,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s12">
+						<td><p:fieldset id="s12">
 									<p:outputPanel id="dropS12">
 										<h:outputText value="Sala 12" />
-										<p:dataGrid id="aulasS12" var="aulaS12"
-											rendered="#{not empty distribuicaoMB.dropSala12}"
-											value="#{distribuicaoMB.dropSala12}" columns="3">
-											<p:panel id="pnl12" header="Curso: #{aulaS12.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS12.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS12.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS12.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS12" var="aulaS12" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala12}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala12}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS12.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS12.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS12.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS12.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s12" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -376,18 +487,29 @@
 							<td><p:fieldset id="s13">
 									<p:outputPanel id="dropS13">
 										<h:outputText value="Sala 13" />
-										<p:dataGrid id="aulasS13" var="aulaS13"
-											rendered="#{not empty distribuicaoMB.dropSala13}"
-											value="#{distribuicaoMB.dropSala13}" columns="3">
-											<p:panel id="pnl13" header="Curso: #{aulaS13.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS13.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS13.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS13.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS13" var="aulaS13" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala13}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala13}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS13.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS13.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS13.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS13.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s13" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -397,21 +519,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s14">
+					<td><p:fieldset id="s14">
 									<p:outputPanel id="dropS14">
 										<h:outputText value="Sala 14" />
-										<p:dataGrid id="aulasS14" var="aulaS14"
-											rendered="#{not empty distribuicaoMB.dropSala14}"
-											value="#{distribuicaoMB.dropSala14}" columns="3">
-											<p:panel id="pnl14" header="Curso: #{aulaS14.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS14.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS14.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS14.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS14" var="aulaS14" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala14}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala14}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS14.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS14.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS14.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS14.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s14" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -430,18 +563,29 @@
 							<td><p:fieldset id="s15">
 									<p:outputPanel id="dropS15">
 										<h:outputText value="Sala 15" />
-										<p:dataGrid id="aulasS15" var="aulaS15"
-											rendered="#{not empty distribuicaoMB.dropSala15}"
-											value="#{distribuicaoMB.dropSala15}" columns="3">
-											<p:panel id="pnl13" header="Curso: #{aulaS15.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS15.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS15.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS15.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS15" var="aulaS15" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala15}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala15}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS15.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS15.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS15.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS15.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s15" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -451,21 +595,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s16">
+						<td><p:fieldset id="s16">
 									<p:outputPanel id="dropS16">
 										<h:outputText value="Sala 16" />
-										<p:dataGrid id="aulasS16" var="aulaS16"
-											rendered="#{not empty distribuicaoMB.dropSala16}"
-											value="#{distribuicaoMB.dropSala16}" columns="3">
-											<p:panel id="pnl16" header="Curso: #{aulaS16.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS16.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS16.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS16.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS16" var="aulaS16" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala16}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala16}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS16.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS16.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS16.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS16.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s16" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -475,21 +630,32 @@
 								</p:droppable></td>
 
 
-							<td><p:fieldset id="s18">
+						<td><p:fieldset id="s18">
 									<p:outputPanel id="dropS18">
 										<h:outputText value="Sala 18" />
-										<p:dataGrid id="aulasS18" var="aulaS18"
-											rendered="#{not empty distribuicaoMB.dropSala18}"
-											value="#{distribuicaoMB.dropSala18}" columns="3">
-											<p:panel id="pnl18" header="Curso: #{aulaS18.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS18.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS18.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS18.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS18" var="aulaS18" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala18}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala18}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS18.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS18.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS18.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS18.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s18" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
@@ -498,22 +664,32 @@
 										update=":form" />
 								</p:droppable></td>
 
-
-							<td><p:fieldset id="s35">
-									<p:outputPanel id="dropS35">
+					<td><p:fieldset id="s35">
+									<p:outputPanel id="dropS34">
 										<h:outputText value="Sala 35" />
-										<p:dataGrid id="aulasS35" var="aulaS35"
-											rendered="#{not empty distribuicaoMB.dropSala35}"
-											value="#{distribuicaoMB.dropSala35}" columns="3">
-											<p:panel id="pnl35" header="Curso: #{aulaS35.curso.nome}"
-												style="text-align:center">
-												<h:panelGrid columns="1" style="width:100%">
-													<h3>Turma: #{aulaS35.turma.nome}</h3>
-													<h3>Disciplina: #{aulaS35.disciplina.nome}</h3>
-													<h3>Professor: #{aulaS35.professor.nome}</h3>
-												</h:panelGrid>
-											</p:panel>
-										</p:dataGrid>
+										<p:dataTable id="aulasS35" var="aulaS35" styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala35}" style="width:300px;"
+											value="#{distribuicaoMB.dropSala35}">
+											<p:column headerText="Curso" width="30%">
+												<h:outputText value="#{aulaS35.curso.nome}" />
+											</p:column>
+
+											<p:column headerText="Turma">
+												<h:outputText value="#{aulaS35.turma.nome}" />
+											</p:column>
+
+											<p:column headerText="Disciplina" width="20%">
+												<h:outputText value="#{aulaS35.disciplina.nome}" />
+											</p:column>
+
+											<p:column headerText="Professor" width="25%">
+												<h:outputText value="#{aulaS35.professor.nome}" />
+											</p:column>
+
+											<p:column headerText="Excluir">
+												<p:commandButton icon="fa-trash-o" type="button" />
+											</p:column>
+										</p:dataTable>
 									</p:outputPanel>
 								</p:fieldset> <p:droppable for="s35" tolerance="touch"
 									activeStyleClass="ui-state-highlight"
