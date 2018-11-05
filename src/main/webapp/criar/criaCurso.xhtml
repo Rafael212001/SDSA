@@ -14,11 +14,11 @@
 				selectionMode="single" selection="#{cursoMB.selc}"
 				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}">
 				<p:ajax event="rowSelect" update=":formCs" />
-				<p:column>
+				<p:column filterBy="#{curL.nome}">
 					<f:facet name="header">Nome</f:facet>
 					#{curL.nome}
 				</p:column>
-				<p:column headerText="Periodo">
+				<p:column filterBy="#{curL.qtd_semestre}">
 					<f:facet name="header">Quantidade de semestres</f:facet>
 					#{curL.qtd_semestre}
 				</p:column>

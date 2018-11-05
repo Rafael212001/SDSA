@@ -15,21 +15,22 @@
 		<h:form id="formp">
 			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
 				selectionMode="single" selection="#{professorMB.selc}"
-				scrollable="true" scrollHeight="150" rowKey="#{profL.id}">
+				scrollable="true" scrollHeight="150" rowKey="#{profL.id}"
+				filteredValue="#{professorMB.lista}" >
 				<p:ajax event="rowSelect" update=":formp" />
-				<p:column>
+				<p:column filterBy="#{profL.nome}">
 					<f:facet name="header">Nome</f:facet>
 					#{profL.nome}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{profL.carga_hora}">
 					<f:facet name="header">Carga Horária</f:facet>
 					#{profL.carga_hora}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{profL.restante}">
 					<f:facet name="header">Restante</f:facet>
 					#{profL.restante}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{profL.formatTipo}">
 					<f:facet name="header">Tipo</f:facet>
 					#{profL.formatTipo}
 				</p:column>
@@ -70,10 +71,10 @@
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
-						update=":formp :formpc" event="onclick" value="Avançar"
+						update=":formp :formpc" event="onclick" value="Salvar"
 						actionListener="#{professorMB.salvar}" />
-					<p:commandButton styleClass="button right" ajax="false"
-						value="Fechar" />
+					<p:commandButton styleClass="button right" ajax="false" 
+						value="Fechar" action="#{professorMB.fechar}"  />
 				</div>
 			</p:panel>
 		</h:form>

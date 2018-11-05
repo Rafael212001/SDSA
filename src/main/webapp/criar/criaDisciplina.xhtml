@@ -13,23 +13,19 @@
 			<p:dataTable id="dataT" var="discL" scrollable="true"
 				selectionMode="single" selection="#{disciplinaMB.selc}"
 				scrollHeight="150" value="#{disciplinaMB.discL}"
-				rowKey="#{discL.id}">
+				rowKey="#{discL.id}" filteredValue="#{disciplinaMB.lista}">
 				<p:ajax event="rowSelect" update="formD" />
-				<p:column>
+				<p:column filterBy="#{discL.nome}">
 					<f:facet name="header">Nome</f:facet>
 					#{discL.nome}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{discL.semestre}">
 					<f:facet name="header">Semestre Pert.</f:facet>
 					#{discL.semestre}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{discL.carga_hora}">
 					<f:facet name="header">Carga Horária</f:facet>
 					#{discL.carga_hora}
-				</p:column>
-				<p:column>
-					<f:facet name="header">id curso</f:facet>
-					#{discL.id_curso}
 				</p:column>
 			</p:dataTable>
 			<div id="bot">

@@ -18,27 +18,27 @@
 				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
 				scrollHeight="150" rowKey="#{turL.id}">
 				<p:ajax event="rowSelect" update=":formt" />
-				<p:column>
+				<p:column filterBy="#{turL.nome}">
 					<f:facet name="header">Nome da Turma</f:facet>
 					#{turL.nome}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{turL.qtd_alunos}">
 					<f:facet name="header">Quantidade de Alunos</f:facet>
 					#{turL.qtd_alunos}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{turL.formatDivisao}">
 					<f:facet name="header">Divisão</f:facet>
 					#{turL.formatDivisao}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{turL.formatPeriodo}">
 					<f:facet name="header">Período</f:facet>
 					#{turL.formatPeriodo}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{turL.curso.nome}">
 					<f:facet name="header">Curso</f:facet>
 					#{turL.curso.nome}
 				</p:column>
-				<p:column>
+				<p:column filterBy="#{turL.semestre}">
 					<f:facet name="header">Semestre</f:facet>
 					#{turL.semestre}º
 				</p:column>

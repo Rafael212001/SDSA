@@ -6,7 +6,6 @@
 	width: auto !important;
 }
 
-
 .ui-widget-header{
 	color: white !important;
 	text-shadow: none !important;
@@ -26,6 +25,12 @@
 	border-top: 0px !important;
 	border-right: 5px white !important;
 	border-bottom: 0px !important;
+}
+
+
+.ui-widget-content .ui-inputfield{
+	background: white !important;
+	color: black !important;
 }
 
 .campo{

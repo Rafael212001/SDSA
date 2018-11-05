@@ -1,8 +1,10 @@
 package br.com.MBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.professorDAO;
@@ -22,35 +24,36 @@ public class ProfessorMB {
 	CD cdSelc;
 	Professor tcoo;
 	List<Professor> profL;
+	List<Professor> lista;
 	List<Disciplina> d = pDAO.listarDisciplina();
 	List<CD> cdl;
 
 	public ProfessorMB() {
 		listarP();
 	}
-	
+
 	public void salvar() {
-		if(prof.getId() != null) {
+		if (prof.getId() != null) {
 			Professor p = pDAO.buscaProfessor(prof.getId());
-			if(p != null && p.getId().equals(prof.getId())) {
+			if (p != null && p.getId().equals(prof.getId())) {
 				editarProfessor();
 			}
-		}else {
+		} else {
 			criarProfessor();
 		}
 	}
 
 	public void editarProfessor() {
-		if(pDAO.editar(prof)) {
+		if (pDAO.editar(prof)) {
 			System.out.println("Colaborador alterado.");
 			listarP();
 			zerar();
-		}else {
+		} else {
 			System.out.println("Erro na alterção do colaborador.");
 			listarP();
 		}
 	}
-	
+
 	public void criarProfessor() {
 		if (pDAO.inserir(prof)) {
 			System.out.println("Colaborador criado.");
@@ -73,47 +76,54 @@ public class ProfessorMB {
 			cDisciplina();
 		}
 	}
-	
+
 	public void zerar() {
 		pDAO = new professorDAO();
 		prof = new Professor();
 		cd = new CD();
+		lista = null;
 		selc = null;
 	}
-	
+
 	public void cdZerar() {
 		cdSelc = null;
 		cd = new CD();
 		pDAO = new professorDAO();
 		prof = new Professor();
 	}
-	
+
 	public void editar() {
 		prof = selc;
 	}
-	
+
 	public void excluir() {
-		if(pDAO.excluir(selc.getId())) {
-			System.out.println("Colaborador " +selc.getNome()+ " excluido.");
+		if (pDAO.excluir(selc.getId())) {
+			System.out.println("Colaborador " + selc.getNome() + " excluido.");
 			listarP();
 			zerar();
 		}
 	}
-	
+
 	public void cdExcluir() {
-		if(pDAO.cdExcluir(cdSelc.getId())) {
-			System.out.println("Disciplina " +selc.getNome()+ " removida do colaborador.");
+		if (pDAO.cdExcluir(cdSelc.getId())) {
+			System.out.println("Disciplina " + selc.getNome() + " removida do colaborador.");
 			cDisciplina();
 			cdZerar();
 		}
 	}
 	
-	public void cDisciplina(){
+	public String fechar() {
+		zerar();
+		listarP();
+		return "telaCoordenador";
+	}
+	
+	public void cDisciplina() {
 		listarDisciplina();
 		listarP();
 		cdl = pDAO.listarCd(selc.getId());
 	}
-	
+
 	public void listarDisciplina() {
 		d = pDAO.listarDisciplina();
 	}
@@ -194,7 +204,6 @@ public class ProfessorMB {
 		this.selc = selc;
 	}
 
-
 	public CD getCdSelc() {
 		return cdSelc;
 	}
@@ -209,6 +218,14 @@ public class ProfessorMB {
 
 	public void setTcoo(Professor tcoo) {
 		this.tcoo = tcoo;
+	}
+
+	public List<Professor> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Professor> lista) {
+		this.lista = lista;
 	}
 
 }
