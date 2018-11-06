@@ -81,7 +81,7 @@ public class DistribuicaoMB implements Serializable {
 	public void excluir() {
 		aDao.desalocar(aulaExcluir);
 		aulas.remove(aulaExcluir);
-		atualizar();
+
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
