@@ -2,11 +2,6 @@ body{
 	margin: 0px;
 }
 
-.ui-widget-content .ui-inputfield{
-	background: white !important;
-	color: black !important;
-}
-
 .menu .imagens{
 	width: 175px;
 	margin-top: 3px;
@@ -95,4 +90,9 @@ body{
 .imagens{
 	width: 350px;
 	heigth: 350px;
+}
+
+.ui-widget-content .ui-inputfield{
+	background: white !important;
+	color: black !important;
 }
