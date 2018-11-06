@@ -1,60 +1,66 @@
-.x{
-	widht: 250px;
-}
-
-.center{
+.center {
 	margin: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
 
-#form{
+#form {
 	width: 100%;
-	height: 100%
-}
-
-.aulasFormadas{
-	min-width:300px;
-	width:300px;
-	float: left;
 	height: 100%;
 }
 
-.ui-tabs{
-	position: static;
-	float: left !important;
-	width: 80%;
-	height: 90% !important;
-	padding: 10px;
+.aulasFormadas {
+	min-width: 300px;
+	width: 300px;
+	float: left;
+	height: 200px !important;
 }
 
-.tb-aulas-prontas table tr, td, th{
+.ui-tabs {
+	position: static;
+	float: left !important;
+	width: 900px !important;
+	height: 90% !important;
+	padding: 10px;
+	margin-left: 50px !important;
+}
+
+.tb-aulas-prontas td{
+	width: 100px !important;
+	height: 50px !important;
+}
+
+.tb-aulas-prontas table tr, td, th {
 	font-size: 10px;
 	text-align: left !important;
 	padding: 2px !important;
 }
-.tb-aulas-prontas table{
+
+.tb-aulas-prontas table {
 	width: 300px !important;
 }
 
-
-table{
-	width: 100%;
-	height: 30%;
-}
-
-.segundo{
+.segundo {
 	width: 100%;
 	height: 40%;
 }
 
-.ui-datagrid-column{
+.ui-datagrid-column {
 	padding: 0px !important;
 }
 
-.ui-fieldset{
-	height: 90% !important;
+.ui-fieldset {
+	height: 75px !important;
 	padding: 10px;
-	width: 300px;
+	width: 300px !important;
+}
+
+.ui-scrollpanel-container {
+	width: 100% !important;
+	height: 90% !important;
+}
+
+.tabela{
+	
 }

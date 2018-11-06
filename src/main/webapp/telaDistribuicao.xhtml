@@ -33,7 +33,7 @@
 		</div>
 		<p:tabView id="tab">
 			<p:tab title="Manhã">
-				<p:scrollPanel>
+				<p:scrollPanel mode="native" style="height:570px">
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
@@ -47,14 +47,15 @@
 							listener="#{distribuicaoMB.atualizar}" />
 					</p:selectOneMenu>
 					<h3>Segundo andar</h3>
-					<table>
+					<table class="tabelas">
 						<tr>
 							<td><p:fieldset id="s1">
 									<p:outputPanel id="dropS1">
 										<h:outputText value="Sala 1" />
-										<p:dataTable id="aulasS1" var="aulaS1" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala1}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala1}">
+										<p:dataTable id="aulasS1" var="aulaS1"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala1}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala1}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS1.curso.nome}" />
 											</p:column>
@@ -68,8 +69,10 @@
 												<h:outputText value="#{aulaS1.professor.nome}" />
 											</p:column>
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS1}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS1}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -81,12 +84,13 @@
 										update=":form" />
 								</p:droppable></td>
 
-	                                <td><p:fieldset id="s2">
+							<td><p:fieldset id="s2">
 									<p:outputPanel id="dropS2">
 										<h:outputText value="Sala 2" />
-										<p:dataTable id="aulasS2" var="aulaS2" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala2}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala2}">
+										<p:dataTable id="aulasS2" var="aulaS2"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala2}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala2}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS2.curso.nome}" />
 											</p:column>
@@ -104,8 +108,11 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-											<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS2}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}" ajax="true"
+													event=" oncomplete" update=":form">
+													<f:setPropertyActionListener value="#{aulaS2}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -117,14 +124,13 @@
 										update=":form" />
 								</p:droppable></td>
 
-
-
-							        <td><p:fieldset id="s3">
+							<td><p:fieldset id="s3">
 									<p:outputPanel id="dropS3">
 										<h:outputText value="Sala 3" />
-										<p:dataTable id="aulasS3" var="aulaS3" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala3}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala3}">
+										<p:dataTable id="aulasS3" var="aulaS3"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala3}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala3}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS3.curso.nome}" />
 											</p:column>
@@ -142,8 +148,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS3}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS3}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -155,13 +163,13 @@
 										update=":form" />
 								</p:droppable></td>
 
-
 							<td><p:fieldset id="s4">
 									<p:outputPanel id="dropS4">
 										<h:outputText value="Sala 4" />
-										<p:dataTable id="aulasS4" var="aulaS4" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala4}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala4}">
+										<p:dataTable id="aulasS4" var="aulaS4"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala4}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala4}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS4.curso.nome}" />
 											</p:column>
@@ -179,8 +187,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS4}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS4}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -192,19 +202,18 @@
 										update=":form" />
 								</p:droppable></td>
 
-
 						</tr>
 					</table>
-					<table>
+					<table class="tabelas">
 						<tr>
 
-
-								<td><p:fieldset id="s5">
+							<td><p:fieldset id="s5">
 									<p:outputPanel id="dropS5">
 										<h:outputText value="Sala 5" />
-										<p:dataTable id="aulasS5" var="aulaS5" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala5}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala5}">
+										<p:dataTable id="aulasS5" var="aulaS5"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala5}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala5}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS5.curso.nome}" />
 											</p:column>
@@ -222,8 +231,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS5}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS5}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -236,12 +247,13 @@
 								</p:droppable></td>
 
 
-								<td><p:fieldset id="s6">
+							<td><p:fieldset id="s6">
 									<p:outputPanel id="dropS6">
 										<h:outputText value="Sala 6" />
-										<p:dataTable id="aulasS6" var="aulaS6" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala6}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala6}">
+										<p:dataTable id="aulasS6" var="aulaS6"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala6}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala6}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS6.curso.nome}" />
 											</p:column>
@@ -259,8 +271,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS6}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS6}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -276,9 +290,10 @@
 							<td><p:fieldset id="s7">
 									<p:outputPanel id="dropS7">
 										<h:outputText value="Sala 7" />
-										<p:dataTable id="aulasS7" var="aulaS7" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala7}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala7}">
+										<p:dataTable id="aulasS7" var="aulaS7"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala7}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala7}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS7.curso.nome}" />
 											</p:column>
@@ -296,8 +311,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-											<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS7}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS7}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -310,12 +327,13 @@
 								</p:droppable></td>
 
 
-								<td><p:fieldset id="s8">
+							<td><p:fieldset id="s8">
 									<p:outputPanel id="dropS8">
 										<h:outputText value="Sala 8" />
-										<p:dataTable id="aulasS8" var="aulaS8" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala8}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala8}">
+										<p:dataTable id="aulasS8" var="aulaS8"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala8}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala8}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS8.curso.nome}" />
 											</p:column>
@@ -333,8 +351,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS8}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS8}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -349,16 +369,17 @@
 
 						</tr>
 					</table>
-					<table>
+					<table class="tabelas">
 						<tr>
 
 
-								<td><p:fieldset id="s9">
+							<td><p:fieldset id="s9">
 									<p:outputPanel id="dropS9">
 										<h:outputText value="Sala 9" />
-										<p:dataTable id="aulasS9" var="aulaS9" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala9}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala9}">
+										<p:dataTable id="aulasS9" var="aulaS9"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala9}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala9}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS9.curso.nome}" />
 											</p:column>
@@ -376,8 +397,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS9}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS9}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -390,12 +413,13 @@
 								</p:droppable></td>
 
 
-								<td><p:fieldset id="s10">
+							<td><p:fieldset id="s10">
 									<p:outputPanel id="dropS10">
 										<h:outputText value="Sala 10" />
-										<p:dataTable id="aulasS10" var="aulaS10" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala10}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala10}">
+										<p:dataTable id="aulasS10" var="aulaS10"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala10}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala10}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS10.curso.nome}" />
 											</p:column>
@@ -413,8 +437,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS10}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS10}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -426,12 +452,13 @@
 										update=":form" />
 								</p:droppable></td>
 
-								<td><p:fieldset id="s11">
+							<td><p:fieldset id="s11">
 									<p:outputPanel id="dropS11">
 										<h:outputText value="Sala 11" />
-										<p:dataTable id="aulasS11" var="aulaS11" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala11}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala11}">
+										<p:dataTable id="aulasS11" var="aulaS11"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala11}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala11}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS11.curso.nome}" />
 											</p:column>
@@ -449,8 +476,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-											<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS11}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS11}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -463,12 +492,13 @@
 								</p:droppable></td>
 
 
-						<td><p:fieldset id="s12">
+							<td><p:fieldset id="s12">
 									<p:outputPanel id="dropS12">
 										<h:outputText value="Sala 12" />
-										<p:dataTable id="aulasS12" var="aulaS12" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala12}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala12}">
+										<p:dataTable id="aulasS12" var="aulaS12"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala12}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala12}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS12.curso.nome}" />
 											</p:column>
@@ -486,8 +516,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS12}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS12}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -502,16 +534,17 @@
 
 						</tr>
 					</table>
-					<table>
+					<table class="tabelas">
 						<tr>
 
 
 							<td><p:fieldset id="s13">
 									<p:outputPanel id="dropS13">
 										<h:outputText value="Sala 13" />
-										<p:dataTable id="aulasS13" var="aulaS13" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala13}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala13}">
+										<p:dataTable id="aulasS13" var="aulaS13"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala13}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala13}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS13.curso.nome}" />
 											</p:column>
@@ -529,8 +562,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS13}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS13}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -543,12 +578,13 @@
 								</p:droppable></td>
 
 
-					<td><p:fieldset id="s14">
+							<td><p:fieldset id="s14">
 									<p:outputPanel id="dropS14">
 										<h:outputText value="Sala 14" />
-										<p:dataTable id="aulasS14" var="aulaS14" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala14}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala14}">
+										<p:dataTable id="aulasS14" var="aulaS14"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala14}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala14}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS14.curso.nome}" />
 											</p:column>
@@ -566,8 +602,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS14}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS14}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -582,16 +620,17 @@
 					</table>
 
 					<h3>Primeiro andar</h3>
-					<table>
+					<table class="tabelas">
 						<tr>
 
 
 							<td><p:fieldset id="s15">
 									<p:outputPanel id="dropS15">
 										<h:outputText value="Sala 15" />
-										<p:dataTable id="aulasS15" var="aulaS15" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala15}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala15}">
+										<p:dataTable id="aulasS15" var="aulaS15"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala15}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala15}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS15.curso.nome}" />
 											</p:column>
@@ -609,8 +648,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS15}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS15}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -623,12 +664,13 @@
 								</p:droppable></td>
 
 
-						<td><p:fieldset id="s16">
+							<td><p:fieldset id="s16">
 									<p:outputPanel id="dropS16">
 										<h:outputText value="Sala 16" />
-										<p:dataTable id="aulasS16" var="aulaS16" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala16}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala16}">
+										<p:dataTable id="aulasS16" var="aulaS16"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala16}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala16}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS16.curso.nome}" />
 											</p:column>
@@ -646,8 +688,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-											<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS16}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS16}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -660,12 +704,13 @@
 								</p:droppable></td>
 
 
-						<td><p:fieldset id="s18">
+							<td><p:fieldset id="s18">
 									<p:outputPanel id="dropS18">
 										<h:outputText value="Sala 18" />
-										<p:dataTable id="aulasS18" var="aulaS18" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala18}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala18}">
+										<p:dataTable id="aulasS18" var="aulaS18"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala18}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala18}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS18.curso.nome}" />
 											</p:column>
@@ -683,8 +728,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS18}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS18}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
@@ -696,12 +743,13 @@
 										update=":form" />
 								</p:droppable></td>
 
-					<td><p:fieldset id="s35">
+							<td><p:fieldset id="s35">
 									<p:outputPanel id="dropS34">
 										<h:outputText value="Sala 35" />
-										<p:dataTable id="aulasS35" var="aulaS35" styleClass="tb-aulas-prontas"
-											rendered="#{not empty distribuicaoMB.dropSala35}" style="width:300px;"
-											value="#{distribuicaoMB.dropSala35}">
+										<p:dataTable id="aulasS35" var="aulaS35"
+											styleClass="tb-aulas-prontas"
+											rendered="#{not empty distribuicaoMB.dropSala35}"
+											style="width:300px;" value="#{distribuicaoMB.dropSala35}">
 											<p:column headerText="Curso" width="30%">
 												<h:outputText value="#{aulaS35.curso.nome}" />
 											</p:column>
@@ -719,8 +767,10 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" action="#{distribuicaoMB.excluir}">
-													<f:setPropertyActionListener value="#{aulaS35}" target="#{distribuicaoMB.aulaExcluir}" />
+												<p:commandButton icon="ui-icon-trash"
+													action="#{distribuicaoMB.excluir}">
+													<f:setPropertyActionListener value="#{aulaS35}"
+														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
