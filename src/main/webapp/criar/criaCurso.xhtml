@@ -12,7 +12,8 @@
 		<h:form id="formCs">
 			<p:dataTable id="dataT" var="curL" scrollable="true"
 				selectionMode="single" selection="#{cursoMB.selc}"
-				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}">
+				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}"
+				filteredValue="#{cursoMB.lista}">
 				<p:ajax event="rowSelect" update=":formCs" />
 				<p:column filterBy="#{curL.nome}">
 					<f:facet name="header">Nome</f:facet>
@@ -50,10 +51,10 @@
 			</p:panel>
 			<div class="margin center">
 				<p:commandButton styleClass="button left" ajax="true"
-					update=":formCs :formCsc" event="onclick" value="Avançar"
+					update=":formCs :formCsc" event="onclick" value="Salvar"
 					actionListener="#{cursoMB.salvar}" />
 				<p:commandButton styleClass="button right" ajax="false"
-					value="Fechar" />
+					value="Fechar" action="#{cursoMB.fechar}" />
 			</div>
 		</h:form>
 	</h:body>

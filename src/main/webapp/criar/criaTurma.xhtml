@@ -16,7 +16,7 @@
 		<h:form id="formt">
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
-				scrollHeight="150" rowKey="#{turL.id}">
+				scrollHeight="150" rowKey="#{turL.id}" filteredValue="#{turmaMB.lista}">
 				<p:ajax event="rowSelect" update=":formt" />
 				<p:column filterBy="#{turL.nome}">
 					<f:facet name="header">Nome da Turma</f:facet>
@@ -102,7 +102,7 @@
 						actionListener="#{turmaMB.salvar}" ajax="true"
 						update=":formt :formtc" event="onclick" value="Salvar" />
 					<p:commandButton styleClass="button right" ajax="false"
-						value="Fechar" />
+						value="Fechar" action="#{turmaMB.fechar}"/>
 				</div>
 			</p:panel>
 		</h:form>
