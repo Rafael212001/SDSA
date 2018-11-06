@@ -70,3 +70,8 @@
 	display: block;
 	margin-left: 122px;
 }
+
+.ui-widget-content .ui-inputfield{
+	background: white !important;
+	color: black !important;
+}

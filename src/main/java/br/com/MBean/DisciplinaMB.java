@@ -65,6 +65,7 @@ public class DisciplinaMB {
 	private void zerar() {
 		disc = new Disciplina();
 		dDAO = new disciplinaDAO();
+		lista = null;
 		selc = null;
 	}
 
@@ -86,7 +87,13 @@ public class DisciplinaMB {
 		}
 
 	}
-
+	
+	public String fechar() {
+		zerar();
+		listarD();
+		return "PF('dlg6').hide();";
+	}
+	
 	public void listarD() {
 		discL = dDAO.listarTodos(ID);
 	}

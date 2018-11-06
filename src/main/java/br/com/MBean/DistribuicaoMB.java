@@ -45,6 +45,7 @@ public class DistribuicaoMB implements Serializable {
 	private Salas sala;
 	public Integer dia_semana = 1;
 	private Integer carga = 75;
+	private Aulas aulaExcluir;
 
 	List<Aulas> aulas;
 
@@ -77,9 +78,10 @@ public class DistribuicaoMB implements Serializable {
 	}
 	
 	
-	public void excluir(Aulas a) {
-		aDao.alocarSala(a, null, null, null);
-		aulas.remove(a);
+	public void excluir() {
+		aDao.desalocar(aulaExcluir);
+		aulas.remove(aulaExcluir);
+		atualizar();
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
@@ -482,6 +484,14 @@ public class DistribuicaoMB implements Serializable {
 
 	public void setCarga(Integer carga) {
 		this.carga = carga;
+	}
+
+	public Aulas getAulaExcluir() {
+		return aulaExcluir;
+	}
+
+	public void setAulaExcluir(Aulas aulaExcluir) {
+		this.aulaExcluir = aulaExcluir;
 	}
 	
 	

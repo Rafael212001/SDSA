@@ -18,59 +18,60 @@ public class TurmaMB {
 	Curso tcur = new Curso();
 	Turma selc;
 	List<Turma> turL;
+	List<Turma> lista;
 	List<Curso> curS;
 	cursoDAO tcDAO = new cursoDAO();
 	turmaDAO tDAO = new turmaDAO();
 	Integer semestre;
 	List<Integer> semestres;
 	int idCurso;
-	
+
 	public TurmaMB() {
 		listarT();
 	}
-	
+
 	public void salvar() {
-		if(tur.getId() != null) {
+		if (tur.getId() != null) {
 			Turma t = tDAO.buscarTurma(tur.getId());
-			if(t != null && t.getId().equals(tur.getId())) {
+			if (t != null && t.getId().equals(tur.getId())) {
 				editarTurma();
 			}
-		}else {
+		} else {
 			criarTurma();
 		}
 	}
-	
+
 	public void editarTurma() {
-		if(tDAO.editar(tur)) {
+		if (tDAO.editar(tur)) {
 			System.out.println("Turma alterada.");
 			zerar();
 			listarT();
-		}else {
+		} else {
 			System.out.println("Erro na alteração da turma.");
 		}
 	}
-	
+
 	public void criarTurma() {
-		if(tDAO.inserir(tur)) {
+		if (tDAO.inserir(tur)) {
 			System.out.println("Turma criada.");
 			zerar();
 			listarT();
-		}else {
+		} else {
 			System.out.println("Erro na criação da turma.");
 			listarT();
 		}
 	}
-	
+
 	public void listarSemestre() {
 		idCurso = tur.getId_curso();
 		int i = tDAO.listarId(idCurso);
-		
+
 		semestres = new ArrayList<Integer>();
-		for(int f = 1; f <= i; f++) {
+		for (int f = 1; f <= i; f++) {
 			semestres.add(f);
 		}
 	}
-	
+
 	private void zerar() {
 		tcur = new Curso();
 		tDAO = new turmaDAO();
@@ -79,16 +80,22 @@ public class TurmaMB {
 		idCurso = 0;
 		selc = null;
 	}
-	
+
 	public void editar() {
 		tur = selc;
 	}
-	
+
 	public void excluir() {
-		if(tDAO.excluir(selc.getId())) {
-			System.out.println("Turma " +selc.getNome()+ " excluida.");
+		if (tDAO.excluir(selc.getId())) {
+			System.out.println("Turma " + selc.getNome() + " excluida.");
 			listarT();
 		}
+	}
+	
+	public String fechar() {
+		zerar();
+		listarT();
+		return "telaCoordenador";
 	}
 	
 	public void listarT() {
@@ -175,6 +182,13 @@ public class TurmaMB {
 	public void setSelc(Turma selc) {
 		this.selc = selc;
 	}
-	
-	
+
+	public List<Turma> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Turma> lista) {
+		this.lista = lista;
+	}
+
 }

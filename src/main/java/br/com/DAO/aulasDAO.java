@@ -132,5 +132,24 @@ public class aulasDAO {
 		
 	}
 	
+	public boolean desalocar(Aulas aula) {
+		String sql = "UPDATE aulas SET id_sala = NULL, dia_semana = NULL, carga = NULL "
+				+ "WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, aula.getId());			
+			
+			if(ps.executeUpdate() != 0) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
 	
 }

@@ -17,6 +17,7 @@ public class CursoMB {
 	Curso selc;
 	Disciplina d = new Disciplina();
 	List<Curso> curL;
+	List<Curso> lista;
 	cursoDAO csDAO = new cursoDAO();
 	@ManagedProperty(value = "#{disciplinaMB}")
 	DisciplinaMB dMB;
@@ -84,6 +85,12 @@ public class CursoMB {
 			zerar();
 		}
 	}
+	
+	public String fechar() {
+		zerar();
+		listarCS();
+		return "telaCoordenador";
+	}
 
 	private void listarCS() {
 		curL = csDAO.listarTodos();
@@ -143,6 +150,14 @@ public class CursoMB {
 
 	public void setSelc(Curso selc) {
 		this.selc = selc;
+	}
+
+	public List<Curso> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Curso> lista) {
+		this.lista = lista;
 	}
 
 }
