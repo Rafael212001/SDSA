@@ -17,16 +17,25 @@
 
 			<p:panel header="Montagem de Aulas" style="margin-bottom:20px;">
 				<h:panelGrid columns="2" cellpadding="5">
-					<p:selectOneMenu id="escolha_turma" value="">
-					<f:selectItem itemLabel="Selecionar Turma" noSelectionOption="true" />
-					<f:selectItems value="" noSelectionOption="true" />
-						
-						
-						
-					</p:selectOneMenu>
-
+				
+				  <p:outputLabel value="Turmas" style="width:125px"/>
+        <p:selectOneMenu id="turma" value="#{selectOneMenuView.console}">
+            <f:selectItem itemLabel="Selecione uma turma:" />
+           <f:selectItems value="" itemLabel="" itemValue="" />
+        </p:selectOneMenu>
 					
+					 <p:outputLabel value="Disciplina" style="width:125px"/>
+        <p:selectOneMenu id="disciplina" value="#{selectOneMenuView.console}">
+            <f:selectItem itemLabel="Selecione uma disciplina:" />
+        </p:selectOneMenu>
+        
+         <p:outputLabel  value="Professor" style="width:125px"/>
+        <p:selectOneMenu id="professor" value="#{selectOneMenuView.console}">
+            <f:selectItem itemLabel="Selecione um professor"  />
+             <f:selectItem itemLabel="Selecione uma disciplina:" />
+        </p:selectOneMenu>
 
+		
 
 
 				</h:panelGrid>
