@@ -67,6 +67,34 @@ public class turmaDAO {
 		}
 		return list;
 	}
+	
+	public List<Turma> listarPorCurso(int i){
+		List<Turma> list = new ArrayList<Turma>();
+		String sql = "SELECT * FROM Turmas WHERE id_curso = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Turma t = new Turma();
+				t.setId(rs.getInt("id"));
+				t.setNome(rs.getString("nome"));
+				t.setQtd_alunos(rs.getInt("qtd_alunos"));
+				t.setDivisao(rs.getInt("divisao"));
+				t.setPeriodo(rs.getInt("periodo"));
+				t.setSemestre(rs.getInt("semestre"));
+				t.setId_curso(rs.getInt("id_curso"));
+				list.add(t);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
+	}
 
 	public Turma buscarTurma(int id) {
 		String sql = "SELECT * FROM Turmas WHERE id = ? ";

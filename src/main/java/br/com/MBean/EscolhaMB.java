@@ -1,53 +1,77 @@
 package br.com.MBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
-import javax.faces.model.SelectItemGroup;
 
 import br.com.DAO.cursoDAO;
+import br.com.DAO.disciplinaDAO;
+import br.com.DAO.professorDAO;
 import br.com.DAO.turmaDAO;
+import br.com.entities.CD;
 import br.com.entities.Curso;
+import br.com.entities.Disciplina;
 import br.com.entities.Turma;
 
 @ManagedBean
 @ViewScoped
 public class EscolhaMB {
 
-	Curso curso = new Curso();
-	Turma turma = new Turma();
 	List<Curso> cursoL;
 	List<Turma> turmaL;
-	List<SelectItem> aulas;
+	List<Disciplina> disciplinaL;
+	List<CD> cdL;
 	cursoDAO csDAO = new cursoDAO();
 	turmaDAO tDAO = new turmaDAO();
-	int select;
-	List<SelectItem> cursos;
+	disciplinaDAO dDAO = new disciplinaDAO();
+	professorDAO pDAO = new professorDAO();
+	int idCurso;
+	int idTurma;
+	int idDisciplina;
+	int idColaborador;
 
-	@PostConstruct
-	public void aula() {
-		cursos = new ArrayList<SelectItem>();
+	public EscolhaMB() {
 		cursoL = csDAO.listarTodos();
-		
-		for(Curso c : cursoL) {
-			cursos.add(new SelectItemGroup(c.getNome()));
-		}
-		
-		aulas = new ArrayList<SelectItem>();
-		
+	}
+	
+	public void listTurma(){
+		disciplinaL = null;
+		cdL = null;
+		turmaL = tDAO.listarPorCurso(idCurso);
+	}
+	
+	public void listDisc() {
+		cdL = null;
+		disciplinaL = dDAO.listDisc(idTurma);
+	}
+	
+	public void listColab() {
+		cdL = pDAO.listCd(idDisciplina);
 	}
 
-	/*----------------------------------------------------------------*/
 	public List<Curso> getCursoL() {
 		return cursoL;
 	}
 
 	public void setCursoL(List<Curso> cursoL) {
 		this.cursoL = cursoL;
+	}
+
+	public List<Turma> getTurmaL() {
+		return turmaL;
+	}
+
+	public void setTurmaL(List<Turma> turmaL) {
+		this.turmaL = turmaL;
+	}
+
+	public List<Disciplina> getDisciplinaL() {
+		return disciplinaL;
+	}
+
+	public void setDisciplinaL(List<Disciplina> disciplinaL) {
+		this.disciplinaL = disciplinaL;
 	}
 
 	public cursoDAO getCsDAO() {
@@ -58,28 +82,68 @@ public class EscolhaMB {
 		this.csDAO = csDAO;
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public turmaDAO gettDAO() {
+		return tDAO;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void settDAO(turmaDAO tDAO) {
+		this.tDAO = tDAO;
 	}
 
-	public int getSelect() {
-		return select;
+	public disciplinaDAO getdDAO() {
+		return dDAO;
 	}
 
-	public void setSelect(int select) {
-		this.select = select;
+	public void setdDAO(disciplinaDAO dDAO) {
+		this.dDAO = dDAO;
 	}
 
-	public List<SelectItem> getCursos() {
-		return cursos;
+	public int getIdCurso() {
+		return idCurso;
 	}
 
-	public void setCursos(List<SelectItem> cursos) {
-		this.cursos = cursos;
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public int getIdTurma() {
+		return idTurma;
+	}
+
+	public void setIdTurma(int idTurma) {
+		this.idTurma = idTurma;
+	}
+
+	public int getIdDisciplina() {
+		return idDisciplina;
+	}
+
+	public void setIdDisciplina(int idDisciplina) {
+		this.idDisciplina = idDisciplina;
+	}
+
+	public professorDAO getpDAO() {
+		return pDAO;
+	}
+
+	public void setpDAO(professorDAO pDAO) {
+		this.pDAO = pDAO;
+	}
+
+	public int getIdColaborador() {
+		return idColaborador;
+	}
+
+	public void setIdColaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
+	}
+
+	public List<CD> getCdL() {
+		return cdL;
+	}
+
+	public void setCdL(List<CD> cdL) {
+		this.cdL = cdL;
 	}
 
 }

@@ -64,6 +64,32 @@ public class disciplinaDAO {
 		return list;
 	}
 	
+	public List<Disciplina> listDisc(int i) {
+		List<Disciplina> list = new ArrayList<Disciplina>();
+		String sql = "SELECT * FROM Disciplinas WHERE semestre = ?";
+
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Disciplina d = new Disciplina();
+				d.setId(rs.getInt("id"));
+				d.setNome(rs.getString("nome"));
+				d.setCarga_hora(rs.getInt("carga_hora"));
+				d.setSemestre(rs.getInt("semestre"));
+				d.setId_curso(rs.getInt("id_curso"));
+				list.add(d);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public int listarId(int i) {
 		int f = 0;
 		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ?";
