@@ -3,46 +3,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
-
-<title>Insert title here</title>
-</head>
+<h:head>
 <meta charset="UTF-8" />
+</h:head>
 
-<body>
-
-	<TABLE>
-		<h:form>
-			<p:growl id="msgs" showDetail="true" />
-
-			<p:panel header="Montagem de Aulas" style="margin-bottom:20px;">
-				<h:panelGrid columns="2" cellpadding="5">
-				
-				  <p:outputLabel value="Turmas" style="width:125px"/>
-        <p:selectOneMenu id="turma" value="#{selectOneMenuView.console}">
-            <f:selectItem itemLabel="Selecione uma turma:" />
-           <f:selectItems value="" itemLabel="" itemValue="" />
-        </p:selectOneMenu>
-					
-					 <p:outputLabel value="Disciplina" style="width:125px"/>
-        <p:selectOneMenu id="disciplina" value="#{selectOneMenuView.console}">
-            <f:selectItem itemLabel="Selecione uma disciplina:" />
-        </p:selectOneMenu>
-        
-         <p:outputLabel  value="Professor" style="width:125px"/>
-        <p:selectOneMenu id="professor" value="#{selectOneMenuView.console}">
-            <f:selectItem itemLabel="Selecione um professor"  />
-             <f:selectItem itemLabel="Selecione uma disciplina:" />
-        </p:selectOneMenu>
-
+<h:body>
+	<h:form>
+		<p:multiSelectListbox value="#{escolhaMB.select}" effect="slide" header="Cursos" showHeaders="true" >
+			<f:selectItems value="#{escolhaMB.cursos}" var="cursoL" itemLabel="#{cursoL.nome}" itemValue="#{cursoL.id}"/>
+		</p:multiSelectListbox>
 		
-
-
-				</h:panelGrid>
-			</p:panel>
-
-
-		</h:form>
-	</TABLE>
-</body>
+		<p:commandButton value="Save" icon="ui-icon-check" update="out" style="display:block;margin:10px 0" />
+ 
+    	<h:outputText id="out" value="Value: #{escolhaMB.select}" style="display:block" />
+		
+	</h:form>
+</h:body>
 </html>
