@@ -50,6 +50,7 @@ public class DistribuicaoMB implements Serializable {
 	List<Aulas> aulas;
 
 	public DistribuicaoMB() {
+		System.out.println("entrou");
 		aDao = new aulasDAO();
 		aulas = aDao.listarTodasSemSala();
 		atualizar();
@@ -78,10 +79,10 @@ public class DistribuicaoMB implements Serializable {
 	}
 	
 	
-	public void excluir() {
+	public String excluir() {
 		aDao.desalocar(aulaExcluir);
 		aulas.remove(aulaExcluir);
-
+		return "telaDistribuicao?faces-redirect=true";
 	}
 
 	public void onAulasDropSala1(DragDropEvent dde) {
