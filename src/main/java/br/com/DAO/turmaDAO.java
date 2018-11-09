@@ -40,6 +40,26 @@ public class turmaDAO {
 		}
 		return false;
 	}
+	
+	public int pegarSemestre(int i) {
+		int f = 0;
+		String sql = "SELECT semestre FROM Turmas WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				f = rs.getInt("semestre");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return f;
+	}
 
 	public List<Turma> listarTodos() {
 		List<Turma> list = new ArrayList<Turma>();

@@ -30,24 +30,44 @@ public class EscolhaMB {
 	int idTurma;
 	int idDisciplina;
 	int idColaborador;
+	boolean botao;
 
 	public EscolhaMB() {
 		cursoL = csDAO.listarTodos();
 	}
-	
-	public void listTurma(){
+
+	public void listTurma() {
 		disciplinaL = null;
 		cdL = null;
+		idTurma = 0;
+		idDisciplina = 0;
+		idColaborador = 0;
+		verificar();
 		turmaL = tDAO.listarPorCurso(idCurso);
 	}
-	
+
 	public void listDisc() {
 		cdL = null;
-		disciplinaL = dDAO.listDisc(idTurma);
+		idDisciplina = 0;
+		idColaborador = 0;
+		verificar();
+		int semestre = tDAO.pegarSemestre(idTurma);
+		disciplinaL = dDAO.listDisc(semestre, idCurso);
 	}
-	
+
 	public void listColab() {
+		idColaborador = 0;
+		verificar();
 		cdL = pDAO.listCd(idDisciplina);
+	}
+
+	public void verificar() {
+		if (idColaborador != 0) {
+			botao = true;
+		}else {
+			botao = false;
+		}
+			
 	}
 
 	public List<Curso> getCursoL() {
@@ -144,6 +164,14 @@ public class EscolhaMB {
 
 	public void setCdL(List<CD> cdL) {
 		this.cdL = cdL;
+	}
+
+	public boolean isBotao() {
+		return botao;
+	}
+
+	public void setBotao(boolean botao) {
+		this.botao = botao;
 	}
 
 }

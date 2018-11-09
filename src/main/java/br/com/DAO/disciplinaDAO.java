@@ -64,14 +64,14 @@ public class disciplinaDAO {
 		return list;
 	}
 	
-	public List<Disciplina> listDisc(int i) {
+	public List<Disciplina> listDisc(int i, int j) {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas WHERE semestre = ?";
+		String sql = "SELECT * FROM Disciplinas WHERE semestre = ? AND id_curso = ? ";
 
-		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, i);
+			ps.setInt(2, j);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
