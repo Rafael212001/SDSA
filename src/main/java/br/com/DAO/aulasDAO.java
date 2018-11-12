@@ -1,7 +1,5 @@
 package br.com.DAO;
 
-import java.security.GeneralSecurityException;
-import java.security.KeyStore.ProtectionParameter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,6 +24,29 @@ public class aulasDAO {
 	
 	public aulasDAO() {
 		con = ConnectionDB.getConnection();
+	}
+	
+	public boolean inserir(int idCurso, int idTurma, int idDisciplina, int idColaborador, int idCoordenador) {
+		String sql = "INSERT INTO Aulas (id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador) VALUES (?,?,?,?,?) ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idCurso);
+			ps.setInt(2, idTurma);
+			ps.setInt(3, idDisciplina);
+			ps.setInt(4, idColaborador);
+			ps.setInt(5, idCoordenador);
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public List<Aulas> listarTodasSemSala(){

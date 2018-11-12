@@ -2,22 +2,29 @@ package br.com.MBean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
+import br.com.DAO.aulasDAO;
 import br.com.DAO.cursoDAO;
 import br.com.DAO.disciplinaDAO;
 import br.com.DAO.professorDAO;
 import br.com.DAO.turmaDAO;
+import br.com.entities.Aulas;
 import br.com.entities.CD;
 import br.com.entities.Curso;
 import br.com.entities.Disciplina;
+import br.com.entities.Professor;
 import br.com.entities.Turma;
 
 @ManagedBean
 @ViewScoped
 public class EscolhaMB {
 
+	Aulas aulas;
 	List<Curso> cursoL;
 	List<Turma> turmaL;
 	List<Disciplina> disciplinaL;
@@ -26,14 +33,29 @@ public class EscolhaMB {
 	turmaDAO tDAO = new turmaDAO();
 	disciplinaDAO dDAO = new disciplinaDAO();
 	professorDAO pDAO = new professorDAO();
+	aulasDAO aDAO = new aulasDAO();
 	int idCurso;
 	int idTurma;
 	int idDisciplina;
 	int idColaborador;
+	int idCoordenador;
 	boolean botao;
+	@ManagedProperty(value = "#{loginMB}")
+	LoginMB lMB;
 
 	public EscolhaMB() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Não tem ","jdfhasoidfh"));
 		cursoL = csDAO.listarTodos();
+	}
+
+	public void criarAula() {
+		setIdCoordenador(lMB.getC().getId());
+		if (aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador)) {
+			System.out.println("deu");
+		} else {
+			System.out.println("não deu");
+		}
 	}
 
 	public void listTurma() {
@@ -64,10 +86,9 @@ public class EscolhaMB {
 	public void verificar() {
 		if (idColaborador != 0) {
 			botao = true;
-		}else {
+		} else {
 			botao = false;
 		}
-			
 	}
 
 	public List<Curso> getCursoL() {
@@ -172,6 +193,38 @@ public class EscolhaMB {
 
 	public void setBotao(boolean botao) {
 		this.botao = botao;
+	}
+
+	public Aulas getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(Aulas aulas) {
+		this.aulas = aulas;
+	}
+
+	public aulasDAO getaDAO() {
+		return aDAO;
+	}
+
+	public void setaDAO(aulasDAO aDAO) {
+		this.aDAO = aDAO;
+	}
+
+	public int getIdCoordenador() {
+		return idCoordenador;
+	}
+
+	public void setIdCoordenador(int idCoordenador) {
+		this.idCoordenador = idCoordenador;
+	}
+
+	public LoginMB getlMB() {
+		return lMB;
+	}
+
+	public void setlMB(LoginMB lMB) {
+		this.lMB = lMB;
 	}
 
 }

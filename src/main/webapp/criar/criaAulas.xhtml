@@ -9,6 +9,7 @@
 
 <h:body>
 	<h:form id="form">
+		
 		<p:panel header="Curso:">
 			<p:selectOneListbox id="curso" value="#{escolhaMB.idCurso}"
 				onchange="mostraTurma()">
@@ -55,16 +56,20 @@
 		</div>
 		<div id="divBotao">
 			<p:commandButton id="bt" value="Salvar"
-				disabled="#{escolhaMB.botao == false}" />
+				disabled="#{escolhaMB.botao == false}"
+				actionListener="#{escolhaMB.criarAula}" />
 		</div>
 	</h:form>
 	<script>
 		function mostraTurma() {
 			$("#divTurma").hide();
+			$("#divDisciplina").hide();
+			$("#divColaborador").hide();
 			$("#divTurma").toggle("fade");
 		}
 		function mostraDisciplina() {
 			$("#divDisciplina").hide();
+			$("#divColaborador").hide();
 			$("#divDisciplina").toggle("fade");
 		}
 		function mostraColaborador() {
