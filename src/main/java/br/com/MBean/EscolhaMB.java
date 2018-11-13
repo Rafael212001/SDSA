@@ -44,17 +44,25 @@ public class EscolhaMB {
 	LoginMB lMB;
 
 	public EscolhaMB() {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage("Não tem ","jdfhasoidfh"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Não tem ", "jdfhasoidfh"));
 		cursoL = csDAO.listarTodos();
 	}
 
-	public void criarAula() {
-		setIdCoordenador(lMB.getC().getId());
-		if (aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador)) {
-			System.out.println("deu");
+	public String criarAula() {
+		Turma turma = new Turma();
+		turma = tDAO.buscarTurma(idTurma);
+		if (lMB == null) {
+			setIdCoordenador(lMB.getC().getId());
+			if (aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo())) {
+				System.out.println("Aula criada.");
+				return "/telaDistribuicao?faces-redirect=true";
+			} else {
+				System.out.println("Erro ao criar aula.");
+				return "criaAulas?faces-redirect=true";
+			}
 		} else {
-			System.out.println("não deu");
+			System.out.println("Erro no coordenador.");
+			return "criaAulas?faces-redirect=true";
 		}
 	}
 

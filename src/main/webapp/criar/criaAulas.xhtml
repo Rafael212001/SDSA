@@ -57,7 +57,9 @@
 		<div id="divBotao">
 			<p:commandButton id="bt" value="Salvar"
 				disabled="#{escolhaMB.botao == false}"
-				actionListener="#{escolhaMB.criarAula}" />
+				action="#{escolhaMB.criarAula}" />
+				
+			<p:commandButton value="Voltar" action="/telaDistribuicao?faces-redirect=true"/>
 		</div>
 	</h:form>
 	<script>

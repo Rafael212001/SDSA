@@ -67,12 +67,13 @@ CREATE TABLE Aulas(
     id_sala 		int,
     dia_semana  	int,
     carga      		int,
-	foreign key (id_cursos)      references Cursos (id),
-    foreign key (id_turmas)      references Turmas (id),
-    foreign key (id_disciplina)  references Disciplinas (id),
-    foreign key (id_colaborador) references Colaboradores (id),
-    foreign key (id_coordenador) references Coordenadores (id),
-    foreign key (id_sala) 		 references Salas (numero)
+	periodo			int,
+	foreign key (id_cursos)     	references Cursos (id),
+    foreign key (id_turmas)     	references Turmas (id),
+    foreign key (id_disciplina) 	references Disciplinas (id),
+    foreign key (id_colaborador)	references Colaboradores (id),
+    foreign key (id_coordenador)	references Coordenadores (id),
+    foreign key (id_sala) 			references Salas (numero)
 ); 
 
 CREATE TABLE Carga_horaria_restante(

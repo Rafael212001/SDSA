@@ -26,8 +26,8 @@ public class aulasDAO {
 		con = ConnectionDB.getConnection();
 	}
 	
-	public boolean inserir(int idCurso, int idTurma, int idDisciplina, int idColaborador, int idCoordenador) {
-		String sql = "INSERT INTO Aulas (id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador) VALUES (?,?,?,?,?) ";
+	public boolean inserir(int idCurso, int idTurma, int idDisciplina, int idColaborador, int idCoordenador, int periodo) {
+		String sql = "INSERT INTO Aulas (id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador, periodo) VALUES (?,?,?,?,?,?) ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -36,6 +36,7 @@ public class aulasDAO {
 			ps.setInt(3, idDisciplina);
 			ps.setInt(4, idColaborador);
 			ps.setInt(5, idCoordenador);
+			ps.setInt(6, periodo);
 			
 			if(ps.executeUpdate() > 0) {
 				return true;
