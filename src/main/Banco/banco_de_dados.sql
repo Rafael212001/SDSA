@@ -158,9 +158,9 @@ INSERT INTO SALAS VALUES (16, "SALA 16");
 INSERT INTO SALAS VALUES (18, "SALA 18");
 INSERT INTO SALAS VALUES (35, "SALA 35");
 
-INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador, id_sala, dia_semana, carga)
-		VALUES	(1, 1, 3, 3, 2, 2, 1, 75),
-				(1, 1, 5, 2, 2, 5, 2, 75),
-				(1, 1, 4, 1, 2,16, 3, 75),
-				(1, 1, 2, 2, 2,	9, 4, 75),
-				(1, 1, 1, 1, 2,16, 5, 75);
+INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador, id_sala, dia_semana, carga, periodo)
+		VALUES	(1, 1, 3, 3, 2, 2, 1, 75, 1),
+				(1, 1, 5, 2, 2, 5, 2, 75, 1),
+				(1, 1, 4, 1, 2,16, 3, 75, 1),
+				(1, 1, 2, 2, 2,	9, 4, 75, 1),
+				(1, 1, 1, 1, 2,16, 5, 75, 1);

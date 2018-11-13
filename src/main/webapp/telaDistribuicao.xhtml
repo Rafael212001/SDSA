@@ -21,9 +21,9 @@
 					<p:panel id="pnl" header="Curso: #{aula.curso.nome}"
 						style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
-							<h3>Turma: #{aula.turma.nome}</h3>
-							<h3>Disciplina: #{aula.disciplina.nome}</h3>
-							<h3>Professor: #{aula.professor.nome}</h3>
+							<p:outputLabel value="Turma: #{aula.turma.nome}" /> 
+							<p:outputLabel value="Disciplina: #{aula.disciplina.nome}" />
+							<p:outputLabel value="Professor: #{aula.professor.nome}" />
 
 						</h:panelGrid>
 					</p:panel>
@@ -36,7 +36,7 @@
 		</div>
 		<p:tabView id="tab">
 			<p:tab title="Salas">
-				<p:scrollPanel mode="native" style="width:1000px">
+				<p:scrollPanel mode="native" >
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
