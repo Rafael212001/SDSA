@@ -4,6 +4,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
+	<title>Tela de Distribuição</title>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css"
 		href="resource/css/cssDistribuicao.css" />
@@ -30,15 +31,12 @@
 						stack=".ui-panel" />
 				</p:dataGrid>
 			</p:fieldset>
-			<br/>
-			<br/>
-			<br/>
-			<p:commandButton value="Adicionar aula" action="criar/criaAulas?faces-redirect=true"/>
-			<p:commandButton value="voltar" action="telaCoordenador?faces-redirect=true"/>
+			<br /> <br /> <br />
+
 		</div>
 		<p:tabView id="tab">
-			<p:tab title="Manhã">
-				<p:scrollPanel mode="native" style="height:570px">
+			<p:tab title="Salas">
+				<p:scrollPanel mode="native" style="width:1000px">
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
@@ -51,6 +49,13 @@
 						<p:ajax event="change" process="diaSemana" update="tab"
 							listener="#{distribuicaoMB.atualizar}" />
 					</p:selectOneMenu>
+					<p:selectOneRadio id="periodo" value="#{distribuicaoMB.periodo}">
+						<f:selectItem itemLabel="Manha" itemValue="1"/>
+						<f:selectItem itemLabel="Tarde" itemValue="2"/>
+						<f:selectItem itemLabel="Noite" itemValue="3"/>
+						<p:ajax event="change" process="periodo" update="tab"
+							listener="#{distribuicaoMB.atualizar}" />
+					</p:selectOneRadio>
 					<h3>Segundo andar</h3>
 					<table class="tabelas">
 						<tr>
@@ -115,7 +120,7 @@
 											<p:column headerText="Excluir">
 												<p:commandButton icon="ui-icon-trash"
 													action="#{distribuicaoMB.excluir}" ajax="true"
-													onsuccess=":form" >
+													onsuccess=":form">
 													<f:setPropertyActionListener value="#{aulaS2}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -786,14 +791,16 @@
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala35}"
 										update=":form" />
 								</p:droppable></td>
-
-
 						</tr>
 					</table>
-
 				</p:scrollPanel>
 			</p:tab>
+
 		</p:tabView>
+		<p:commandButton value="Adicionar aula"
+			action="criar/criaAulas?faces-redirect=true" />
+		<p:commandButton value="voltar"
+			action="telaCoordenador?faces-redirect=true" />
 	</h:form>
 	<script type="text/javascript">
 		function handleDrop(event, ui) {

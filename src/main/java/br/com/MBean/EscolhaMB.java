@@ -51,7 +51,7 @@ public class EscolhaMB {
 	public String criarAula() {
 		Turma turma = new Turma();
 		turma = tDAO.buscarTurma(idTurma);
-		if (lMB == null) {
+		if (lMB.c != null) {
 			setIdCoordenador(lMB.getC().getId());
 			if (aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo())) {
 				System.out.println("Aula criada.");
