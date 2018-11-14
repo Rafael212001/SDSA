@@ -21,7 +21,7 @@
 					<p:panel id="pnl" header="Curso: #{aula.curso.nome}"
 						style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
-							<p:outputLabel value="Turma: #{aula.turma.nome}" /> 
+							<p:outputLabel value="Turma: #{aula.turma.nome}" />
 							<p:outputLabel value="Disciplina: #{aula.disciplina.nome}" />
 							<p:outputLabel value="Professor: #{aula.professor.nome}" />
 
@@ -33,10 +33,21 @@
 			</p:fieldset>
 			<br /> <br /> <br />
 
+			<p:fieldset style="margin-top: 600px !important;" id="lixo">
+				<p:outputPanel id="dropLixo">
+					<h:outputText value="Excluir" />
+				</p:outputPanel>
+			</p:fieldset>
+			<p:droppable for="lixo" tolerance="pointer"
+				activeStyleClass="ui-state-highlight"
+				datasource=":form:aulas_alocar" onDrop="handleDrop">
+				<p:ajax process="lixo" listener="#{distribuicaoMB.onAulasDropLixeira}" update="form" />
+			</p:droppable>
+
 		</div>
 		<p:tabView id="tab">
 			<p:tab title="Salas">
-				<p:scrollPanel mode="native" >
+				<p:scrollPanel mode="native">
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
@@ -50,9 +61,9 @@
 							listener="#{distribuicaoMB.atualizar}" />
 					</p:selectOneMenu>
 					<p:selectOneRadio id="periodo" value="#{distribuicaoMB.periodo}">
-						<f:selectItem itemLabel="Manha" itemValue="1"/>
-						<f:selectItem itemLabel="Tarde" itemValue="2"/>
-						<f:selectItem itemLabel="Noite" itemValue="3"/>
+						<f:selectItem itemLabel="Manha" itemValue="1" />
+						<f:selectItem itemLabel="Tarde" itemValue="2" />
+						<f:selectItem itemLabel="Noite" itemValue="3" />
 						<p:ajax event="change" process="periodo" update="tab"
 							listener="#{distribuicaoMB.atualizar}" />
 					</p:selectOneRadio>

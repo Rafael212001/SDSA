@@ -66,7 +66,7 @@ public class aulasDAO {
 						new Turma(null, rs.getString("turma"), null, null, null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null, null, null),
-						new Coordenador(null, rs.getString("coordenador"), null, null), null, null, null,null);
+						new Coordenador(null, rs.getString("coordenador"), null, null), null, null, null, null);
 				list.add(a);
 			}
 
@@ -162,6 +162,23 @@ public class aulasDAO {
 		}
 		return false;
 
+	}
+
+	public boolean excluir(Aulas a) {
+		String sql = "DELETE FROM Aulas WHERE id = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, a.getId());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

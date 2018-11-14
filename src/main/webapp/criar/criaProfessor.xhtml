@@ -16,7 +16,7 @@
 			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
 				selectionMode="single" selection="#{professorMB.selc}"
 				scrollable="true" scrollHeight="150" rowKey="#{profL.id}"
-				filteredValue="#{professorMB.lista}" >
+				filteredValue="#{professorMB.lista}">
 				<p:ajax event="rowSelect" update=":formp" />
 				<p:column filterBy="#{profL.nome}">
 					<f:facet name="header">Nome</f:facet>
@@ -63,18 +63,18 @@
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
-						<!-- Foto:
-					<p:fileUpload fileUploadListener="#{a}" mode="simple" skinSimple="true"
-							allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
-						<p:growl id="messages" showDetail="true" />-->
+					Foto:
+					<p:fileUpload fileUploadListener="#{a}" mode="simple"
+							skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+						<p:growl id="messages" showDetail="true" />
 					</h:panelGrid>
 				</div>
 				<div class="margin center">
 					<p:commandButton styleClass="button left" ajax="true"
 						update=":formp :formpc" event="onclick" value="Salvar"
 						actionListener="#{professorMB.salvar}" />
-					<p:commandButton styleClass="button right" ajax="false" 
-						value="Fechar" action="#{professorMB.fechar}"  />
+					<p:commandButton styleClass="button right" ajax="false"
+						value="Fechar" action="#{professorMB.fechar}" />
 				</div>
 			</p:panel>
 		</h:form>
