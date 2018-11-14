@@ -41,7 +41,7 @@
 			<p:droppable for="lixo" tolerance="pointer"
 				activeStyleClass="ui-state-highlight"
 				datasource=":form:aulas_alocar" onDrop="handleDrop">
-				<p:ajax process="lixo" listener="#{distribuicaoMB.onAulasDropLixeira}" update="form" />
+				<p:ajax listener="#{distribuicaoMB.onAulasDropLixeira}" update="form" />
 			</p:droppable>
 
 		</div>
