@@ -166,12 +166,12 @@ public class aulasDAO {
 
 	public boolean excluir(Aulas a) {
 		String sql = "DELETE FROM Aulas WHERE id = ? ";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, a.getId());
-			
-			if(ps.executeUpdate() > 0) {
+
+			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (Exception e) {

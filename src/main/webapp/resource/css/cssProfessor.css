@@ -26,16 +26,16 @@ ul{
 }
 
 .prof{
-	margin-top: 50px;
-	margin-left: 12.2%;
-	width: 75%;
-	height: 50px;
+	margin-top: 50px !important;
+	margin-left: 12.2% !important;
+	width: 75% !important;
+	height: 50px !important;
 	
 }
 
 .prof  td{
-	border: 0px;
-	width: auto;
+	border: 0px !important;
+	width: auto !important;
 }
 
 .box{
@@ -59,7 +59,7 @@ th, td{
 	float: left;
 	
 	width: 150px;
-	height: 30px;
+	height: 60px;
 	
 	margin: 1px;
 	margin-bottom: 0px;
@@ -101,7 +101,7 @@ th, td{
     display: block;
     font-size: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    margin-top: 300px; 
+    margin-top: 500px; 
 }
 
 .ui-state-hover, .ui-state-focus{
