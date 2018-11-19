@@ -1,4 +1,4 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
@@ -6,8 +6,11 @@
 <h:head>
 	<title>Criação de Aulas</title>
 	<meta charset="UTF-8" />
+	<ui:define name="style">
+		<h:outputStylesheet library="css" name="cssCoordenador.css" />
+	</ui:define>
 	<link rel="stylesheet" type="text/css"
-		href="resource/css/cssAula.css" />
+		href="resource/css/cssCoordenador.css" />
 </h:head>
 
 <h:body>
@@ -83,4 +86,4 @@
 		}
 	</script>
 </h:body>
-</ui:composition>
+</html>
