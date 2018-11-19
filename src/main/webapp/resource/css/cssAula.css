@@ -1,0 +1,98 @@
+body{
+	margin: 0px;
+}
+
+.menu .imagens{
+	width: 175px;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.menu #j_idt14, #j_idt32, #j_idt52, #j_idt74, #j_idt98{
+	width: 50% !important;
+}
+
+.menu {
+    background-color: #1C1C1C;
+    height: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16.5px 16px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu .dropbtn{
+	border-top: 0px;
+    border-left: 2px solid #DA251C;
+    border-right: 2px solid #DA251C;
+}
+
+.menu li a:hover, .dropdown:hover .dropbtn {
+    background-color: #DA251C;
+}
+
+.menu li.dropdown {
+    display: inline-block;
+}
+
+.menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menu .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menu .dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menu #btSair{
+	float: right;
+	border-top: 0px;
+    border-left: 2px solid #DA251C;
+    border-right: 2px solid #DA251C;
+}
+
+.menu #btDist{
+	border-top: 0px;
+    border-right: 2px solid #DA251C;
+	border-left: 0px;
+}
+
+.imagens{
+	width: 350px;
+	heigth: 350px;
+}
+
+.ui-widget-content .ui-inputfield{
+	background: white !important;
+	color: black !important;
+}

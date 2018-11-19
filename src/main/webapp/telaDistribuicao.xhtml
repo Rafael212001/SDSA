@@ -12,10 +12,15 @@
 </style>
 </h:head>
 <h:body>
-
+	<ul class="menu">
+		<li><h:graphicImage class="imagens" library="img"
+				value="resource/img/senai.png" /></li>
+		<li><a id="btDist" href="criar/criaAulas.xhtml">Adicionar Aula</a></li>
+		<li id="btSair"><a  href="telaCoordenador.xhtml">Voltar</a></li>
+	</ul>
 	<h:form id="form">
 		<div class="aulasFormadas">
-			<p:fieldset id="aulas_alocarField">
+			<p:fieldset styleClass="drop" id="aulas_alocarField">
 				<p:dataGrid id="aulas_alocar" var="aula"
 					value="#{distribuicaoMB.aulas}" columns="3">
 					<p:panel id="pnl" header="Curso: #{aula.curso.nome}"
@@ -33,7 +38,7 @@
 			</p:fieldset>
 			<br /> <br /> <br />
 
-			<p:fieldset style="margin-top: 600px !important;" id="lixo">
+			<p:fieldset style="margin-top: 350px !important;" id="lixo">
 				<p:outputPanel id="dropLixo">
 					<h:outputText value="Excluir" />
 				</p:outputPanel>
@@ -47,7 +52,7 @@
 		</div>
 		<p:tabView id="tab">
 			<p:tab title="Salas">
-				<p:scrollPanel mode="native">
+				<p:scrollPanel mode="native" style="height:600px;">
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
 						<f:selectItem itemLabel="dia da semana" itemValue="" />
@@ -808,10 +813,6 @@
 			</p:tab>
 
 		</p:tabView>
-		<p:commandButton value="Adicionar aula"
-			action="criar/criaAulas?faces-redirect=true" />
-		<p:commandButton value="voltar"
-			action="telaCoordenador?faces-redirect=true" />
 	</h:form>
 	<script type="text/javascript">
 		function handleDrop(event, ui) {

@@ -1,3 +1,7 @@
+body{
+	margin: 0px;
+}
+
 .center {
 	margin: auto;
 	display: flex;
@@ -5,9 +9,64 @@
 	justify-content: center;
 }
 
+.menu .imagens{
+	width: 175px;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.menu li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16.5px 16px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu li a:hover, .dropdown:hover .dropbtn {
+    background-color: #DA251C;
+}
+
+.menu {
+    background-color: #1C1C1C;
+    height: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu li {
+    float: left;
+}
+
 #form {
 	width: 100%;
 	height: 100%;
+}
+
+.menu #btSair{
+	float: left;
+	border-top: 0px;
+    border-right: 2px solid #DA251C;
+}
+
+.menu #btDist{
+	border-top: 0px;
+    border-right: 2px solid #DA251C;
+	border-left: 0px;
+}
+
+.imagens{
+	width: 350px;
+	heigth: 350px;
+}
+
+.ui-widget-content .ui-inputfield{
+	background: white !important;
+	color: black !important;
 }
 
 .aulasFormadas {
@@ -19,8 +78,7 @@
 
 .ui-tabs {
 	position: static;
-	float: left !important;
-	width: 800px !important;
+	width: 1013px !important;
 	height: 90% !important;
 	padding: 10px;
 	margin-left: 50px !important;
@@ -63,4 +121,20 @@
 
 .ui-panel{
 	height: 150px;
+}
+
+form{
+	background: #D3D3D3;
+}
+
+.ui-tabs{
+	background: #1C1C1C;
+	border: 0px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	float: left !important;
+}
+
+.drop{
+	height: 160px !important;
 }
