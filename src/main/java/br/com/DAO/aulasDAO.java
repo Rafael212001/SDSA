@@ -123,15 +123,16 @@ public class aulasDAO {
 		return false;
 	}
 
-	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, Integer carga) {
-		String sql = "UPDATE aulas SET id_sala = ?, dia_semana = ?, carga = ? " + "WHERE id = ?";
+	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, Integer carga, int periodo) {
+		String sql = "UPDATE aulas SET id_sala = ?, dia_semana = ?, carga = ?, periodo = ? WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, numeroSala);
 			ps.setInt(2, dia_semana);
 			ps.setInt(3, carga);
-			ps.setInt(4, aula.getId());
+			ps.setInt(4, periodo);
+			ps.setInt(5, aula.getId());
 
 			if (ps.executeUpdate() != 0) {
 				return true;

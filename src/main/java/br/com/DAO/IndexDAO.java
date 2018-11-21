@@ -35,7 +35,10 @@ public class IndexDAO {
 				a.setNomeDisciplina(rs.getString("nomeDisciplina"));
 				a.setId_sala(rs.getInt("id_sala"));
 				
-				i = "Sala: "+a.getId_sala()+"º \n Curso: "+a.getNomeCurso()+" \n Turma: "+a.getNomeTurma()+" \n Disc.: "+a.getNomeDisciplina();
+				i = "Sala: "+a.getId_sala()
+				+"º \n Curso: "+a.getNomeCurso()
+				+" \n Turma: "+a.getNomeTurma()
+				+" \n Disc.: "+a.getNomeDisciplina();
 			}
 			
 			
