@@ -78,7 +78,7 @@ body{
 
 .ui-tabs {
 	position: static;
-	width: 1013px !important;
+	width: 75% !important;
 	height: 90% !important;
 	padding: 10px;
 	margin-left: 50px !important;
@@ -112,6 +112,7 @@ body{
 	height: 75px !important;
 	padding: 10px;
 	width: 300px !important;
+	border: 1px solid red !important;
 }
 
 .ui-scrollpanel-container {
@@ -128,7 +129,6 @@ form{
 }
 
 .ui-tabs{
-	background: #1C1C1C;
 	border: 0px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
@@ -137,6 +137,12 @@ form{
 
 .drop{
 	height: 160px !important;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: 0px !important;
+	border-left: 1px solid red !important;
+	border-right: 1px solid red !important;
+	border-bottom: 1px solid red !important;
 }
 
 .ui-panel .ui-panel-titlebar{
@@ -156,4 +162,9 @@ form{
 	background: #DA251C;
 	color: white;
 	text-shadow: none !important;
+}
+
+.ui-tabs .ui-tabs-panel{
+	border: #DA251C !important;
+	margin-top: 50px !important;
 }
