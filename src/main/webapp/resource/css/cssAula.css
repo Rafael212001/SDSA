@@ -3,6 +3,14 @@
 	border: 0px;
 	color: white;
 	text-shadow: none;
+	text-align: center;
+}
+
+.ui-panel{
+	margin: auto;
+	flex-direction: row;
+	justify-content: center;
+	width: 50%;
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover{
@@ -13,5 +21,13 @@
 }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight{
-	background: 
+	background: #aaa;
+}
+
+.ui-widget-content .ui-inputfield{
+	width: 35%;
+	text-align: center;
+	margin: auto;
+	flex-direction: row;
+	justify-content: center;
 }
