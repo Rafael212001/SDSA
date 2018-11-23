@@ -1,3 +1,17 @@
 .ui-panel .ui-panel-titlebar{
-	background: blue;
+	background: #DA251C;
+	border: 0px;
+	color: white;
+	text-shadow: none;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover{
+	background: #DA251C;
+	color: white;
+	border: 0px;
+	box-shadow: 0 0 8px #DA251C;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight{
+	background: 
 }
