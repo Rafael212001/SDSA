@@ -1,6 +1,7 @@
 html, body{
 	height:100%;
 	margin: 0px;
+	overflow: hidden;
 }
 
 .center {
@@ -50,6 +51,13 @@ html, body{
 }
 
 .menu #btSair{
+	float: right;
+	border-top: 0px;
+    border-right: 2px solid #DA251C;
+	border-left: 2px solid #DA251C;
+}
+
+.menu #btvoltar{
 	float: left;
 	border-top: 0px;
     border-right: 2px solid #DA251C;
@@ -58,7 +66,7 @@ html, body{
 .menu #btDist{
 	border-top: 0px;
     border-right: 2px solid #DA251C;
-	border-left: 0px;
+	border-left: 2px solid #DA251C;
 }
 
 .imagens{
@@ -172,6 +180,7 @@ html, body{
 	height: 100%;
 	width: calc(100% - 330px);
 	float: right;
+	overflow-y: auto; 
 }
 
 .salas .ui-fieldset{

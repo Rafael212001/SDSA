@@ -15,7 +15,16 @@
 
 <h:body>
 	<h:form id="form">
-		
+		<ul class="menu">
+			<li><h:graphicImage class="imagens" library="img"
+					value="/resource/img/senai.png" /></li>
+			<li><h:commandButton id="bt" value="Salvar" styleClass="botao"
+					onmouseover="mudar(this), mouse(this)" onmouseout="tirar(this)"
+					disabled="#{escolhaMB.botao == false}"
+					action="#{escolhaMB.criarAula}" /></li>
+			<li id="btSair"><a href="/sdsa/telaDistribuicao.xhtml">Voltar</a></li>
+		</ul>
+
 		<p:panel header="Curso:">
 			<p:selectOneListbox id="curso" value="#{escolhaMB.idCurso}"
 				onchange="mostraTurma()">
@@ -60,15 +69,22 @@
 				</p:selectOneListbox>
 			</p:panel>
 		</div>
-		<div id="divBotao">
-			<p:commandButton id="bt" value="Salvar"
-				disabled="#{escolhaMB.botao == false}"
-				action="#{escolhaMB.criarAula}" />
-				
-			<p:commandButton value="Voltar" action="/telaDistribuicao?faces-redirect=true"/>
-		</div>
 	</h:form>
 	<script>
+		function mudar(x) {
+			x.style.background = "#DA251C";
+		}
+
+		function tirar(x) {
+			x.style.background = "#1C1C1C";
+		}
+		
+		function mouse(x) {
+			if(x.style.disabled != false){
+				x.style.cursor = "pointer";
+			}
+		}
+
 		function mostraTurma() {
 			$("#divTurma").hide();
 			$("#divDisciplina").hide();
