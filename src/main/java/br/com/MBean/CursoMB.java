@@ -1,10 +1,12 @@
 package br.com.MBean;
 
 import java.util.List;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.DAO.cursoDAO;
 import br.com.entities.Curso;
@@ -22,12 +24,14 @@ public class CursoMB {
 	@ManagedProperty(value = "#{disciplinaMB}")
 	DisciplinaMB dMB;
 	int lastId;
+	FacesContext context;
 
 	public CursoMB() {
 		listarCS();
 	}
 	
 	public void salvar() {
+		context = FacesContext.getCurrentInstance();
 		if(cur.getId() != null) {
 			Curso c = csDAO.buscarCurso(cur.getId());
 			if(c != null && c.getId().equals(cur.getId())) {
@@ -41,10 +45,12 @@ public class CursoMB {
 	public void editarCurso() {
 		if(csDAO.editar(cur)) {
 			System.out.println("Curso alterado.");
+			context.addMessage(null, new FacesMessage("Sucesso", "Curso alterado."));
 			zerar();
 			listarCS();
 		}else {
 			System.out.println("Erro na alteração do curso.");
+			context.addMessage(null, new FacesMessage("Erro", "Erro na alteração do curso."));
 			listarCS();
 		}
 	}
@@ -53,10 +59,12 @@ public class CursoMB {
 		lastId = csDAO.inserir(cur);
 		if (lastId > 0) {
 			System.out.println("Curso criado.");
+			context.addMessage(null, new FacesMessage("Sucesso", "Curso criado."));
 			zerar();
 			listarCS();
 		} else {
 			System.out.println("Erro na criação do curso.");
+			context.addMessage(null, new FacesMessage("Erro", "Erro na criação do curso."));
 			listarCS();
 		}
 	}
@@ -79,10 +87,14 @@ public class CursoMB {
 	}
 	
 	public void excluir() {
+		context = FacesContext.getCurrentInstance();
 		if(csDAO.excluir(selc.getId())){
 			System.out.println("Curso " +selc.getNome()+ " excluido.");
+			context.addMessage(null, new FacesMessage("Excluido", "Curso " +selc.getNome()+ " excluido."));
 			listarCS();
 			zerar();
+		}else {
+			context.addMessage(null, new FacesMessage("Erro", "É necessário excluir as disciplinas deste curso antes de exclui-lo."));
 		}
 	}
 	
