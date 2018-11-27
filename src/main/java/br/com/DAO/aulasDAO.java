@@ -66,7 +66,7 @@ public class aulasDAO {
 						new Turma(null, rs.getString("turma"), null, null, null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null, null, null),
-						new Coordenador(null, rs.getString("coordenador"), null, null), null, null, null, null);
+						new Coordenador(null, rs.getString("coordenador"), null, null,null), null, null, null, null);
 				list.add(a);
 			}
 

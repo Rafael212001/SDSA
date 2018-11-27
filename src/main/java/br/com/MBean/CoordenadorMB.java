@@ -1,5 +1,6 @@
 package br.com.MBean;
 
+import java.nio.channels.ShutdownChannelGroupException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -24,14 +25,32 @@ public class CoordenadorMB {
 		listarC();
 	}
 
+	public void showSuccessMessage(String Message) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                Message, null));
+    }         
+	
+	 public void showErrorMessage(String Message) {
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+	                Message, null));
+	    }
+
+	
 	public void salvar() {
-		if (coor.getId() != null) {
-			Coordenador c = cDAO.buscaCoordenador(coor.getId());
-			if (c != null && c.getId().equals(coor.getId())) {
-				editarCoordenador();
+		if (coor.getSenha().equals(coor.getConfirmar_senha())) {
+			if(coor.getId() != null) {
+				Coordenador c = cDAO.buscaCoordenador(coor.getId());
+				if (c != null && c.getId().equals(coor.getId())) {
+					editarCoordenador();
+				}
+			}else {
+				criarCoordenador();
+
 			}
-		} else {
-			criarCoordenador();
+		}else {
+			System.out.println("ERRO");
 		}
 	}
 
@@ -45,6 +64,9 @@ public class CoordenadorMB {
 			listarC();
 		}
 	}
+	
+	
+			
 
 	public void criarCoordenador() {
 		if (cDAO.inserir(coor)) {
