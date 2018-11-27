@@ -10,7 +10,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formCs">
-		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:growl id="growlCs" showDetail="true" sticky="true" />
 		
 			<p:dataTable id="dataT" var="curL" scrollable="true"
 				selectionMode="single" selection="#{cursoMB.selc}"
@@ -35,7 +35,7 @@
 					actionListener="#{cursoMB.excluir}" update=":formCs" />
 				<p:commandButton value="Disciplina" ajax="true"
 					disabled="#{cursoMB.selc == null}" event="onclick"
-					actionListener="#{cursoMB.disciplina}" update=":formCs"
+					actionListener="#{cursoMB.disciplina}" update=":formD"
 					onsuccess="PF('dlg6').show();" />
 			</div>
 		</h:form>

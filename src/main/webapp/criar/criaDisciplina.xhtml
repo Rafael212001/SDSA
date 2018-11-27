@@ -10,6 +10,8 @@
 	</h:head>
 	<h:body>
 		<h:form id="formD">
+		<p:growl id="growlD" showDetail="true" sticky="true" />
+		
 			<p:dataTable id="dataT" var="discL" scrollable="true"
 				selectionMode="single" selection="#{disciplinaMB.selc}"
 				scrollHeight="150" value="#{disciplinaMB.discL}"

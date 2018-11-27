@@ -3,6 +3,7 @@ package br.com.MBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
@@ -23,12 +24,14 @@ public class DisciplinaMB {
 	disciplinaDAO dDAO = new disciplinaDAO();
 	private List<Integer> semestres;
 	int ID;
-
+	FacesContext context;
+	
 	public DisciplinaMB() {
 		listarD();
 	}
 
 	public void salvar() {
+		context = FacesContext.getCurrentInstance();
 		if (disc.getId() != null) {
 			Disciplina d = dDAO.buscarDisciplina(disc.getId());
 			if (d != null && d.getId().equals(disc.getId())) {
@@ -42,10 +45,12 @@ public class DisciplinaMB {
 	public void editarDisciplina() {
 		if (dDAO.editar(disc)) {
 			System.out.println("Disciplina alterada.");
+			context.addMessage(null, new FacesMessage("Sucesso", "Disciplina alterado."));
 			zerar();
 			listarD();
 		} else {
 			System.out.println("Erro na alteração da disciplina.");
+			context.addMessage(null, new FacesMessage("Erro", "Erro na alteração da disciplina."));
 			listarD();
 		}
 	}
@@ -54,10 +59,12 @@ public class DisciplinaMB {
 		disc.setId_curso(ID);
 		if (dDAO.inserir(disc)) {
 			System.out.println("Disciplina criada.");
+			context.addMessage(null, new FacesMessage("Sucesso", "Disciplina criada."));
 			zerar();
 			listarD();
 		} else {
 			System.out.println("Erro na criação da disciplina.");
+			context.addMessage(null, new FacesMessage("Erro", "Erro na criação da disciplina."));
 			listarD();
 		}
 	}
@@ -74,8 +81,14 @@ public class DisciplinaMB {
 	}
 
 	public void excluir() {
+		context = FacesContext.getCurrentInstance();
 		if (dDAO.excluir(selc.getId())) {
-			System.out.println("Disciplina " + selc.getNome() + " excluida.");
+			System.out.println("Disciplina " +selc.getNome()+ " excluida.");
+			context.addMessage(null, new FacesMessage("Excluido", "Disciplina " +selc.getNome()+ " excluida."));
+			listarD();
+			zerar();
+		}else {
+			context.addMessage(null, new FacesMessage("Erro", "É necessário tirar os professores dessa disciplina."));
 		}
 	}
 

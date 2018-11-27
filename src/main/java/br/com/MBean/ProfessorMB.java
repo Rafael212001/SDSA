@@ -104,7 +104,7 @@ public class ProfessorMB {
 
 	public void cdExcluir() {
 		if (pDAO.cdExcluir(cdSelc.getId())) {
-			System.out.println("Disciplina " + selc.getNome() + " removida do colaborador.");
+			System.out.println("Colaborador(a) " + selc.getNome() + " removido(a) da disciplina.");
 			cDisciplina();
 			cdZerar();
 		}
