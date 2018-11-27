@@ -50,22 +50,35 @@ public class CursoMB {
 			listarCS();
 		}else {
 			System.out.println("Erro na alteração do curso.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro na alteração do curso."));
+			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
 			listarCS();
 		}
 	}
 	
 	public void criarCurso() {
-		lastId = csDAO.inserir(cur);
-		if (lastId > 0) {
-			System.out.println("Curso criado.");
-			context.addMessage(null, new FacesMessage("Sucesso", "Curso criado."));
-			zerar();
-			listarCS();
-		} else {
-			System.out.println("Erro na criação do curso.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro na criação do curso."));
-			listarCS();
+		if(testarCampos()) {
+			lastId = csDAO.inserir(cur);
+				if (lastId > 0) {
+					System.out.println("Curso criado.");
+					context.addMessage(null, new FacesMessage("Sucesso", "Curso criado."));
+					zerar();
+					listarCS();
+				} else {
+					System.out.println("Erro na criação do curso.");
+					context.addMessage(null, new FacesMessage("Erro", "Erro na criação do curso."));
+					listarCS();
+				}
+		}else {
+			System.out.println("Campo vazio.");
+		}
+	}
+	
+	private boolean testarCampos() {
+		if((cur.getNome().equals("")) || (cur.getQtd_semestre() == null)) {
+			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+			return false;
+		}else {
+			return true;
 		}
 	}
 	
