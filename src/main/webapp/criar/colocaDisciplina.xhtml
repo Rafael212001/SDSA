@@ -14,7 +14,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formcd">
-		<p:growl id="growlcd" showDetail="true"/>
+			<p:growl id="growlcd" showDetail="true" />
 			<p:dataTable id="dataT" var="cdl" scrollable="true"
 				selectionMode="single" selection="#{professorMB.cdSelc}"
 				scrollHeight="150" value="#{professorMB.cdl}" rowKey="#{cdl.id}">
@@ -31,7 +31,11 @@
 			<div id="bot">
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{professorMB.cdSelc == null}"
-					actionListener="#{professorMB.cdExcluir}" update=":formcd" />
+					actionListener="#{professorMB.cdExcluir}" update=":formcd">
+					<p:confirm header="Confirmação"
+						message="Deseja desalocar o colaborador #{professorMB.selc.nome} da disciplina?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
 			</div>
 		</h:form>
 		<h:form id="formcdc">

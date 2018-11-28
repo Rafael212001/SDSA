@@ -58,6 +58,13 @@
 	</p:dialog>
 	<center>
 		<h:form id="formDP">
+			<p:confirmDialog global="true">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+		
 			<p:dataGrid var="profL" value="#{professorMB.profL}" columns="3"
 				layout="grid" rows="12" paginator="true" id="dataGrid"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">

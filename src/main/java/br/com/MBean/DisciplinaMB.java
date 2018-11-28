@@ -105,7 +105,7 @@ public class DisciplinaMB {
 			listarD();
 			zerar();
 		}else {
-			context.addMessage(null, new FacesMessage("Erro", "É necessário tirar os professores dessa disciplina."));
+			context.addMessage(null, new FacesMessage("Erro", "É necessário tirar os colaboradores dessa disciplina."));
 		}
 	}
 

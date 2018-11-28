@@ -14,7 +14,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formt">
-		<p:growl id="growlt" showDetail="true" />
+			<p:growl id="growlt" showDetail="true" />
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
 				scrollHeight="150" rowKey="#{turL.id}"
@@ -51,7 +51,11 @@
 					actionListener="#{turmaMB.editar}" update=":formtc" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{turmaMB.selc == null}"
-					actionListener="#{turmaMB.excluir}" update=":formt" />
+					actionListener="#{turmaMB.excluir}" update=":formt">
+					<p:confirm header="Confirmação"
+						message="Deseja deletar a turma #{turmaMB.selc.nome}?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
 			</div>
 		</h:form>
 		<h:form id="formtc">

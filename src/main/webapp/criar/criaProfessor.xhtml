@@ -13,7 +13,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formp">
-			<p:growl id="growlp" showDetail="true"/>
+			<p:growl id="growlp" showDetail="true" />
 			<p:dataTable id="dataT" var="profL" value="#{professorMB.profL}"
 				selectionMode="single" selection="#{professorMB.selc}"
 				scrollable="true" scrollHeight="150" rowKey="#{profL.id}"
@@ -42,7 +42,11 @@
 					actionListener="#{professorMB.editar}" update=":formpc" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{professorMB.selc == null}"
-					actionListener="#{professorMB.excluir}" update=":formp" />
+					actionListener="#{professorMB.excluir}" update=":formp">
+					<p:confirm header="Confirmação"
+						message="Deseja deletar o colaborador #{professorMB.selc.nome}?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
 				<p:commandButton value="Colocar Disciplina" ajax="true"
 					disabled="#{professorMB.selc == null}"
 					actionListener="#{professorMB.cDisciplina}"

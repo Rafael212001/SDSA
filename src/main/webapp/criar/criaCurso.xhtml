@@ -10,7 +10,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formCs">
-		<p:growl id="growlCs" showDetail="true" />
+			<p:growl id="growlCs" showDetail="true" />
 			<p:dataTable id="dataT" var="curL" scrollable="true"
 				selectionMode="single" selection="#{cursoMB.selc}"
 				scrollHeight="150" value="#{cursoMB.curL}" rowKey="#{curL.id}"
@@ -31,7 +31,9 @@
 					actionListener="#{cursoMB.editar}" update=":formCsc" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{cursoMB.selc == null}"
-					actionListener="#{cursoMB.excluir}" update=":formCs" />
+					actionListener="#{cursoMB.excluir}" update=":formCs">
+					<p:confirm  header="Confirmação" message="Deseja deletar o curso #{cursoMB.selc.nome}?" icon="ui-icon-alert"/>
+				</p:commandButton>
 				<p:commandButton value="Disciplina" ajax="true"
 					disabled="#{cursoMB.selc == null}" event="onclick"
 					actionListener="#{cursoMB.disciplina}" update=":formD"

@@ -10,7 +10,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formD">
-		<p:growl id="growlD" showDetail="true" />
+			<p:growl id="growlD" showDetail="true" />
 			<p:dataTable id="dataT" var="discL" scrollable="true"
 				selectionMode="single" selection="#{disciplinaMB.selc}"
 				scrollHeight="150" value="#{disciplinaMB.discL}"
@@ -35,7 +35,11 @@
 					actionListener="#{disciplinaMB.editar}" update=":formDc" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{disciplinaMB.selc == null}"
-					actionListener="#{disciplinaMB.excluir}" update=":formD" />
+					actionListener="#{disciplinaMB.excluir}" update=":formD">
+					<p:confirm header="Confirmação"
+						message="Deseja deletar a disciplina #{disciplinaMB.selc.nome}?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
 			</div>
 		</h:form>
 		<h:form id="formDc">
@@ -64,7 +68,8 @@
 					update=":formD :formDc" event="onclick" value="Salvar"
 					actionListener="#{disciplinaMB.salvar}" />
 				<p:commandButton styleClass="button right" ajax="true"
-					value="Voltar" action="#{disciplinaMB.fechar}" oncomplete="PF('dlg6').hide();" process="@this" />
+					value="Voltar" action="#{disciplinaMB.fechar}"
+					oncomplete="PF('dlg6').hide();" process="@this" />
 			</div>
 		</h:form>
 	</h:body>

@@ -30,7 +30,11 @@
 					actionListener="#{coordenadorMB.editar}" update=":formCriar" />
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{coordenadorMB.selc == null}"
-					actionListener="#{coordenadorMB.excluir}" update=":form" />
+					actionListener="#{coordenadorMB.excluir}" update=":form">
+					<p:confirm header="Confirmação"
+						message="Deseja deletar o coordenador #{coordenadorMB.selc.nome}?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
 			</div>
 		</h:form>
 		<h:form id="formCriar">
@@ -47,7 +51,8 @@
 					<h:inputText id="senha" value="#{coordenadorMB.coor.senha}" />
 					
 					Confirmar senha:
-					<h:inputText id="confirmar_senha" value="#{coordenadorMB.coor.confirmar_senha}" />
+					<h:inputText id="confirmar_senha"
+							value="#{coordenadorMB.coor.confirmar_senha}" />
 					</h:panelGrid>
 				</div>
 			</p:panel>

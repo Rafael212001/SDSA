@@ -126,7 +126,7 @@ public class ProfessorMB {
 			listarP();
 			zerar();
 		}else {
-			context.addMessage(null, new FacesMessage("Erro", "Erro ao tentar excluir."));
+			context.addMessage(null, new FacesMessage("Erro", "Para excluir o professor é necessário desalocalo da(s) disciplina(s)."));
 		}
 	}
 
