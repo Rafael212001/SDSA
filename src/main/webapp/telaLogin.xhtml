@@ -22,12 +22,12 @@
 							<h:messages/>
 							<div class="center">
 								<h:panelGrid columns="2" cellpadding="10" cellspacing="1">
-								Usuário:
-								<h:inputText id="usuario" value="#{loginMB.login}"/>
-								Senha:
-								<h:inputSecret id="senha" value="#{loginMB.senha}"/>
+									<h:outputLabel value="Usuário:"/>
+									<h:inputText id="usuario" value="#{loginMB.login}"/>
+									<h:outputLabel value="Senha:"/>
+									<h:inputSecret id="senha" value="#{loginMB.senha}"/>
 								</h:panelGrid>
-							</div>		
+							</div>
 							<div class="margin20 center">
 								<h:commandButton class="button left" value="Login" action="#{loginMB.logar}"/>
 								<h:commandButton class="button right2" value="Tabela de aulas" action="telaIndex?faces-redirect=true"/>

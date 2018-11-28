@@ -43,29 +43,46 @@ public class DisciplinaMB {
 	}
 
 	public void editarDisciplina() {
-		if (dDAO.editar(disc)) {
-			System.out.println("Disciplina alterada.");
-			context.addMessage(null, new FacesMessage("Sucesso", "Disciplina alterado."));
-			zerar();
-			listarD();
-		} else {
-			System.out.println("Erro na alteração da disciplina.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro na alteração da disciplina."));
-			listarD();
+		if(testarCampos()) {	
+			if (dDAO.editar(disc)) {
+				System.out.println("Disciplina alterada.");
+				context.addMessage(null, new FacesMessage("Sucesso", "Disciplina alterado."));
+				zerar();
+				listarD();
+			} else {
+				System.out.println("Erro na alteração da disciplina.");
+				context.addMessage(null, new FacesMessage("Erro", "Erro na alteração da disciplina."));
+				listarD();
+			}
+		}else {
+			System.out.println("Campo vazio.");
 		}
 	}
 
 	public void criarDisciplina() {
-		disc.setId_curso(ID);
-		if (dDAO.inserir(disc)) {
-			System.out.println("Disciplina criada.");
-			context.addMessage(null, new FacesMessage("Sucesso", "Disciplina criada."));
-			zerar();
-			listarD();
-		} else {
-			System.out.println("Erro na criação da disciplina.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro na criação da disciplina."));
-			listarD();
+		if(testarCampos()) {
+			disc.setId_curso(ID);
+			if (dDAO.inserir(disc)) {
+				System.out.println("Disciplina criada.");
+				context.addMessage(null, new FacesMessage("Sucesso", "Disciplina criada."));
+				zerar();
+				listarD();
+			} else {
+				System.out.println("Erro na criação da disciplina.");
+				context.addMessage(null, new FacesMessage("Erro", "Erro na criação da disciplina."));
+				listarD();
+			}
+		}else {
+			System.out.println("Campo vazio.");
+		}
+	}
+	
+	private boolean testarCampos() {
+		if((disc.getNome().equals("")) || (disc.getCarga_hora() == null) || (disc.getSemestre() == null)) {
+			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+			return false;
+		}else {
+			return true;
 		}
 	}
 

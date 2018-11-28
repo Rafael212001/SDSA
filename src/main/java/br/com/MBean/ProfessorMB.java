@@ -89,13 +89,12 @@ public class ProfessorMB {
 		cd.setId_colaborador(selc.getId());
 		if (pDAO.inserirCD(cd)) {
 			System.out.println("Disciplina alocada.");
-			context.addMessage(null, new FacesMessage("Alocação concluida", "Disciplina " +cd.getDisciplina()
-			+ " foi alocada com o colaborador(a) " +selc.getNome()+"."));
+			context.addMessage(null, new FacesMessage("Alocação concluida", "Disciplina foi alocada com o colaborador(a)."));
 			cDisciplina();
 			cdZerar();
 		} else {
 			System.out.println("Erro na alocação da disciplina.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro na alocação da disciplina."));
+			context.addMessage(null, new FacesMessage("Campo vazio", "A disciplina não foi escolhida."));
 			cDisciplina();
 		}
 	}
@@ -135,7 +134,7 @@ public class ProfessorMB {
 		context = FacesContext.getCurrentInstance();
 		if (pDAO.cdExcluir(cdSelc.getId())) {
 			System.out.println("Colaborador(a) " + selc.getNome() + " removido(a) da disciplina.");
-			context.addMessage(null, new FacesMessage("Colaborador(a) " + selc.getNome() + " removido(a) da disciplina."));
+			context.addMessage(null, new FacesMessage("Desalocado","Colaborador(a) " + selc.getNome() + " removido(a) da disciplina."));
 			cDisciplina();
 			cdZerar();
 		}else {

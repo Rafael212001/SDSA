@@ -37,13 +37,24 @@ public class CoordenadorMB {
 	}
 
 	public void editarCoordenador() {
-		if (cDAO.editar(coor)) {
-			System.out.println("Coordenador alterado.");
-			zerar();
-			listarC();
-		} else {
-			System.out.println("Erro na alteração do coordenador.");
-			listarC();
+		if(testarCampos()) {
+			if (coor.getSenha().equals(coor.getConfirmar_senha())) {
+				if (cDAO.editar(coor)) {
+					System.out.println("Coordenador alterado.");
+					context.addMessage(null, new FacesMessage("Sucesso", "Coordenador alterado."));
+					zerar();
+					listarC();
+				} else {
+					System.out.println("Erro na alteração do coordenador.");
+					context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+					listarC();
+				}
+			}else {
+				System.out.println("Senhas não estão batendo");
+				context.addMessage(null, new FacesMessage("Senha", "A senha não está igual."));
+			}
+		}else {
+			System.out.println("Campo vazio.");
 		}
 	}
 	
@@ -89,9 +100,15 @@ public class CoordenadorMB {
 	}
 
 	public void excluir() {
+		context = FacesContext.getCurrentInstance();
 		if(cDAO.excluir(selc.getId())) {
 			System.out.println("Coordenador " + selc.getNome() + " excluindo.");
+			context.addMessage(null, new FacesMessage("Excluido", "Coordenador " +selc.getNome()+ " excluido."));
 			listarC();
+			zerar();
+		}else {
+			System.out.println("Erro ao tentar excluir coordenador.");
+			context.addMessage(null, new FacesMessage("Erro", "Erro ao tentar excluir coordenador."));
 		}
 	}
 

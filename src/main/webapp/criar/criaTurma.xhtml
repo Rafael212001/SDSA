@@ -14,6 +14,7 @@
 	</h:head>
 	<h:body>
 		<h:form id="formt">
+		<p:growl id="growlt" showDetail="true" />
 			<p:dataTable id="dataT" var="turL" value="#{turmaMB.turL}"
 				selectionMode="single" selection="#{turmaMB.selc}" scrollable="true"
 				scrollHeight="150" rowKey="#{turL.id}"
@@ -70,7 +71,7 @@
 					<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
-								itemLabel="#{semestre} Semestre" itemValue="#{semestre}" />
+								itemLabel="#{semestre}º Semestre" itemValue="#{semestre}" />
 						</p:selectOneMenu>
 
                		Nome da Turma:
