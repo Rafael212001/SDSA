@@ -20,16 +20,14 @@ public class turmaDAO {
 	}
 
 	public boolean inserir(Turma t) {
-		String sql = "INSERT INTO Turmas (nome, qtd_alunos, divisao, periodo, semestre, id_curso) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO Turmas (nome, periodo, semestre, id_curso) VALUES (?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getNome());
-			ps.setInt(2, t.getQtd_alunos());
-			ps.setInt(3, t.getDivisao());
-			ps.setInt(4, t.getPeriodo());
-			ps.setInt(5, t.getSemestre());
-			ps.setInt(6, t.getId_curso());
+			ps.setInt(2, t.getPeriodo());
+			ps.setInt(3, t.getSemestre());
+			ps.setInt(4, t.getId_curso());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -73,8 +71,6 @@ public class turmaDAO {
 				Turma t = new Turma();
 				t.setId(rs.getInt("id"));
 				t.setNome(rs.getString("nome"));
-				t.setQtd_alunos(rs.getInt("qtd_alunos"));
-				t.setDivisao(rs.getInt("divisao"));
 				t.setPeriodo(rs.getInt("periodo"));
 				t.setSemestre(rs.getInt("semestre"));
 				t.setId_curso(rs.getInt("id_curso"));
@@ -101,8 +97,6 @@ public class turmaDAO {
 				Turma t = new Turma();
 				t.setId(rs.getInt("id"));
 				t.setNome(rs.getString("nome"));
-				t.setQtd_alunos(rs.getInt("qtd_alunos"));
-				t.setDivisao(rs.getInt("divisao"));
 				t.setPeriodo(rs.getInt("periodo"));
 				t.setSemestre(rs.getInt("semestre"));
 				t.setId_curso(rs.getInt("id_curso"));
@@ -128,8 +122,6 @@ public class turmaDAO {
 				Turma t = new Turma();
 				t.setId(rs.getInt("id"));
 				t.setNome(rs.getString("nome"));
-				t.setQtd_alunos(rs.getInt("qtd_alunos"));
-				t.setDivisao(rs.getInt("divisao"));
 				t.setPeriodo(rs.getInt("periodo"));
 				t.setSemestre(rs.getInt("semestre"));
 				t.setId_curso(rs.getInt("id_curso"));
@@ -164,17 +156,15 @@ public class turmaDAO {
 	}
 
 	public boolean editar(Turma t) {
-		String sql = "UPDATE Turmas SET nome = ?, qtd_alunos = ?, divisao = ?, periodo = ?, "
+		String sql = "UPDATE Turmas SET nome = ?, periodo = ?, "
 				+ " semestre =?, id_curso = ? WHERE id = ? ";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(7, t.getId());
+			ps.setInt(5, t.getId());
 			ps.setString(1, t.getNome());
-			ps.setInt(2, t.getQtd_alunos());
-			ps.setInt(3, t.getDivisao());
-			ps.setInt(4, t.getPeriodo());
-			ps.setInt(5, t.getSemestre());
-			ps.setInt(6, t.getId_curso());
+			ps.setInt(2, t.getPeriodo());
+			ps.setInt(3, t.getSemestre());
+			ps.setInt(4, t.getId_curso());
 
 			if (ps.executeUpdate() > 0) {
 				return true;

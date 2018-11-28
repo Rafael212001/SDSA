@@ -63,7 +63,7 @@ public class aulasDAO {
 
 			while (rs.next()) {
 				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null),
-						new Turma(null, rs.getString("turma"), null, null, null, null, null),
+						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null, null, null),
 						new Coordenador(null, rs.getString("coordenador"), null, null,null), null, null, null, null);
@@ -97,7 +97,7 @@ public class aulasDAO {
 
 			while (rs.next()) {
 				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null),
-						new Turma(null, rs.getString("turma"), null, null, null, null, null),
+						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("professor"), null, null, null, null, null, null), null,
 						rs.getInt("id_sala"), rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"));

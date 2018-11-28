@@ -79,7 +79,7 @@ public class TurmaMB {
 	}
 	
 	private boolean testarCampos() {
-		if((tur.getId_curso() == null) || (tur.getSemestre() == null) || (tur.getNome().equals("")) || (tur.getQtd_alunos() == null) || (tur.getDivisao() == null) || (tur.getPeriodo() == null)) {
+		if((tur.getId_curso() == null) || (tur.getSemestre() == null) || (tur.getNome().equals("")) || (tur.getPeriodo() == null)) {
 			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
 		}else {

@@ -24,14 +24,6 @@
 					<f:facet name="header">Nome da Turma</f:facet>
 					#{turL.nome}
 				</p:column>
-				<p:column filterBy="#{turL.qtd_alunos}">
-					<f:facet name="header">Quantidade de Alunos</f:facet>
-					#{turL.qtd_alunos}
-				</p:column>
-				<p:column filterBy="#{turL.formatDivisao}">
-					<f:facet name="header">Divisão</f:facet>
-					#{turL.formatDivisao}
-				</p:column>
 				<p:column filterBy="#{turL.formatPeriodo}">
 					<f:facet name="header">Período</f:facet>
 					#{turL.formatPeriodo}
@@ -80,16 +72,6 @@
 
                		Nome da Turma:
 					<h:inputText id="nome" value="#{turmaMB.tur.nome}" />
-
-	          		Quantidade de Alunos:
-					<h:inputText id="qtd" value="#{turmaMB.tur.qtd_alunos}" />
-						
-					Divisão:
-							<p:selectOneRadio id="divisao" layout="responsive" columns="3"
-							value="#{turmaMB.tur.divisao}">
-							<f:selectItem itemLabel="Sim" itemValue="1" />
-							<f:selectItem itemLabel="Não" itemValue="2" />
-						</p:selectOneRadio>
 						
 					Período:
 					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">

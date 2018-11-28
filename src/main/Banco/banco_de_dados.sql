@@ -10,8 +10,6 @@ CREATE TABLE Cursos(
 CREATE TABLE Turmas(
     id             int primary key not null AUTO_INCREMENT,
     nome           varchar(10),
-    qtd_alunos     int,
-    divisao        int,
     periodo        int,
     semestre       int,
     id_curso       int,
@@ -88,11 +86,11 @@ CREATE TABLE Carga_horaria_restante(
 INSERT INTO Cursos(nome, qtd_semestre)
 		VALUES	("Técnico em informática", 4);
 
-INSERT INTO Turmas(nome, qtd_alunos, divisao, periodo, semestre, id_curso)
-		VALUES	("1TI", 32, 1, 1, 1, 1),
-				("2TI", 32, 1, 1, 2, 1),
-				("3TI", 32, 1, 1, 3, 1),
-				("4TI", 32, 1, 1, 4, 1);
+INSERT INTO Turmas(nome, periodo, semestre, id_curso)
+		VALUES	("1TI", 1, 1, 1),
+				("2TI", 1, 2, 1),
+				("3TI", 1, 3, 1),
+				("4TI", 1, 4, 1);
 				
 INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso)
 		VALUES	("Fundamentos de Informática", 75, 1, 1),
