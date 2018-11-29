@@ -12,15 +12,19 @@
 </style>
 </h:head>
 <h:body>
-	<ul class="menu">
-		<li><h:graphicImage class="imagens" library="img"
-				value="resource/img/senai.png" /></li>
-		<li><a id="btDist" href="criar/criaAulas.xhtml">Adicionar
-				Aula</a></li>
-		<li id="btvoltar"><a href="telaCoordenador.xhtml">Voltar</a></li>
-		<li id="btSair"><a href="telaLogin.xhtml">Sair</a></li>
-	</ul>
-	<h:form id="form">
+	<h:panelGroup rendered="#{loginMB.logado}">
+		<h:form id="menu">
+			<ul class="menu">
+				<li><h:graphicImage class="imagens" library="img"
+						value="resource/img/senai.png" /></li>
+				<li><a id="btDist" href="criar/criaAulas.xhtml">Adicionar
+						Aula</a></li>
+				<li id="btvoltar"><a href="telaCoordenador.xhtml">Voltar</a></li>
+				<li id="btSair"><h:commandButton id="btSair" value="Sair"
+						action="#{loginMB.sair}" styleClass="botao" /></li>
+			</ul>
+		</h:form>
+		<h:form id="form">
 			<div class="aulasFormadas">
 				<p:fieldset styleClass="drop" id="aulas_alocarField">
 					<p:dataGrid id="aulas_alocar" var="aula"
@@ -813,13 +817,18 @@
 					</table>
 				</p:panel>
 			</div>
-	</h:form>
-	<script type="text/javascript">
-		function handleDrop(event, ui) {
-			var drop = ui.draggable;
+		</h:form>
+		<script type="text/javascript">
+			function handleDrop(event, ui) {
+				var drop = ui.draggable;
 
-			drop.fadeOut('fast');
-		}
-	</script>
+				drop.fadeOut('fast');
+			}
+		</script>
+	</h:panelGroup>
+	<h:panelGroup rendered="#{!loginMB.logado}">
+	Você não está logado, será redirecionado em 2s!
+	<meta http-equiv="refresh" content="2; url=telaLogin.xhtml" />
+	</h:panelGroup>
 </h:body>
 </html>

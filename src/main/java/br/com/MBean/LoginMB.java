@@ -16,16 +16,22 @@ public class LoginMB {
 	public String senha;
 	coordenadorDAO cDAO;
 	Coordenador c;
+	private boolean logado = false;
 
 	public String logar() {
-
 		cDAO = new coordenadorDAO();
 		c = cDAO.buscaCoordenador(login);
 
 		if (c != null && c.getSenha().equals(senha)) {
+			logado = true;
 			return "telaCoordenador?faces-redirect=true";
 		}
 		return null;
+	}
+	
+	public String sair() {
+		logado = false;
+		return "telaLogin?faces-redirect=true";
 	}
 
 	public String getLogin() {
@@ -58,6 +64,14 @@ public class LoginMB {
 
 	public void setC(Coordenador c) {
 		this.c = c;
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
 	}
 	
 }

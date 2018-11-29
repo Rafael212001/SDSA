@@ -12,94 +12,100 @@
 	<link rel="stylesheet" type="text/css"
 		href="/sdsa/resource/css/cssAula.css" />
 </h:head>
-
 <h:body>
-	<h:form id="form">
-		<ul class="menu">
-			<li><h:graphicImage class="imagens" library="img"
-					value="/resource/img/senai.png" /></li>
-			<li><h:commandButton id="bt" value="Salvar" styleClass="botao"
-					onmouseover="mudar(this), mouse(this)" onmouseout="tirar(this)"
-					disabled="#{escolhaMB.botao == false}"
-					action="#{escolhaMB.criarAula}" /></li>
-			<li id="btSair"><a href="/sdsa/telaDistribuicao.xhtml">Voltar</a></li>
-		</ul>
+	<h:panelGroup rendered="#{loginMB.logado}">
+		<h:form id="form">
+			<ul class="menu">
+				<li><h:graphicImage class="imagens" library="img"
+						value="/resource/img/senai.png" /></li>
+				<li><h:commandButton id="bt" value="Salvar" styleClass="botao"
+						onmouseover="mudar(this), mouse(this)" onmouseout="tirar(this)"
+						disabled="#{escolhaMB.botao == false}"
+						action="#{escolhaMB.criarAula}" /></li>
+				<li id="btSair"><a href="/sdsa/telaDistribuicao.xhtml">Voltar</a></li>
+			</ul>
 
-		<p:panel header="Curso:">
-			<p:selectOneListbox id="curso" value="#{escolhaMB.idCurso}"
-				onchange="mostraTurma()">
-				<f:selectItems value="#{escolhaMB.cursoL}" var="cursoL"
-					itemLabel="#{cursoL.nome}" itemValue="#{cursoL.id}" />
-				<p:ajax listener="#{escolhaMB.verificar}" event="change" update="bt" />
-				<p:ajax listener="#{escolhaMB.listTurma}" event="change"
-					update=":form:turma :form:disciplina :form:colaborador" />
-
-			</p:selectOneListbox>
-		</p:panel>
-		<div id="divTurma" style="display: none">
-			<p:panel header="Turma:" id="pnlTurma">
-				<p:selectOneListbox id="turma" onchange="mostraDisciplina()"
-					value="#{escolhaMB.idTurma}">
-					<f:selectItems value="#{escolhaMB.turmaL}" var="turmaL"
-						itemLabel="#{turmaL.nome}" itemValue="#{turmaL.id}" />
-					<p:ajax listener="#{escolhaMB.listDisc}" event="change"
-						update=":form:disciplina :form:colaborador :form:bt" />
-				</p:selectOneListbox>
-			</p:panel>
-		</div>
-		<div id="divDisciplina" style="display: none">
-			<p:panel header="Disciplina:">
-				<p:selectOneListbox id="disciplina" onchange="mostraColaborador()"
-					value="#{escolhaMB.idDisciplina}">
-					<f:selectItems value="#{escolhaMB.disciplinaL}" var="disciplinaL"
-						itemLabel="#{disciplinaL.nome}" itemValue="#{disciplinaL.id}" />
-					<p:ajax listener="#{escolhaMB.listColab}" event="change"
-						update=":form:colaborador :form:bt" />
-				</p:selectOneListbox>
-			</p:panel>
-		</div>
-		<div id="divColaborador" style="display: none">
-			<p:panel header="Professor/Instrutor:">
-				<p:selectOneListbox id="colaborador"
-					value="#{escolhaMB.idColaborador}">
-					<f:selectItems value="#{escolhaMB.cdL}" var="cdL"
-						itemLabel="#{cdL.professor.nome}" itemValue="#{cdL.professor.id}" />
+			<p:panel header="Curso:">
+				<p:selectOneListbox id="curso" value="#{escolhaMB.idCurso}"
+					onchange="mostraTurma()">
+					<f:selectItems value="#{escolhaMB.cursoL}" var="cursoL"
+						itemLabel="#{cursoL.nome}" itemValue="#{cursoL.id}" />
 					<p:ajax listener="#{escolhaMB.verificar}" event="change"
 						update="bt" />
+					<p:ajax listener="#{escolhaMB.listTurma}" event="change"
+						update=":form:turma :form:disciplina :form:colaborador" />
+
 				</p:selectOneListbox>
 			</p:panel>
-		</div>
-	</h:form>
-	<script>
-		function mudar(x) {
-			x.style.background = "#DA251C";
-		}
-
-		function tirar(x) {
-			x.style.background = "#1C1C1C";
-		}
-		
-		function mouse(x) {
-			if(x.style.disabled != false){
-				x.style.cursor = "pointer";
+			<div id="divTurma" style="display: none">
+				<p:panel header="Turma:" id="pnlTurma">
+					<p:selectOneListbox id="turma" onchange="mostraDisciplina()"
+						value="#{escolhaMB.idTurma}">
+						<f:selectItems value="#{escolhaMB.turmaL}" var="turmaL"
+							itemLabel="#{turmaL.nome}" itemValue="#{turmaL.id}" />
+						<p:ajax listener="#{escolhaMB.listDisc}" event="change"
+							update=":form:disciplina :form:colaborador :form:bt" />
+					</p:selectOneListbox>
+				</p:panel>
+			</div>
+			<div id="divDisciplina" style="display: none">
+				<p:panel header="Disciplina:">
+					<p:selectOneListbox id="disciplina" onchange="mostraColaborador()"
+						value="#{escolhaMB.idDisciplina}">
+						<f:selectItems value="#{escolhaMB.disciplinaL}" var="disciplinaL"
+							itemLabel="#{disciplinaL.nome}" itemValue="#{disciplinaL.id}" />
+						<p:ajax listener="#{escolhaMB.listColab}" event="change"
+							update=":form:colaborador :form:bt" />
+					</p:selectOneListbox>
+				</p:panel>
+			</div>
+			<div id="divColaborador" style="display: none">
+				<p:panel header="Professor/Instrutor:">
+					<p:selectOneListbox id="colaborador"
+						value="#{escolhaMB.idColaborador}">
+						<f:selectItems value="#{escolhaMB.cdL}" var="cdL"
+							itemLabel="#{cdL.professor.nome}" itemValue="#{cdL.professor.id}" />
+						<p:ajax listener="#{escolhaMB.verificar}" event="change"
+							update="bt" />
+					</p:selectOneListbox>
+				</p:panel>
+			</div>
+		</h:form>
+		<script>
+			function mudar(x) {
+				x.style.background = "#DA251C";
 			}
-		}
 
-		function mostraTurma() {
-			$("#divTurma").hide();
-			$("#divDisciplina").hide();
-			$("#divColaborador").hide();
-			$("#divTurma").toggle("fade");
-		}
-		function mostraDisciplina() {
-			$("#divDisciplina").hide();
-			$("#divColaborador").hide();
-			$("#divDisciplina").toggle("fade");
-		}
-		function mostraColaborador() {
-			$("#divColaborador").hide();
-			$("#divColaborador").toggle("fade");
-		}
-	</script>
+			function tirar(x) {
+				x.style.background = "#1C1C1C";
+			}
+
+			function mouse(x) {
+				if (x.style.disabled != false) {
+					x.style.cursor = "pointer";
+				}
+			}
+
+			function mostraTurma() {
+				$("#divTurma").hide();
+				$("#divDisciplina").hide();
+				$("#divColaborador").hide();
+				$("#divTurma").toggle("fade");
+			}
+			function mostraDisciplina() {
+				$("#divDisciplina").hide();
+				$("#divColaborador").hide();
+				$("#divDisciplina").toggle("fade");
+			}
+			function mostraColaborador() {
+				$("#divColaborador").hide();
+				$("#divColaborador").toggle("fade");
+			}
+		</script>
+	</h:panelGroup>
+	<h:panelGroup rendered="#{!loginMB.logado}">
+	Você não está logado, será redirecionado em 2s!
+	<meta http-equiv="refresh" content="2; url=/sdsa/telaLogin.xhtml" />
+	</h:panelGroup>
 </h:body>
 </html>

@@ -11,6 +11,25 @@ html, body{
 	justify-content: center;
 }
 
+.menu .botao {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 16.5px 16px;
+	text-decoration: none;
+	font-size: 16px;
+	background: #1C1C1C;
+	border-bottom: 0px;
+	border-top: 0px;
+	border-left: 2px solid #DA251C;
+	border-right: 2px solid #DA251C;
+	cursor: pointer;
+}
+
+.menu .botao:hover {
+	background: #DA251C;
+}
+
 .menu .imagens{
 	width: 175px;
 	margin-top: 3px;

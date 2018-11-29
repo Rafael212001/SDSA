@@ -13,101 +13,108 @@
 		href="resource/css/cssCoordenador.css" />
 </h:head>
 <h:body>
-	<ul class="menu">
-		<li><h:graphicImage class="imagens" library="img"
-				value="resource/img/senai.png" /></li>
-		<li class="dropdown"><a class="dropbtn">Criar</a>
-			<div class="dropdown-content">
-				<p:commandLink value="Cursos" type="button"
-					onclick="PF('dlg1').show();" />
-				<p:commandLink value="Turmas" type="button"
-					onclick="PF('dlg2').show();" />
-				<p:commandLink value="Professor/Instrutor" type="button"
-					onclick="PF('dlg4').show();" />
-				<p:commandLink value="Coordenador" type="button"
-					onclick="PF('dlg5').show();" />
+	<h:panelGroup rendered="#{loginMB.logado}">
+	<h:form id="menu">
+		<ul class="menu">
+			<li><h:graphicImage class="imagens" library="img"
+					value="resource/img/senai.png" /></li>
+			<li class="dropdown"><a class="dropbtn">Criar</a>
+				<div class="dropdown-content">
+					<p:commandLink value="Cursos" type="button"
+						onclick="PF('dlg1').show();" />
+					<p:commandLink value="Turmas" type="button"
+						onclick="PF('dlg2').show();" />
+					<p:commandLink value="Professor/Instrutor" type="button"
+						onclick="PF('dlg4').show();" />
+					<p:commandLink value="Coordenador" type="button"
+						onclick="PF('dlg5').show();" />
 
-			</div></li>
-		<li><a id="btDist" href="telaDistribuicao.xhtml">Distribuição</a></li>
-		<li id="btSair"><a  href="telaLogin.xhtml">Sair</a></li>
-	</ul>
-
-	<p:dialog header="Cursos" widgetVar="dlg1" modal="true" width="75%"
-		height="50%">
-		<ui:include src="criar/criaCurso.xhtml" />
-	</p:dialog>
-	<p:dialog header="Turmas" widgetVar="dlg2" modal="true" width="75%"
-		height="50%">
-		<ui:include src="criar/criaTurma.xhtml" />
-	</p:dialog>
-	<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true"
-		width="75%" height="50%">
-		<ui:include src="criar/criaProfessor.xhtml" />
-	</p:dialog>
-	<p:dialog header="Coordenador" widgetVar="dlg5" modal="true"
-		width="75%" height="50%">
-		<ui:include src="criar/criaCoordenador.xhtml" />
-	</p:dialog>
-	<p:dialog header="Disciplina" widgetVar="dlg6" modal="true" width="75%"
-		height="50%">
-		<ui:include src="criar/criaDisciplina.xhtml" />
-	</p:dialog>
-	<p:dialog header="Disciplina" widgetVar="dlg7" modal="true" width="75%"
-		height="50%">
-		<ui:include src="criar/colocaDisciplina.xhtml" />
-	</p:dialog>
-	<center>
-		<h:form id="formDP">
-			<p:confirmDialog global="true">
+				</div></li>
+			<li><a id="btDist" href="telaDistribuicao.xhtml">Distribuição</a></li>
+			<li id="btSair"><h:commandButton id="btSair" value="Sair"
+					action="#{loginMB.sair}" styleClass="botao" /></li>
+		</ul>
+	</h:form>
+		<p:dialog header="Cursos" widgetVar="dlg1" modal="true" width="75%"
+			height="50%">
+			<ui:include src="criar/criaCurso.xhtml" />
+		</p:dialog>
+		<p:dialog header="Turmas" widgetVar="dlg2" modal="true" width="75%"
+			height="50%">
+			<ui:include src="criar/criaTurma.xhtml" />
+		</p:dialog>
+		<p:dialog header="Professor/Instrutor" widgetVar="dlg4" modal="true"
+			width="75%" height="50%">
+			<ui:include src="criar/criaProfessor.xhtml" />
+		</p:dialog>
+		<p:dialog header="Coordenador" widgetVar="dlg5" modal="true"
+			width="75%" height="50%">
+			<ui:include src="criar/criaCoordenador.xhtml" />
+		</p:dialog>
+		<p:dialog header="Disciplina" widgetVar="dlg6" modal="true"
+			width="75%" height="50%">
+			<ui:include src="criar/criaDisciplina.xhtml" />
+		</p:dialog>
+		<p:dialog header="Disciplina" widgetVar="dlg7" modal="true"
+			width="75%" height="50%">
+			<ui:include src="criar/colocaDisciplina.xhtml" />
+		</p:dialog>
+		<center>
+			<h:form id="formDP">
+				<p:confirmDialog global="true">
 					<p:commandButton value="Sim" type="button"
 						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 					<p:commandButton value="Não" type="button"
 						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 				</p:confirmDialog>
-		
-			<p:dataGrid var="profL" value="#{professorMB.profL}" columns="3"
-				layout="grid" rows="12" paginator="true" id="dataGrid"
-				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-				<f:facet name="header">
+				<p:dataGrid var="profL" value="#{professorMB.profL}" columns="3"
+					layout="grid" rows="12" paginator="true" id="dataGrid"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+					<f:facet name="header">
 					Professores
 				</f:facet>
 
-				<p:panel header="#{profL.nome}" style="text-align:center">
-					<h:panelGrid columns="1" style="width:100%">
+					<p:panel header="#{profL.nome}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
 
-						<h:outputText value="#{a}" />
+							<h:outputText value="#{a}" />
 
-						<p:commandLink update=":formDP:detalheProf"
-							oncomplete="PF('profDialog').show()" title="View Detail">
-							<h:outputText styleClass="ui-icon ui-icon-search"
-								style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{profL}"
-								target="#{professorMB.tcoo}" />
-						</p:commandLink>
-					</h:panelGrid>
-				</p:panel>
+							<p:commandLink update=":formDP:detalheProf"
+								oncomplete="PF('profDialog').show()" title="View Detail">
+								<h:outputText styleClass="ui-icon ui-icon-search"
+									style="margin:0 auto;" />
+								<f:setPropertyActionListener value="#{profL}"
+									target="#{professorMB.tcoo}" />
+							</p:commandLink>
+						</h:panelGrid>
+					</p:panel>
 
-			</p:dataGrid>
-			<p:dialog header="Info Professor" widgetVar="profDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="detalheProf" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty professorMB.tcoo}"
-						columnClasses="label,value">
-						
-						<h:outputText value="Id:" />
-						<h:outputText value="#{professorMB.tcoo.id}" />
+				</p:dataGrid>
+				<p:dialog header="Info Professor" widgetVar="profDialog"
+					modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="detalheProf" style="text-align:center;">
+						<p:panelGrid columns="2" rendered="#{not empty professorMB.tcoo}"
+							columnClasses="label,value">
 
-						<h:outputText value="Carga Horária:" />
-						<h:outputText value="#{professorMB.tcoo.carga_hora}" />
+							<h:outputText value="Id:" />
+							<h:outputText value="#{professorMB.tcoo.id}" />
 
-						<h:outputText value="Tipo:" />
-						<h:outputText value="#{professorMB.tcoo.tipo}"/>
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
-		</h:form>
-	</center>
+							<h:outputText value="Carga Horária:" />
+							<h:outputText value="#{professorMB.tcoo.carga_hora}" />
+
+							<h:outputText value="Tipo:" />
+							<h:outputText value="#{professorMB.tcoo.tipo}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
+		</center>
+	</h:panelGroup>
+	<h:panelGroup rendered="#{!loginMB.logado}">
+	Você não está logado, será redirecionado em 2s!
+	<meta http-equiv="refresh" content="2; url=telaLogin.xhtml" />
+	</h:panelGroup>
 </h:body>
 </html>
