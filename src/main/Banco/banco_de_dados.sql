@@ -4,7 +4,8 @@ USE SDSA;
 CREATE TABLE Cursos(
 	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
-    qtd_semestre   int
+    qtd_semestre   int,
+	ativado		   int
 );
 
 CREATE TABLE Turmas(
@@ -45,7 +46,7 @@ CREATE TABLE CD(
 CREATE TABLE Coordenadores(
 	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
-    login          varchar(11),
+    login          varchar(30),
     senha          varchar(20)
 ); 
 

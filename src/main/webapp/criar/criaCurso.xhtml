@@ -2,7 +2,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 	<h:head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css"
@@ -32,7 +33,9 @@
 				<p:commandButton value="Excluir" ajax="true"
 					disabled="#{cursoMB.selc == null}"
 					actionListener="#{cursoMB.excluir}" update=":formCs">
-					<p:confirm  header="Confirmação" message="Deseja deletar o curso #{cursoMB.selc.nome}?" icon="ui-icon-alert"/>
+					<p:confirm header="Confirmação"
+						message="Deseja deletar o curso #{cursoMB.selc.nome}?"
+						icon="ui-icon-alert" />
 				</p:commandButton>
 				<p:commandButton value="Disciplina" ajax="true"
 					disabled="#{cursoMB.selc == null}" event="onclick"
@@ -44,11 +47,10 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-				Nome:
-				<h:inputText id="nome" value="#{cursoMB.cur.nome}" />
-						
-				Quantidade de semestres:
-				<h:inputText id="qsem" value="#{cursoMB.cur.qtd_semestre}" />
+						<h:outputLabel value="Nome:"/>
+						<h:inputText id="nome" value="#{cursoMB.cur.nome}" maxlength="50" />
+						<h:outputLabel value="Quantidade de semestres:"/>
+						<h:inputText id="qsem" value="#{cursoMB.cur.qtd_semestre}" maxlength="2" a:placeholder="99" />
 					</h:panelGrid>
 				</div>
 			</p:panel>
