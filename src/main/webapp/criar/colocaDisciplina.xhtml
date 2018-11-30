@@ -43,8 +43,8 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-					Disciplina:
-					<p:selectOneMenu id="disciplina"
+						<h:outputLabel value="Disciplina:" />
+						<p:selectOneMenu id="disciplina"
 							value="#{professorMB.cd.id_disciplina}" filter="true">
 							<f:selectItem itemLabel="Selecione Disciplina" itemValue="" />
 							<f:selectItems value="#{professorMB.d}" var="d"

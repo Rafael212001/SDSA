@@ -47,13 +47,13 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-				Nome:
-				<h:inputText id="nome" value="#{disciplinaMB.disc.nome}" />
-						
-				Carga Horária:
-				<h:inputText id="chora" value="#{disciplinaMB.disc.carga_hora}" />
-						
-				Semestre Pert.:
+						<h:outputLabel value="Nome:" />
+						<h:inputText id="nome" value="#{disciplinaMB.disc.nome}"
+							maxlength="50" />
+						<h:outputLabel value="Carga Horária:" />
+						<h:inputText id="chora" value="#{disciplinaMB.disc.carga_hora}"
+							maxlength="3" a:placeholder="999" />
+						<h:outputLabel value="Semestre Pert.:" />
 						<p:selectOneMenu id="semestreD"
 							value="#{disciplinaMB.disc.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />

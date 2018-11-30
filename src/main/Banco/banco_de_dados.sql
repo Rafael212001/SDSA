@@ -3,7 +3,7 @@ USE SDSA;
 
 CREATE TABLE Cursos(
 	id             int primary key not null AUTO_INCREMENT,
-    nome           varchar(100),
+    nome           varchar(50),
     qtd_semestre   int,
 	ativado		   int
 );
@@ -19,7 +19,7 @@ CREATE TABLE Turmas(
 
 CREATE TABLE Disciplinas(
 	id             int primary key not null AUTO_INCREMENT,
-    nome           varchar(100),
+    nome           varchar(50),
     carga_hora     int,
 	semestre       int,
 	id_curso       int,

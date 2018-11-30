@@ -42,18 +42,18 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid id="grid" columns="2" cellpadding="2" cellspacing="1">
-					Nome:
-					<h:inputText id="nome" value="#{coordenadorMB.coor.nome}" />
-						
-					NIF:
-					<h:inputText id="nif" value="#{coordenadorMB.coor.login}" />
-						
-					Senha:
-					<h:inputText id="senha" value="#{coordenadorMB.coor.senha}" />
-					
-					Confirmar senha:
-					<h:inputText id="confirmar_senha"
-							value="#{coordenadorMB.coor.confirmar_senha}" />
+						<h:outputLabel value="Nome:" />
+						<h:inputText id="nome" value="#{coordenadorMB.coor.nome}"
+							maxlength="100" />
+						<h:outputLabel value="NIF:" />
+						<h:inputText id="nif" value="#{coordenadorMB.coor.login}"
+							maxlength="30" />
+						<h:outputLabel value="Senha:" />
+						<h:inputText id="senha" value="#{coordenadorMB.coor.senha}"
+							maxlength="20" />
+						<h:outputLabel value="Confirmar senha:" />
+						<h:inputText id="confirmar_senha"
+							value="#{coordenadorMB.coor.confirmar_senha}" maxlength="20" />
 					</h:panelGrid>
 				</div>
 			</p:panel>

@@ -54,19 +54,19 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-               		Nome:
-					<h:inputText id="nome" value="#{professorMB.prof.nome}" />
-
-					Carga Horária:
-					<h:inputText id="carga" value="#{professorMB.prof.carga_hora}" />
-
-					Tipo:
+						<h:outputLabel value="Nome:" />
+						<h:inputText id="nome" value="#{professorMB.prof.nome}"
+							maxlength="100" />
+						<h:outputLabel value="Carga Horária:" />
+						<h:inputText id="carga" value="#{professorMB.prof.carga_hora}"
+							maxlength="2" a:placeholder="99" />
+						<h:outputLabel value="Tipo:" />
 						<p:selectOneRadio id="tipo" value="#{professorMB.prof.tipo}">
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
-					Foto:
-					<p:fileUpload fileUploadListener="#{a}" mode="simple"
+						<h:outputLabel value="Foto:" />
+						<p:fileUpload fileUploadListener="#{a}" mode="simple"
 							skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 					</h:panelGrid>
 				</div>

@@ -55,34 +55,31 @@
 			<p:panel id="div">
 				<div class="center">
 					<h:panelGrid columns="2" cellpadding="2" cellspacing="1">
-					Curso:
-					<p:selectOneMenu id="curso" value="#{turmaMB.tur.id_curso}">
+						<h:outputLabel value="Curso:" />
+						<p:selectOneMenu id="curso" value="#{turmaMB.tur.id_curso}">
 							<f:selectItem itemLabel="Selecione Curso" itemValue="" />
 							<f:selectItems value="#{turmaMB.curS}" var="curS"
 								itemLabel="#{curS.nome}" itemValue="#{curS.id}" />
 							<p:ajax listener="#{turmaMB.listarSemestre}" event="change"
 								update="semestre" />
 						</p:selectOneMenu>
-
-					Semestre:
-					<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
+						<h:outputLabel value="Semestre:" />
+						<p:selectOneMenu id="semestre" value="#{turmaMB.tur.semestre}">
 							<f:selectItem itemLabel="Selecione Semestre" itemValue="" />
 							<f:selectItems value="#{turmaMB.semestres}" var="semestre"
 								itemLabel="#{semestre}º Semestre" itemValue="#{semestre}" />
 						</p:selectOneMenu>
-
-               		Nome da Turma:
-					<h:inputText id="nome" value="#{turmaMB.tur.nome}" />
-						
-					Período:
-					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<h:outputLabel value="Nome da Turma:" />
+						<h:inputText id="nome" value="#{turmaMB.tur.nome}" maxlength="10" />
+						<h:outputLabel value="Período:" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
 							<p:selectOneRadio id="periodo" layout="grid" columns="3"
 								value="#{turmaMB.tur.periodo}">
 								<f:selectItem itemLabel="Manha" itemValue="1" />
 								<f:selectItem itemLabel="Tarde" itemValue="2" />
 								<f:selectItem itemLabel="Noite" itemValue="3" />
 							</p:selectOneRadio>
-
 						</h:panelGrid>
 					</h:panelGrid>
 				</div>
