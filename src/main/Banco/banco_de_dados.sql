@@ -14,6 +14,7 @@ CREATE TABLE Turmas(
     periodo        int,
     semestre       int,
     id_curso       int,
+	ativado		   int,
     foreign key (id_curso) references Cursos (id)
 );
 
@@ -23,6 +24,7 @@ CREATE TABLE Disciplinas(
     carga_hora     int,
 	semestre       int,
 	id_curso       int,
+	ativado		   int,
 	foreign key (id_curso) references Cursos (id)
 );
 
@@ -32,13 +34,15 @@ CREATE TABLE Colaboradores(
     carga_hora     int,
     restante       int,
     tipo           int,
-    foto           varchar(100)
+    foto           varchar(100),
+	ativado		   int
 );
 
 CREATE TABLE CD(
 	id             int primary key not null AUTO_INCREMENT,
 	id_colaborador int,
 	id_disciplina  int,
+	ativado		   int,
 	foreign key (id_colaborador) references Colaboradores(id),
 	foreign key (id_disciplina)	 references Disciplinas(id)
 );
@@ -47,7 +51,8 @@ CREATE TABLE Coordenadores(
 	id             int primary key not null AUTO_INCREMENT,
     nome           varchar(100),
     login          varchar(30),
-    senha          varchar(20)
+    senha          varchar(20),
+	ativado		   int
 ); 
 
 
@@ -84,59 +89,59 @@ CREATE TABLE Carga_horaria_restante(
     foreign key (id_turma) references Turmas (id)
 );
 
-INSERT INTO Cursos(nome, qtd_semestre)
-		VALUES	("Técnico em informática", 4);
+INSERT INTO Cursos(nome, qtd_semestre, ativado)
+		VALUES	("Técnico em informática", 4, 1);
 
-INSERT INTO Turmas(nome, periodo, semestre, id_curso)
-		VALUES	("1TI", 1, 1, 1),
-				("2TI", 1, 2, 1),
-				("3TI", 1, 3, 1),
-				("4TI", 1, 4, 1);
+INSERT INTO Turmas(nome, periodo, semestre, id_curso, ativado)
+		VALUES	("1TI", 1, 1, 1, 1),
+				("2TI", 1, 2, 1, 1),
+				("3TI", 1, 3, 1, 1),
+				("4TI", 1, 4, 1, 1);
 				
-INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso)
-		VALUES	("Fundamentos de Informática", 75, 1, 1),
-				("Fundamentos de Hardware", 75, 1, 1),
-				("Comunicação Oral e Escrita", 75, 1, 1),
-				("Fundamentos de Programação", 75, 1, 1),
-				("Fundamentos de Redes", 75, 1, 1),
-				("Algoritimos", 75, 2, 1),
-				("Programação Orientada a Objetos", 150, 2, 1),
-				("Interfaces para Web", 75, 2, 1),
-				("Inglês Técnica", 75, 2, 1),
-				("Banco de Dados", 75, 3, 1),
-				("Programação para Web", 150, 3, 1),
-				("Programação para Dispositivos Móveis", 75, 3, 1),
-				("Gestão de Pessoas", 75, 4, 1),
-				("Projetos", 300, 4, 1);
+INSERT INTO Disciplinas(nome, carga_hora, semestre, id_curso, ativado)
+		VALUES	("Fundamentos de Informática", 75, 1, 1, 1),
+				("Fundamentos de Hardware", 75, 1, 1, 1),
+				("Comunicação Oral e Escrita", 75, 1, 1, 1),
+				("Fundamentos de Programação", 75, 1, 1, 1),
+				("Fundamentos de Redes", 75, 1, 1, 1),
+				("Algoritimos", 75, 2, 1, 1),
+				("Programação Orientada a Objetos", 150, 2, 1, 1),
+				("Interfaces para Web", 75, 2, 1, 1),
+				("Inglês Técnica", 75, 2, 1, 1),
+				("Banco de Dados", 75, 3, 1, 1),
+				("Programação para Web", 150, 3, 1, 1),
+				("Programação para Dispositivos Móveis", 75, 3, 1, 1),
+				("Gestão de Pessoas", 75, 4, 1, 1),
+				("Projetos", 300, 4, 1, 1);
 				
-INSERT INTO Colaboradores(nome, carga_hora, tipo)
-		VALUES	("Pansani", 20, 2),
-				("Anderson", 20, 2),
-				("Tânia Wopereis", 20, 1),
-				("Luiz Rodolfo", 20, 2),
-				("Rafael Leme", 20, 2),
-				("Stephanie Frasson", 40, 2);
+INSERT INTO Colaboradores(nome, carga_hora, tipo, ativado)
+		VALUES	("Pansani", 20, 2, 1),
+				("Anderson", 20, 2, 1),
+				("Tânia Wopereis", 20, 1, 1),
+				("Luiz Rodolfo", 20, 2, 1),
+				("Rafael Leme", 20, 2, 1),
+				("Stephanie Frasson", 40, 2, 1);
 				
-INSERT INTO CD(id_colaborador, id_disciplina)
-		VALUES	(1,1),
-				(2,2),
-				(3,3),
-				(1,4),
-				(2,5),
-				(5,6),
-				(4,7),
-				(5,8),
-				(3,9),
-				(4,10),
-				(5,11),
-				(5,12),
-				(6,13),
-				(5,14),
-				(4,14);
+INSERT INTO CD(id_colaborador, id_disciplina, ativado)
+		VALUES	(1,1,1),
+				(2,2,1),
+				(3,3,1),
+				(1,4,1),
+				(2,5,1),
+				(5,6,1),
+				(4,7,1),
+				(5,8,1),
+				(3,9,1),
+				(4,10,1),
+				(5,11,1),
+				(5,12,1),
+				(6,13,1),
+				(5,14,1),
+				(4,14,1);
 
-INSERT INTO Coordenadores (nome,login,senha)
-		VALUES	("Tarciso", 28011999, "123"),
-				("Paraguassu", "paragua", "123");
+INSERT INTO Coordenadores (nome,login,senha,ativado)
+		VALUES	("Tarciso", 28011999, "123", 1),
+				("Paraguassu", "paragua", "123", 1);
 		
 INSERT INTO SALAS VALUES (1, "SALA 01");
 INSERT INTO SALAS VALUES (2, "SALA 02");

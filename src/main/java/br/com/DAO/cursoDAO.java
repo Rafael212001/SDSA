@@ -23,12 +23,13 @@ public class cursoDAO {
 
 	public int inserir(Curso c) {
 
-		String sql = "INSERT INTO Cursos(nome,qtd_semestre) VALUES (?,?)";
+		String sql = "INSERT INTO Cursos(nome,qtd_semestre,ativado) VALUES (?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, c.getNome());
 			ps.setInt(2, c.getQtd_semestre());
+			ps.setInt(3, 1);
 
 			if (ps.executeUpdate() == 1) {
 				ResultSet rs = ps.getGeneratedKeys();
@@ -46,7 +47,7 @@ public class cursoDAO {
 
 	public List<Curso> listarTodos() {
 		List<Curso> list = new ArrayList<Curso>();
-		String sql = "SELECT * FROM Cursos";
+		String sql = "SELECT * FROM Cursos WHERE ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -68,7 +69,7 @@ public class cursoDAO {
 	}
 	
 	public Curso buscarCurso(int id) {
-		String sql = "SELECT * FROM Cursos WHERE id = ?";
+		String sql = "SELECT * FROM Cursos WHERE id = ? AND ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -109,7 +110,7 @@ public class cursoDAO {
 	}
 	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE FROM Cursos WHERE id = ? ";
+		String sql = "UPDATE Cursos SET ativado = 2 WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

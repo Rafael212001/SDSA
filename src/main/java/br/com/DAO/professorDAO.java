@@ -22,14 +22,15 @@ public class professorDAO {
 	}
 
 	public boolean inserir(Professor p) {
-		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo)"
-				+ "VALUES (?,?,?)";
+		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo, ativado)"
+				+ "VALUES (?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
 			ps.setInt(3, p.getTipo());
+			ps.setInt(4, 1);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -44,13 +45,14 @@ public class professorDAO {
 	}
 	
 	public boolean inserirCD(CD cd) {
-		String sql = "INSERT INTO CD (id_colaborador, id_disciplina)"
-				+ "VALUES (?,?)";
+		String sql = "INSERT INTO CD (id_colaborador, id_disciplina, ativado)"
+				+ "VALUES (?,?,?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, cd.getId_colaborador());
 			ps.setInt(2, cd.getId_disciplina());
+			ps.setInt(3, 1);
 			
 			if(ps.executeUpdate() > 0) {
 				return true;
@@ -64,7 +66,7 @@ public class professorDAO {
 
 	public List<Professor> listarTodos() {
 		List<Professor> list = new ArrayList<Professor>();
-		String sql = "SELECT * FROM Colaboradores ";
+		String sql = "SELECT * FROM Colaboradores WHERE ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -91,7 +93,7 @@ public class professorDAO {
 
 	public List<Disciplina> listarDisciplina() {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas";
+		String sql = "SELECT * FROM Disciplinas WHERE ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -114,7 +116,8 @@ public class professorDAO {
 		List<CD> list = new ArrayList<CD>();
 		String sql = "SELECT c.*, cl.nome AS nomeColaborador, d.nome AS nomeDisciplina FROM cd c "
 				   + " INNER JOIN Colaboradores cl INNER JOIN Disciplinas d "
-				   + " ON c.id_colaborador = cl.id AND c.id_disciplina = d.id WHERE c.id_colaborador = ? ";
+				   + " ON c.id_colaborador = cl.id AND c.id_disciplina = d.id "
+				   + " WHERE c.id_colaborador = ? AND c.ativado = 1 AND d.ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -139,7 +142,8 @@ public class professorDAO {
 		List<CD> list = new ArrayList<CD>();
 		String sql = "SELECT c.*, cl.nome AS nomeColaborador, d.nome AS nomeDisciplina FROM cd c "
 				   + " INNER JOIN Colaboradores cl INNER JOIN Disciplinas d "
-				   + " ON c.id_colaborador = cl.id AND c.id_disciplina = d.id WHERE c.id_disciplina = ? ";
+				   + " ON c.id_colaborador = cl.id AND c.id_disciplina = d.id "
+				   + " WHERE c.id_disciplina = ? AND c.ativado = 1 AND cl.ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -161,7 +165,7 @@ public class professorDAO {
 	}
 	
 	public Professor buscaProfessor(int id) {
-		String sql = "SELECT * FROM Colaboradores WHERE id = ? ";
+		String sql = "SELECT * FROM Colaboradores WHERE id = ? AND ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -186,7 +190,7 @@ public class professorDAO {
 	}
 	
 	public boolean editar(Professor p) {
-		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ? WHERE id = ? ";
+		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -208,7 +212,7 @@ public class professorDAO {
 	}
 	
 	public boolean excluir(Integer id) {
-		String sql = "DELETE FROM Colaboradores WHERE id = ? ";
+		String sql = "UPDATE Colaboradores SET ativado = 2 WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -225,7 +229,7 @@ public class professorDAO {
 	}
 	
 	public boolean cdExcluir(Integer id) {
-		String sql = "DELETE FROM CD WHERE id = ? ";
+		String sql = "UPDATE CD SET ativado = 2 WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

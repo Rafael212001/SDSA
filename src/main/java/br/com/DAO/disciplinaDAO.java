@@ -19,7 +19,7 @@ public class disciplinaDAO {
 	}
 
 	public boolean inserir(Disciplina d) {
-		String sql = "INSERT INTO Disciplinas (nome, carga_hora, semestre, id_curso) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO Disciplinas (nome, carga_hora, semestre, id_curso, ativado) VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -27,6 +27,7 @@ public class disciplinaDAO {
 			ps.setInt(2, d.getCarga_hora());
 			ps.setInt(3, d.getSemestre());
 			ps.setInt(4, d.getId_curso());
+			ps.setInt(5, 1);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -40,7 +41,7 @@ public class disciplinaDAO {
 
 	public List<Disciplina> listarTodos(int i) {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas WHERE id_curso = ?";
+		String sql = "SELECT * FROM Disciplinas WHERE id_curso = ? AND ativado = 1";
 
 		
 		try {
@@ -66,7 +67,7 @@ public class disciplinaDAO {
 	
 	public List<Disciplina> listDisc(int i, int j) {
 		List<Disciplina> list = new ArrayList<Disciplina>();
-		String sql = "SELECT * FROM Disciplinas WHERE semestre = ? AND id_curso = ? ";
+		String sql = "SELECT * FROM Disciplinas WHERE semestre = ? AND id_curso = ? AND ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -92,7 +93,7 @@ public class disciplinaDAO {
 	
 	public int listarId(int i) {
 		int f = 0;
-		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ?";
+		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ? AND ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -111,7 +112,7 @@ public class disciplinaDAO {
 	}
 	
 	public Disciplina buscarDisciplina(int id) {
-		String sql = "SELECT * FROM Disciplinas WHERE id = ? ";
+		String sql = "SELECT * FROM Disciplinas WHERE id = ? AND ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -156,7 +157,7 @@ public class disciplinaDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE FROM Disciplinas WHERE id = ? ";
+		String sql = "UPDATE Disciplinas SET ativado = 2 WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
