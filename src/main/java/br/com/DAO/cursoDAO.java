@@ -110,11 +110,15 @@ public class cursoDAO {
 	}
 	
 	public boolean excluir(Integer id) {
-		String sql = "UPDATE Cursos SET ativado = 2 WHERE id = ?";
+		String sql = "UPDATE cursos c, disciplinas d, turmas t "
+				+ " SET c.ativado = 2, d.ativado = 2, t.ativado = 2 "
+				+ " WHERE c.id = ? AND d.id_curso = ? AND t.id_curso = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
+			ps.setInt(2, id);
+			ps.setInt(3, id);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
