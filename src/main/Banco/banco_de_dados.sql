@@ -35,6 +35,7 @@ CREATE TABLE Colaboradores(
     restante       int,
     tipo           int,
     foto           varchar(100),
+	detalhes	   varchar(1000),
 	ativado		   int
 );
 

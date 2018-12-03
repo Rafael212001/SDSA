@@ -65,6 +65,8 @@
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
+						<h:outputLabel value="Detalhes:"/>
+						<p:inputTextarea rows="6" cols="33" maxlength="1000" value="#{professorMB.prof.detalhes}"/>
 						<h:outputLabel value="Foto:" />
 						<p:fileUpload fileUploadListener="#{a}" mode="simple"
 							skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />

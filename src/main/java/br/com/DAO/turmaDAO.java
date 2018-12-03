@@ -20,7 +20,7 @@ public class turmaDAO {
 	}
 
 	public boolean inserir(Turma t) {
-		String sql = "INSERT INTO Turmas (nome, periodo, semestre, id_curso) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO Turmas (nome, periodo, semestre, id_curso, ativado) VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -28,6 +28,7 @@ public class turmaDAO {
 			ps.setInt(2, t.getPeriodo());
 			ps.setInt(3, t.getSemestre());
 			ps.setInt(4, t.getId_curso());
+			ps.setInt(5, 1);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -41,7 +42,7 @@ public class turmaDAO {
 	
 	public int pegarSemestre(int i) {
 		int f = 0;
-		String sql = "SELECT semestre FROM Turmas WHERE id = ?";
+		String sql = "SELECT semestre FROM Turmas WHERE id = ? AND ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -61,7 +62,7 @@ public class turmaDAO {
 
 	public List<Turma> listarTodos() {
 		List<Turma> list = new ArrayList<Turma>();
-		String sql = "SELECT t.*, c.nome AS nomeCurso FROM Turmas t INNER JOIN Cursos c ON t.id_curso = c.id ";
+		String sql = "SELECT t.*, c.nome AS nomeCurso FROM Turmas t INNER JOIN Cursos c ON t.id_curso = c.id WHERE t.ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -86,7 +87,7 @@ public class turmaDAO {
 	
 	public List<Turma> listarPorCurso(int i){
 		List<Turma> list = new ArrayList<Turma>();
-		String sql = "SELECT * FROM Turmas WHERE id_curso = ? ";
+		String sql = "SELECT * FROM Turmas WHERE id_curso = ? AND ativado = 1";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -111,7 +112,7 @@ public class turmaDAO {
 	}
 
 	public Turma buscarTurma(int id) {
-		String sql = "SELECT * FROM Turmas WHERE id = ? ";
+		String sql = "SELECT * FROM Turmas WHERE id = ? AND ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -137,7 +138,7 @@ public class turmaDAO {
 
 	public int listarId(int i) {
 		int f = 0;
-		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ?";
+		String sql = "SELECT qtd_semestre FROM Cursos WHERE id = ? AND ativado = 1";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -177,7 +178,7 @@ public class turmaDAO {
 	}
 
 	public boolean excluir(Integer id) {
-		String sql = "DELETE FROM Turmas WHERE id = ? ";
+		String sql = "UPDATE Turmas SET ativado = 2 WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

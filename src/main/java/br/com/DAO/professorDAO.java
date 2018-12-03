@@ -22,15 +22,16 @@ public class professorDAO {
 	}
 
 	public boolean inserir(Professor p) {
-		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo, ativado)"
-				+ "VALUES (?,?,?,?)";
+		String sql = "INSERT INTO Colaboradores (nome, carga_hora, tipo, detalhes, ativado)"
+				+ "VALUES (?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
 			ps.setInt(3, p.getTipo());
-			ps.setInt(4, 1);
+			ps.setString(4, p.getDetalhes());
+			ps.setInt(5, 1);
 
 			if (ps.executeUpdate() > 0) {
 				return true;
@@ -80,6 +81,7 @@ public class professorDAO {
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
 				p.setFoto(rs.getString("foto"));
+				p.setDetalhes(rs.getString("detalhes"));
 
 				list.add(p);
 			}
@@ -180,6 +182,7 @@ public class professorDAO {
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
 				p.setFoto(rs.getString("foto"));
+				p.setDetalhes(rs.getString("detalhes"));
 				return p;
 			}
 		} catch (Exception e) {
@@ -190,16 +193,17 @@ public class professorDAO {
 	}
 	
 	public boolean editar(Professor p) {
-		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ? WHERE id = ?";
+		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ?, detalhes = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(6, p.getId());
+			ps.setInt(7, p.getId());
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
 			ps.setInt(3, p.getRestante());
 			ps.setInt(4, p.getTipo());
 			ps.setString(5, p.getFoto());
+			ps.setString(6, p.getDetalhes());
 			
 			if(ps.executeUpdate() > 0) {
 				return true;

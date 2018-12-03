@@ -74,8 +74,8 @@
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 					<f:facet name="header">
-					Professores
-				</f:facet>
+						Professores
+					</f:facet>
 
 					<p:panel header="#{profL.nome}" style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
@@ -93,9 +93,9 @@
 					</p:panel>
 
 				</p:dataGrid>
-				<p:dialog header="Info Professor" widgetVar="profDialog"
+				<p:dialog header="Info Professor" widgetVar="profDialog" style="left:30%"
 					modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-					<p:outputPanel id="detalheProf" style="text-align:center;">
+					<p:outputPanel id="detalheProf" style="text-align:center !important;">
 						<p:panelGrid columns="2" rendered="#{not empty professorMB.tcoo}"
 							columnClasses="label,value">
 
@@ -106,7 +106,10 @@
 							<h:outputText value="#{professorMB.tcoo.carga_hora}" />
 
 							<h:outputText value="Tipo:" />
-							<h:outputText value="#{professorMB.tcoo.tipo}" />
+							<h:outputText value="#{professorMB.tcoo.formatTipo}" />
+							
+							<h:outputText value="Detalhes:"/>
+							<h:outputText value="#{professorMB.tcoo.detalhes}"/>
 						</p:panelGrid>
 					</p:outputPanel>
 				</p:dialog>

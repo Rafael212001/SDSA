@@ -9,6 +9,7 @@ public class Professor {
 	private Integer tipo;
 	private String foto;
 	private Integer id_disciplina;
+	private String detalhes;
 
 	public Professor() {
 		// TODO Auto-generated constructor stub
@@ -97,6 +98,14 @@ public class Professor {
 
 	public void setId_disciplina(Integer id_disciplina) {
 		this.id_disciplina = id_disciplina;
+	}
+
+	public String getDetalhes() {
+		return detalhes;
+	}
+
+	public void setDetalhes(String detalhes) {
+		this.detalhes = detalhes;
 	}
 
 }
