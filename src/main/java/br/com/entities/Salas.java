@@ -2,25 +2,17 @@ package br.com.entities;
 
 public class Salas {
 
-	private String descricao;
 	private Integer numero;
+	private int contador;
 	
 	public Salas() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Salas(String descricao, Integer numero) {
+	public Salas(Integer numero, int contador) {
 		super();
-		this.descricao = descricao;
 		this.numero = numero;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.contador = contador;
 	}
 
 	public Integer getNumero() {
@@ -31,4 +23,12 @@ public class Salas {
 		this.numero = numero;
 	}
 
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+	
 }

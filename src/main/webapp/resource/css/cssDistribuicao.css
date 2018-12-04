@@ -167,7 +167,7 @@ html, body{
 
 .ui-panel .ui-panel-titlebar{
 	background: #DA251C;
-	color: white;	
+	color: white;
 }
 
 .ui-panel .ui-panel-title{
@@ -203,7 +203,7 @@ html, body{
 }
 
 .salas .ui-fieldset{
-	height: 80px;
+	height: 280px;
 	border: 2px solid #DA251C !important; 
 }
 

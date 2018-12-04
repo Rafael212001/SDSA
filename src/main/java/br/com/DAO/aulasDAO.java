@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.primefaces.model.chart.HorizontalBarChartModel;
+
 import br.com.entities.Aulas;
 import br.com.entities.Coordenador;
 import br.com.entities.Curso;
@@ -39,13 +41,52 @@ public class aulasDAO {
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
-
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 
 		return false;
+	}
+	
+	public Aulas listarAulas(int id){
+		
+		String sql = "SELECT * FROM Aulas WHERE id = ?";
+		Aulas a = null;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				a = new Aulas(rs.getInt("id"), new Curso(rs.getInt("id_cursos"), null, null),
+						new Turma(rs.getInt("id_turmas"), null, null, null, null),
+						new Disciplina(rs.getInt("id_disciplina"), null, null, null, null),
+						new Professor(rs.getInt("id_colaborador"), null, null, null, null, null, null, null),
+						new Coordenador(rs.getInt("id_coordenador"), null, null, null, null),
+						rs.getInt("id_sala"), rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"), rs.getInt("horario"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return a;
+	}
+
+	public int pegarIdDisciplina(int j) {
+		int i = 0;
+		String sql = "SELECT id_disciplina FROM Aulas WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, j);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				i = rs.getInt("id_disciplina");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return i;
 	}
 
 	public List<Aulas> listarTodasSemSala() {
@@ -66,7 +107,7 @@ public class aulasDAO {
 						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("colaborador"), null, null, null, null, null, null),
-						new Coordenador(null, rs.getString("coordenador"), null, null,null), null, null, null, null);
+						new Coordenador(null, rs.getString("coordenador"), null, null, null), null, null, null, null,null);
 				list.add(a);
 			}
 
@@ -100,7 +141,7 @@ public class aulasDAO {
 						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
 						new Professor(null, rs.getString("professor"), null, null, null, null, null, null), null,
-						rs.getInt("id_sala"), rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"));
+						rs.getInt("id_sala"), rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"), rs.getInt("horario"));
 				list.add(a);
 			}
 		} catch (SQLException e) {
@@ -123,8 +164,8 @@ public class aulasDAO {
 		return false;
 	}
 
-	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, Integer carga, int periodo) {
-		String sql = "UPDATE aulas SET id_sala = ?, dia_semana = ?, carga = ?, periodo = ? WHERE id = ?";
+	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, Integer carga, int periodo, int horario) {
+		String sql = "UPDATE aulas SET id_sala = ?, dia_semana = ?, carga = ?, periodo = ?, horario = ? WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -132,7 +173,8 @@ public class aulasDAO {
 			ps.setInt(2, dia_semana);
 			ps.setInt(3, carga);
 			ps.setInt(4, periodo);
-			ps.setInt(5, aula.getId());
+			ps.setInt(5, horario);
+			ps.setInt(6, aula.getId());
 
 			if (ps.executeUpdate() != 0) {
 				return true;
@@ -147,7 +189,7 @@ public class aulasDAO {
 	}
 
 	public boolean desalocar(Aulas aula) {
-		String sql = "UPDATE aulas SET id_sala = NULL, dia_semana = NULL, carga = NULL " + "WHERE id = ?";
+		String sql = "UPDATE aulas SET id_sala = NULL, dia_semana = NULL, carga = NULL, horario = NULL WHERE id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

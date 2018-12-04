@@ -25,6 +25,7 @@ import br.com.entities.Turma;
 public class EscolhaMB {
 
 	Aulas aulas;
+	Disciplina disc;
 	List<Curso> cursoL;
 	List<Turma> turmaL;
 	List<Disciplina> disciplinaL;
@@ -39,6 +40,7 @@ public class EscolhaMB {
 	int idDisciplina;
 	int idColaborador;
 	int idCoordenador;
+	int quantidade;
 	boolean botao;
 	@ManagedProperty(value = "#{loginMB}")
 	LoginMB lMB;
@@ -49,20 +51,48 @@ public class EscolhaMB {
 	}
 
 	public String criarAula() {
+		int n;
+		boolean b = false;
 		Turma turma = new Turma();
 		turma = tDAO.buscarTurma(idTurma);
+		
 		if (lMB.c != null) {
 			setIdCoordenador(lMB.getC().getId());
-			if (aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo())) {
-				System.out.println("Aula criada.");
-				return "/telaDistribuicao?faces-redirect=true";
-			} else {
-				System.out.println("Erro ao criar aula.");
-				return "criaAulas?faces-redirect=true";
+			listarCarga();
+			
+			for ( n = 1; n <= quantidade; n++) {
+				if(aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo())){
+					b = true;
+				}else {
+					b = false;
+				}
 			}
+				if (b == true) {
+					System.out.println("Aula criada.");
+					return "/telaDistribuicao?faces-redirect=true";
+				} else {
+					System.out.println("Erro ao criar aula.");
+					return "criaAulas?faces-redirect=true";
+				}
 		} else {
 			System.out.println("Erro no coordenador.");
 			return "criaAulas?faces-redirect=true";
+		}
+	}
+
+	private void listarCarga() {
+		disc = dDAO.buscarDisciplina(idDisciplina);
+
+		if (disc.getCarga_hora() == 75) {
+			quantidade = 5;
+		} else if (disc.getCarga_hora() == 150) {
+			quantidade = 10;
+		} else if (disc.getCarga_hora() == 225) {
+			quantidade = 15;
+		} else if (disc.getCarga_hora() == 300) {
+			quantidade = 20;
+		} else {
+			quantidade = 1;
 		}
 	}
 
@@ -233,6 +263,22 @@ public class EscolhaMB {
 
 	public void setlMB(LoginMB lMB) {
 		this.lMB = lMB;
+	}
+
+	public Disciplina getDisc() {
+		return disc;
+	}
+
+	public void setDisc(Disciplina disc) {
+		this.disc = disc;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 }

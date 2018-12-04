@@ -17,62 +17,50 @@ public class salaDAO {
 		con = ConnectionDB.getConnection();
 	}
 
-	public boolean inserir(Salas s) {
-		String sql = "INSERT INTO Salas"
-				+ " (descricao, numero) VALUES (?,?)";
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, s.getDescricao());
-			ps.setInt(2, s.getNumero());
-			
-			if (ps.executeUpdate() == 1) {
-				return true;
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public List<Salas> listarTodos() {
-		List<Salas> list = new ArrayList<Salas>();
-		String sql = "SELECT * FROM Salas";
+	public int listarContador(int numero) {
+		int i = 0;
+		String sql = "SELECT contador FROM Salas WHERE numero = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, numero);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Salas s = new Salas(); 
-				s.setDescricao(rs.getString("descricao"));
-				s.setNumero(rs.getInt("numero"));
-				list.add(s);
+				i = rs.getInt("contador");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		}
-		return list;
+		return i;
 	}
-	
-	public boolean excluir(Integer id) {
-		String sql = "DELETE * FROM Salas WHERE id = ? ";
-		
+
+	public void almentarContador(int numero, int contador) {
+		String sql = "UPDATE Salas SET contador = ? WHERE numero = ?";
+		contador = contador + 1;
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
-
-			if (ps.executeUpdate() > 0) {
-				return true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			ps.setInt(1, contador);
+			ps.setInt(2, numero);
+			ps.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
-	}
 
+	}
+	
+	public void diminuirContador(int numero, int contador) {
+		String sql = "UPDATE Salas SET contador = ? WHERE numero = ?";
+		contador = contador - 1;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, contador);
+			ps.setInt(2, numero);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }
