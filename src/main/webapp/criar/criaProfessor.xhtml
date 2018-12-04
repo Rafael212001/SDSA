@@ -49,6 +49,12 @@
 					actionListener="#{professorMB.cDisciplina}"
 					onsuccess="PF('dlg7').show();" update=":formcd" />
 			</div>
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 		<h:form id="formpc">
 			<p:panel id="div">
@@ -65,8 +71,9 @@
 							<f:selectItem itemLabel="Professor" itemValue="1" />
 							<f:selectItem itemLabel="Instrutor" itemValue="2" />
 						</p:selectOneRadio>
-						<h:outputLabel value="Detalhes:"/>
-						<p:inputTextarea rows="6" cols="33" maxlength="1000" value="#{professorMB.prof.detalhes}"/>
+						<h:outputLabel value="Detalhes:" />
+						<p:inputTextarea rows="6" cols="33" maxlength="1000"
+							value="#{professorMB.prof.detalhes}" />
 						<h:outputLabel value="Foto:" />
 						<p:fileUpload fileUploadListener="#{a}" mode="simple"
 							skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />

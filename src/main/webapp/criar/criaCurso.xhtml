@@ -42,6 +42,12 @@
 					actionListener="#{cursoMB.disciplina}" update=":formD"
 					onsuccess="PF('dlg6').show();" />
 			</div>
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 		<h:form id="formCsc">
 			<p:panel id="div">

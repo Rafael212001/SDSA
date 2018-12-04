@@ -101,13 +101,29 @@ public class CursoMB {
 	
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
-		if(csDAO.excluir(selc.getId())){
+		if(csDAO.excluirCDT(selc.getId())){
+			System.out.println("Curso, disciplina(s) e turma(s) excluidas.");
+			context.addMessage(null, new FacesMessage("Excluido", "Curso, disciplina(s) e turma(s) excluidas."));
+			listarCS();
+			zerar();
+		}else if(csDAO.excluirCD(selc.getId())){
+			System.out.println("Curso e disciplina(s) excluidas.");
+			context.addMessage(null, new FacesMessage("Excluido", "Curso e disciplina(s) excluidas."));
+			listarCS();
+			zerar();
+		}else if(csDAO.excluirCT(selc.getId())){
+			System.out.println("Curso e turma(s) excluidas.");
+			context.addMessage(null, new FacesMessage("Excluido", "Curso e turma(s) excluidas."));
+			listarCS();
+			zerar();
+		}else if(csDAO.excluirC(selc.getId())){
 			System.out.println("Curso " +selc.getNome()+ " excluido.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso " +selc.getNome()+ " excluido."));
 			listarCS();
 			zerar();
 		}else {
-			context.addMessage(null, new FacesMessage("Erro", "É necessário excluir as disciplinas deste curso antes de exclui-lo."));
+			System.out.println("Erro no banco.");
+			context.addMessage(null, new FacesMessage("Erro", "Tente novamente mais tarde."));
 		}
 	}
 	

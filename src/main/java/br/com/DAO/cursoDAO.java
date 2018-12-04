@@ -109,7 +109,7 @@ public class cursoDAO {
 		return false;
 	}
 	
-	public boolean excluir(Integer id) {
+	public boolean excluirCDT(Integer id) {
 		String sql = "UPDATE cursos c, disciplinas d, turmas t "
 				+ " SET c.ativado = 2, d.ativado = 2, t.ativado = 2 "
 				+ " WHERE c.id = ? AND d.id_curso = ? AND t.id_curso = ?";
@@ -131,4 +131,63 @@ public class cursoDAO {
 		return false;
 	}
 	
+	public boolean excluirCD(Integer id) {
+		String sql = "UPDATE cursos c, disciplinas d "
+				+ " SET c.ativado = 2, d.ativado = 2 "
+				+ " WHERE c.id = ? AND d.id_curso = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean excluirCT(Integer id) {
+		String sql = "UPDATE cursos c, turmas t "
+				+ " SET c.ativado = 2, t.ativado = 2 "
+				+ " WHERE c.id = ? AND t.id_curso = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean excluirC(Integer id) {
+		String sql = "UPDATE cursos SET ativado = 2 WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
