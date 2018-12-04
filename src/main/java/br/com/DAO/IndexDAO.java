@@ -15,18 +15,19 @@ public class IndexDAO {
 		con = ConnectionDB.getConnection();
 	}
 	
-	public String listarTabela(int colaborador, int dia_semana, int periodo){
+	public String listarTabela(int colaborador, int dia_semana, int periodo, int horario){
 		String i = "";
 		String sql = "SELECT a.id_sala, t.nome AS nomeTurma, c.nome AS nomeCurso, d.nome AS nomeDisciplina "
 				+ " FROM Aulas a INNER JOIN turmas t INNER JOIN cursos c INNER JOIN disciplinas d "
 				+ " ON a.id_turmas = t.id AND a.id_cursos = c.id AND a.id_disciplina = d.id "
-				+ " WHERE a.id_colaborador = ? AND a.dia_semana = ? AND a.periodo = ? ";
+				+ " WHERE a.id_colaborador = ? AND a.dia_semana = ? AND a.periodo = ? AND a.horario = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, colaborador);
 			ps.setInt(2, dia_semana);
 			ps.setInt(3, periodo);
+			ps.setInt(4, horario);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Aulas a = new Aulas();
