@@ -113,6 +113,7 @@
 								</p:fieldset> <p:droppable for="s1" tolerance="pointer"
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
+									<p:ajax oncomplete="PF('f1').show();" update=":form" />
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala1}"
 										update=":form" />
 								</p:droppable></td>
@@ -818,6 +819,13 @@
 					</table>
 				</p:panel>
 			</div>
+		</h:form>
+		<h:form id="dialog">
+			<p:dialog modal="true" header="2" widgetVar="f1">
+				<p:selectManyCheckbox>
+					<f:selectItem itemLabel="bubina" />
+				</p:selectManyCheckbox>
+			</p:dialog>
 		</h:form>
 		<script type="text/javascript">
 			function handleDrop(event, ui) {
