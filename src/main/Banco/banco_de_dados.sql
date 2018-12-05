@@ -58,7 +58,7 @@ CREATE TABLE Coordenadores(
 
 
 CREATE TABLE Salas(
-	numero         int
+	numero         int primary key not null
 ); 
 
 CREATE TABLE Aulas(
