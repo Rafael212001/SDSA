@@ -25,19 +25,19 @@ public class CoordenadorMB {
 
 	public void salvar() {
 		context = FacesContext.getCurrentInstance();
-		if(coor.getId() != null) {
+		if (coor.getId() != null) {
 			Coordenador c = cDAO.buscaCoordenador(coor.getId());
 			if (c != null && c.getId().equals(coor.getId())) {
 				editarCoordenador();
 			}
-		}else {
+		} else {
 			criarCoordenador();
 
 		}
 	}
 
 	public void editarCoordenador() {
-		if(testarCampos()) {
+		if (testarCampos()) {
 			if (coor.getSenha().equals(coor.getConfirmar_senha())) {
 				if (cDAO.editar(coor)) {
 					System.out.println("Coordenador alterado.");
@@ -49,17 +49,17 @@ public class CoordenadorMB {
 					context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
 					listarC();
 				}
-			}else {
+			} else {
 				System.out.println("Senhas não estão batendo");
 				context.addMessage(null, new FacesMessage("Senha", "A senha não está igual."));
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
-	
+
 	public void criarCoordenador() {
-		if(testarCampos()) {
+		if (testarCampos()) {
 			if (coor.getSenha().equals(coor.getConfirmar_senha())) {
 				if (cDAO.inserir(coor)) {
 					System.out.println("Coordenador criado.");
@@ -71,24 +71,25 @@ public class CoordenadorMB {
 					context.addMessage(null, new FacesMessage("Erro", "Erro na criação do coordenador."));
 					listarC();
 				}
-			}else {
+			} else {
 				System.out.println("Senhas não estão batendo");
 				context.addMessage(null, new FacesMessage("Senha", "A senha não está igual."));
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
-	
+
 	private boolean testarCampos() {
-		if((coor.getNome().equals("")) || (coor.getLogin().equals("")) || (coor.getSenha().equals("")) || (coor.getConfirmar_senha().equals(""))) {
+		if ((coor.getNome().equals("")) || (coor.getLogin().equals("")) || (coor.getSenha().equals(""))
+				|| (coor.getConfirmar_senha().equals(""))) {
 			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
-	
+
 	private void zerar() {
 		coor = new Coordenador();
 		cDAO = new coordenadorDAO();
@@ -101,12 +102,12 @@ public class CoordenadorMB {
 
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
-		if(cDAO.excluir(selc.getId())) {
+		if (cDAO.excluir(selc.getId())) {
 			System.out.println("Coordenador " + selc.getNome() + " excluindo.");
-			context.addMessage(null, new FacesMessage("Excluido", "Coordenador " +selc.getNome()+ " excluido."));
+			context.addMessage(null, new FacesMessage("Excluido", "Coordenador " + selc.getNome() + " excluido."));
 			listarC();
 			zerar();
-		}else {
+		} else {
 			System.out.println("Erro ao tentar excluir coordenador.");
 			context.addMessage(null, new FacesMessage("Erro", "Erro ao tentar excluir coordenador."));
 		}

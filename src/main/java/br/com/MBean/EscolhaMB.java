@@ -61,7 +61,7 @@ public class EscolhaMB {
 			listarCarga();
 			
 			for ( n = 1; n <= quantidade; n++) {
-				if(aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo())){
+				if(aDAO.inserir(idCurso, idTurma, idDisciplina, idColaborador, idCoordenador, turma.getPeriodo(), disc.getCarga_hora())){
 					b = true;
 				}else {
 					b = false;

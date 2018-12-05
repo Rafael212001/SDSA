@@ -127,105 +127,105 @@ public class IndexMB {
 	}
 
 	public void listarManha() {
-		lmd1h0 = iDAO.listarTabela(idColaborador, 1, 1, 0);
-		lmd1h1 = iDAO.listarTabela(idColaborador, 1, 1, 1);
-		lmd1h2 = iDAO.listarTabela(idColaborador, 1, 1, 2);
-		lmd1h3 = iDAO.listarTabela(idColaborador, 1, 1, 3);
-		lmd1h4 = iDAO.listarTabela(idColaborador, 1, 1, 4);
+		lmd1h0 = iDAO.listarTabela(idColaborador, 1, 1, "0");
+		lmd1h1 = iDAO.listarTabela(idColaborador, 1, 1, "1");
+		lmd1h2 = iDAO.listarTabela(idColaborador, 1, 1, "2");
+		lmd1h3 = iDAO.listarTabela(idColaborador, 1, 1, "3");
+		lmd1h4 = iDAO.listarTabela(idColaborador, 1, 1, "4");
 
-		lmd2h0 = iDAO.listarTabela(idColaborador, 2, 1, 0);
-		lmd2h1 = iDAO.listarTabela(idColaborador, 2, 1, 1);
-		lmd2h2 = iDAO.listarTabela(idColaborador, 2, 1, 2);
-		lmd2h3 = iDAO.listarTabela(idColaborador, 2, 1, 3);
-		lmd2h4 = iDAO.listarTabela(idColaborador, 2, 1, 4);
+		lmd2h0 = iDAO.listarTabela(idColaborador, 2, 1, "0");
+		lmd2h1 = iDAO.listarTabela(idColaborador, 2, 1, "1");
+		lmd2h2 = iDAO.listarTabela(idColaborador, 2, 1, "2");
+		lmd2h3 = iDAO.listarTabela(idColaborador, 2, 1, "3");
+		lmd2h4 = iDAO.listarTabela(idColaborador, 2, 1, "4");
 
-		lmd3h0 = iDAO.listarTabela(idColaborador, 3, 1, 0);
-		lmd3h1 = iDAO.listarTabela(idColaborador, 3, 1, 1);
-		lmd3h2 = iDAO.listarTabela(idColaborador, 3, 1, 2);
-		lmd3h3 = iDAO.listarTabela(idColaborador, 3, 1, 3);
-		lmd3h4 = iDAO.listarTabela(idColaborador, 3, 1, 4);
+		lmd3h0 = iDAO.listarTabela(idColaborador, 3, 1, "0");
+		lmd3h1 = iDAO.listarTabela(idColaborador, 3, 1, "1");
+		lmd3h2 = iDAO.listarTabela(idColaborador, 3, 1, "2");
+		lmd3h3 = iDAO.listarTabela(idColaborador, 3, 1, "3");
+		lmd3h4 = iDAO.listarTabela(idColaborador, 3, 1, "4");
 
-		lmd4h0 = iDAO.listarTabela(idColaborador, 4, 1, 0);
-		lmd4h1 = iDAO.listarTabela(idColaborador, 4, 1, 1);
-		lmd4h2 = iDAO.listarTabela(idColaborador, 4, 1, 2);
-		lmd4h3 = iDAO.listarTabela(idColaborador, 4, 1, 3);
-		lmd4h4 = iDAO.listarTabela(idColaborador, 4, 1, 4);
+		lmd4h0 = iDAO.listarTabela(idColaborador, 4, 1, "0");
+		lmd4h1 = iDAO.listarTabela(idColaborador, 4, 1, "1");
+		lmd4h2 = iDAO.listarTabela(idColaborador, 4, 1, "2");
+		lmd4h3 = iDAO.listarTabela(idColaborador, 4, 1, "3");
+		lmd4h4 = iDAO.listarTabela(idColaborador, 4, 1, "4");
 
-		lmd5h0 = iDAO.listarTabela(idColaborador, 5, 1, 0);
-		lmd5h1 = iDAO.listarTabela(idColaborador, 5, 1, 1);
-		lmd5h2 = iDAO.listarTabela(idColaborador, 5, 1, 2);
-		lmd5h3 = iDAO.listarTabela(idColaborador, 5, 1, 3);
-		lmd5h4 = iDAO.listarTabela(idColaborador, 5, 1, 4);
+		lmd5h0 = iDAO.listarTabela(idColaborador, 5, 1, "0");
+		lmd5h1 = iDAO.listarTabela(idColaborador, 5, 1, "1");
+		lmd5h2 = iDAO.listarTabela(idColaborador, 5, 1, "2");
+		lmd5h3 = iDAO.listarTabela(idColaborador, 5, 1, "3");
+		lmd5h4 = iDAO.listarTabela(idColaborador, 5, 1, "4");
 
-		lmd6h0 = iDAO.listarTabela(idColaborador, 6, 1, 0);
-		lmd6h1 = iDAO.listarTabela(idColaborador, 6, 1, 1);
-		lmd6h2 = iDAO.listarTabela(idColaborador, 6, 1, 2);
-		lmd6h3 = iDAO.listarTabela(idColaborador, 6, 1, 3);
-		lmd6h4 = iDAO.listarTabela(idColaborador, 6, 1, 4);
+		lmd6h0 = iDAO.listarTabela(idColaborador, 6, 1, "0");
+		lmd6h1 = iDAO.listarTabela(idColaborador, 6, 1, "1");
+		lmd6h2 = iDAO.listarTabela(idColaborador, 6, 1, "2");
+		lmd6h3 = iDAO.listarTabela(idColaborador, 6, 1, "3");
+		lmd6h4 = iDAO.listarTabela(idColaborador, 6, 1, "4");
 	}
 
 	public void listarTarde() {
-		ltd1h0 = iDAO.listarTabela(idColaborador, 1, 2, 0);
-		ltd1h1 = iDAO.listarTabela(idColaborador, 1, 2, 1);
-		ltd1h2 = iDAO.listarTabela(idColaborador, 1, 2, 2);
-		ltd1h3 = iDAO.listarTabela(idColaborador, 1, 2, 3);
-		ltd1h4 = iDAO.listarTabela(idColaborador, 1, 2, 4);
+		ltd1h0 = iDAO.listarTabela(idColaborador, 1, 2, "0");
+		ltd1h1 = iDAO.listarTabela(idColaborador, 1, 2, "1");
+		ltd1h2 = iDAO.listarTabela(idColaborador, 1, 2, "2");
+		ltd1h3 = iDAO.listarTabela(idColaborador, 1, 2, "3");
+		ltd1h4 = iDAO.listarTabela(idColaborador, 1, 2, "4");
 
-		ltd2h0 = iDAO.listarTabela(idColaborador, 2, 2, 0);
-		ltd2h1 = iDAO.listarTabela(idColaborador, 2, 2, 1);
-		ltd2h2 = iDAO.listarTabela(idColaborador, 2, 2, 2);
-		ltd2h3 = iDAO.listarTabela(idColaborador, 2, 2, 3);
-		ltd2h4 = iDAO.listarTabela(idColaborador, 2, 2, 4);
+		ltd2h0 = iDAO.listarTabela(idColaborador, 2, 2, "0");
+		ltd2h1 = iDAO.listarTabela(idColaborador, 2, 2, "1");
+		ltd2h2 = iDAO.listarTabela(idColaborador, 2, 2, "2");
+		ltd2h3 = iDAO.listarTabela(idColaborador, 2, 2, "3");
+		ltd2h4 = iDAO.listarTabela(idColaborador, 2, 2, "4");
 
-		ltd3h0 = iDAO.listarTabela(idColaborador, 3, 2, 0);
-		ltd3h1 = iDAO.listarTabela(idColaborador, 3, 2, 1);
-		ltd3h2 = iDAO.listarTabela(idColaborador, 3, 2, 2);
-		ltd3h3 = iDAO.listarTabela(idColaborador, 3, 2, 3);
-		ltd3h4 = iDAO.listarTabela(idColaborador, 3, 2, 4);
+		ltd3h0 = iDAO.listarTabela(idColaborador, 3, 2, "0");
+		ltd3h1 = iDAO.listarTabela(idColaborador, 3, 2, "1");
+		ltd3h2 = iDAO.listarTabela(idColaborador, 3, 2, "2");
+		ltd3h3 = iDAO.listarTabela(idColaborador, 3, 2, "3");
+		ltd3h4 = iDAO.listarTabela(idColaborador, 3, 2, "4");
 
-		ltd4h0 = iDAO.listarTabela(idColaborador, 4, 2, 0);
-		ltd4h1 = iDAO.listarTabela(idColaborador, 4, 2, 1);
-		ltd4h2 = iDAO.listarTabela(idColaborador, 4, 2, 2);
-		ltd4h3 = iDAO.listarTabela(idColaborador, 4, 2, 3);
-		ltd4h4 = iDAO.listarTabela(idColaborador, 4, 2, 4);
+		ltd4h0 = iDAO.listarTabela(idColaborador, 4, 2, "0");
+		ltd4h1 = iDAO.listarTabela(idColaborador, 4, 2, "1");
+		ltd4h2 = iDAO.listarTabela(idColaborador, 4, 2, "2");
+		ltd4h3 = iDAO.listarTabela(idColaborador, 4, 2, "3");
+		ltd4h4 = iDAO.listarTabela(idColaborador, 4, 2, "4");
 
-		ltd5h0 = iDAO.listarTabela(idColaborador, 5, 2, 0);
-		ltd5h1 = iDAO.listarTabela(idColaborador, 5, 2, 1);
-		ltd5h2 = iDAO.listarTabela(idColaborador, 5, 2, 2);
-		ltd5h3 = iDAO.listarTabela(idColaborador, 5, 2, 3);
-		ltd5h4 = iDAO.listarTabela(idColaborador, 5, 2, 4);
+		ltd5h0 = iDAO.listarTabela(idColaborador, 5, 2, "0");
+		ltd5h1 = iDAO.listarTabela(idColaborador, 5, 2, "1");
+		ltd5h2 = iDAO.listarTabela(idColaborador, 5, 2, "2");
+		ltd5h3 = iDAO.listarTabela(idColaborador, 5, 2, "3");
+		ltd5h4 = iDAO.listarTabela(idColaborador, 5, 2, "4");
 
-		ltd6h0 = iDAO.listarTabela(idColaborador, 6, 2, 0);
-		ltd6h1 = iDAO.listarTabela(idColaborador, 6, 2, 1);
-		ltd6h2 = iDAO.listarTabela(idColaborador, 6, 2, 2);
-		ltd6h3 = iDAO.listarTabela(idColaborador, 6, 2, 3);
-		ltd6h4 = iDAO.listarTabela(idColaborador, 6, 2, 4);
+		ltd6h0 = iDAO.listarTabela(idColaborador, 6, 2, "0");
+		ltd6h1 = iDAO.listarTabela(idColaborador, 6, 2, "1");
+		ltd6h2 = iDAO.listarTabela(idColaborador, 6, 2, "2");
+		ltd6h3 = iDAO.listarTabela(idColaborador, 6, 2, "3");
+		ltd6h4 = iDAO.listarTabela(idColaborador, 6, 2, "4");
 	}
 
 	public void listarNoite() {
-		lnd1h0 = iDAO.listarTabela(idColaborador, 1, 3, 0);
-		lnd1h1 = iDAO.listarTabela(idColaborador, 1, 3, 1);
-		lnd1h2 = iDAO.listarTabela(idColaborador, 1, 3, 2);
+		lnd1h0 = iDAO.listarTabela(idColaborador, 1, 3, "0");
+		lnd1h1 = iDAO.listarTabela(idColaborador, 1, 3, "1");
+		lnd1h2 = iDAO.listarTabela(idColaborador, 1, 3, "2");
 
-		lnd2h0 = iDAO.listarTabela(idColaborador, 2, 3, 0);
-		lnd2h1 = iDAO.listarTabela(idColaborador, 2, 3, 1);
-		lnd2h2 = iDAO.listarTabela(idColaborador, 2, 3, 2);
+		lnd2h0 = iDAO.listarTabela(idColaborador, 2, 3, "0");
+		lnd2h1 = iDAO.listarTabela(idColaborador, 2, 3, "1");
+		lnd2h2 = iDAO.listarTabela(idColaborador, 2, 3, "2");
 
-		lnd3h0 = iDAO.listarTabela(idColaborador, 3, 3, 0);
-		lnd3h1 = iDAO.listarTabela(idColaborador, 3, 3, 1);
-		lnd3h2 = iDAO.listarTabela(idColaborador, 3, 3, 2);
+		lnd3h0 = iDAO.listarTabela(idColaborador, 3, 3, "0");
+		lnd3h1 = iDAO.listarTabela(idColaborador, 3, 3, "1");
+		lnd3h2 = iDAO.listarTabela(idColaborador, 3, 3, "2");
 
-		lnd4h0 = iDAO.listarTabela(idColaborador, 4, 3, 0);
-		lnd4h1 = iDAO.listarTabela(idColaborador, 4, 3, 1);
-		lnd4h2 = iDAO.listarTabela(idColaborador, 4, 3, 2);
+		lnd4h0 = iDAO.listarTabela(idColaborador, 4, 3, "0");
+		lnd4h1 = iDAO.listarTabela(idColaborador, 4, 3, "1");
+		lnd4h2 = iDAO.listarTabela(idColaborador, 4, 3, "2");
 
-		lnd5h0 = iDAO.listarTabela(idColaborador, 5, 3, 0);
-		lnd5h1 = iDAO.listarTabela(idColaborador, 5, 3, 1);
-		lnd5h2 = iDAO.listarTabela(idColaborador, 5, 3, 2);
+		lnd5h0 = iDAO.listarTabela(idColaborador, 5, 3, "0");
+		lnd5h1 = iDAO.listarTabela(idColaborador, 5, 3, "1");
+		lnd5h2 = iDAO.listarTabela(idColaborador, 5, 3, "2");
 
-		lnd6h0 = iDAO.listarTabela(idColaborador, 6, 3, 0);
-		lnd6h1 = iDAO.listarTabela(idColaborador, 6, 3, 1);
-		lnd6h2 = iDAO.listarTabela(idColaborador, 6, 3, 2);
+		lnd6h0 = iDAO.listarTabela(idColaborador, 6, 3, "0");
+		lnd6h1 = iDAO.listarTabela(idColaborador, 6, 3, "1");
+		lnd6h2 = iDAO.listarTabela(idColaborador, 6, 3, "2");
 	}
 
 	public void listarP() {

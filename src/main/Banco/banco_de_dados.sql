@@ -58,10 +58,7 @@ CREATE TABLE Coordenadores(
 
 
 CREATE TABLE Salas(
-	numero         int primary key not null,
-	contadorM	   int,
-	contadorT	   int,
-	contadorN	   int
+	numero         int
 ); 
 
 CREATE TABLE Aulas(
@@ -75,7 +72,7 @@ CREATE TABLE Aulas(
     dia_semana  	int,
     carga      		int,
 	periodo			int,
-	horario			int,
+	horario			char,
 	foreign key (id_cursos)     	references Cursos (id),
     foreign key (id_turmas)     	references Turmas (id),
     foreign key (id_disciplina) 	references Disciplinas (id),
@@ -147,24 +144,24 @@ INSERT INTO Coordenadores (nome,login,senha,ativado)
 		VALUES	("Tarciso", 28011999, "123", 1),
 				("Paraguassu", "paragua", "123", 1);
 		
-INSERT INTO SALAS VALUES ( 1, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 2, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 3, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 4, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 5, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 6, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 7, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 8, 0, 0, 0);
-INSERT INTO SALAS VALUES ( 9, 0, 0, 0);
-INSERT INTO SALAS VALUES (10, 0, 0, 0);
-INSERT INTO SALAS VALUES (11, 0, 0, 0);
-INSERT INTO SALAS VALUES (12, 0, 0, 0);
-INSERT INTO SALAS VALUES (13, 0, 0, 0);
-INSERT INTO SALAS VALUES (14, 0, 0, 0);
-INSERT INTO SALAS VALUES (15, 0, 0, 0);
-INSERT INTO SALAS VALUES (16, 0, 0, 0);
-INSERT INTO SALAS VALUES (18, 0, 0, 0);
-INSERT INTO SALAS VALUES (35, 0, 0, 0);
+INSERT INTO SALAS VALUES (1);
+INSERT INTO SALAS VALUES (2);
+INSERT INTO SALAS VALUES (3);
+INSERT INTO SALAS VALUES (4);
+INSERT INTO SALAS VALUES (5);
+INSERT INTO SALAS VALUES (6);
+INSERT INTO SALAS VALUES (7);
+INSERT INTO SALAS VALUES (8);
+INSERT INTO SALAS VALUES (9);
+INSERT INTO SALAS VALUES (10);
+INSERT INTO SALAS VALUES (11);
+INSERT INTO SALAS VALUES (12);
+INSERT INTO SALAS VALUES (13);
+INSERT INTO SALAS VALUES (14);
+INSERT INTO SALAS VALUES (15);
+INSERT INTO SALAS VALUES (16);
+INSERT INTO SALAS VALUES (18);
+INSERT INTO SALAS VALUES (35);
 
 INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador)
 		VALUES	(1, 1, 3, 3, 2);

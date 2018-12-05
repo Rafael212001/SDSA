@@ -12,17 +12,19 @@ public class Aulas {
 	private Integer dia_semana;
 	private Integer carga;
 	private Integer periodo;
-	private Integer horario;
+	private String horario;
 	private String nomeCurso;
 	private String nomeTurma;
 	private String nomeDisciplina;
-	
+	private Integer cont;
+
 	public Aulas() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Aulas(Integer id, Curso curso, Turma turma, Disciplina disciplina, Professor professor,
-			Coordenador coordenador, Integer id_sala, Integer dia_semana, Integer carga, Integer periodo, Integer horario) {
+			Coordenador coordenador, Integer id_sala, Integer dia_semana, Integer carga, Integer periodo,
+			String horario, Integer cont) {
 		super();
 		this.id = id;
 		this.curso = curso;
@@ -35,6 +37,7 @@ public class Aulas {
 		this.carga = carga;
 		this.periodo = periodo;
 		this.horario = horario;
+		this.cont = cont;
 	}
 
 	public Integer getId() {
@@ -141,14 +144,20 @@ public class Aulas {
 		this.nomeDisciplina = nomeDisciplina;
 	}
 
-	public Integer getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Integer horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	
-	
+
+	public Integer getCont() {
+		return cont;
+	}
+
+	public void setCont(Integer cont) {
+		this.cont = cont;
+	}
 
 }
