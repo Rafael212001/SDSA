@@ -85,8 +85,18 @@ public class DistribuicaoMB implements Serializable {
 
 	public String excluir() {
 		aulaExcluir = aDAO.listarAulas(aulaExcluir.getId());
-		int i = sDAO.listarContador(aulaExcluir.getId_sala());
-		sDAO.diminuirContador(aulaExcluir.getId_sala(), i);
+		int i;
+		if (periodo == 1) {
+			i = sDAO.listarContadorM(aulaExcluir.getId_sala());
+			sDAO.diminuirContadorM(aulaExcluir.getId_sala(), i);
+		} else if (periodo == 2) {
+			i = sDAO.listarContadorT(aulaExcluir.getId_sala());
+			sDAO.diminuirContadorT(aulaExcluir.getId_sala(), i);
+		} else {
+			i = sDAO.listarContadorN(aulaExcluir.getId_sala());
+			sDAO.diminuirContadorN(aulaExcluir.getId_sala(), i);
+		}
+
 		aDAO.desalocar(aulaExcluir);
 		aulas.remove(aulaExcluir);
 		return "telaDistribuicao?faces-redirect=true";
@@ -131,18 +141,34 @@ public class DistribuicaoMB implements Serializable {
 ///////////////////////////////////////////////////////////////////////////////	
 	public void onAulasDropSala3(DragDropEvent dde) {
 		Aulas aula = ((Aulas) dde.getData());
+		int i;
 		int d = aDAO.pegarIdDisciplina(aula.getId());
 		disc = dDAO.buscarDisciplina(d);
 
 		carga = disc.getCarga_hora();
-		int i = sDAO.listarContador(3);
+
+		if (periodo == 1) {
+			i = sDAO.listarContadorM(3);
+		} else if (periodo == 2) {
+			i = sDAO.listarContadorT(3);
+		} else {
+			i = sDAO.listarContadorN(3);
+		}
+
 		if (i <= 4) {
 			aDAO.alocarSala(aula, 3, dia_semana, carga, periodo, i);
 			aDAO.listarAulasAlocadas(dia_semana, 3, periodo);
 
 			dropSala3.add(aula);
 			aulas.remove(aula);
-			sDAO.almentarContador(3, i);
+			
+			if (periodo == 1) {
+				sDAO.almentarContadorM(3, i);
+			} else if (periodo == 2) {
+				sDAO.almentarContadorT(3, i);
+			} else {
+				sDAO.almentarContadorN(3, i);
+			}
 		}
 	}
 
@@ -407,12 +433,12 @@ public class DistribuicaoMB implements Serializable {
 		carga = disc.getCarga_hora();
 		int i = sDAO.listarContador(35);
 		if (i <= 4) {
-		aDAO.alocarSala(aula, 35, dia_semana, carga, periodo, i);
-		aDAO.listarAulasAlocadas(dia_semana, 35, periodo);
+			aDAO.alocarSala(aula, 35, dia_semana, carga, periodo, i);
+			aDAO.listarAulasAlocadas(dia_semana, 35, periodo);
 
-		dropSala35.add(aula);
-		aulas.remove(aula);
-		sDAO.almentarContador(35, i);
+			dropSala35.add(aula);
+			aulas.remove(aula);
+			sDAO.almentarContador(35, i);
 		}
 	}
 

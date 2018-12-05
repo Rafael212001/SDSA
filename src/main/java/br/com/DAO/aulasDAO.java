@@ -91,12 +91,14 @@ public class aulasDAO {
 
 	public List<Aulas> listarTodasSemSala() {
 		List<Aulas> list = new ArrayList<Aulas>();
-		String sql = " SELECT a.id as id, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador"
-				+ " FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id)"
-				+ " INNER JOIN turmas t ON (a.id_turmas = t.id)"
-				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id)"
-				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id)"
-				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) " + " WHERE a.id_sala is NULL ";
+		String sql = " SELECT a.id as id, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador,\r\n" + 
+				"COUNT(a.id) as qtde\r\n" + 
+				"FROM aulas a INNER JOIN cursos c ON (a.id_cursos = c.id)\r\n" + 
+				"INNER JOIN turmas t ON (a.id_turmas = t.id)\r\n" + 
+				"INNER JOIN disciplinas d ON (a.id_disciplina = d.id)\r\n" + 
+				"INNER JOIN colaboradores co ON (a.id_colaborador = co.id)\r\n" + 
+				"INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) WHERE a.id_sala is NULL\r\n" + 
+				"GROUP BY a.id_cursos, a.id_turmas, a.id_disciplina, a.id_colaborador, a.id_coordenador, a.periodo";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
