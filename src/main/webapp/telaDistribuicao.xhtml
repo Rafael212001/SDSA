@@ -102,8 +102,8 @@
 												<h:outputText value="#{aulaS1.professor.nome}" />
 											</p:column>
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form" 
-												action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS1}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -114,7 +114,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala1}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s2">
@@ -153,7 +153,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala2}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s3">
@@ -180,8 +180,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS3}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -192,7 +192,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala3}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s4">
@@ -219,8 +219,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS4}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -231,7 +231,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala4}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 						</tr>
@@ -275,7 +275,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala5}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -303,8 +303,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS6}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -315,7 +315,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala6}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -343,8 +343,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS7}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -355,7 +355,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala7}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -383,8 +383,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS8}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -395,7 +395,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala8}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -429,8 +429,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS9}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -441,7 +441,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala9}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -469,8 +469,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS10}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -481,7 +481,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala10}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s11">
@@ -508,8 +508,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS11}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -520,7 +520,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala11}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -548,8 +548,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS12}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -560,7 +560,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala12}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -594,8 +594,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS13}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -606,7 +606,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala13}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -634,8 +634,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS14}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -646,7 +646,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala14}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 						</tr>
 					</table>
@@ -680,8 +680,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS15}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -692,7 +692,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala15}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -720,8 +720,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS16}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -732,7 +732,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala16}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 
@@ -760,8 +760,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS18}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -772,7 +772,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala18}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 
 							<td><p:fieldset id="s35">
@@ -799,8 +799,8 @@
 											</p:column>
 
 											<p:column headerText="Excluir">
-												<p:commandButton icon="ui-icon-trash" ajax="true" update=":form"
-													action="#{distribuicaoMB.excluir}">
+												<p:commandButton icon="ui-icon-trash" ajax="true"
+													update=":form" action="#{distribuicaoMB.excluir}">
 													<f:setPropertyActionListener value="#{aulaS35}"
 														target="#{distribuicaoMB.aulaExcluir}" />
 												</p:commandButton>
@@ -811,7 +811,7 @@
 									activeStyleClass="ui-state-highlight"
 									datasource=":form:aulas_alocar" onDrop="handleDrop">
 									<p:ajax listener="#{distribuicaoMB.onAulasDropSala35}"
-										update=":form" onstart="PF('f1').show();"/>
+										update=":form" onsuccess="PF('f1').show();" />
 								</p:droppable></td>
 						</tr>
 					</table>
@@ -819,16 +819,25 @@
 			</div>
 		</h:form>
 		<h:form id="dialog">
-			<p:dialog modal="true" header="2" widgetVar="f1">
-				<p:selectManyCheckbox value="#{distribuicaoMB.horario}">
-					<f:selectItem itemLabel="1°" itemValue="0" itemDisabled=""/>
-					<f:selectItem itemLabel="2°" itemValue="1" itemDisabled=""/>
-					<f:selectItem itemLabel="3°" itemValue="2" itemDisabled=""/>
-					<f:selectItem itemLabel="4°" itemValue="3" itemDisabled=""/>
-					<f:selectItem itemLabel="5°" itemValue="4" itemDisabled=""/>
-				</p:selectManyCheckbox>
-				<p:commandButton value="Alocar" ajax="false" action="#{distribuicaoMB.salvandoAula}"/>
-				<p:commandButton value="Cancelar" onclick="PF('f1').hide();"/>
+			<p:dialog modal="true" header="Escolha o Horario da aula"
+				widgetVar="f1">
+				<p:outputPanel id="checar">
+					<p:selectManyCheckbox value="#{distribuicaoMB.horario}">
+						<f:selectItem itemLabel="1°" itemValue="0"
+							itemDisabled="#{distribuicaoMB.h1}" />
+						<f:selectItem itemLabel="2°" itemValue="1"
+							itemDisabled="#{distribuicaoMB.h2}" />
+						<f:selectItem itemLabel="3°" itemValue="2"
+							itemDisabled="#{distribuicaoMB.h3}" />
+						<f:selectItem itemLabel="4°" itemValue="3"
+							itemDisabled="#{distribuicaoMB.h4}" />
+						<f:selectItem itemLabel="5°" itemValue="4"
+							itemDisabled="#{distribuicaoMB.h5}" />
+					</p:selectManyCheckbox>
+				</p:outputPanel>
+				<p:commandButton value="Alocar" ajax="false"
+					action="#{distribuicaoMB.salvandoAula}" />
+				<p:commandButton value="Cancelar" onclick="PF('f1').hide();" />
 			</p:dialog>
 		</h:form>
 		<script type="text/javascript">
@@ -837,8 +846,6 @@
 
 				drop.fadeOut('fast');
 			}
-			
-			
 		</script>
 	</h:panelGroup>
 	<h:panelGroup rendered="#{!loginMB.logado}">

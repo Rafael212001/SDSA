@@ -153,5 +153,5 @@ INSERT INTO SALAS VALUES (16);
 INSERT INTO SALAS VALUES (18);
 INSERT INTO SALAS VALUES (35);
 
-INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador)
-		VALUES	(1, 1, 3, 3, 2);
+INSERT INTO Aulas(id_cursos, id_turmas, id_disciplina, id_colaborador, id_coordenador, carga)
+		VALUES	(1, 1, 3, 3, 2, 75);

@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.DragDropEvent;
 
 import br.com.DAO.aulasDAO;
@@ -99,14 +101,15 @@ public class DistribuicaoMB implements Serializable {
 		aulas.remove(aulaExcluir);
 		System.out.println("Retirando da sala.");
 		atualizar();
+		excluindo(aulaExcluir.getHorario());
 	}
 
 	public String salvandoAula() {
 		int j = 0;
 		aula = aDAO.listarAulas(aula.getId());
-		if(aDAO.contarSala(salas, periodo, dia_semana) <= 4) {
-			for(String i : horario) {
-				aula.setId(aula.getId() + j); 
+		if (aDAO.contarSala(salas, periodo, dia_semana) <= 4) {
+			for (String i : horario) {
+				aula.setId(aula.getId() + j);
 				aDAO.alocarSala(aula, salas, dia_semana, periodo, i);
 				aDAO.listarAulasAlocadas(dia_semana, salas, periodo);
 				dropSala1.add(aula);
@@ -114,7 +117,7 @@ public class DistribuicaoMB implements Serializable {
 				j = 1;
 			}
 			return "telaDistribuicao?faces-redirect=true";
-		}else {
+		} else {
 			System.out.println("maximo de aulas na sala");
 			return "telaDistribuicao?faces-redirect=true";
 		}
@@ -123,95 +126,153 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala1(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 1;
+		habilitado();
 	}
 
 	public void onAulasDropSala2(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 2;
+		habilitado();
 	}
 
 	public void onAulasDropSala3(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 3;
+		habilitado();
 	}
 
 	public void onAulasDropSala4(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 4;
+		habilitado();
 	}
 
 	public void onAulasDropSala5(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 5;
+		habilitado();
 	}
 
 	public void onAulasDropSala6(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 6;
+		habilitado();
 	}
 
 	public void onAulasDropSala7(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 7;
+		habilitado();
 	}
 
 	public void onAulasDropSala8(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 8;
+		habilitado();
 	}
 
 	public void onAulasDropSala9(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 9;
+		habilitado();
 	}
 
 	public void onAulasDropSala10(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 10;
+		habilitado();
 	}
 
 	public void onAulasDropSala11(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 11;
+		habilitado();
 	}
 
 	public void onAulasDropSala12(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 12;
+		habilitado();
 	}
 
 	public void onAulasDropSala13(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 13;
+		habilitado();
 	}
 
 	public void onAulasDropSala14(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 14;
+		habilitado();
 	}
 
 	public void onAulasDropSala15(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 15;
+		habilitado();
 	}
 
 	public void onAulasDropSala16(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 15;
+		habilitado();
 	}
 
 	public void onAulasDropSala18(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 18;
+		habilitado();
 	}
 
 	public void onAulasDropSala35(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 35;
+		habilitado();
+	}
+
+	public void habilitado() {
+		h1 = false;
+		h2 = false;
+		h3 = false;
+		h4 = false;
+		h5 = false;
+		desabilitado();
 	}
 	
-	public void habilitado() {
-		
+	@SuppressWarnings("deprecation")
+	public void desabilitado() {
+		List<Aulas> H = aDAO.verAulas(salas, periodo, dia_semana);
+		for (Aulas j : H) {
+			if (j.getHorario().equals("0")) {
+				h1 = true;
+			} else if (j.getHorario().equals("1")) {
+				h2 = true;
+			} else if (j.getHorario().equals("2")) {
+				h3 = true;
+			} else if (j.getHorario().equals("3")) {
+				h4 = true;
+			} else {
+				h5 = true;
+			}
+		}
+		RequestContext.getCurrentInstance().update("dialog:checar");
+	}
+	
+	@SuppressWarnings("deprecation")
+	private void excluindo(String h) {
+		if (h.equals("0")) {
+			h1 = false;
+		} else if (h.equals("1")) {
+			h2 = false;
+		} else if (h.equals("2")) {
+			h3 = false;
+		} else if (h.equals("3")) {
+			h4 = false;
+		} else {
+			h5 = false;
+		}
+		RequestContext.getCurrentInstance().update("dialog:checar");
 	}
 
 	public void onAulasDropLixeira(DragDropEvent dde) {
@@ -468,5 +529,53 @@ public class DistribuicaoMB implements Serializable {
 
 	public void setAula(Aulas aula) {
 		this.aula = aula;
+	}
+
+	public int getSalas() {
+		return salas;
+	}
+
+	public void setSalas(int salas) {
+		this.salas = salas;
+	}
+
+	public boolean isH1() {
+		return h1;
+	}
+
+	public void setH1(boolean h1) {
+		this.h1 = h1;
+	}
+
+	public boolean isH2() {
+		return h2;
+	}
+
+	public void setH2(boolean h2) {
+		this.h2 = h2;
+	}
+
+	public boolean isH3() {
+		return h3;
+	}
+
+	public void setH3(boolean h3) {
+		this.h3 = h3;
+	}
+
+	public boolean isH4() {
+		return h4;
+	}
+
+	public void setH4(boolean h4) {
+		this.h4 = h4;
+	}
+
+	public boolean isH5() {
+		return h5;
+	}
+
+	public void setH5(boolean h5) {
+		this.h5 = h5;
 	}
 }

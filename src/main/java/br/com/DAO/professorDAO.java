@@ -80,7 +80,6 @@ public class professorDAO {
 				p.setCarga_hora(rs.getInt("carga_hora"));
 				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
-				p.setFoto(rs.getString("foto"));
 				p.setDetalhes(rs.getString("detalhes"));
 
 				list.add(p);

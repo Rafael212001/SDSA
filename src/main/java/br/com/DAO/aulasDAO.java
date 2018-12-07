@@ -93,6 +93,28 @@ public class aulasDAO {
 		}
 		return cont;
 	}
+	
+	public List<Aulas> verAulas(int sala, Integer periodo, Integer dia_semana) {
+		List<Aulas> list = new ArrayList<Aulas>();
+		String sql = "SELECT horario FROM aulas WHERE id_sala = ? AND periodo = ? AND dia_semana = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, sala);
+			ps.setInt(2, periodo);
+			ps.setInt(3, dia_semana);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Aulas a = new Aulas();
+				a.setHorario(rs.getString("horario"));
+				list.add(a);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public int pegarIdDisciplina(int j) {
 		int i = 0;
