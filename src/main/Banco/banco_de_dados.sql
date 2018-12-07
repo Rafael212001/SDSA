@@ -34,7 +34,6 @@ CREATE TABLE Colaboradores(
     carga_hora     int,
     restante       int,
     tipo           int,
-    foto           varchar(100),
 	detalhes	   varchar(1000),
 	ativado		   int
 );
@@ -79,15 +78,6 @@ CREATE TABLE Aulas(
     foreign key (id_colaborador)	references Colaboradores (id),
     foreign key (id_coordenador)	references Coordenadores (id),
     foreign key (id_sala) 			references Salas (numero)
-); 
-
-CREATE TABLE Carga_horaria_restante(
-	id             int primary key not null AUTO_INCREMENT,
-    tempo          int,
-    id_disciplina  int,
-    id_turma       int,
-    foreign key (id_disciplina) references Disciplinas (id),
-    foreign key (id_turma) references Turmas (id)
 );
 
 INSERT INTO Cursos(nome, qtd_semestre, ativado)

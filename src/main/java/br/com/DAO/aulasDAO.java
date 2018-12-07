@@ -74,12 +74,14 @@ public class aulasDAO {
 		return a;
 	}
 	
-	public int contarSala(int sala) {
+	public int contarSala(int sala, Integer periodo, Integer dia_semana) {
 		int cont = 0;
-		String sql = "SELECT COUNT(id_sala) as cont FROM aulas WHERE id_sala = ?";
+		String sql = "SELECT COUNT(id_sala) as cont FROM aulas WHERE id_sala = ? AND periodo = ? AND dia_semana = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, sala);
+			ps.setInt(2, periodo);
+			ps.setInt(3, dia_semana);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				cont = rs.getInt("cont");
@@ -146,11 +148,13 @@ public class aulasDAO {
 	public List<Aulas> listarAulasAlocadas(Integer dia_semana, Integer numero, Integer periodo) {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = " SELECT  a.*, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as professor "
-				+ "FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id) "
+				+ " FROM aulas a "
+				+ " INNER JOIN cursos c ON (a.id_cursos = c.id) "
 				+ " INNER JOIN turmas t ON (a.id_turmas = t.id) "
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
-				+ "INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
-				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ?";
+				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
+				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ? "
+				+ " ORDER BY(horario)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

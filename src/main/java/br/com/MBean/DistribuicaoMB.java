@@ -52,6 +52,11 @@ public class DistribuicaoMB implements Serializable {
 	private Disciplina disc;
 	private Aulas aula;
 	private int salas = 0;
+	boolean h1 = false;
+	boolean h2 = false;
+	boolean h3 = false;
+	boolean h4 = false;
+	boolean h5 = false;
 
 	List<Aulas> aulas;
 
@@ -99,7 +104,7 @@ public class DistribuicaoMB implements Serializable {
 	public String salvandoAula() {
 		int j = 0;
 		aula = aDAO.listarAulas(aula.getId());
-		if(aDAO.contarSala(salas) <= 4) {
+		if(aDAO.contarSala(salas, periodo, dia_semana) <= 4) {
 			for(String i : horario) {
 				aula.setId(aula.getId() + j); 
 				aDAO.alocarSala(aula, salas, dia_semana, periodo, i);
@@ -203,6 +208,10 @@ public class DistribuicaoMB implements Serializable {
 	public void onAulasDropSala35(DragDropEvent dde) {
 		aula = ((Aulas) dde.getData());
 		salas = 35;
+	}
+	
+	public void habilitado() {
+		
 	}
 
 	public void onAulasDropLixeira(DragDropEvent dde) {
