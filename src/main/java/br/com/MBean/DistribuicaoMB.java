@@ -235,7 +235,28 @@ public class DistribuicaoMB implements Serializable {
 		h3 = false;
 		h4 = false;
 		h5 = false;
+		horaColaborador();
 		desabilitado();
+	}
+
+	@SuppressWarnings("deprecation")
+	public void horaColaborador() {
+		aula = aDAO.listarAulas(aula.getId());
+		List<Aulas> H = aDAO.disponibilidade(periodo, dia_semana, aula.getProfessor().getId());
+		for (Aulas j : H) {
+			if (j.getHorario().equals("0")) {
+				h1 = true;
+			} else if (j.getHorario().equals("1")) {
+				h2 = true;
+			} else if (j.getHorario().equals("2")) {
+				h3 = true;
+			} else if (j.getHorario().equals("3")) {
+				h4 = true;
+			} else {
+				h5 = true;
+			}
+		}
+		RequestContext.getCurrentInstance().update("dialog:checar");
 	}
 
 	@SuppressWarnings("deprecation")
