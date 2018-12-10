@@ -114,3 +114,8 @@ body{
 	background: white !important;
 	color: black !important;
 }
+
+.ui-growl{
+	left: 63% !important;
+	top: 57% !important;
+}

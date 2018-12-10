@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.Statement;
-
 import br.com.entities.CD;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;

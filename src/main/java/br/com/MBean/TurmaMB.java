@@ -46,7 +46,7 @@ public class TurmaMB {
 	}
 
 	public void editarTurma() {
-		if(testarCampos()) {
+		if (testarCampos()) {
 			if (tDAO.editar(tur)) {
 				System.out.println("Turma alterada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Turma alterado."));
@@ -54,15 +54,16 @@ public class TurmaMB {
 				listarT();
 			} else {
 				System.out.println("Erro na alteração da turma.");
-				context.addMessage(null, new FacesMessage("Erro", "Erro na alteração da turma."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração da turma."));
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
 
 	public void criarTurma() {
-		if(testarCampos()) {
+		if (testarCampos()) {
 			if (tDAO.inserir(tur)) {
 				System.out.println("Turma criada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Turma criada."));
@@ -70,19 +71,22 @@ public class TurmaMB {
 				listarT();
 			} else {
 				System.out.println("Erro na criação da turma.");
-				context.addMessage(null, new FacesMessage("Erro", "Erro na criação da turma."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação da turma."));
 				listarT();
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
-	
+
 	private boolean testarCampos() {
-		if((tur.getId_curso() == null) || (tur.getSemestre() == null) || (tur.getNome().equals("")) || (tur.getPeriodo() == null)) {
-			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+		if ((tur.getId_curso() == null) || (tur.getSemestre() == null) || (tur.getNome().equals(""))
+				|| (tur.getPeriodo() == null)) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
@@ -96,7 +100,7 @@ public class TurmaMB {
 			semestres.add(f);
 		}
 	}
-	
+
 	public void listarSemestreSelec() {
 		idCurso = selc.getId_curso();
 		int i = tDAO.listarId(idCurso);
@@ -126,21 +130,22 @@ public class TurmaMB {
 		context = FacesContext.getCurrentInstance();
 		if (tDAO.excluir(selc.getId())) {
 			System.out.println("Turma " + selc.getNome() + " excluida.");
-			context.addMessage(null, new FacesMessage("Excluido", "Turma " +selc.getNome()+ " excluida."));
+			context.addMessage(null, new FacesMessage("Excluido", "Turma " + selc.getNome() + " excluida."));
 			listarT();
 			zerar();
-		}else {
+		} else {
 			System.out.println("A turma não pode ser excluida.");
-			context.addMessage(null, new FacesMessage("Erro", "A turma não pode ser excluida."));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "A turma não pode ser excluida."));
 		}
 	}
-	
+
 	public String fechar() {
 		zerar();
 		listarT();
 		return "telaCoordenador";
 	}
-	
+
 	public void listarT() {
 		turL = tDAO.listarTodos();
 		curS = tcDAO.listarTodos();

@@ -17,7 +17,6 @@ import br.com.entities.Aulas;
 import br.com.entities.CD;
 import br.com.entities.Curso;
 import br.com.entities.Disciplina;
-import br.com.entities.Professor;
 import br.com.entities.Turma;
 
 @ManagedBean

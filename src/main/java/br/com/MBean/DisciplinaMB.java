@@ -5,11 +5,8 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.context.RequestContext;
 
 import br.com.DAO.disciplinaDAO;
 import br.com.entities.Disciplina;
@@ -25,7 +22,7 @@ public class DisciplinaMB {
 	private List<Integer> semestres;
 	int ID;
 	FacesContext context;
-	
+
 	public DisciplinaMB() {
 		listarD();
 	}
@@ -43,7 +40,7 @@ public class DisciplinaMB {
 	}
 
 	public void editarDisciplina() {
-		if(testarCampos()) {	
+		if (testarCampos()) {
 			if (dDAO.editar(disc)) {
 				System.out.println("Disciplina alterada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Disciplina alterado."));
@@ -51,16 +48,17 @@ public class DisciplinaMB {
 				listarD();
 			} else {
 				System.out.println("Erro na alteração da disciplina.");
-				context.addMessage(null, new FacesMessage("Erro", "Erro na alteração da disciplina."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração da disciplina."));
 				listarD();
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
 
 	public void criarDisciplina() {
-		if(testarCampos()) {
+		if (testarCampos()) {
 			disc.setId_curso(ID);
 			if (dDAO.inserir(disc)) {
 				System.out.println("Disciplina criada.");
@@ -69,19 +67,21 @@ public class DisciplinaMB {
 				listarD();
 			} else {
 				System.out.println("Erro na criação da disciplina.");
-				context.addMessage(null, new FacesMessage("Erro", "Erro na criação da disciplina."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação da disciplina."));
 				listarD();
 			}
-		}else {
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
-	
+
 	private boolean testarCampos() {
-		if((disc.getNome().equals("")) || (disc.getCarga_hora() == null) || (disc.getSemestre() == null)) {
-			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+		if ((disc.getNome().equals("")) || (disc.getCarga_hora() == null) || (disc.getSemestre() == null)) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
@@ -100,12 +100,13 @@ public class DisciplinaMB {
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
 		if (dDAO.excluir(selc.getId())) {
-			System.out.println("Disciplina " +selc.getNome()+ " excluida.");
-			context.addMessage(null, new FacesMessage("Excluido", "Disciplina " +selc.getNome()+ " excluida."));
+			System.out.println("Disciplina " + selc.getNome() + " excluida.");
+			context.addMessage(null, new FacesMessage("Excluido", "Disciplina " + selc.getNome() + " excluida."));
 			listarD();
 			zerar();
-		}else {
-			context.addMessage(null, new FacesMessage("Erro", "É necessário tirar os colaboradores dessa disciplina."));
+		} else {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
+					"É necessário tirar os colaboradores dessa disciplina."));
 		}
 	}
 
@@ -117,13 +118,13 @@ public class DisciplinaMB {
 		}
 
 	}
-	
+
 	public String fechar() {
 		zerar();
 		listarD();
 		return "PF('dlg6').hide();";
 	}
-	
+
 	public void listarD() {
 		discL = dDAO.listarTodos(ID);
 	}

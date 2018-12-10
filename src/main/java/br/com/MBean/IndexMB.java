@@ -7,7 +7,6 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.DAO.IndexDAO;
 import br.com.DAO.professorDAO;
-import br.com.entities.Aulas;
 import br.com.entities.Professor;
 
 @ManagedBean

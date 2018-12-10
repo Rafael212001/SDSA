@@ -29,59 +29,66 @@ public class CursoMB {
 	public CursoMB() {
 		listarCS();
 	}
-	
+
 	public void salvar() {
 		context = FacesContext.getCurrentInstance();
-		if(cur.getId() != null) {
+		if (cur.getId() != null) {
 			Curso c = csDAO.buscarCurso(cur.getId());
-			if(c != null && c.getId().equals(cur.getId())) {
+			if (c != null && c.getId().equals(cur.getId())) {
 				editarCurso();
 			}
-		}else {
+		} else {
 			criarCurso();
 		}
 	}
-	
+
 	public void editarCurso() {
-		if(csDAO.editar(cur)) {
-			System.out.println("Curso alterado.");
-			context.addMessage(null, new FacesMessage("Sucesso", "Curso alterado."));
-			zerar();
-			listarCS();
-		}else {
-			System.out.println("Erro na alteração do curso.");
-			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
-			listarCS();
-		}
-	}
-	
-	public void criarCurso() {
-		if(testarCampos()) {
-			lastId = csDAO.inserir(cur);
-				if (lastId > 0) {
-					System.out.println("Curso criado.");
-					context.addMessage(null, new FacesMessage("Sucesso", "Curso criado."));
-					zerar();
-					listarCS();
-				} else {
-					System.out.println("Erro na criação do curso.");
-					context.addMessage(null, new FacesMessage("Erro", "Erro na criação do curso."));
-					listarCS();
-				}
-		}else {
+		if (testarCampos()) {
+			if (csDAO.editar(cur)) {
+				System.out.println("Curso alterado.");
+				context.addMessage(null, new FacesMessage("Sucesso", "Curso alterado."));
+				zerar();
+				listarCS();
+			} else {
+				System.out.println("Erro na alteração do curso.");
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração do curso."));
+				listarCS();
+			}
+		} else {
 			System.out.println("Campo vazio.");
 		}
 	}
-	
+
+	public void criarCurso() {
+		if (testarCampos()) {
+			lastId = csDAO.inserir(cur);
+			if (lastId > 0) {
+				System.out.println("Curso criado.");
+				context.addMessage(null, new FacesMessage("Sucesso", "Curso criado."));
+				zerar();
+				listarCS();
+			} else {
+				System.out.println("Erro na criação do curso.");
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação do curso."));
+				listarCS();
+			}
+		} else {
+			System.out.println("Campo vazio.");
+		}
+	}
+
 	private boolean testarCampos() {
-		if((cur.getNome().equals("")) || (cur.getQtd_semestre() == null)) {
-			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+		if ((cur.getNome().equals("")) || (cur.getQtd_semestre() == null)) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
-	
+
 	public void disciplina() {
 		dMB.setID(selc.getId());
 		dMB.listarSemestreC();
@@ -94,39 +101,40 @@ public class CursoMB {
 		csDAO = new cursoDAO();
 		selc = null;
 	}
-	
+
 	public void editar() {
 		cur = selc;
 	}
-	
+
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
-		if(csDAO.excluirCDT(selc.getId())){
+		if (csDAO.excluirCDT(selc.getId())) {
 			System.out.println("Curso, disciplina(s) e turma(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso, disciplina(s) e turma(s) excluidas."));
 			listarCS();
 			zerar();
-		}else if(csDAO.excluirCD(selc.getId())){
+		} else if (csDAO.excluirCD(selc.getId())) {
 			System.out.println("Curso e disciplina(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso e disciplina(s) excluidas."));
 			listarCS();
 			zerar();
-		}else if(csDAO.excluirCT(selc.getId())){
+		} else if (csDAO.excluirCT(selc.getId())) {
 			System.out.println("Curso e turma(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso e turma(s) excluidas."));
 			listarCS();
 			zerar();
-		}else if(csDAO.excluirC(selc.getId())){
-			System.out.println("Curso " +selc.getNome()+ " excluido.");
-			context.addMessage(null, new FacesMessage("Excluido", "Curso " +selc.getNome()+ " excluido."));
+		} else if (csDAO.excluirC(selc.getId())) {
+			System.out.println("Curso " + selc.getNome() + " excluido.");
+			context.addMessage(null, new FacesMessage("Excluido", "Curso " + selc.getNome() + " excluido."));
 			listarCS();
 			zerar();
-		}else {
+		} else {
 			System.out.println("Erro no banco.");
-			context.addMessage(null, new FacesMessage("Erro", "Tente novamente mais tarde."));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Tente novamente mais tarde."));
 		}
 	}
-	
+
 	public String fechar() {
 		zerar();
 		listarCS();

@@ -7,14 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.primefaces.model.chart.HorizontalBarChartModel;
-
 import br.com.entities.Aulas;
 import br.com.entities.Coordenador;
 import br.com.entities.Curso;
 import br.com.entities.Disciplina;
 import br.com.entities.Professor;
-import br.com.entities.Salas;
 import br.com.entities.Turma;
 import br.com.jdbc.ConnectionDB;
 
@@ -59,13 +56,13 @@ public class aulasDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				a = new Aulas(rs.getInt("id"), 
-						new Curso(rs.getInt("id_cursos"), null, null),
+				a = new Aulas(rs.getInt("id"), new Curso(rs.getInt("id_cursos"), null, null),
 						new Turma(rs.getInt("id_turmas"), null, null, null, null),
 						new Disciplina(rs.getInt("id_disciplina"), null, null, null, null),
 						new Professor(rs.getInt("id_colaborador"), null, null, null, null, null, null, null),
 						new Coordenador(rs.getInt("id_coordenador"), null, null, null, null), rs.getInt("id_sala"),
-						rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"), rs.getString("horario"), null);
+						rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"), rs.getString("horario"),
+						null);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -73,7 +70,7 @@ public class aulasDAO {
 		}
 		return a;
 	}
-	
+
 	public int contarSala(int sala, Integer periodo, Integer dia_semana) {
 		int cont = 0;
 		String sql = "SELECT COUNT(id_sala) as cont FROM aulas WHERE id_sala = ? AND periodo = ? AND dia_semana = ?";
@@ -83,17 +80,17 @@ public class aulasDAO {
 			ps.setInt(2, periodo);
 			ps.setInt(3, dia_semana);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				cont = rs.getInt("cont");
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return cont;
 	}
-	
+
 	public List<Aulas> verAulas(int sala, Integer periodo, Integer dia_semana) {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = "SELECT horario FROM aulas WHERE id_sala = ? AND periodo = ? AND dia_semana = ?";
@@ -103,12 +100,12 @@ public class aulasDAO {
 			ps.setInt(2, periodo);
 			ps.setInt(3, dia_semana);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Aulas a = new Aulas();
 				a.setHorario(rs.getString("horario"));
 				list.add(a);
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -136,14 +133,11 @@ public class aulasDAO {
 	public List<Aulas> listarTodasSemSala() {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = " SELECT a.id as id, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador, "
-				+ " COUNT(a.id) as qtde "
-				+ " FROM aulas a "
-				+ " INNER JOIN cursos c ON (a.id_cursos = c.id) "
+				+ " COUNT(a.id) as qtde " + " FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id) "
 				+ " INNER JOIN turmas t ON (a.id_turmas = t.id) "
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
 				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
-				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) "
-				+ " WHERE a.id_sala is NULL "
+				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) " + " WHERE a.id_sala is NULL "
 				+ " GROUP BY a.id_cursos, a.id_turmas, a.id_disciplina, a.id_colaborador, a.id_coordenador, a.periodo";
 
 		try {
@@ -170,13 +164,11 @@ public class aulasDAO {
 	public List<Aulas> listarAulasAlocadas(Integer dia_semana, Integer numero, Integer periodo) {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = " SELECT  a.*, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as professor "
-				+ " FROM aulas a "
-				+ " INNER JOIN cursos c ON (a.id_cursos = c.id) "
+				+ " FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id) "
 				+ " INNER JOIN turmas t ON (a.id_turmas = t.id) "
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
 				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
-				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ? "
-				+ " ORDER BY(horario)";
+				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ? " + " ORDER BY(horario)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -226,7 +218,7 @@ public class aulasDAO {
 			ps.setInt(2, dia_semana);
 			ps.setInt(3, periodo);
 			ps.setString(4, horario);
-			
+
 			ps.setInt(5, aula.getCurso().getId());
 			ps.setInt(6, aula.getTurma().getId());
 			ps.setInt(7, aula.getDisciplina().getId());

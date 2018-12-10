@@ -26,6 +26,7 @@
 			</ul>
 		</h:form>
 		<h:form id="form">
+		<p:growl id="growl" showDetail="true"/>
 			<div class="aulasFormadas">
 				<p:fieldset styleClass="drop" id="aulas_alocarField">
 					<p:dataGrid id="aulas_alocar" var="aula"
@@ -36,7 +37,7 @@
 								<p:outputLabel value="Turma: #{aula.turma.nome}" />
 								<p:outputLabel value="Disciplina: #{aula.disciplina.nome}" />
 								<p:outputLabel value="Professor: #{aula.professor.nome}" />
-								<p:outputLabel value="Quantidade: #{aula.cont}" />
+								<p:outputLabel value="Restam: #{aula.cont}" />
 							</h:panelGrid>
 						</p:panel>
 						<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"

@@ -1,9 +1,9 @@
 package br.com.MBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.DAO.coordenadorDAO;
 import br.com.entities.Coordenador;
@@ -16,19 +16,24 @@ public class LoginMB {
 	public String senha;
 	coordenadorDAO cDAO;
 	Coordenador c;
+	FacesContext context;
 	private boolean logado = false;
 
 	public String logar() {
+		context = FacesContext.getCurrentInstance();
 		cDAO = new coordenadorDAO();
 		c = cDAO.buscaCoordenador(login);
 
 		if (c != null && c.getSenha().equals(senha)) {
 			logado = true;
 			return "telaCoordenador?faces-redirect=true";
+		} else {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo incorreto", "Usuário ou senha incorretos."));
+			return null;
 		}
-		return null;
 	}
-	
+
 	public String sair() {
 		logado = false;
 		return "telaLogin?faces-redirect=true";
@@ -73,5 +78,5 @@ public class LoginMB {
 	public void setLogado(boolean logado) {
 		this.logado = logado;
 	}
-	
+
 }

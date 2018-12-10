@@ -46,12 +46,14 @@ public class CoordenadorMB {
 					listarC();
 				} else {
 					System.out.println("Erro na alteração do coordenador.");
-					context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+					context.addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração do coordenador."));
 					listarC();
 				}
 			} else {
 				System.out.println("Senhas não estão batendo");
-				context.addMessage(null, new FacesMessage("Senha", "A senha não está igual."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
 			}
 		} else {
 			System.out.println("Campo vazio.");
@@ -68,12 +70,14 @@ public class CoordenadorMB {
 					listarC();
 				} else {
 					System.out.println("Erro na criação do coordenador.");
-					context.addMessage(null, new FacesMessage("Erro", "Erro na criação do coordenador."));
+					context.addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação do coordenador."));
 					listarC();
 				}
 			} else {
 				System.out.println("Senhas não estão batendo");
-				context.addMessage(null, new FacesMessage("Senha", "A senha não está igual."));
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
 			}
 		} else {
 			System.out.println("Campo vazio.");
@@ -83,7 +87,8 @@ public class CoordenadorMB {
 	private boolean testarCampos() {
 		if ((coor.getNome().equals("")) || (coor.getLogin().equals("")) || (coor.getSenha().equals(""))
 				|| (coor.getConfirmar_senha().equals(""))) {
-			context.addMessage(null, new FacesMessage("Campo(s) vazio(s)", "Algum campo está vazio."));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
 		} else {
 			return true;
@@ -109,7 +114,8 @@ public class CoordenadorMB {
 			zerar();
 		} else {
 			System.out.println("Erro ao tentar excluir coordenador.");
-			context.addMessage(null, new FacesMessage("Erro", "Erro ao tentar excluir coordenador."));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro ao tentar excluir coordenador."));
 		}
 	}
 

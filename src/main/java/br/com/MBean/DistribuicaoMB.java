@@ -13,7 +13,6 @@ import org.primefaces.event.DragDropEvent;
 
 import br.com.DAO.aulasDAO;
 import br.com.DAO.disciplinaDAO;
-import br.com.DAO.salaDAO;
 import br.com.entities.Aulas;
 import br.com.entities.Disciplina;
 import br.com.entities.Salas;
@@ -46,7 +45,6 @@ public class DistribuicaoMB implements Serializable {
 	private Aulas selecionadas;
 	private aulasDAO aDAO;
 	private disciplinaDAO dDAO;
-	private salaDAO sDAO;
 	private Salas sala;
 	public Integer dia_semana = 1;
 	public Integer periodo = 1;
@@ -59,13 +57,13 @@ public class DistribuicaoMB implements Serializable {
 	boolean h3 = false;
 	boolean h4 = false;
 	boolean h5 = false;
+	FacesContext context;
 
 	List<Aulas> aulas;
 
 	public DistribuicaoMB() {
 		aDAO = new aulasDAO();
 		dDAO = new disciplinaDAO();
-		sDAO = new salaDAO();
 		atualizar();
 	}
 
@@ -239,7 +237,7 @@ public class DistribuicaoMB implements Serializable {
 		h5 = false;
 		desabilitado();
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public void desabilitado() {
 		List<Aulas> H = aDAO.verAulas(salas, periodo, dia_semana);
@@ -258,7 +256,7 @@ public class DistribuicaoMB implements Serializable {
 		}
 		RequestContext.getCurrentInstance().update("dialog:checar");
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	private void excluindo(String h) {
 		if (h.equals("0")) {
@@ -505,14 +503,6 @@ public class DistribuicaoMB implements Serializable {
 
 	public void setDisc(Disciplina disc) {
 		this.disc = disc;
-	}
-
-	public salaDAO getsDAO() {
-		return sDAO;
-	}
-
-	public void setsDAO(salaDAO sDAO) {
-		this.sDAO = sDAO;
 	}
 
 	public List<String> getHorario() {

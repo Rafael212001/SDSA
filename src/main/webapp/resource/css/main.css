@@ -71,6 +71,11 @@ body{
 	margin-left: 44px;
 }
 
+.ui-growl{
+	left: 42% !important;
+	top: 22% !important;
+}
+
 #borda{
 	border-width:2px;
 	border-style:solid;

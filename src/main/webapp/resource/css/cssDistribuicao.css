@@ -220,3 +220,8 @@ html, body{
 .salas .ui-widget-content{
 	border: 0px;
 }
+
+.ui-growl{
+	left: 42% !important;
+	top: 22% !important;
+}

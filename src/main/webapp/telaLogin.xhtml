@@ -12,6 +12,9 @@
 <h:body>
 	<div class="cont">
 		<div class="box center" id="borda">
+		<h:form>
+			<p:growl id="growl" showDetail="true" />
+		</h:form>
 			<div class="panel">
 				<h:graphicImage class="imagens center" library="img" value="resource/img/senai.png"/>
 				<p/>
@@ -20,7 +23,6 @@
 						<p />
 						<p />
 						<h:form>
-							<h:messages/>
 							<div class="center">
 								<h:panelGrid columns="2" cellpadding="10" cellspacing="1">
 									<h:outputLabel value="Usuário:"/>
