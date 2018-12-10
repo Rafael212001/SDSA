@@ -5,9 +5,7 @@ public class Professor {
 	private String nome;
 	private String disciplina_le;
 	private Integer carga_hora;
-	private Integer restante;
 	private Integer tipo;
-	private String foto;
 	private Integer id_disciplina;
 	private String detalhes;
 
@@ -15,16 +13,13 @@ public class Professor {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora, Integer restante, Integer tipo,
-			String foto, Integer id_disciplina) {
+	public Professor(Integer id, String nome, String disciplina_le, Integer carga_hora, Integer tipo, Integer id_disciplina) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.disciplina_le = disciplina_le;
 		this.carga_hora = carga_hora;
-		this.restante = restante;
 		this.tipo = tipo;
-		this.foto = foto;
 		this.id_disciplina = id_disciplina;
 	}
 
@@ -60,14 +55,6 @@ public class Professor {
 		this.carga_hora = carga_hora;
 	}
 
-	public Integer getRestante() {
-		return restante;
-	}
-
-	public void setRestante(Integer restante) {
-		this.restante = restante;
-	}
-
 	public Integer getTipo() {
 		return tipo;
 	}
@@ -82,14 +69,6 @@ public class Professor {
 	
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
 	}
 
 	public Integer getId_disciplina() {

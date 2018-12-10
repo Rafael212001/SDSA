@@ -76,7 +76,6 @@ public class professorDAO {
 				p.setId(rs.getInt("id"));
 				p.setNome(rs.getString("nome"));
 				p.setCarga_hora(rs.getInt("carga_hora"));
-				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
 				p.setDetalhes(rs.getString("detalhes"));
 
@@ -127,7 +126,7 @@ public class professorDAO {
 				cd.setId(rs.getInt("id"));
 				cd.setId_colaborador(rs.getInt("id_colaborador"));
 				cd.setId_disciplina(rs.getInt("id_disciplina"));
-				cd.setProfessor(new Professor(cd.getId_colaborador(), rs.getString("nomeColaborador"), null, null, null, null, null, null));
+				cd.setProfessor(new Professor(cd.getId_colaborador(), rs.getString("nomeColaborador"), null, null, null, null));
 				cd.setDisciplina(new Disciplina(cd.getId_disciplina(), rs.getString("nomeDisciplina"), null, null, null));
 				list.add(cd);
 			}
@@ -153,7 +152,7 @@ public class professorDAO {
 				cd.setId(rs.getInt("id"));
 				cd.setId_colaborador(rs.getInt("id_colaborador"));
 				cd.setId_disciplina(rs.getInt("id_disciplina"));
-				cd.setProfessor(new Professor(cd.getId_colaborador(), rs.getString("nomeColaborador"), null, null, null, null, null, null));
+				cd.setProfessor(new Professor(cd.getId_colaborador(), rs.getString("nomeColaborador"), null, null, null, null));
 				cd.setDisciplina(new Disciplina(cd.getId_disciplina(), rs.getString("nomeDisciplina"), null, null, null));
 				list.add(cd);
 			}
@@ -176,9 +175,7 @@ public class professorDAO {
 				p.setId(rs.getInt("id"));
 				p.setNome(rs.getString("nome"));
 				p.setCarga_hora(rs.getInt("carga_hora"));
-				p.setRestante(rs.getInt("restante"));
 				p.setTipo(rs.getInt("tipo"));
-				p.setFoto(rs.getString("foto"));
 				p.setDetalhes(rs.getString("detalhes"));
 				return p;
 			}
@@ -190,16 +187,14 @@ public class professorDAO {
 	}
 	
 	public boolean editar(Professor p) {
-		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, restante = ?, tipo = ?, foto = ?, detalhes = ? WHERE id = ?";
+		String sql = "UPDATE Colaboradores SET nome = ?, carga_hora = ?, tipo = ?, detalhes = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(7, p.getId());
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
-			ps.setInt(3, p.getRestante());
 			ps.setInt(4, p.getTipo());
-			ps.setString(5, p.getFoto());
 			ps.setString(6, p.getDetalhes());
 			
 			if(ps.executeUpdate() > 0) {

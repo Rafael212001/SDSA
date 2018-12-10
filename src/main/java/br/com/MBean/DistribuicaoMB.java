@@ -13,8 +13,10 @@ import org.primefaces.event.DragDropEvent;
 
 import br.com.DAO.aulasDAO;
 import br.com.DAO.disciplinaDAO;
+import br.com.DAO.professorDAO;
 import br.com.entities.Aulas;
 import br.com.entities.Disciplina;
+import br.com.entities.Professor;
 import br.com.entities.Salas;
 
 @ManagedBean
@@ -45,6 +47,7 @@ public class DistribuicaoMB implements Serializable {
 	private Aulas selecionadas;
 	private aulasDAO aDAO;
 	private disciplinaDAO dDAO;
+	private professorDAO pDAO;
 	private Salas sala;
 	public Integer dia_semana = 1;
 	public Integer periodo = 1;
@@ -64,12 +67,13 @@ public class DistribuicaoMB implements Serializable {
 	public DistribuicaoMB() {
 		aDAO = new aulasDAO();
 		dDAO = new disciplinaDAO();
+		pDAO = new professorDAO();
 		atualizar();
 	}
 
 	public void atualizar() {
 		System.out.println("Atualizando");
-		aulas = aDAO.listarTodasSemSala();
+		aulas = aDAO.listarTodasSemSala(periodo);
 		dropSala1 = aDAO.listarAulasAlocadas(dia_semana, 1, periodo);
 		dropSala2 = aDAO.listarAulasAlocadas(dia_semana, 2, periodo);
 		dropSala3 = aDAO.listarAulasAlocadas(dia_semana, 3, periodo);
@@ -112,6 +116,7 @@ public class DistribuicaoMB implements Serializable {
 				aDAO.listarAulasAlocadas(dia_semana, salas, periodo);
 				dropSala1.add(aula);
 				aulas.remove(aula);
+				contarCarga();
 				j = 1;
 			}
 			return "telaDistribuicao?faces-redirect=true";
@@ -292,6 +297,15 @@ public class DistribuicaoMB implements Serializable {
 			h5 = false;
 		}
 		RequestContext.getCurrentInstance().update("dialog:checar");
+	}
+	
+	public void contarCarga() {
+		Professor p = pDAO.buscaProfessor(aula.getProfessor().getId());
+		int quantAulas = aDAO.aulaColab(p.getId());
+		int cargaColab = p.getCarga_hora();
+		
+		float restante = (((cargaColab * 60) - 75) - (quantAulas * 45) / 60);
+		System.out.println(restante);
 	}
 
 	public void onAulasDropLixeira(DragDropEvent dde) {

@@ -59,7 +59,7 @@ public class aulasDAO {
 				a = new Aulas(rs.getInt("id"), new Curso(rs.getInt("id_cursos"), null, null),
 						new Turma(rs.getInt("id_turmas"), null, null, null, null),
 						new Disciplina(rs.getInt("id_disciplina"), null, null, null, null),
-						new Professor(rs.getInt("id_colaborador"), null, null, null, null, null, null, null),
+						new Professor(rs.getInt("id_colaborador"), null, null, null, null, null),
 						new Coordenador(rs.getInt("id_coordenador"), null, null, null, null), rs.getInt("id_sala"),
 						rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"), rs.getString("horario"),
 						null);
@@ -84,6 +84,24 @@ public class aulasDAO {
 				cont = rs.getInt("cont");
 			}
 
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return cont;
+	}
+	
+	public int aulaColab(int id) {
+		int cont = 0;
+		String sql = "SELECT COUNT(horario) AS cont FROM aulas WHERE id_sala IS NOT NULL AND id_colaborador = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				cont = rs.getInt("cont");
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -152,25 +170,29 @@ public class aulasDAO {
 		return i;
 	}
 
-	public List<Aulas> listarTodasSemSala() {
+	public List<Aulas> listarTodasSemSala(int periodo) {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = " SELECT a.id as id, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as colaborador, cr.nome as coordenador, "
-				+ " COUNT(a.id) as qtde " + " FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id) "
+				+ " COUNT(a.id) as qtde " 
+				+ " FROM aulas a "
+				+ " INNER JOIN cursos c ON (a.id_cursos = c.id) "
 				+ " INNER JOIN turmas t ON (a.id_turmas = t.id) "
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
 				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
-				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) " + " WHERE a.id_sala is NULL "
-				+ " GROUP BY a.id_cursos, a.id_turmas, a.id_disciplina, a.id_colaborador, a.id_coordenador, a.periodo";
+				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) " 
+				+ " WHERE a.id_sala is NULL AND a.periodo = ?"
+				+ " GROUP BY a.id_cursos, a.id_turmas, a.id_disciplina, a.id_colaborador, a.id_coordenador";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, periodo);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null),
 						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
-						new Professor(null, rs.getString("colaborador"), null, null, null, null, null, null),
+						new Professor(null, rs.getString("colaborador"), null, null, null, null),
 						new Coordenador(null, rs.getString("coordenador"), null, null, null), null, null, null, null,
 						null, rs.getInt("qtde"));
 				list.add(a);
@@ -205,7 +227,7 @@ public class aulasDAO {
 				Aulas a = new Aulas(rs.getInt("id"), new Curso(null, rs.getString("curso"), null),
 						new Turma(null, rs.getString("turma"), null, null, null),
 						new Disciplina(null, rs.getString("disciplina"), null, null, null),
-						new Professor(null, rs.getString("professor"), null, null, null, null, null, null), null,
+						new Professor(null, rs.getString("professor"), null, null, null, null), null,
 						rs.getInt("id_sala"), rs.getInt("dia_semana"), rs.getInt("carga"), rs.getInt("periodo"),
 						rs.getString("horario"), null);
 				list.add(a);
@@ -231,21 +253,20 @@ public class aulasDAO {
 	}
 
 	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, int periodo, String horario) {
-		String sql = " UPDATE aulas SET id_sala = ?, dia_semana = ?, periodo = ?, horario = ? "
+		String sql = " UPDATE aulas SET id_sala = ?, dia_semana = ?, horario = ? "
 				+ " WHERE id_cursos = ? AND id_turmas = ? AND id_disciplina = ? AND id_colaborador = ? AND id_coordenador = ? AND id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, numeroSala);
 			ps.setInt(2, dia_semana);
-			ps.setInt(3, periodo);
-			ps.setString(4, horario);
+			ps.setString(3, horario);
 
-			ps.setInt(5, aula.getCurso().getId());
-			ps.setInt(6, aula.getTurma().getId());
-			ps.setInt(7, aula.getDisciplina().getId());
-			ps.setInt(8, aula.getProfessor().getId());
-			ps.setInt(9, aula.getCoordenador().getId());
+			ps.setInt(4, aula.getCurso().getId());
+			ps.setInt(5, aula.getTurma().getId());
+			ps.setInt(6, aula.getDisciplina().getId());
+			ps.setInt(7, aula.getProfessor().getId());
+			ps.setInt(8, aula.getCoordenador().getId());
 
 			ps.setInt(10, aula.getId());
 			if (ps.executeUpdate() != 0) {
