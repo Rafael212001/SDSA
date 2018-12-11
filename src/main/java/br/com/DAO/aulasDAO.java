@@ -208,11 +208,13 @@ public class aulasDAO {
 	public List<Aulas> listarAulasAlocadas(Integer dia_semana, Integer numero, Integer periodo) {
 		List<Aulas> list = new ArrayList<Aulas>();
 		String sql = " SELECT  a.*, c.nome as curso, t.nome as turma, d.nome as disciplina, co.nome as professor "
-				+ " FROM aulas a " + " INNER JOIN cursos c ON (a.id_cursos = c.id) "
+				+ " FROM aulas a " 
+				+ " INNER JOIN cursos c ON (a.id_cursos = c.id) "
 				+ " INNER JOIN turmas t ON (a.id_turmas = t.id) "
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
 				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
-				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ? " + " ORDER BY(horario)";
+				+ " WHERE id_sala = ? AND dia_semana = ? AND a.periodo = ? " 
+				+ " ORDER BY(horario)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -254,7 +256,7 @@ public class aulasDAO {
 
 	public boolean alocarSala(Aulas aula, Integer numeroSala, Integer dia_semana, int periodo, String horario) {
 		String sql = " UPDATE aulas SET id_sala = ?, dia_semana = ?, horario = ? "
-				+ " WHERE id_cursos = ? AND id_turmas = ? AND id_disciplina = ? AND id_colaborador = ? AND id_coordenador = ? AND id = ? ";
+				+ " WHERE id_cursos = ? AND id_turmas = ? AND id_disciplina = ? AND id_colaborador = ? AND id_coordenador = ? AND id = ? AND periodo = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -267,8 +269,10 @@ public class aulasDAO {
 			ps.setInt(6, aula.getDisciplina().getId());
 			ps.setInt(7, aula.getProfessor().getId());
 			ps.setInt(8, aula.getCoordenador().getId());
-
-			ps.setInt(10, aula.getId());
+			ps.setInt(9, aula.getId());
+			
+			ps.setInt(10, periodo);
+			
 			if (ps.executeUpdate() != 0) {
 				return true;
 			}
@@ -302,7 +306,7 @@ public class aulasDAO {
 
 	public boolean excluir(Aulas a) {
 		String sql = "DELETE FROM aulas WHERE id_cursos = ? AND id_turmas = ? AND id_disciplina = ? "
-				+ " AND id_colaborador = ? AND id_coordenador = ?";
+				+ " AND id_colaborador = ? AND id_coordenador = ? AND id_sala IS NULL";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
