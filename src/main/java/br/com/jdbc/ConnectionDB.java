@@ -9,7 +9,9 @@ import java.sql.SQLException;
 public class ConnectionDB {
 	
 	private static Connection con;
-	private static String dns = "jdbc:mysql:\\10.87.210.5:8081\\phpmyamin";
+	private static String dns = "jdbc:mysql://localhost:3306/sdsa?useUnicode=true&"
+			+ "useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&"
+			+ "zeroDateTimeBehavior=convertToNull";
 	private static String user = "root";
 	private static String pass = "";
 	
