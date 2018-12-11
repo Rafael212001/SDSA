@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -104,25 +105,31 @@ public class DistribuicaoMB implements Serializable {
 		System.out.println("Retirando da sala.");
 		atualizar();
 		excluindo(aulaExcluir.getHorario());
+		
 	}
 
-	public String salvandoAula() {
+	@SuppressWarnings("deprecation")
+	public void salvandoAula() {
 		int j = 0;
 		aula = aDAO.listarAulas(aula.getId());
-		if (aDAO.contarSala(salas, periodo, dia_semana) <= 4) {
-			for (String i : horario) {
-				aula.setId(aula.getId() + j);
-				aDAO.alocarSala(aula, salas, dia_semana, periodo, i);
-				aDAO.listarAulasAlocadas(dia_semana, salas, periodo);
-				dropSala1.add(aula);
-				aulas.remove(aula);
-				contarCarga();
-				j = 1;
+		if (contarCarga() != 0) {
+			if (aDAO.contarSala(salas, periodo, dia_semana) <= 4) {
+				for (String i : horario) {
+					aula.setId(aula.getId() + j);
+					aDAO.alocarSala(aula, salas, dia_semana, periodo, i);
+					aDAO.listarAulasAlocadas(dia_semana, salas, periodo);
+					dropSala1.add(aula);
+					aulas.remove(aula);
+					j = 1;
+				}
+				atualizar();
+				RequestContext.getCurrentInstance().update("form");
+			} else {
+				atualizar();
+				System.out.println("maximo de aulas na sala.");
 			}
-			return "telaDistribuicao?faces-redirect=true";
 		} else {
-			System.out.println("maximo de aulas na sala");
-			return "telaDistribuicao?faces-redirect=true";
+			System.out.println("O professor não pode dar mais aulas.");
 		}
 	}
 
@@ -234,6 +241,7 @@ public class DistribuicaoMB implements Serializable {
 		habilitado();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void habilitado() {
 		h1 = false;
 		h2 = false;
@@ -242,6 +250,7 @@ public class DistribuicaoMB implements Serializable {
 		h5 = false;
 		horaColaborador();
 		desabilitado();
+		RequestContext.getCurrentInstance().update("form");
 	}
 
 	@SuppressWarnings("deprecation")
@@ -298,14 +307,18 @@ public class DistribuicaoMB implements Serializable {
 		}
 		RequestContext.getCurrentInstance().update("dialog:checar");
 	}
-	
-	public void contarCarga() {
+
+	public int contarCarga() {
 		Professor p = pDAO.buscaProfessor(aula.getProfessor().getId());
 		int quantAulas = aDAO.aulaColab(p.getId());
 		int cargaColab = p.getCarga_hora();
-		
-		float restante = (((cargaColab * 60) - 75) - (quantAulas * 45) / 60);
-		System.out.println(restante);
+		int i = 0;
+		if (cargaColab == 20) {
+			i = 25 - quantAulas;
+		} else {
+			i = 50 - quantAulas;
+		}
+		return i;
 	}
 
 	public void onAulasDropLixeira(DragDropEvent dde) {

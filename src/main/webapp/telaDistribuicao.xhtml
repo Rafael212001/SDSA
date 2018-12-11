@@ -26,7 +26,9 @@
 			</ul>
 		</h:form>
 		<h:form id="form">
-		<p:growl id="growl" showDetail="true"/>
+		<p:growl id="growl" showDetail="true">
+			<p:autoUpdate/>
+		</p:growl>
 			<div class="aulasFormadas">
 				<p:fieldset styleClass="drop" id="aulas_alocarField">
 					<p:dataGrid id="aulas_alocar" var="aula"
@@ -59,7 +61,7 @@
 				</p:droppable>
 
 			</div>
-			<div class="salas">
+			<div class="salas" id="salas">
 				<p:panel header="Salas">
 					<p:selectOneMenu id="diaSemana"
 						value="#{distribuicaoMB.dia_semana}" style="width:125px">
@@ -835,8 +837,8 @@
 							itemDisabled="#{distribuicaoMB.h5}" />
 					</p:selectManyCheckbox>
 				</p:outputPanel>
-				<p:commandButton value="Alocar" ajax="false"
-					action="#{distribuicaoMB.salvandoAula}" />
+				<p:commandButton value="Alocar" update=":form"
+					action="#{distribuicaoMB.salvandoAula}" onsuccess="PF('f1').hide();"/>
 				<p:commandButton value="Cancelar" onclick="PF('f1').hide();" />
 			</p:dialog>
 		</h:form>
