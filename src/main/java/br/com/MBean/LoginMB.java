@@ -26,10 +26,12 @@ public class LoginMB {
 
 		if (c != null && c.getSenha().equals(senha)) {
 			logado = true;
+			System.out.println("SDSA:Logado.");
 			return "telaCoordenador?faces-redirect=true";
 		} else {
+			System.out.println("SDSA:Login ou senha incorretos.");
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo incorreto", "Usuário ou senha incorretos."));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo incorreto", "Login ou senha incorretos."));
 			return null;
 		}
 	}

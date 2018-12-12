@@ -16,7 +16,6 @@ import br.com.entities.Professor;
 @ViewScoped
 public class ProfessorMB {
 	int idC;
-	private String caminho = "resource/img/";
 	professorDAO pDAO = new professorDAO();
 	Professor prof = new Professor();
 	Professor selc;
@@ -48,41 +47,41 @@ public class ProfessorMB {
 	public void editarProfessor() {
 		if (testarCampos()) {
 			if (pDAO.editar(prof)) {
-				System.out.println("Colaborador alterado.");
+				System.out.println("SDSA:Colaborador alterado.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Colaborador alterado."));
 				listarP();
 				zerar();
 			} else {
-				System.out.println("Erro na alterção do colaborador.");
+				System.out.println("SDSA:Erro na alterção do colaborador.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alterção do colaborador."));
 				listarP();
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
 	public void criarProfessor() {
 		if (testarCampos()) {
 			if (pDAO.inserir(prof)) {
-				System.out.println("Colaborador criado.");
+				System.out.println("SDSA:Colaborador criado.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Colaborador criado."));
 				listarP();
 				zerar();
 			} else {
-				System.out.println("Erro na criação do colaborador.");
+				System.out.println("SDSA:Erro na criação do colaborador.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro ao criar o colaborador."));
 				listarP();
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
 	private boolean testarCampos() {
-		if ((prof.getNome().equals("")) || (prof.getCarga_hora() == null) || (prof.getTipo() == null)) {
+		if ((prof.getNome().equals("")) || (prof.getCarga_hora() == null) || (prof.getCarga_hora() == 0) || (prof.getTipo() == null)) {
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo(s) vazio(s)", "Algum campo está vazio."));
 			return false;
@@ -95,13 +94,13 @@ public class ProfessorMB {
 		context = FacesContext.getCurrentInstance();
 		cd.setId_colaborador(selc.getId());
 		if (pDAO.inserirCD(cd)) {
-			System.out.println("Disciplina alocada.");
+			System.out.println("SDSA:Disciplina alocada.");
 			context.addMessage(null,
 					new FacesMessage("Alocação concluida", "Disciplina foi alocada com o colaborador(a)."));
 			cDisciplina();
 			cdZerar();
 		} else {
-			System.out.println("Erro na alocação da disciplina.");
+			System.out.println("SDSA:Erro na alocação da disciplina.");
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_WARN, "Campo vazio", "A disciplina não foi escolhida."));
 			cDisciplina();
@@ -130,12 +129,13 @@ public class ProfessorMB {
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
 		if (pDAO.excluir(selc.getId())) {
-			System.out.println("Colaborador " + selc.getNome() + " excluido.");
+			System.out.println("SDSA:Colaborador " + selc.getNome() + " excluido.");
 			context.addMessage(null,
 					new FacesMessage("Excluido", "Colaborador(a) " + selc.getNome() + " removido(a)."));
 			listarP();
 			zerar();
 		} else {
+			System.out.println("SDSA:Erro para excluir colaborador.");
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
 					"Para excluir o professor é necessário desalocalo da(s) disciplina(s)."));
 		}
@@ -144,7 +144,7 @@ public class ProfessorMB {
 	public void cdExcluir() {
 		context = FacesContext.getCurrentInstance();
 		if (pDAO.cdExcluir(cdSelc.getId())) {
-			System.out.println("Colaborador(a) " + selc.getNome() + " removido(a) da disciplina.");
+			System.out.println("SDSA:Colaborador(a) " + selc.getNome() + " removido(a) da disciplina.");
 			context.addMessage(null,
 					new FacesMessage("Desalocado", "Colaborador(a) " + selc.getNome() + " removido(a) da disciplina."));
 			cDisciplina();
@@ -192,14 +192,6 @@ public class ProfessorMB {
 
 	public void setCd(CD cd) {
 		this.cd = cd;
-	}
-
-	public String getCaminho() {
-		return caminho;
-	}
-
-	public void setCaminho(String caminho) {
-		this.caminho = caminho;
 	}
 
 	public void setD(List<Disciplina> d) {

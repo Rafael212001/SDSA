@@ -213,10 +213,6 @@ html, body{
 	box-shadow: 0 0 8px #DA251C;
 }
 
-.ui-state-focus, .ui-widget-content .ui-state-focus{
-	border: 1px #DA251C !important;
-}
-
 .salas .ui-widget-content{
 	border: 0px;
 }

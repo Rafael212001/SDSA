@@ -67,14 +67,14 @@ public class EscolhaMB {
 				}
 			}
 				if (b == true) {
-					System.out.println("Aula criada.");
+					System.out.println("SDSA:Aula criada.");
 					return "/telaDistribuicao?faces-redirect=true";
 				} else {
-					System.out.println("Erro ao criar aula.");
+					System.out.println("SDSA:Erro ao criar aula.");
 					return "criaAulas?faces-redirect=true";
 				}
 		} else {
-			System.out.println("Erro no coordenador.");
+			System.out.println("SDSA:Erro no coordenador.");
 			return "criaAulas?faces-redirect=true";
 		}
 	}

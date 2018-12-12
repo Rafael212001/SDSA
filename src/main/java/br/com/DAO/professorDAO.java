@@ -191,11 +191,11 @@ public class professorDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(7, p.getId());
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getCarga_hora());
-			ps.setInt(4, p.getTipo());
-			ps.setString(6, p.getDetalhes());
+			ps.setInt(3, p.getTipo());
+			ps.setString(4, p.getDetalhes());
+			ps.setInt(5, p.getId());
 			
 			if(ps.executeUpdate() > 0) {
 				return true;

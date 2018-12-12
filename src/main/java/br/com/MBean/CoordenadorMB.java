@@ -15,6 +15,7 @@ import br.com.entities.Coordenador;
 public class CoordenadorMB {
 	Coordenador coor = new Coordenador();
 	Coordenador selc;
+	Coordenador c;
 	coordenadorDAO cDAO = new coordenadorDAO();
 	List<Coordenador> coo;
 	FacesContext context;
@@ -38,49 +39,63 @@ public class CoordenadorMB {
 
 	public void editarCoordenador() {
 		if (testarCampos()) {
-			if (coor.getSenha().equals(coor.getConfirmar_senha())) {
-				if (cDAO.editar(coor)) {
-					System.out.println("Coordenador alterado.");
-					context.addMessage(null, new FacesMessage("Sucesso", "Coordenador alterado."));
-					zerar();
-					listarC();
+			c = cDAO.buscaCoordenador(coor.getLogin());
+			if (!c.getLogin().equals(coor.getLogin())) {
+				if (coor.getSenha().equals(coor.getConfirmar_senha())) {
+					if (cDAO.editar(coor)) {
+						System.out.println("SDSA:Coordenador alterado.");
+						context.addMessage(null, new FacesMessage("Sucesso", "Coordenador alterado."));
+						zerar();
+						listarC();
+					} else {
+						System.out.println("SDSA:Erro na alteração do coordenador.");
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
+								"Erro na alteração do coordenador."));
+						listarC();
+					}
 				} else {
-					System.out.println("Erro na alteração do coordenador.");
+					System.out.println("SDSA:Senhas não estão batendo");
 					context.addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração do coordenador."));
-					listarC();
+							new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
 				}
 			} else {
-				System.out.println("Senhas não estão batendo");
+				System.out.println("SDSA:Login repetido.");
 				context.addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login repetido", "Esse login já existe."));
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
 	public void criarCoordenador() {
 		if (testarCampos()) {
-			if (coor.getSenha().equals(coor.getConfirmar_senha())) {
-				if (cDAO.inserir(coor)) {
-					System.out.println("Coordenador criado.");
-					context.addMessage(null, new FacesMessage("Sucesso", "Coordenador criado."));
-					zerar();
-					listarC();
+			c = cDAO.buscaCoordenador(coor.getLogin());
+			if (!c.getLogin().equals(coor.getLogin())) {
+				if (coor.getSenha().equals(coor.getConfirmar_senha())) {
+					if (cDAO.inserir(coor)) {
+						System.out.println("SDSA:Coordenador criado.");
+						context.addMessage(null, new FacesMessage("Sucesso", "Coordenador criado."));
+						zerar();
+						listarC();
+					} else {
+						System.out.println("SDSA:Erro na criação do coordenador.");
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
+								"Erro na criação do coordenador."));
+						listarC();
+					}
 				} else {
-					System.out.println("Erro na criação do coordenador.");
+					System.out.println("SDSA:Senhas não estão batendo");
 					context.addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação do coordenador."));
-					listarC();
+							new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
 				}
 			} else {
-				System.out.println("Senhas não estão batendo");
+				System.out.println("SDSA:Login repetido.");
 				context.addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha", "A senha não está igual."));
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login repetido", "Esse login já existe."));
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
@@ -99,6 +114,7 @@ public class CoordenadorMB {
 		coor = new Coordenador();
 		cDAO = new coordenadorDAO();
 		selc = null;
+		c = null;
 	}
 
 	public void editar() {
@@ -108,12 +124,12 @@ public class CoordenadorMB {
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
 		if (cDAO.excluir(selc.getId())) {
-			System.out.println("Coordenador " + selc.getNome() + " excluindo.");
+			System.out.println("SDSA:Coordenador " + selc.getNome() + " excluindo.");
 			context.addMessage(null, new FacesMessage("Excluido", "Coordenador " + selc.getNome() + " excluido."));
 			listarC();
 			zerar();
 		} else {
-			System.out.println("Erro ao tentar excluir coordenador.");
+			System.out.println("SDSA:Erro ao tentar excluir coordenador.");
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro ao tentar excluir coordenador."));
 		}

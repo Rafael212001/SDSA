@@ -73,7 +73,7 @@ public class DistribuicaoMB implements Serializable {
 	}
 
 	public void atualizar() {
-		System.out.println("Atualizando");
+		System.out.println("SDSA:Atualizando...");
 		aulas = aDAO.listarTodasSemSala(periodo);
 		dropSala1 = aDAO.listarAulasAlocadas(dia_semana, 1, periodo);
 		dropSala2 = aDAO.listarAulasAlocadas(dia_semana, 2, periodo);
@@ -96,13 +96,14 @@ public class DistribuicaoMB implements Serializable {
 		horario = new ArrayList<>();
 		aula = new Aulas();
 		salas = 0;
+		System.out.println("SDSA:Atualizado.");
 	}
 
 	public void excluir() {
 		aulaExcluir = aDAO.listarAulas(aulaExcluir.getId());
 		aDAO.desalocar(aulaExcluir);
 		aulas.remove(aulaExcluir);
-		System.out.println("Retirando da sala.");
+		System.out.println("SDSA:Retirando da sala.");
 		atualizar();
 		excluindo(aulaExcluir.getHorario());
 		
@@ -126,10 +127,10 @@ public class DistribuicaoMB implements Serializable {
 				RequestContext.getCurrentInstance().update("form");
 			} else {
 				atualizar();
-				System.out.println("maximo de aulas na sala.");
+				System.out.println("SDSA:maximo de aulas na sala.");
 			}
 		} else {
-			System.out.println("O professor não pode dar mais aulas.");
+			System.out.println("SDSA:O professor não pode dar mais aulas.");
 		}
 	}
 
@@ -327,9 +328,9 @@ public class DistribuicaoMB implements Serializable {
 		a = aDAO.listarAulas(aula.getId());
 		if (aDAO.excluir(a)) {
 			aulas.remove(aula);
-			System.out.println("Aula excluida.");
+			System.out.println("SDSA:Aula excluida.");
 		} else {
-			System.out.println("Erro ao excluir.");
+			System.out.println("SDSA:Erro ao excluir.");
 		}
 	}
 

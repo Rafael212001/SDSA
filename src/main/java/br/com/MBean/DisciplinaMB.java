@@ -42,18 +42,18 @@ public class DisciplinaMB {
 	public void editarDisciplina() {
 		if (testarCampos()) {
 			if (dDAO.editar(disc)) {
-				System.out.println("Disciplina alterada.");
+				System.out.println("SDSA:Disciplina alterada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Disciplina alterado."));
 				zerar();
 				listarD();
 			} else {
-				System.out.println("Erro na alteração da disciplina.");
+				System.out.println("SDSA:Erro na alteração da disciplina.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração da disciplina."));
 				listarD();
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
@@ -61,18 +61,18 @@ public class DisciplinaMB {
 		if (testarCampos()) {
 			disc.setId_curso(ID);
 			if (dDAO.inserir(disc)) {
-				System.out.println("Disciplina criada.");
+				System.out.println("SDSA:Disciplina criada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Disciplina criada."));
 				zerar();
 				listarD();
 			} else {
-				System.out.println("Erro na criação da disciplina.");
+				System.out.println("SDSA:Erro na criação da disciplina.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação da disciplina."));
 				listarD();
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
@@ -100,11 +100,12 @@ public class DisciplinaMB {
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
 		if (dDAO.excluir(selc.getId())) {
-			System.out.println("Disciplina " + selc.getNome() + " excluida.");
+			System.out.println("SDSA:Disciplina " + selc.getNome() + " excluida.");
 			context.addMessage(null, new FacesMessage("Excluido", "Disciplina " + selc.getNome() + " excluida."));
 			listarD();
 			zerar();
 		} else {
+			System.out.println("SDSA:Erro ao excluir.");
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
 					"É necessário tirar os colaboradores dessa disciplina."));
 		}

@@ -221,7 +221,6 @@ public class aulasDAO {
 			ps.setInt(1, numero);
 			ps.setInt(2, dia_semana);
 			ps.setInt(3, periodo);
-			System.out.println("Sala: " + numero + " atualizada.");
 
 			ResultSet rs = ps.executeQuery();
 

@@ -48,35 +48,35 @@ public class TurmaMB {
 	public void editarTurma() {
 		if (testarCampos()) {
 			if (tDAO.editar(tur)) {
-				System.out.println("Turma alterada.");
+				System.out.println("SDSA:Turma alterada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Turma alterado."));
 				zerar();
 				listarT();
 			} else {
-				System.out.println("Erro na alteração da turma.");
+				System.out.println("SDSA:Erro na alteração da turma.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na alteração da turma."));
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
 	public void criarTurma() {
 		if (testarCampos()) {
 			if (tDAO.inserir(tur)) {
-				System.out.println("Turma criada.");
+				System.out.println("SDSA:Turma criada.");
 				context.addMessage(null, new FacesMessage("Sucesso", "Turma criada."));
 				zerar();
 				listarT();
 			} else {
-				System.out.println("Erro na criação da turma.");
+				System.out.println("SDSA:Erro na criação da turma.");
 				context.addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro na criação da turma."));
 				listarT();
 			}
 		} else {
-			System.out.println("Campo vazio.");
+			System.out.println("SDSA:Campo vazio.");
 		}
 	}
 
@@ -129,12 +129,12 @@ public class TurmaMB {
 	public void excluir() {
 		context = FacesContext.getCurrentInstance();
 		if (tDAO.excluir(selc.getId())) {
-			System.out.println("Turma " + selc.getNome() + " excluida.");
+			System.out.println("SDSA:Turma " + selc.getNome() + " excluida.");
 			context.addMessage(null, new FacesMessage("Excluido", "Turma " + selc.getNome() + " excluida."));
 			listarT();
 			zerar();
 		} else {
-			System.out.println("A turma não pode ser excluida.");
+			System.out.println("SDSA:A turma não pode ser excluida.");
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "A turma não pode ser excluida."));
 		}
