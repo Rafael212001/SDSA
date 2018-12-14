@@ -111,27 +111,39 @@ public class CursoMB {
 		if (csDAO.excluirCDT(selc.getId())) {
 			System.out.println("SDSA:Curso, disciplina(s) e turma(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso, disciplina(s) e turma(s) excluidas."));
+			delit();
 			listarCS();
 			zerar();
 		} else if (csDAO.excluirCD(selc.getId())) {
 			System.out.println("SDSA:Curso e disciplina(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso e disciplina(s) excluidas."));
+			delit();
 			listarCS();
 			zerar();
 		} else if (csDAO.excluirCT(selc.getId())) {
 			System.out.println("SDSA:Curso e turma(s) excluidas.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso e turma(s) excluidas."));
+			delit();
 			listarCS();
 			zerar();
 		} else if (csDAO.excluirC(selc.getId())) {
 			System.out.println("SDSA:Curso " + selc.getNome() + " excluido.");
 			context.addMessage(null, new FacesMessage("Excluido", "Curso " + selc.getNome() + " excluido."));
+			delit();
 			listarCS();
 			zerar();
 		} else {
 			System.out.println("SDSA:Erro no banco.");
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Tente novamente mais tarde."));
+		}
+	}
+	
+	public void delit() {
+		if(csDAO.delit(selc.getId())) {
+			System.out.println("SDSA:Aula deletada.");
+		}else {
+			System.out.println("SDSA:Erro ao deletar aula.");
 		}
 	}
 

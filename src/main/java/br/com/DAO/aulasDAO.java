@@ -180,7 +180,10 @@ public class aulasDAO {
 				+ " INNER JOIN disciplinas d ON (a.id_disciplina = d.id) "
 				+ " INNER JOIN colaboradores co ON (a.id_colaborador = co.id) "
 				+ " INNER JOIN coordenadores cr ON (a.id_coordenador = cr.id) " 
-				+ " WHERE a.id_sala is NULL AND a.periodo = ?"
+				+ " WHERE a.id_sala is NULL AND a.periodo = ? "
+				+ " AND c.ativado = 1 AND t.ativado = 1 "
+				+ " AND d.ativado = 1 AND co.ativado = 1 "
+				+ " AND cr.ativado = 1 "
 				+ " GROUP BY a.id_cursos, a.id_turmas, a.id_disciplina, a.id_colaborador, a.id_coordenador";
 
 		try {

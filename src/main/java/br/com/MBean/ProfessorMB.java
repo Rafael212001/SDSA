@@ -132,6 +132,7 @@ public class ProfessorMB {
 			System.out.println("SDSA:Colaborador " + selc.getNome() + " excluido.");
 			context.addMessage(null,
 					new FacesMessage("Excluido", "Colaborador(a) " + selc.getNome() + " removido(a)."));
+			delit();
 			listarP();
 			zerar();
 		} else {
@@ -151,6 +152,14 @@ public class ProfessorMB {
 			cdZerar();
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Erro ao tentar excluir."));
+		}
+	}
+	
+	public void delit() {
+		if(pDAO.delit(selc.getId())) {
+			System.out.println("SDSA:Aula deletada.");
+		}else {
+			System.out.println("SDSA:Erro ao deletar aula.");
 		}
 	}
 

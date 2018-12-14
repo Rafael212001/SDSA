@@ -190,4 +190,20 @@ public class cursoDAO {
 		}
 		return false;
 	}
+	
+	public boolean delit(int id) {
+		String sql = " DELETE FROM Aulas WHERE id_curso = ? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 }

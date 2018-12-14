@@ -131,12 +131,21 @@ public class TurmaMB {
 		if (tDAO.excluir(selc.getId())) {
 			System.out.println("SDSA:Turma " + selc.getNome() + " excluida.");
 			context.addMessage(null, new FacesMessage("Excluido", "Turma " + selc.getNome() + " excluida."));
+			delit();
 			listarT();
 			zerar();
 		} else {
 			System.out.println("SDSA:A turma não pode ser excluida.");
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "A turma não pode ser excluida."));
+		}
+	}
+	
+	public void delit() {
+		if(tDAO.delit(selc.getId())) {
+			System.out.println("SDSA:Aula deletada.");
+		}else {
+			System.out.println("SDSA:Erro ao deletar aula.");
 		}
 	}
 

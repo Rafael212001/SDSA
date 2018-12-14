@@ -102,12 +102,21 @@ public class DisciplinaMB {
 		if (dDAO.excluir(selc.getId())) {
 			System.out.println("SDSA:Disciplina " + selc.getNome() + " excluida.");
 			context.addMessage(null, new FacesMessage("Excluido", "Disciplina " + selc.getNome() + " excluida."));
+			delit();
 			listarD();
 			zerar();
 		} else {
 			System.out.println("SDSA:Erro ao excluir.");
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
 					"É necessário tirar os colaboradores dessa disciplina."));
+		}
+	}
+	
+	public void delit() {
+		if(dDAO.delit(selc.getId())) {
+			System.out.println("SDSA:Aula deletada.");
+		}else {
+			System.out.println("SDSA:Erro ao deletar aula.");
 		}
 	}
 
