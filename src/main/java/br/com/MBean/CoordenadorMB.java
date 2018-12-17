@@ -71,7 +71,7 @@ public class CoordenadorMB {
 	public void criarCoordenador() {
 		if (testarCampos()) {
 			c = cDAO.buscaCoordenador(coor.getLogin());
-			if (!c.getLogin().equals(coor.getLogin())) {
+			if (c == null) {
 				if (coor.getSenha().equals(coor.getConfirmar_senha())) {
 					if (cDAO.inserir(coor)) {
 						System.out.println("SDSA:Coordenador criado.");
