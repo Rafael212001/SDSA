@@ -81,18 +81,9 @@ public class EscolhaMB {
 
 	private void listarCarga() {
 		disc = dDAO.buscarDisciplina(idDisciplina);
+		
+		quantidade = disc.getCarga_hora() / 15;
 
-		if (disc.getCarga_hora() == 75) {
-			quantidade = 5;
-		} else if (disc.getCarga_hora() == 150) {
-			quantidade = 10;
-		} else if (disc.getCarga_hora() == 225) {
-			quantidade = 15;
-		} else if (disc.getCarga_hora() == 300) {
-			quantidade = 20;
-		} else {
-			quantidade = 1;
-		}
 	}
 
 	public void listTurma() {
